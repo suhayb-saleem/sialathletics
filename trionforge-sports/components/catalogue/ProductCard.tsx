@@ -12,7 +12,6 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onViewDetails, onInquire }: ProductCardProps) {
-  // Determine badge styling based on value
   const getBadgeStyle = (badge: string) => {
     if (badge === 'NEW') {
       return 'bg-[#101010] border border-white/20 text-white';
@@ -21,7 +20,10 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
   };
 
   return (
-    <div className="bg-[#141414] border border-white/8 rounded-none group hover:-translate-y-1 hover:border-brand-red/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full">
+    <div
+      onClick={() => onViewDetails(product)}
+      className="bg-[#141414] border border-white/8 rounded-none group hover:-translate-y-1 hover:border-brand-red/40 hover:shadow-[0_20px_50px_rgba(0,0,0,0.6)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full cursor-pointer"
+    >
       {/* Image Area */}
       <div className="relative aspect-[16/10] bg-[#0b0b0b] overflow-hidden border-b border-white/8">
         {/* Badge */}
@@ -82,19 +84,19 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
 
         {/* Buttons / Actions */}
         <div className="flex items-center justify-between gap-4 mt-auto">
-          {/* VIEW DETAILS */}
+          {/* VIEW DETAILS — stops propagation so it doesn't double-fire */}
           <button
-            onClick={() => onViewDetails(product)}
-            className="text-xs text-[#9A9A9A] hover:text-white transition-colors duration-200 uppercase font-semibold tracking-wider flex items-center gap-1.5 cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); onViewDetails(product); }}
+            className="text-xs text-[#9A9A9A] group-hover:text-white transition-colors duration-200 uppercase font-semibold tracking-wider flex items-center gap-1.5 cursor-pointer"
           >
-            View Details &rarr;
+            View Details →
           </button>
 
-          {/* INQUIRE button with transition fade-in effect on group-hover */}
+          {/* INQUIRE — stops propagation so clicking it doesn't also open details */}
           <Button
             variant="primary"
             size="sm"
-            onClick={() => onInquire(product)}
+            onClick={(e) => { e.stopPropagation(); onInquire(product); }}
             className="!px-4 !py-2 sm:!px-5 sm:!py-2.5 opacity-100 md:opacity-0 md:group-hover:opacity-100 hover:scale-[1.02] duration-200"
           >
             Inquire
@@ -104,3 +106,5 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
     </div>
   );
 }
+
+export default ProductCard;
