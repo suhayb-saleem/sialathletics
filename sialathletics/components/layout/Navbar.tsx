@@ -15,6 +15,49 @@ const links = [
   { label: 'CONTACT', href: '/contact' },
 ];
 
+// Animated padel racket & bouncing ball vector logo mark
+const RacketAnimation = () => {
+  return (
+    <div style={{ position: 'relative', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '0.25rem' }}>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ overflow: 'visible' }}>
+        {/* Ambient background glow behind the racket */}
+        <circle cx="12" cy="8" r="8" fill="rgba(232, 0, 28, 0.05)" style={{ filter: 'blur(4px)' }} />
+
+        {/* Animated Racket */}
+        <motion.g
+          animate={{ rotate: [-6, 6, -6], y: [0, -0.5, 0] }}
+          transition={{ repeat: Infinity, duration: 2.8, ease: "easeInOut" }}
+          style={{ transformOrigin: '12px 18px' }}
+        >
+          {/* Racket Handle */}
+          <line x1="12" y1="14" x2="12" y2="21" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="12" y1="17.5" x2="12" y2="21" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" />
+          
+          {/* Racket Head (Teardrop shape for Padel Racket) */}
+          <path d="M12 2 C8 2 8 13 12 13 C16 13 16 2 12 2 Z" fill="rgba(255, 255, 255, 0.06)" stroke="var(--white-60)" strokeWidth="1.5" />
+          
+          {/* Padel Holes (glowing micro dots) */}
+          <circle cx="12" cy="5" r="0.6" fill="var(--red)" />
+          <circle cx="10.5" cy="7.5" r="0.6" fill="var(--red)" />
+          <circle cx="13.5" cy="7.5" r="0.6" fill="var(--red)" />
+          <circle cx="12" cy="10" r="0.6" fill="var(--red)" />
+        </motion.g>
+
+        {/* Animated Bouncing Ball */}
+        <motion.circle
+          cx="12"
+          cy="0"
+          r="1.8"
+          fill="var(--red)"
+          style={{ filter: 'drop-shadow(0 0 4px var(--red))' }}
+          animate={{ y: [-7, 2.5, -7] }}
+          transition={{ repeat: Infinity, duration: 1.1, ease: "easeInOut" }}
+        />
+      </svg>
+    </div>
+  );
+};
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -58,20 +101,10 @@ export default function Navbar() {
           transition: 'top 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
         }}
       >
-        {/* Logo & Laser Dot */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', flexShrink: 0 }}>
+        {/* Logo & Animated Racket */}
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none', flexShrink: 0 }}>
           <Image src="/images/logo.png" alt="SIAL Athletics" width={142} height={38} style={{ objectFit: 'contain' }} priority />
-          <span
-            style={{
-              display: 'inline-block',
-              width: '5px',
-              height: '5px',
-              borderRadius: '50%',
-              background: 'var(--red)',
-              boxShadow: '0 0 8px var(--red), 0 0 15px var(--red)',
-            }}
-            className="animate-pulse"
-          />
+          <RacketAnimation />
         </Link>
 
         {/* Desktop Nav Links */}
