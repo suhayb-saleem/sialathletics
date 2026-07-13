@@ -80,8 +80,8 @@ export default function Navbar() {
             const active = pathname === href;
             return (
               <Link key={href} href={href} style={{
-                fontFamily: 'var(--font-body)', fontSize: '0.68rem', fontWeight: 600,
-                letterSpacing: '0.12em', textTransform: 'uppercase',
+                fontFamily: 'var(--font-display)', fontSize: '0.58rem', fontWeight: 700,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: active || hoveredIdx === idx ? 'var(--white)' : 'var(--white-60)',
                 textDecoration: 'none', position: 'relative',
                 padding: '8px 14px',
