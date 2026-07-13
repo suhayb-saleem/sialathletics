@@ -109,7 +109,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 z-30 hover:text-white hover:bg-brand-red transition-all duration-200 cursor-pointer p-2"
-                style={{ color: 'var(--white-60)', background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                style={{ color: 'var(--white-60)', background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderRadius: '8px' }}
                 aria-label="Close details"
               >
                 <X size={18} />
@@ -160,7 +160,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                           <button
                             onClick={goPrev}
                             className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 hover:bg-brand-red hover:border-brand-red text-white hover:text-white transition-all duration-200 flex items-center justify-center cursor-pointer"
-                            style={{ background: 'rgba(22,22,22,0.9)', border: '1px solid var(--white-08)' }}
+                            style={{ background: 'rgba(22,22,22,0.9)', border: '1px solid var(--white-08)', borderRadius: '6px' }}
                             aria-label="Previous image"
                           >
                             <ChevronLeft size={18} />
@@ -168,7 +168,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                           <button
                             onClick={goNext}
                             className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 hover:bg-brand-red hover:border-brand-red text-white hover:text-white transition-all duration-200 flex items-center justify-center cursor-pointer"
-                            style={{ background: 'rgba(22,22,22,0.9)', border: '1px solid var(--white-08)' }}
+                            style={{ background: 'rgba(22,22,22,0.9)', border: '1px solid var(--white-08)', borderRadius: '6px' }}
                             aria-label="Next image"
                           >
                             <ChevronRight size={18} />
@@ -217,6 +217,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                                 ? 'border-brand-red'
                                 : 'border-white/10 hover:border-white/30'
                             }`}
+                            style={{ borderRadius: '6px' }}
                             aria-label={`View image ${idx + 1}`}
                           >
                             <Image
@@ -310,7 +311,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.4, duration: 0.4 }}
                           className="p-4 flex justify-between items-center"
-                          style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)' }}
+                          style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderRadius: '8px' }}
                         >
                           <span className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
                             Minimum Order Quantity

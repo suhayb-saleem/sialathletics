@@ -64,11 +64,12 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
           {/* Key Specs */}
           {product.specs && product.specs.length > 0 && (
             <div className="border-t border-[var(--white-08)]" style={{ paddingTop: '1rem', marginTop: '0.25rem' }}>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {product.specs.slice(0, 4).map((spec, sIdx) => (
-                  <div key={sIdx} className="flex justify-between items-center text-[12px] py-0.5 border-b border-dashed border-white/10 last:border-b-0">
-                    <span className="text-[var(--white-60)] font-medium">{spec.label}</span>
-                    <span className="text-white font-bold truncate max-w-[90px]" title={spec.value}>
+                  <div key={sIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px', height: '20px' }}>
+                    <span style={{ color: 'var(--white-60)', fontWeight: 500 }}>{spec.label}</span>
+                    <div style={{ flexGrow: 1, borderBottom: '1px dashed rgba(255, 255, 255, 0.1)', margin: '0 8px' }} />
+                    <span style={{ color: 'var(--white)', fontWeight: 700 }} title={spec.value}>
                       {spec.value}
                     </span>
                   </div>
