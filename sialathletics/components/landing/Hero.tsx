@@ -48,7 +48,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline — word by word */}
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3.2rem, 7.5vw, 7rem)', lineHeight: 0.88, letterSpacing: '0.02em', marginBottom: '2rem', overflow: 'hidden' }}>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)', lineHeight: 1.05, letterSpacing: '0.02em', marginBottom: '2rem', overflow: 'hidden' }}>
             {words.map((word, i) => (
               <span key={i} style={{ display: 'block', overflow: 'hidden' }}>
                 <motion.span

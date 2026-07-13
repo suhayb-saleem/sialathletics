@@ -14,11 +14,11 @@ const capabilities = [
 
 export default function CapabilityCards() {
   return (
-    <section style={{ background: 'var(--bg-light-alt)', padding: '6rem 1.5rem' }}>
+    <section style={{ background: 'var(--bg-raised)', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3.5rem' }}>
           <SectionLabel showSlash={true}>OUR CAPABILITIES</SectionLabel>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--text-dark)', lineHeight: 0.95, marginTop: '0.75rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--white)', lineHeight: 0.95, marginTop: '0.75rem' }}>
             BUILT FOR BRANDS WHO DEMAND MORE.
           </h2>
         </div>
@@ -31,8 +31,8 @@ export default function CapabilityCards() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
               style={{
-                background: 'var(--bg-light)',
-                border: '1px solid var(--border-light)',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--white-08)',
                 borderLeft: '3px solid var(--red)',
                 padding: '2.5rem',
                 display: 'flex',
@@ -40,12 +40,12 @@ export default function CapabilityCards() {
                 gap: '1.25rem',
                 justifyContent: 'flex-start'
               }}
-              className="group hover:border-r-[var(--red)]/40 hover:border-y-[var(--red)]/40 hover:shadow-[0_20px_45px_rgba(232,0,28,0.06)] transition-all duration-300"
+              className="group hover:border-r-[var(--red)]/40 hover:border-y-[var(--red)]/40 hover:shadow-[0_20px_45px_rgba(232,0,28,0.15)] transition-all duration-300"
             >
               <Icon size={24} color="var(--red)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--text-dark)', margin: 0, textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.75 }}>{desc}</p>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--white)', margin: 0, textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--white-60)', margin: 0, lineHeight: 1.75 }}>{desc}</p>
               </div>
             </motion.div>
           ))}

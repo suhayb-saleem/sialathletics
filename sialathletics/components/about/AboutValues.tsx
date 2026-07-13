@@ -12,11 +12,11 @@ const values = [
 
 export default function AboutValues() {
   return (
-    <section style={{ background: 'var(--bg-light)', padding: '6rem 1.5rem' }}>
+    <section style={{ background: 'var(--bg-base)', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{ marginBottom: '3.5rem' }}>
           <SectionLabel showSlash={true}>WHAT DRIVES US</SectionLabel>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--text-dark)', lineHeight: 0.95, marginTop: '0.75rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--white)', lineHeight: 0.95, marginTop: '0.75rem' }}>
             OUR CORE VALUES
           </h2>
         </div>
@@ -29,20 +29,20 @@ export default function AboutValues() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
               style={{
-                background: 'var(--bg-light-alt)',
-                border: '1px solid var(--border-light)',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--white-08)',
                 padding: '2.5rem',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '1.25rem',
                 justifyContent: 'flex-start'
               }}
-              className="group hover:border-[var(--red)]/40 hover:shadow-[0_20px_45px_rgba(232,0,28,0.05)] transition-all duration-300"
+              className="group hover:border-[var(--red)]/40 hover:shadow-[0_20px_45px_rgba(232,0,28,0.15)] transition-all duration-300"
             >
               <Icon size={24} color="var(--red)" />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--text-dark)', margin: 0, textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.75 }}>{desc}</p>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--white)', margin: 0, textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--white-60)', margin: 0, lineHeight: 1.75 }}>{desc}</p>
               </div>
             </motion.div>
           ))}

@@ -9,11 +9,11 @@ const materials = [
 
 export default function MaterialsBadges() {
   return (
-    <section style={{ background: 'var(--bg-light)', padding: '5rem 1.5rem', borderTop: '1px solid var(--border-light)' }}>
+    <section style={{ background: 'var(--bg-base)', padding: '5rem 1.5rem', borderTop: '1px solid var(--white-08)' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{ marginBottom: '2.5rem' }}>
           <SectionLabel showSlash={true}>MATERIALS</SectionLabel>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', color: 'var(--text-dark)', lineHeight: 0.95, marginTop: '0.75rem' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', color: 'var(--white)', lineHeight: 0.95, marginTop: '0.75rem' }}>
             MATERIALS WE WORK WITH.
           </h2>
         </div>
@@ -25,7 +25,7 @@ export default function MaterialsBadges() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
-              style={{ background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)', borderLeft: '2px solid var(--red)', padding: '0.6rem 1.25rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--text-dark)', fontWeight: 700, letterSpacing: '0.03em' }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderLeft: '2px solid var(--red)', padding: '0.6rem 1.25rem', fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--white)', fontWeight: 700, letterSpacing: '0.03em' }}
             >
               {m}
             </motion.div>
