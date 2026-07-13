@@ -53,16 +53,16 @@ export function Capabilities() {
                   key={idx}
                   direction="up"
                   delay={idx * 0.1}
-                  className="flex flex-col justify-between h-full group transition-all duration-300 bg-[var(--bg-card)] border border-[var(--white-08)] p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                  className="flex flex-col justify-between h-full group transition-all duration-300 bg-[var(--bg-light)] border border-[var(--border-light)] p-8 hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.06)]"
                 >
                   <div className="space-y-4">
-                    <div className="inline-block transition-colors duration-300" style={{ padding: '0.75rem', background: 'var(--bg-base)', border: '1px solid var(--white-08)' }}>
+                    <div className="inline-block transition-colors duration-300" style={{ padding: '0.75rem', background: 'var(--bg-light-alt)', border: '1px solid var(--border-light)' }}>
                       <Icon size={24} color="var(--red)" />
                     </div>
-                    <h3 className="font-display text-2xl text-white uppercase">
+                    <h3 className="font-display text-2xl text-[var(--text-dark)] uppercase group-hover:text-[var(--red)] transition-colors duration-200">
                       {item.title}
                     </h3>
-                    <p className="font-body text-sm leading-relaxed" style={{ color: 'var(--white-60)' }}>
+                    <p className="font-body text-sm leading-relaxed text-[var(--text-muted)]">
                       {item.desc}
                     </p>
                   </div>

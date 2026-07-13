@@ -9,8 +9,8 @@ export default function CapabilitiesHero() {
   return (
     <section
       style={{
-        background: 'var(--bg-raised)',
-        borderBottom: '1px solid var(--white-08)',
+        background: 'var(--bg-light)',
+        borderBottom: '1px solid var(--border-light)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,10 +26,10 @@ export default function CapabilitiesHero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           style={{ marginBottom: '1rem' }}
         >
-          <SectionLabel>WHAT WE DO</SectionLabel>
+          <SectionLabel showSlash={true}>WHAT WE DO</SectionLabel>
         </motion.div>
         
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--white)', margin: '1rem 0', overflow: 'hidden' }}>
+        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 7vw, 5.5rem)', lineHeight: 0.95, color: 'var(--text-dark)', margin: '1rem 0', overflow: 'hidden' }}>
           {words.map((word, i) => (
             <span key={i} style={{ display: 'inline-block', overflow: 'hidden', marginRight: '0.35em' }}>
               <motion.span
@@ -48,7 +48,7 @@ export default function CapabilitiesHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)', maxWidth: '520px', margin: '0 auto' }}
+          style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--text-muted)', maxWidth: '520px', margin: '0 auto' }}
         >
           From concept to courier — we handle the full production cycle.
         </motion.p>
