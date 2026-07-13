@@ -15,6 +15,14 @@ function CatalogueContent() {
   const [sort, setSort] = useState<SortOption>('featured');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Sync state from query parameters on mount / search params change
   useEffect(() => {
@@ -105,10 +113,10 @@ Best regards,`;
       {/* Dynamic slide transitions for background cards list when drawer is active */}
       <div
         style={{
-          transition: 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), padding-right 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease',
-          transform: modalOpen ? 'translateX(-12vw)' : 'none',
-          paddingRight: modalOpen ? '20vw' : '0',
-          opacity: modalOpen ? 0.75 : 1,
+          transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), padding-right 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+          transform: modalOpen && !isMobile ? 'translateX(-20px)' : 'none',
+          paddingRight: modalOpen && !isMobile ? '490px' : '0',
+          opacity: 1,
         }}
       >
         {/* Catalogue Hero header */}
