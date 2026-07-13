@@ -7,20 +7,21 @@ interface ButtonProps {
   size?: 'sm' | 'md' | 'lg';
   type?: 'button' | 'submit' | 'reset';
   className?: string;
+  disabled?: boolean;
   children: React.ReactNode;
 }
 
-export default function Button({ href, onClick, variant = 'primary', size = 'md', type = 'button', className = '', children }: ButtonProps) {
+export default function Button({ href, onClick, variant = 'primary', size = 'md', type = 'button', className = '', disabled = false, children }: ButtonProps) {
   const base: React.CSSProperties = {
     display: 'inline-block', fontFamily: 'var(--font-body)', fontSize: size === 'sm' ? '0.65rem' : size === 'lg' ? '0.8rem' : '0.72rem', fontWeight: 700,
     letterSpacing: '0.14em', textTransform: 'uppercase' as const, textDecoration: 'none',
-    padding: size === 'sm' ? '8px 18px' : size === 'lg' ? '16px 36px' : '13px 28px', borderRadius: 0, cursor: 'pointer', border: 'none', transition: 'all 0.2s ease',
+    padding: size === 'sm' ? '8px 18px' : size === 'lg' ? '16px 36px' : '13px 28px', borderRadius: 0, cursor: disabled ? 'not-allowed' : 'pointer', border: 'none', transition: 'all 0.2s ease',
   };
   const styles: Record<string, React.CSSProperties> = {
-    primary: { ...base, background: 'var(--red)', color: 'var(--white)' },
+    primary: { ...base, background: disabled ? 'var(--white-20)' : 'var(--red)', color: 'var(--white)' },
     outline: { ...base, background: 'transparent', color: 'var(--white)', border: '1px solid var(--white-30)' },
     ghost: { ...base, background: 'transparent', color: 'var(--white)', padding: '0' },
   };
   if (href) return <Link href={href} style={styles[variant]} className={className}>{children}</Link>;
-  return <button type={type} onClick={onClick} style={styles[variant]} className={className}>{children}</button>;
+  return <button type={type} onClick={onClick} disabled={disabled} style={styles[variant]} className={className}>{children}</button>;
 }

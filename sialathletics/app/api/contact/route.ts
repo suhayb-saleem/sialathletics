@@ -1,0 +1,196 @@
+import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+import { generateInquiryPDF, InquiryData } from '@/lib/pdfGenerator';
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { name, email, company, country, productLine, orderVolume, message } = body;
+
+    // Validate required fields
+    if (!name || !email || !company || !productLine || !orderVolume || !message) {
+      return NextResponse.json(
+        { success: false, error: 'Missing required inquiry fields' },
+        { status: 400 }
+      );
+    }
+
+    const inquiryData: InquiryData = {
+      name,
+      email,
+      company,
+      country: country || 'N/A',
+      productLine,
+      orderVolume,
+      message,
+    };
+
+    // 1. Generate PDF Report in-memory
+    console.log('[Inquiry API] Generating PDF report...');
+    const pdfBuffer = await generateInquiryPDF(inquiryData);
+    console.log(`[Inquiry API] PDF successfully generated (${pdfBuffer.length} bytes)`);
+
+    // 2. Read SMTP environment configurations
+    const smtpHost = process.env.SMTP_HOST;
+    const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : 587;
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
+    const companyEmail = 'info@sialathletics.com';
+
+    // 3. Prepare Email templates
+    const cleanCompanyFilename = company.replace(/[^a-zA-Z0-9]/g, '_');
+    const attachmentFilename = `SIAL_Athletics_Inquiry_${cleanCompanyFilename}.pdf`;
+
+    const salesEmailHtml = `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eeeeee; border-top: 4px solid #E31B23;">
+        <h2 style="color: #111111; margin-top: 0;">New B2B Lead Inquiry</h2>
+        <p>A new custom manufacturing request has been submitted. Find the PDF specification sheet attached.</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
+            <td style="padding: 10px; font-weight: bold; width: 35%;">Client Name:</td>
+            <td style="padding: 10px;">${name}</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eeeeee;">
+            <td style="padding: 10px; font-weight: bold;">Work Email:</td>
+            <td style="padding: 10px;"><a href="mailto:${email}">${email}</a></td>
+          </tr>
+          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
+            <td style="padding: 10px; font-weight: bold;">Company Name:</td>
+            <td style="padding: 10px;">${company}</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eeeeee;">
+            <td style="padding: 10px; font-weight: bold;">Country / Region:</td>
+            <td style="padding: 10px;">${country || 'N/A'}</td>
+          </tr>
+          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
+            <td style="padding: 10px; font-weight: bold;">Product Line:</td>
+            <td style="padding: 10px; text-transform: capitalize;">${productLine}</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eeeeee;">
+            <td style="padding: 10px; font-weight: bold;">Order Volume (MOQ):</td>
+            <td style="padding: 10px;">${orderVolume}</td>
+          </tr>
+        </table>
+        
+        <h3 style="margin-top: 20px; color: #111111;">Project Details / Message:</h3>
+        <div style="background-color: #f9f9f9; padding: 15px; border: 1px solid #eeeeee; white-space: pre-wrap; font-size: 14px; line-height: 1.5; color: #333333;">${message}</div>
+        
+        <div style="margin-top: 30px; font-size: 11px; color: #888888; border-top: 1px solid #eeeeee; padding-top: 10px;">
+          SIAL Athletics lead capture automated email.
+        </div>
+      </div>
+    `;
+
+    const clientEmailHtml = `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eeeeee; border-top: 4px solid #E31B23;">
+        <h2 style="color: #111111; margin-top: 0; font-size: 20px;">Thank You for Reaching Out to SIAL Athletics</h2>
+        <p>Dear ${name},</p>
+        <p>Thank you for submitting your custom equipment inquiry to SIAL Athletics. We are excited about the prospect of partnering with your brand.</p>
+        <p>We have successfully compiled your project configurations. Your <strong>B2B Inquiry Report (PDF)</strong> is attached to this email for your records.</p>
+        
+        <p>Our product development and engineering team in Sialkot, along with our US sales representatives, will review your requirements and follow up within <strong>24 business hours</strong> with details on:</p>
+        <ul style="line-height: 1.6; color: #333333;">
+          <li>Factory-direct custom pricing sheets</li>
+          <li>Arrangements for sample paddle/racket delivery</li>
+          <li>Custom mold capability options</li>
+        </ul>
+        
+        <p>If you have any immediate corrections or additional details, please reply directly to this email or write to us at <a href="mailto:${companyEmail}" style="color: #E31B23; text-decoration: none; font-weight: bold;">${companyEmail}</a>.</p>
+        
+        <p style="margin-top: 30px; margin-bottom: 5px;">Best Regards,</p>
+        <p style="font-weight: bold; margin: 0; color: #111111;">SIAL Athletics B2B Team</p>
+        <p style="margin: 0; font-size: 13px; color: #666666;">Sialkot, Pakistan & USA</p>
+        
+        <div style="margin-top: 30px; font-size: 11px; color: #999999; border-top: 1px solid #eeeeee; padding-top: 15px; text-align: center;">
+          © ${new Date().getFullYear()} SIAL Athletics. All rights reserved. <br/>
+          <a href="https://www.sialathletics.com" style="color: #999999; text-decoration: underline;">www.sialathletics.com</a>
+        </div>
+      </div>
+    `;
+
+    // 4. Send email or fallback to Console Log
+    if (!smtpHost || !smtpUser || !smtpPass) {
+      console.warn(
+        '[Inquiry API] SMTP configurations are not fully set up in the environment variables.\n' +
+        'Logging details to console instead of sending real email.\n' +
+        `To configure real emails, define SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASS.`
+      );
+      
+      console.log('====== DEMO INQUIRY LOGGED TO CONSOLE ======');
+      console.log(`FROM: SIAL Athletics Team <${companyEmail}>`);
+      console.log(`TO: Client: ${name} <${email}>`);
+      console.log(`TO: Sales Team <${companyEmail}>`);
+      console.log(`ATTACHMENT: ${attachmentFilename} (${pdfBuffer.length} bytes)`);
+      console.log('---------------------------------------------');
+      console.log('--- Sales Team Email Body Preview ---');
+      console.log(salesEmailHtml.replace(/<[^>]*>/g, '').trim().substring(0, 500) + '...');
+      console.log('---------------------------------------------');
+      console.log('--- Client Email Body Preview ---');
+      console.log(clientEmailHtml.replace(/<[^>]*>/g, '').trim().substring(0, 500) + '...');
+      console.log('============================================');
+
+      return NextResponse.json({
+        success: true,
+        demoMode: true,
+        message: 'Inquiry details processed and logged to console (SMTP not configured).',
+      });
+    }
+
+    // SMTP transporter setup
+    const transporter = nodemailer.createTransport({
+      host: smtpHost,
+      port: smtpPort,
+      secure: smtpPort === 465, // true for port 465, false for 587
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
+      },
+    });
+
+    const attachments = [
+      {
+        filename: attachmentFilename,
+        content: pdfBuffer,
+      },
+    ];
+
+    // Mail to company sales team
+    const mailToSales = {
+      from: `"SIAL Inquiry Service" <${smtpUser}>`,
+      to: companyEmail,
+      replyTo: email,
+      subject: `New B2B Lead: ${company} — ${productLine}`,
+      html: salesEmailHtml,
+      attachments,
+    };
+
+    // Mail to client confirmation
+    const mailToClient = {
+      from: `"SIAL Athletics" <${smtpUser}>`,
+      to: email,
+      replyTo: companyEmail,
+      subject: `Your Inquiry Report & OEM Specifications — SIAL Athletics`,
+      html: clientEmailHtml,
+      attachments,
+    };
+
+    console.log('[Inquiry API] Dispatching emails via SMTP...');
+    await Promise.all([
+      transporter.sendMail(mailToSales),
+      transporter.sendMail(mailToClient)
+    ]);
+    console.log('[Inquiry API] Emails successfully sent.');
+
+    return NextResponse.json({
+      success: true,
+      message: 'Inquiry received. Confirmation and notification emails sent successfully.',
+    });
+  } catch (error: any) {
+    console.error('[Inquiry API ERROR]:', error);
+    return NextResponse.json(
+      { success: false, error: 'Internal Server Error', details: error.message },
+      { status: 500 }
+    );
+  }
+}

@@ -120,7 +120,11 @@ export default function Footer() {
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--white-60)', fontSize: '0.875rem' }}>
                 <Phone size={16} color="var(--red)" style={{ flexShrink: 0 }} />
-                <span>+1 (xxx) xxx-xxxx</span>
+                <a href="tel:+923355933174" style={{ color: 'var(--white-60)', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
+                   onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}>
+                  +923355933174
+                </a>
               </li>
             </ul>
           </div>

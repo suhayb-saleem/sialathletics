@@ -16,12 +16,68 @@ export function Contact() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 800);
+    setSubmitting(true);
+    setError(null);
+
+    // Map fields to match API expectations
+    const productLineMap: Record<string, string> = {
+      pickleball: 'Pickleball Paddles',
+      padel: 'Padel Rackets',
+      both: 'Both Lines',
+      accessories: 'Other Accessories',
+    };
+
+    const orderVolumeMap: Record<string, string> = {
+      '50-100': '50-100 Units (Starter)',
+      '100-500': '100-500 Units (Growth)',
+      '500+': '500+ Units (Enterprise)',
+      samples: 'Sample Only (1-5 units)',
+    };
+
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company,
+      country: 'N/A', // Not collected on landing page form
+      productLine: productLineMap[formData.interest] || formData.interest,
+      orderVolume: orderVolumeMap[formData.moq] || formData.moq,
+      message: formData.message,
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          interest: 'pickleball',
+          moq: '50-100',
+          message: '',
+        });
+      } else {
+        setError(result.error || 'Failed to submit inquiry. Please check the fields and try again.');
+      }
+    } catch (err) {
+      setError('A network error occurred. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -73,8 +129,10 @@ export function Contact() {
                   <Phone size={20} color="var(--red)" />
                 </div>
                 <div>
-                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Direct Phone</div>
-                  <div className="font-bold text-sm text-white">+1 (xxx) xxx-xxxx</div>
+                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Phone</div>
+                  <a href="tel:+923355933174" className="font-bold text-sm text-white hover:text-[var(--red)] transition-colors duration-200">
+                    +923355933174
+                  </a>
                 </div>
               </div>
             </div>
@@ -106,6 +164,11 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }} className="font-body text-white">
+                {error && (
+                  <div style={{ background: 'rgba(227, 27, 35, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem' }}>
+                    {error}
+                  </div>
+                )}
                 
                 {/* Name & Email Group */}
                 <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
@@ -221,9 +284,9 @@ export function Contact() {
 
                 {/* Submit button with top margin */}
                 <div style={{ marginTop: '0.75rem' }}>
-                  <Button type="submit" variant="primary" size="md" className="w-full flex items-center justify-center gap-2">
+                  <Button type="submit" variant="primary" size="md" disabled={submitting} className="w-full flex items-center justify-center gap-2">
                     <Send size={16} />
-                    <span>Submit B2B Inquiry</span>
+                    <span>{submitting ? 'Submitting...' : 'Submit B2B Inquiry'}</span>
                   </Button>
                 </div>
               </form>
