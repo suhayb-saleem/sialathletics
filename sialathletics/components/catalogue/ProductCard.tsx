@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'motion/react';
 import { Product } from '@/data/products';
 import Button from '@/components/ui/Button';
 import { ProductImageSlider } from '@/components/ui/ProductImageSlider';
@@ -20,16 +21,33 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
   };
 
   return (
-    <div
+    <motion.div
       onClick={() => onViewDetails(product)}
-      className="bg-[var(--bg-card)] border border-[var(--white-08)] rounded-none group hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.15)] transition-all duration-300 flex flex-col justify-between overflow-hidden font-body h-full cursor-pointer"
-      style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+      whileHover={{
+        y: -6,
+        scale: 1.015,
+        boxShadow: '0 24px 60px rgba(232, 0, 28, 0.18)',
+        borderColor: 'rgba(232, 0, 28, 0.35)',
+      }}
+      transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        borderRadius: '16px',
+        background: 'var(--bg-card)',
+        border: '1px solid var(--white-08)',
+        overflow: 'hidden',
+        fontFamily: 'var(--font-body)',
+        cursor: 'pointer',
+      }}
+      className="group"
     >
       {/* Image Area */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--white-08)]" style={{ padding: '0.75rem', background: 'var(--bg-raised)' }}>
         {/* Badge */}
         {product.badge && (
-          <div className={`absolute top-3.5 right-3.5 z-10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-none ${getBadgeStyle(product.badge)}`}>
+          <div className={`absolute top-3.5 right-3.5 z-10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-[4px] ${getBadgeStyle(product.badge)}`}>
             {product.badge}
           </div>
         )}
@@ -64,11 +82,12 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
           {/* Key Specs */}
           {product.specs && product.specs.length > 0 && (
             <div className="border-t border-[var(--white-08)]" style={{ paddingTop: '1rem', marginTop: '0.25rem' }}>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {product.specs.slice(0, 4).map((spec, sIdx) => (
-                  <div key={sIdx} className="flex justify-between items-center text-[12px] py-0.5 border-b border-dashed border-white/10 last:border-b-0">
-                    <span className="text-[var(--white-60)] font-medium">{spec.label}</span>
-                    <span className="text-white font-bold truncate max-w-[90px]" title={spec.value}>
+                  <div key={sIdx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11.5px', height: '20px' }}>
+                    <span style={{ color: 'var(--white-60)', fontWeight: 500 }}>{spec.label}</span>
+                    <div style={{ flexGrow: 1, borderBottom: '1px dashed rgba(255, 255, 255, 0.1)', margin: '0 8px' }} />
+                    <span style={{ color: 'var(--white)', fontWeight: 700 }} title={spec.value}>
                       {spec.value}
                     </span>
                   </div>
@@ -77,11 +96,12 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
             </div>
           )}
 
-          {/* MOQ Label */}
+          {/* MOQ Label without block background/border */}
           {product.moq && (
-            <div style={{ marginTop: '0.25rem' }}>
-              <div className="text-[10px] text-[var(--white-60)] font-bold bg-[var(--bg-base)] border border-[var(--white-08)] inline-block px-3 py-1 uppercase tracking-wider">
-                MOQ: <span className="text-[var(--red)] font-extrabold">{product.moq}</span>
+            <div style={{ marginTop: '0.5rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '10px', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700 }}>
+                <span style={{ display: 'inline-block', width: '6px', height: '6px', borderRadius: '50%', background: 'var(--red)' }} />
+                MOQ: <span style={{ color: 'var(--white)', fontWeight: 800 }}>{product.moq}</span>
               </div>
             </div>
           )}
@@ -93,6 +113,7 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
           <button
             onClick={(e: React.MouseEvent) => { e.stopPropagation(); onViewDetails(product); }}
             className="text-xs text-[var(--white-60)] hover:text-white transition-colors duration-200 uppercase font-bold tracking-wider flex items-center gap-1 cursor-pointer"
+            style={{ background: 'none', border: 'none', padding: 0 }}
           >
             View Details →
           </button>
@@ -108,7 +129,7 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

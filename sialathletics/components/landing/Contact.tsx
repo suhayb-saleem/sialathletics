@@ -103,7 +103,7 @@ export function Contact() {
 
             <div className="space-y-6 pt-4 font-body" style={{ marginTop: '2rem' }}>
               <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
                   <MapPin size={20} color="var(--red)" />
                 </div>
                 <div>
@@ -113,7 +113,7 @@ export function Contact() {
               </div>
 
               <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
                   <Mail size={20} color="var(--red)" />
                 </div>
                 <div>
@@ -125,7 +125,7 @@ export function Contact() {
               </div>
 
               <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
                   <Phone size={20} color="var(--red)" />
                 </div>
                 <div>
@@ -138,7 +138,7 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Right Panel: Form Container with explicit padding & gaps */}
+          {/* Right Panel: Form Container with explicit padding, gaps & rounded corners */}
           <AnimatedSection
             direction="up"
             className="bg-[var(--bg-card)] border border-[var(--white-08)] shadow-[0_24px_50px_rgba(0,0,0,0.55)]"
@@ -147,6 +147,7 @@ export function Contact() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
+              borderRadius: '16px',
             }}
           >
             {submitted ? (
@@ -182,8 +183,8 @@ export function Contact() {
                       id="name"
                       required
                       placeholder="e.g. John Doe"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
@@ -199,8 +200,8 @@ export function Contact() {
                       id="email"
                       required
                       placeholder="john@company.com"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     />
@@ -219,8 +220,8 @@ export function Contact() {
                       id="company"
                       required
                       placeholder="e.g. Pro Pickleball Inc"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     />
@@ -233,8 +234,8 @@ export function Contact() {
                     </label>
                     <select
                       id="interest"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
+                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
                       value={formData.interest}
                       onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                     >
@@ -253,8 +254,8 @@ export function Contact() {
                   </label>
                   <select
                     id="moq"
-                    className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
-                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
+                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
                     value={formData.moq}
                     onChange={(e) => setFormData({ ...formData, moq: e.target.value })}
                   >
@@ -275,8 +276,8 @@ export function Contact() {
                     rows={4}
                     required
                     placeholder="Specify target specifications, material preferences, logo engraving, or custom request details here..."
-                    className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
-                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
+                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
+                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none', borderRadius: '8px' }}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
