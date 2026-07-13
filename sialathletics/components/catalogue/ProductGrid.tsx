@@ -9,9 +9,10 @@ interface ProductGridProps {
   products: Product[];
   onViewDetails: (product: Product) => void;
   onInquire: (product: Product) => void;
+  modalOpen?: boolean;
 }
 
-export function ProductGrid({ products, onViewDetails, onInquire }: ProductGridProps) {
+export function ProductGrid({ products, onViewDetails, onInquire, modalOpen = false }: ProductGridProps) {
   const shouldReduceMotion = useReducedMotion();
 
   const containerVariants = {
@@ -45,13 +46,18 @@ export function ProductGrid({ products, onViewDetails, onInquire }: ProductGridP
     );
   }
 
+  // Squeeze columns layout when side details drawer is active to prevent squishing
+  const gridClasses = modalOpen
+    ? "grid grid-cols-1 xl:grid-cols-2 gap-6 md:gap-8 z-10 relative transition-all duration-300"
+    : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 z-10 relative transition-all duration-300";
+
   return (
     <motion.div
       key={products.map((p) => p.id).join('-')} // Force re-animation when category filters change
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 z-10 relative"
+      className={gridClasses}
     >
       {products.map((product) => (
         <motion.div key={product.id} variants={cardVariants} className="h-full">

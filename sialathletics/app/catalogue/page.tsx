@@ -15,13 +15,21 @@ function CatalogueContent() {
   const [sort, setSort] = useState<SortOption>('featured');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [sidebarOffset, setSidebarOffset] = useState(0);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 640);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const checkOffset = () => {
+      if (window.innerWidth < 640) {
+        setSidebarOffset(0);
+      } else if (window.innerWidth < 1024) {
+        setSidebarOffset(440); // 420px drawer + 20px padding/gap
+      } else {
+        setSidebarOffset(500); // 480px drawer + 20px padding/gap
+      }
+    };
+    checkOffset();
+    window.addEventListener('resize', checkOffset);
+    return () => window.removeEventListener('resize', checkOffset);
   }, []);
 
   // Sync state from query parameters on mount / search params change
@@ -114,8 +122,8 @@ Best regards,`;
       <div
         style={{
           transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), padding-right 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
-          transform: modalOpen && !isMobile ? 'translateX(-20px)' : 'none',
-          paddingRight: modalOpen && !isMobile ? '490px' : '0',
+          transform: modalOpen && sidebarOffset > 0 ? 'translateX(-15px)' : 'none',
+          paddingRight: modalOpen ? `${sidebarOffset}px` : '0',
           opacity: 1,
         }}
       >
@@ -136,6 +144,7 @@ Best regards,`;
             products={sortedProducts}
             onViewDetails={handleViewDetails}
             onInquire={handleInquire}
+            modalOpen={modalOpen}
           />
         </div>
       </div>
