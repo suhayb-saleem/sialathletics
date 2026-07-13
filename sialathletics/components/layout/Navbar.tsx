@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
+import Button from '@/components/ui/Button';
 
 const links = [
   { label: 'HOME', href: '/' },
@@ -21,7 +22,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
+    const handler = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
   }, []);
@@ -31,35 +32,61 @@ export default function Navbar() {
   return (
     <>
       <motion.header
+        initial={{ y: -100, x: '-50%', opacity: 0 }}
+        animate={{ y: 0, x: '-50%', opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.1 }}
         style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-          height: '72px',
-          display: 'flex', alignItems: 'center',
-          padding: '0 2rem',
-          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
-          background: scrolled ? 'rgba(10, 10, 10, 0.8)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px)' : 'none',
-          transition: 'background 0.4s var(--ease), border-color 0.4s var(--ease), backdrop-filter 0.4s var(--ease)',
+          position: 'fixed',
+          top: scrolled ? '16px' : '24px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 100,
+          height: '64px',
+          width: '92%',
+          maxWidth: '1080px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 1.5rem 0 1.75rem',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          background: scrolled ? 'rgba(10, 10, 10, 0.85)' : 'rgba(10, 10, 10, 0.6)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: '40px',
+          boxShadow: scrolled
+            ? '0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(232, 0, 28, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+            : '0 12px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
+          transition: 'top 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
         }}
       >
-        {/* Logo */}
-        <Link href="/" style={{ flexShrink: 0, marginRight: 'auto' }}>
-          <Image src="/images/logo.png" alt="SIAL Athletics" width={185} height={52} style={{ objectFit: 'contain' }} priority />
+        {/* Logo & Laser Dot */}
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', flexShrink: 0 }}>
+          <Image src="/images/logo.png" alt="SIAL Athletics" width={142} height={38} style={{ objectFit: 'contain' }} priority />
+          <span
+            style={{
+              display: 'inline-block',
+              width: '5px',
+              height: '5px',
+              borderRadius: '50%',
+              background: 'var(--red)',
+              boxShadow: '0 0 8px var(--red), 0 0 15px var(--red)',
+            }}
+            className="animate-pulse"
+          />
         </Link>
 
-        {/* Desktop nav with sliding indicators */}
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', position: 'relative' }} className="hide-mobile">
+        {/* Desktop Nav Links */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', position: 'relative' }} className="hide-mobile">
           {links.map(({ label, href }, idx) => {
             const active = pathname === href;
             return (
               <Link key={href} href={href} style={{
-                fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 600,
-                letterSpacing: '0.14em', textTransform: 'uppercase',
+                fontFamily: 'var(--font-body)', fontSize: '0.68rem', fontWeight: 600,
+                letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: active || hoveredIdx === idx ? 'var(--white)' : 'var(--white-60)',
                 textDecoration: 'none', position: 'relative',
-                padding: '8px 16px',
+                padding: '8px 14px',
                 borderRadius: '30px',
-                transition: 'color 0.2s ease',
+                transition: 'color 0.25s ease',
                 display: 'inline-block'
               }}
                 onMouseEnter={() => setHoveredIdx(idx)}
@@ -84,11 +111,12 @@ export default function Navbar() {
                     style={{
                       position: 'absolute',
                       bottom: 0,
-                      left: '16px',
-                      right: '16px',
+                      left: '14px',
+                      right: '14px',
                       height: '2.5px',
                       background: 'var(--red)',
                       borderRadius: '4px',
+                      boxShadow: '0 0 10px rgba(232, 0, 28, 0.5)'
                     }}
                     transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                   />
@@ -97,58 +125,53 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link href="/contact" style={{
-            fontFamily: 'var(--font-body)', fontSize: '0.7rem', fontWeight: 700,
-            letterSpacing: '0.14em', textTransform: 'uppercase',
-            background: 'var(--red)', color: 'var(--white)',
-            padding: '10px 22px', textDecoration: 'none',
-            transition: 'background 0.2s ease, transform 0.2s ease',
-            borderRadius: '8px',
-            marginLeft: '0.5rem'
-          }}
-            className="hover:scale-[1.03]"
-            onMouseEnter={e => (e.currentTarget.style.background = 'var(--red-dark)')}
-            onMouseLeave={e => (e.currentTarget.style.background = 'var(--red)')}
-          >
-            GET A QUOTE
-          </Link>
+          <div style={{ marginLeft: '0.5rem', display: 'inline-block' }}>
+            <Button
+              href="/contact"
+              variant="primary"
+              size="sm"
+              className="!py-1.5 !px-4"
+            >
+              GET A QUOTE
+            </Button>
+          </div>
         </nav>
 
-        {/* Mobile hamburger */}
+        {/* Mobile Hamburger */}
         <button onClick={() => setOpen(!open)} className="show-mobile" style={{
-          background: 'none', border: 'none', cursor: 'pointer',
-          display: 'flex', flexDirection: 'column', gap: '5px', padding: '8px',
+          background: 'rgba(255,255,255,0.04)', border: '1px solid var(--white-08)', cursor: 'pointer',
+          display: 'flex', flexDirection: 'column', gap: '5px', padding: '10px', borderRadius: '50%',
+          justifyContent: 'center', alignItems: 'center', width: '38px', height: '38px'
         }}>
           {[0, 1, 2].map(i => (
             <motion.span key={i} animate={open
-              ? i === 1 ? { opacity: 0 } : i === 0 ? { rotate: 45, y: 7 } : { rotate: -45, y: -7 }
+              ? i === 1 ? { opacity: 0 } : i === 0 ? { rotate: 45, y: 5 } : { rotate: -45, y: -5 }
               : { rotate: 0, y: 0, opacity: 1 }
-            } style={{ display: 'block', width: '22px', height: '1.5px', background: 'var(--white)', transformOrigin: 'center' }} />
+            } style={{ display: 'block', width: '16px', height: '1.5px', background: 'var(--white)', transformOrigin: 'center' }} />
           ))}
         </button>
       </motion.header>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3, ease: 'easeOut' }}
             style={{ position: 'fixed', inset: 0, zIndex: 99, background: 'var(--bg-base)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2.5rem' }}>
             {links.map(({ label, href }, i) => (
               <motion.div key={href} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
-                <Link href={href} style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', color: pathname === href ? 'var(--red)' : 'var(--white)', textDecoration: 'none', letterSpacing: '0.05em' }}>
+                <Link href={href} style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: pathname === href ? 'var(--red)' : 'var(--white)', textDecoration: 'none', letterSpacing: '0.05em' }}>
                   {label}
                 </Link>
               </motion.div>
             ))}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }}>
-              <Link href="/contact" style={{ background: 'var(--red)', color: 'var(--white)', padding: '14px 36px', fontFamily: 'var(--font-body)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', textDecoration: 'none', borderRadius: '8px' }}>
+              <Button href="/contact" variant="primary" size="lg">
                 GET A QUOTE
-              </Link>
+              </Button>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-
     </>
   );
 }
