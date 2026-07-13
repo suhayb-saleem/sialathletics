@@ -21,6 +21,7 @@ const RacketAnimation = () => {
 
   // Trigger super fast turbo volley on click for 3.5 seconds
   const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation(); // prevent header navigation
     setSpeedMode('turbo');
   };
@@ -67,20 +68,20 @@ const RacketAnimation = () => {
             duration: duration,
             ease: 'linear'
           }}
-          style={{ transformOrigin: '12px 18px' }}
+          style={{ transformOrigin: '12px 22px' }}
         >
           {/* Racket Handle */}
-          <line x1="12" y1="14" x2="12" y2="21" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
-          <line x1="12" y1="17.5" x2="12" y2="21" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" />
+          <line x1="12" y1="18" x2="12" y2="25" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="12" y1="21.5" x2="12" y2="25" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" />
           
           {/* Racket Head (Teardrop shape for Padel Racket) */}
-          <path d="M12 2 C8 2 8 13 12 13 C16 13 16 2 12 2 Z" fill="rgba(255, 255, 255, 0.06)" stroke="var(--white-80)" strokeWidth="1.5" />
+          <path d="M12 6 C8 6 8 17 12 17 C16 17 16 6 12 6 Z" fill="rgba(255, 255, 255, 0.06)" stroke="var(--white-60)" strokeWidth="1.5" />
           
           {/* Padel Holes (glowing micro dots) */}
-          <circle cx="12" cy="5" r="0.6" fill="var(--red)" />
-          <circle cx="10.5" cy="7.5" r="0.6" fill="var(--red)" />
-          <circle cx="13.5" cy="7.5" r="0.6" fill="var(--red)" />
-          <circle cx="12" cy="10" r="0.6" fill="var(--red)" />
+          <circle cx="12" cy="9" r="0.6" fill="var(--red)" />
+          <circle cx="10.5" cy="11.5" r="0.6" fill="var(--red)" />
+          <circle cx="13.5" cy="11.5" r="0.6" fill="var(--red)" />
+          <circle cx="12" cy="14" r="0.6" fill="var(--red)" />
         </motion.g>
 
         {/* Bouncing Energy Ball (Trajectory extends outside SVG boundary to strike logo on far left) */}
@@ -92,7 +93,7 @@ const RacketAnimation = () => {
           style={{ filter: 'drop-shadow(0 0 5px var(--red))' }}
           animate={{
             x: [12, -125, -60, 12],
-            y: [2.5, -18, 20, 2.5]
+            y: [6.5, 2.5, 20, 6.5]
           }}
           transition={{
             repeat: Infinity,
@@ -150,10 +151,12 @@ export default function Navbar() {
         }}
       >
         {/* Logo & Animated Racket */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none', flexShrink: 0 }}>
-          <Image src="/images/logo.png" alt="SIAL Athletics" width={142} height={38} style={{ objectFit: 'contain' }} priority />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <Image src="/images/logo.png" alt="SIAL Athletics" width={142} height={38} style={{ objectFit: 'contain' }} priority />
+          </Link>
           <RacketAnimation />
-        </Link>
+        </div>
 
         {/* Desktop Nav Links */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', position: 'relative' }} className="hide-mobile">
