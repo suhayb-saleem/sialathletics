@@ -21,6 +21,7 @@ const RacketAnimation = () => {
 
   // Trigger super fast turbo volley on click for 3.5 seconds
   const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation(); // prevent header navigation
     setSpeedMode('turbo');
   };
@@ -150,10 +151,12 @@ export default function Navbar() {
         }}
       >
         {/* Logo & Animated Racket */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none', flexShrink: 0 }}>
-          <Image src="/images/logo.png" alt="SIAL Athletics" width={142} height={38} style={{ objectFit: 'contain' }} priority />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+            <Image src="/images/logo.png" alt="SIAL Athletics" width={142} height={38} style={{ objectFit: 'contain' }} priority />
+          </Link>
           <RacketAnimation />
-        </Link>
+        </div>
 
         {/* Desktop Nav Links */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', position: 'relative' }} className="hide-mobile">
