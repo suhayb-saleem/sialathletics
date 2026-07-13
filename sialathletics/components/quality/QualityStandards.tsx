@@ -20,9 +20,23 @@ export default function QualityStandards() {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
           {standards.map(({ title, desc }, i) => (
-            <motion.div key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.5, delay: i * 0.1 }}
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderTop: '3px solid var(--red)', padding: '2.5rem 2rem', borderRadius: '16px' }}
-              className="group hover:border-x-[var(--red)]/30 hover:border-b-[var(--red)]/30 hover:shadow-[0_20px_45px_rgba(232,0,28,0.15)] transition-all duration-300"
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              whileHover={{
+                y: -6,
+                scale: 1.02,
+                boxShadow: '0 20px 45px rgba(232, 0, 28, 0.18)',
+                borderColor: 'rgba(232, 0, 28, 0.35)',
+              }}
+              transition={{
+                layout: { type: 'spring', stiffness: 350, damping: 22 },
+                default: { duration: 0.5, delay: i * 0.1 }
+              }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', borderTop: '3px solid var(--red)', padding: '2.5rem 2rem', borderRadius: '16px', cursor: 'pointer' }}
+              className="group"
             >
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--white)', marginBottom: '1rem', textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--white-60)', lineHeight: 1.75 }}>{desc}</p>

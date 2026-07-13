@@ -34,12 +34,37 @@ export default function QualityChecklist() {
         </motion.div>
         
         {/* Right - Quality Assurance graphic block */}
-        <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7, delay: 0.1 }}
-          style={{ aspectRatio: '4/3', background: 'linear-gradient(135deg, var(--bg-card), var(--bg-base))', border: '1px solid var(--white-08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1rem', position: 'relative', overflow: 'hidden', borderRadius: '20px' }}
-          className="shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          whileHover={{
+            scale: 1.025,
+            boxShadow: '0 30px 60px rgba(232, 0, 28, 0.15)',
+            borderColor: 'rgba(232, 0, 28, 0.3)',
+          }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          style={{ aspectRatio: '4/3', background: 'linear-gradient(135deg, var(--bg-card), var(--bg-base))', border: '1px solid var(--white-08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.25rem', position: 'relative', overflow: 'hidden', borderRadius: '20px', cursor: 'pointer' }}
+          className="group shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
         >
-          <ShieldCheck size={56} color="var(--red)" />
-          <span style={{ color: 'var(--white)', fontSize: '0.75rem', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' }}>QUALITY CERTIFICATION ACTIVE</span>
+          {/* Glowing Icon Frame */}
+          <div
+            style={{
+              padding: '1.25rem',
+              background: 'linear-gradient(135deg, rgba(232, 0, 28, 0.1), transparent)',
+              border: '1px solid rgba(232, 0, 28, 0.25)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 0 20px rgba(232, 0, 28, 0.15)',
+              transition: 'all 0.3s ease',
+            }}
+            className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_25px_rgba(232,0,28,0.35)]"
+          >
+            <ShieldCheck size={48} color="var(--red)" />
+          </div>
+          <span style={{ color: 'var(--white)', fontSize: '0.72rem', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase' }}>QUALITY CERTIFICATION ACTIVE</span>
         </motion.div>
       </div>
 

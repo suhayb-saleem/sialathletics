@@ -36,9 +36,9 @@ export default function Navbar() {
           height: '72px',
           display: 'flex', alignItems: 'center',
           padding: '0 2rem',
-          borderBottom: scrolled ? '1px solid var(--white-08)' : '1px solid transparent',
-          background: scrolled ? 'var(--bg-overlay)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(16px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+          background: scrolled ? 'rgba(10, 10, 10, 0.8)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px)' : 'none',
           transition: 'background 0.4s var(--ease), border-color 0.4s var(--ease), backdrop-filter 0.4s var(--ease)',
         }}
       >
@@ -75,7 +75,7 @@ export default function Navbar() {
                       borderRadius: '30px',
                       zIndex: -1,
                     }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                   />
                 )}
                 {active && (
@@ -90,7 +90,7 @@ export default function Navbar() {
                       background: 'var(--red)',
                       borderRadius: '4px',
                     }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                   />
                 )}
                 {label}

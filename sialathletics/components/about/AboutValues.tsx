@@ -27,7 +27,16 @@ export default function AboutValues() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{
+                y: -6,
+                scale: 1.02,
+                boxShadow: '0 20px 45px rgba(232, 0, 28, 0.18)',
+                borderColor: 'rgba(232, 0, 28, 0.35)',
+              }}
+              transition={{
+                layout: { type: 'spring', stiffness: 350, damping: 22 },
+                default: { duration: 0.5, delay: i * 0.08 }
+              }}
               style={{
                 background: 'var(--bg-card)',
                 border: '1px solid var(--white-08)',
@@ -37,10 +46,28 @@ export default function AboutValues() {
                 gap: '1.25rem',
                 justifyContent: 'flex-start',
                 borderRadius: '16px',
+                cursor: 'pointer',
               }}
-              className="group hover:border-[var(--red)]/40 hover:shadow-[0_20px_45px_rgba(232,0,28,0.15)] transition-all duration-300"
+              className="group"
             >
-              <Icon size={24} color="var(--red)" />
+              {/* High-tech Glowing Icon Box */}
+              <div
+                style={{
+                  alignSelf: 'flex-start',
+                  padding: '0.6rem',
+                  background: 'linear-gradient(135deg, rgba(232, 0, 28, 0.08), transparent)',
+                  border: '1px solid rgba(232, 0, 28, 0.2)',
+                  borderRadius: '8px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.3s ease',
+                }}
+                className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_15px_rgba(232,0,28,0.25)]"
+              >
+                <Icon size={20} color="var(--red)" />
+              </div>
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--white)', margin: 0, textTransform: 'uppercase' }} className="group-hover:text-[var(--red)] transition-colors duration-200">{title}</h3>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--white-60)', margin: 0, lineHeight: 1.75 }}>{desc}</p>

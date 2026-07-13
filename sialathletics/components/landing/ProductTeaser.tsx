@@ -27,9 +27,34 @@ export default function ProductTeaser() {
         {/* Grid */}
         <div className="product-teaser-grid" style={{ display: 'grid', gap: '1.5rem' }}>
           {featured.map((p, i) => (
-            <motion.div key={p.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', position: 'relative', overflow: 'hidden', borderRadius: '16px', display: 'flex', flexDirection: 'column', height: '100%' }}
-              className="group hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.15)] transition-all duration-300"
+            <motion.div
+              key={p.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              whileHover={{
+                y: -6,
+                scale: 1.015,
+                boxShadow: '0 24px 60px rgba(232, 0, 28, 0.18)',
+                borderColor: 'rgba(232, 0, 28, 0.35)',
+              }}
+              transition={{
+                type: 'spring',
+                stiffness: 350,
+                damping: 22
+              }}
+              style={{
+                background: 'var(--bg-card)',
+                border: '1px solid var(--white-08)',
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: '16px',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                cursor: 'pointer',
+              }}
+              className="group"
             >
               {/* Red top border that slides in on hover */}
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'var(--red)', transformOrigin: 'left', zIndex: 2 }} />
@@ -43,12 +68,12 @@ export default function ProductTeaser() {
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     style={{ objectFit: 'contain' }}
-                    className="group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+                    className="group-hover:scale-[1.05] transition-transform duration-500 ease-out"
                   />
                 </div>
                 {/* Badge */}
                 {p.badge && (
-                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--red)', color: 'var(--white)', padding: '4px 10px', fontSize: '0.6rem', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', zIndex: 3 }}>
+                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--red)', color: 'var(--white)', padding: '4px 10px', fontSize: '0.6rem', fontFamily: 'var(--font-body)', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', zIndex: 3, borderRadius: '4px' }}>
                     {p.badge}
                   </div>
                 )}
@@ -65,7 +90,7 @@ export default function ProductTeaser() {
                 </div>
                 
                 <div className="flex items-center justify-between border-t border-[var(--white-08)] pt-4 mt-auto">
-                  <Link href="/catalogue" style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white-60)', fontWeight: 700, letterSpacing: '0.1em', textDecoration: 'none' }} className="group-hover:text-white transition-colors duration-200">
+                  <Link href="/catalogue" style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white-60)', fontWeight: 700, letterSpacing: '0.1' + 'em', textDecoration: 'none' }} className="group-hover:text-white transition-colors duration-200">
                     VIEW DETAILS →
                   </Link>
                   <Button variant="primary" size="sm" className="!py-2 !px-4">Inquire</Button>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'motion/react';
 import { Settings, ShieldAlert, Cpu } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 import { AnimatedSection } from '@/components/ui/AnimatedSection';
@@ -53,32 +54,61 @@ export function Capabilities() {
                   key={idx}
                   direction="up"
                   delay={idx * 0.1}
-                  className="flex flex-col justify-between group transition-all duration-300 bg-[var(--bg-card)] border border-[var(--white-08)] hover:-translate-y-1.5 hover:border-[var(--red)]/40 hover:shadow-[0_24px_50px_rgba(232,0,28,0.15)]"
-                  style={{
-                    padding: '2.5rem',
-                    minHeight: '280px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    borderRadius: '16px',
-                  }}
+                  style={{ height: '100%' }}
                 >
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
-                    {/* Icon container with padding and margin */}
-                    <div style={{ alignSelf: 'flex-start', padding: '0.75rem', background: 'var(--bg-base)', border: '1px solid var(--white-08)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', borderRadius: '10px' }}>
-                      <Icon size={24} color="var(--red)" />
+                  <motion.div
+                    whileHover={{
+                      y: -6,
+                      scale: 1.02,
+                      boxShadow: '0 24px 60px rgba(232, 0, 28, 0.18)',
+                      borderColor: 'rgba(232, 0, 28, 0.35)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                    style={{
+                      padding: '2.5rem',
+                      height: '100%',
+                      minHeight: '280px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      borderRadius: '16px',
+                      background: 'var(--bg-card)',
+                      border: '1px solid var(--white-08)',
+                      cursor: 'pointer',
+                    }}
+                    className="group"
+                  >
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
+                      {/* Icon container with gradient, border glow and transitions */}
+                      <div
+                        style={{
+                          alignSelf: 'flex-start',
+                          padding: '0.75rem',
+                          background: 'linear-gradient(135deg, rgba(232, 0, 28, 0.1), transparent)',
+                          border: '1px solid rgba(232, 0, 28, 0.25)',
+                          boxShadow: '0 0 15px rgba(232, 0, 28, 0.15)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          borderRadius: '10px',
+                          transition: 'all 0.3s ease',
+                        }}
+                        className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_20px_rgba(232,0,28,0.35)]"
+                      >
+                        <Icon size={24} color="var(--red)" />
+                      </div>
+                      
+                      {/* Info */}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        <h3 className="font-display text-2xl text-white uppercase group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
+                          {item.title}
+                        </h3>
+                        <p className="font-body text-[13px] sm:text-sm leading-relaxed text-[var(--white-60)]" style={{ margin: 0 }}>
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
-                    
-                    {/* Info */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                      <h3 className="font-display text-2xl text-white uppercase group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
-                        {item.title}
-                      </h3>
-                      <p className="font-body text-[13px] sm:text-sm leading-relaxed text-[var(--white-60)]" style={{ margin: 0 }}>
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
+                  </motion.div>
                 </AnimatedSection>
               );
             })}
