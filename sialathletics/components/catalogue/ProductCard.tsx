@@ -23,20 +23,15 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
   return (
     <motion.div
       onClick={() => onViewDetails(product)}
-      whileHover={{
-        y: -6,
-        scale: 1.015,
-        boxShadow: '0 24px 60px rgba(232, 0, 28, 0.18)',
-        borderColor: 'rgba(232, 0, 28, 0.35)',
-      }}
-      transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+      whileHover={{ y: -6, borderColor: 'var(--red-border)', boxShadow: '0 24px 60px rgba(226, 27, 45, 0.14)' }}
+      transition={{ type: 'spring', stiffness: 350, damping: 26 }}
       style={{
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        borderRadius: '16px',
+        borderRadius: '12px',
         background: 'var(--bg-card)',
-        border: '1px solid var(--white-08)',
+        border: '1px solid var(--line)',
         overflow: 'hidden',
         fontFamily: 'var(--font-body)',
         cursor: 'pointer',
@@ -71,7 +66,7 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
 
           {/* Name & Tagline */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-            <h3 className="font-display text-[26px] sm:text-[28px] text-white leading-[1.1] uppercase tracking-tight group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
+            <h3 className="display-title text-[26px] sm:text-[28px] text-white leading-[1.1] group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
               {product.name}
             </h3>
             <p className="text-[var(--white-60)] text-[13px] leading-relaxed font-normal" style={{ margin: 0 }}>

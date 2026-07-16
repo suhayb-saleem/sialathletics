@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import CTABanner from '@/components/landing/CTABanner';
-import QualityHero from '@/components/quality/QualityHero';
+import PageHero from '@/components/ui/PageHero';
 import QualityChecklist from '@/components/quality/QualityChecklist';
 import QualityStandards from '@/components/quality/QualityStandards';
 
@@ -12,15 +12,20 @@ export const metadata: Metadata = {
 export default function QualityPage() {
   return (
     <main>
-      <QualityHero />
+      <PageHero
+        crumb="Quality"
+        eyebrow="Our promise"
+        title="Quality without compromise."
+        subtitle="Every racket we ship meets its build tolerances — dimension, weight, and balance verified batch by batch."
+      />
       <QualityChecklist />
       <QualityStandards />
       <CTABanner
-        headline="QUALITY YOU CAN PUT YOUR BRAND ON."
+        headline="Quality you can put your brand on."
         subtext="Let's discuss your requirements and manufacturing specs."
-        primaryLabel="GET A QUOTE"
+        primaryLabel="Get a quote"
         primaryHref="/contact"
-        secondaryLabel="VIEW PRODUCTS"
+        secondaryLabel="View products"
         secondaryHref="/catalogue"
       />
     </main>

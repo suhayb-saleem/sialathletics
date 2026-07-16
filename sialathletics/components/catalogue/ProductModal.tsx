@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import { X, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -18,31 +18,22 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
   const [activeImg, setActiveImg] = useState(0);
   const [direction, setDirection] = useState(1);
 
-  // Reset image index when product changes
-  useEffect(() => {
-    setActiveImg(0);
-    setDirection(1);
-  }, [product]);
+  const slideImages = product?.images && product.images.length > 0
+    ? product.images
+    : product ? [product.imagePath] : [];
 
-  // Keyboard navigation
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (!isOpen) return;
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowRight') goNext();
-      if (e.key === 'ArrowLeft') goPrev();
+    const handleKey = (event: KeyboardEvent) => {
+      if (!isOpen || slideImages.length === 0) return;
+      if (event.key === 'Escape') onClose();
+      if (event.key === 'ArrowRight') { setDirection(1); setActiveImg((current) => (current + 1) % slideImages.length); }
+      if (event.key === 'ArrowLeft') { setDirection(-1); setActiveImg((current) => (current - 1 + slideImages.length) % slideImages.length); }
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [isOpen, activeImg, product]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  // Lock body scroll is removed here to allow selecting background cards freely
+  }, [isOpen, onClose, slideImages.length]);
 
   if (!product) return null;
-
-  const slideImages = product.images && product.images.length > 0
-    ? product.images
-    : [product.imagePath];
 
   const goNext = () => {
     setDirection(1);
@@ -84,7 +75,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
           className="fixed inset-0 overflow-hidden font-body"
           role="dialog"
           aria-modal="true"
-          style={{ zIndex: 120, pointerEvents: 'none' }} // passes clicks through to background
+          style={{ zIndex: 120, pointerEvents: 'auto', background: 'rgba(0,0,0,0.42)' }} // modal overlay
         >
           {/* Drawer Container (Floating margin and padding on desktop, clickable details) */}
           <div className="absolute inset-y-0 right-0 flex p-0 sm:p-4 sm:pl-10 w-screen sm:w-[480px]" style={{ pointerEvents: 'auto' }}>
@@ -97,7 +88,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
               style={{
                 background: 'var(--bg-base)',
                 border: '1px solid var(--white-08)',
-                boxShadow: '-20px 20px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(232, 0, 28, 0.04)',
+                boxShadow: '-20px 20px 60px rgba(0, 0, 0, 0.85), 0 0 40px rgba(226, 27, 45, 0.04)',
               }}
             >
               {/* 1. FIXED TOP HEADER BAR */}
@@ -119,7 +110,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                   <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--white-20)' }} />
                   <span
                     className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-red bg-brand-red/10 border border-brand-red/20 px-3 py-1 rounded-full animate-pulse"
-                    style={{ fontFamily: 'var(--font-display)', boxShadow: '0 0 10px rgba(232,0,28,0.1)' }}
+                    style={{ fontFamily: 'var(--font-display)', boxShadow: '0 0 10px rgba(226, 27, 45,0.1)' }}
                   >
                     {product.category === 'pickleball' ? 'Pickleball Paddle' : 'Padel Racket'}
                   </span>
@@ -143,13 +134,13 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
               {/* Scrollable Content (Single-Column Vertical Stacking) */}
               <div className="flex-1 overflow-y-auto overflow-x-hidden">
                 
-                {/* ═══ TOP: IMAGE GALLERY ═══ */}
+                {/* â•â•â• TOP: IMAGE GALLERY â•â•â• */}
                 <div className="relative flex flex-col h-[260px] sm:h-[300px] w-full shrink-0" style={{ background: 'var(--bg-base)', borderBottom: '1px solid var(--white-08)' }}>
                   {/* Main image area */}
                   <div className="relative flex-1 overflow-hidden flex items-center justify-center p-6 pb-2">
                     {/* Ambient glow */}
                     <div className="absolute inset-0 pointer-events-none"
-                      style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,0,28,0.05) 0%, transparent 70%)' }}
+                      style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 50%, rgba(226, 27, 45,0.05) 0%, transparent 70%)' }}
                     />
 
                     {/* Animated image */}
@@ -236,7 +227,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                   )}
                 </div>
 
-                {/* ═══ BOTTOM: INFO AREA ═══ */}
+                {/* â•â•â• BOTTOM: INFO AREA â•â•â• */}
                 <div className="p-5 md:p-6 space-y-6">
                   {/* Name & Tagline */}
                   <div>
@@ -247,7 +238,7 @@ export function ProductModal({ product, isOpen, onClose, onInquire }: ProductMod
                       {product.category === 'pickleball' ? 'Pickleball Paddle' : 'Padel Racket'}
                     </span>
                     <h2
-                      className="font-display text-[24px] sm:text-[28px] text-white uppercase leading-tight mb-2 tracking-wide"
+                      className="display-title text-[24px] sm:text-[28px] text-white leading-tight mb-2"
                     >
                       {product.name}
                     </h2>

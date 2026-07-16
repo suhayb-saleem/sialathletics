@@ -88,14 +88,14 @@ export default function ContactForm() {
   };
 
   return (
-    <section style={{ background: 'var(--bg-base)', padding: '6rem 1.5rem' }}>
-      <div className="contact-form-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gap: '4rem', alignItems: 'start' }}>
+    <section className="site-section" style={{ background: 'var(--bg-base)' }}>
+      <div className="contact-form-grid container-custom" style={{ display: 'grid', gap: '4rem', alignItems: 'start' }}>
 
         {/* Left — Contact Info */}
         <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--red)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '0.75rem' }}>REACH US DIRECTLY</p>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 2.75rem)', color: 'var(--white)', lineHeight: 0.95, marginBottom: '2.5rem' }}>
-            WE RESPOND<br />WITHIN 24 HOURS.
+          <p className="eyebrow" style={{ marginBottom: '0.9rem' }}>Reach us directly</p>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', color: 'var(--white)', marginBottom: '2.5rem' }}>
+            We respond<br />within 24 hours.
           </h2>
           {[
             { Icon: MapPin, label: 'FACTORY HQ', value: 'Sialkot, Punjab, Pakistan' },
@@ -127,13 +127,13 @@ export default function ContactForm() {
         </motion.div>
 
         {/* Right — Form / Success panel */}
-        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} style={{ background: 'var(--bg-card)', border: '1px solid var(--white-08)', padding: '2.5rem' }}>
+        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }} style={{ background: 'var(--bg-card)', border: '1px solid var(--line)', padding: '2.5rem', borderRadius: '12px' }}>
           {submitted ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '3.5rem 1rem' }}>
-              <div style={{ width: '64px', height: '64px', border: '1px solid var(--red)', background: 'rgba(227, 27, 35, 0.1)', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
+              <div style={{ width: '64px', height: '64px', border: '1px solid var(--red)', background: 'rgba(226, 27, 45, 0.1)', color: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
                 <Check size={32} />
               </div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'var(--white)', margin: '0 0 1rem 0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Inquiry Received</h3>
+              <h3 className="display-title" style={{ fontSize: '1.75rem', color: 'var(--white)', margin: '0 0 1rem 0' }}>Inquiry received.</h3>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.9rem', color: 'var(--white-60)', lineHeight: 1.6, maxWidth: '385px', margin: '0 0 2rem 0' }}>
                 Thank you. Your inquiry report has been compiled and emailed to you as a PDF. Our factory team will reach out with pricing and sample options within 24 hours.
               </p>
@@ -167,7 +167,7 @@ export default function ContactForm() {
           ) : (
             <form onSubmit={handleSubmit}>
               {error && (
-                <div style={{ background: 'rgba(227, 27, 35, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem', fontFamily: 'var(--font-body)', marginBottom: '1.25rem' }}>
+                <div style={{ background: 'rgba(226, 27, 45, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem', fontFamily: 'var(--font-body)', marginBottom: '1.25rem' }}>
                   {error}
                 </div>
               )}

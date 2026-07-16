@@ -14,14 +14,14 @@ const checks = [
 
 export default function QualityChecklist() {
   return (
-    <section style={{ background: 'var(--bg-raised)', padding: '6rem 1.5rem' }}>
-      <div className="qc-checklist-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gap: '5rem', alignItems: 'center' }}>
-        
+    <section className="site-section" style={{ background: 'var(--bg-raised)' }}>
+      <div className="qc-checklist-grid container-custom" style={{ display: 'grid', gap: '5rem', alignItems: 'center' }}>
+
         {/* Left - Checklist */}
         <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: 0.7 }}>
-          <SectionLabel showSlash={true}>OUR QC PROCESS</SectionLabel>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 4.5vw, 3.5rem)', color: 'var(--white)', lineHeight: 0.9, margin: '1.25rem 0 2rem' }}>
-            TESTED.<br />CERTIFIED.<br />SHIPPED.
+          <SectionLabel>Our QC process</SectionLabel>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 4.5vw, 3.5rem)', color: 'var(--white)', lineHeight: 0.98, margin: '1.25rem 0 2rem' }}>
+            Tested.<br />Certified.<br />Shipped.
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {checks.map((check, i) => (
@@ -38,29 +38,25 @@ export default function QualityChecklist() {
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          whileHover={{
-            scale: 1.025,
-            boxShadow: '0 30px 60px rgba(232, 0, 28, 0.15)',
-            borderColor: 'rgba(232, 0, 28, 0.3)',
-          }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          style={{ aspectRatio: '4/3', background: 'linear-gradient(135deg, var(--bg-card), var(--bg-base))', border: '1px solid var(--white-08)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.25rem', position: 'relative', overflow: 'hidden', borderRadius: '20px', cursor: 'pointer' }}
+          whileHover={{ borderColor: 'var(--red-border)', boxShadow: '0 30px 60px rgba(226, 27, 45, 0.14)' }}
+          transition={{ type: 'spring', stiffness: 300, damping: 26 }}
+          style={{ aspectRatio: '4/3', background: 'linear-gradient(135deg, var(--bg-card), var(--bg-base))', border: '1px solid var(--line)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.25rem', position: 'relative', overflow: 'hidden', borderRadius: '12px' }}
           className="group shadow-[0_20px_40px_rgba(0,0,0,0.45)]"
         >
           {/* Glowing Icon Frame */}
           <div
             style={{
               padding: '1.25rem',
-              background: 'linear-gradient(135deg, rgba(232, 0, 28, 0.1), transparent)',
-              border: '1px solid rgba(232, 0, 28, 0.25)',
+              background: 'linear-gradient(135deg, rgba(226, 27, 45, 0.1), transparent)',
+              border: '1px solid rgba(226, 27, 45, 0.25)',
               borderRadius: '50%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 0 20px rgba(232, 0, 28, 0.15)',
+              boxShadow: '0 0 20px rgba(226, 27, 45, 0.15)',
               transition: 'all 0.3s ease',
             }}
-            className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_25px_rgba(232,0,28,0.35)]"
+            className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_25px_rgba(226,27,45,0.35)]"
           >
             <ShieldCheck size={48} color="var(--red)" />
           </div>

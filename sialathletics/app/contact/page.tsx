@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import ContactHero from '@/components/contact/ContactHero';
+import PageHero from '@/components/ui/PageHero';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactFAQ from '@/components/contact/ContactFAQ';
 
@@ -11,7 +11,12 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <ContactHero />
+      <PageHero
+        crumb="Contact"
+        eyebrow="Let's talk"
+        title="Get in touch."
+        subtitle="Factory-direct quotes. Samples. Private label programs."
+      />
       <ContactForm />
       <ContactFAQ />
     </main>

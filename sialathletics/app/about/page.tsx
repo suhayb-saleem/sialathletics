@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import CTABanner from '@/components/landing/CTABanner';
-import AboutHero from '@/components/about/AboutHero';
+import PageHero from '@/components/ui/PageHero';
 import AboutStory from '@/components/about/AboutStory';
 import AboutStats from '@/components/about/AboutStats';
 import AboutValues from '@/components/about/AboutValues';
@@ -13,16 +13,21 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <AboutHero />
+      <PageHero
+        crumb="About"
+        eyebrow="Our story"
+        title="Who we are."
+        subtitle="Built in Sialkot. Trusted worldwide."
+      />
       <AboutStory />
       <AboutStats />
       <AboutValues />
       <CTABanner
-        headline="WANT TO KNOW MORE ABOUT OUR PROCESS?"
+        headline="Want to know more about our process?"
         subtext="Let's talk manufacturing, samples, and timelines."
-        primaryLabel="GET A QUOTE"
+        primaryLabel="Get a quote"
         primaryHref="/contact"
-        secondaryLabel="VIEW PRODUCTS"
+        secondaryLabel="View products"
         secondaryHref="/catalogue"
       />
     </main>

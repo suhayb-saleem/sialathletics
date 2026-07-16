@@ -1,6 +1,5 @@
-'use client';
+﻿'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone, MapPin } from 'lucide-react';
@@ -15,7 +14,7 @@ export default function Footer() {
             <Link href="/" style={{ display: 'block', position: 'relative', width: '185px', height: '52px' }}>
               <Image
                 src="/images/logo.png"
-                alt="SIAL Athletics Logo"
+                alt="SIAL Athletics Logo" sizes="185px"
                 fill
                 style={{ objectFit: 'contain', objectPosition: 'left' }}
               />
@@ -131,7 +130,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-[var(--white-08)] text-xs text-[var(--white-60)]">
-          <p>© 2025 SIAL Athletics. All Rights Reserved.</p>
+          <p>© 2026 SIAL Athletics. All Rights Reserved.</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <Link href="/privacy" style={{ color: 'var(--white-60)', textDecoration: 'none', transition: 'color 0.2s ease' }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}

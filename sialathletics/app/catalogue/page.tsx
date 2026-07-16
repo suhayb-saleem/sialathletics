@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -151,6 +151,7 @@ Best regards,`;
 
       {/* Right Drawer detailed product quickview */}
       <ProductModal
+        key={selectedProduct?.id ?? 'empty'}
         product={selectedProduct}
         isOpen={modalOpen}
         onClose={handleCloseModal}

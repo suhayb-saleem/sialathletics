@@ -23,11 +23,11 @@ export function CatalogueHero() {
 
         {/* Content */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-          <SectionLabel showSlash={true} className="justify-center mb-1">
-            OUR PRODUCTS
+          <SectionLabel className="justify-center mb-1">
+            Our products
           </SectionLabel>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: 'var(--white)', lineHeight: 0.95, textTransform: 'uppercase', margin: '0.5rem 0 1rem' }} className="select-none">
-            THE FULL LINEUP
+          <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', color: 'var(--white)', margin: '0.5rem 0 1rem' }} className="display-title select-none">
+            The full lineup.
           </h1>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', color: 'var(--white-60)', maxWidth: '580px', margin: '0 auto', lineHeight: 1.65, textAlign: 'center' }}>
             Premium pickleball paddles and padel rackets. Factory-direct. Pro-grade. US-ready.

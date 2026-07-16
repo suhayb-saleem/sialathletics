@@ -113,11 +113,11 @@ export function Contact() {
           {/* Left Panel: Contact info */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <SectionLabel showSlash={true}>
-                START THE PROGRAM
+              <SectionLabel>
+                Start the program
               </SectionLabel>
-              <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase" style={{ marginTop: '1rem' }}>
-                GET A FACTORY<br />QUOTE DIRECT
+              <h2 className="display-title text-[40px] sm:text-[56px] text-white leading-[1.05]" style={{ marginTop: '1rem' }}>
+                Get a factory<br />quote direct.
               </h2>
               <p className="font-body text-[var(--white-60)] text-base leading-relaxed max-w-sm" style={{ marginTop: '1.25rem' }}>
                 Connect with our product development team in Sialkot and US sales representatives to arrange sample delivery, pricing sheets, and custom mold quotes.
@@ -164,7 +164,7 @@ export function Contact() {
           {/* Right Panel: Form Container with explicit padding & gaps */}
           <AnimatedSection
             direction="up"
-            className="bg-[var(--bg-card)] border border-[var(--white-08)] shadow-[0_24px_50px_rgba(0,0,0,0.55)]"
+            className="bg-[var(--bg-card)] border border-[var(--line)] rounded-xl shadow-[0_24px_50px_rgba(0,0,0,0.55)]"
             style={{
               padding: '2.5rem',
               display: 'flex',
@@ -174,10 +174,10 @@ export function Contact() {
           >
             {submitted ? (
               <div className="text-center" style={{ padding: '4rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-none mb-4" style={{ background: 'var(--red-glow)', border: '1px solid var(--red)', color: 'var(--red)', display: 'flex' }}>
+                <div className="inline-flex items-center justify-center w-16 h-16 mb-4" style={{ background: 'var(--red-glow)', border: '1px solid var(--red)', color: 'var(--red)', display: 'flex' }}>
                   <Check size={32} />
                 </div>
-                <h3 className="font-display text-3xl text-white uppercase" style={{ margin: 0 }}>Inquiry Received</h3>
+                <h3 className="display-title text-3xl text-white" style={{ margin: 0 }}>Inquiry received.</h3>
                 <p className="font-body text-[var(--white-60)] text-sm max-w-sm mx-auto" style={{ margin: 0, lineHeight: 1.6 }}>
                   Thank you. A product specialist will contact you within 24 hours with details, custom options, and digital PDF catalogs.
                 </p>
@@ -188,7 +188,7 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }} className="font-body text-white">
                  {error && (
-                  <div style={{ background: 'rgba(227, 27, 35, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem' }}>
+                  <div style={{ background: 'rgba(226, 27, 45, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem' }}>
                     {error}
                   </div>
                 )}
@@ -219,7 +219,7 @@ export function Contact() {
                       id="name"
                       required
                       placeholder="e.g. John Doe"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
                       style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -236,7 +236,7 @@ export function Contact() {
                       id="email"
                       required
                       placeholder="john@company.com"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
                       style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -256,7 +256,7 @@ export function Contact() {
                       id="company"
                       required
                       placeholder="e.g. Pro Pickleball Inc"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200"
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
                       style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -270,7 +270,7 @@ export function Contact() {
                     </label>
                     <select
                       id="interest"
-                      className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
+                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
                       style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                       value={formData.interest}
                       onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
@@ -290,7 +290,7 @@ export function Contact() {
                   </label>
                   <select
                     id="moq"
-                    className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
+                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
                     style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                     value={formData.moq}
                     onChange={(e) => setFormData({ ...formData, moq: e.target.value })}
@@ -312,7 +312,7 @@ export function Contact() {
                     rows={4}
                     required
                     placeholder="Specify target specifications, material preferences, logo engraving, or custom request details here..."
-                    className="w-full p-3 text-white text-sm rounded-none focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
+                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
                     style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}

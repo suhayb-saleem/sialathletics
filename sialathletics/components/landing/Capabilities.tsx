@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'motion/react';
 import { Settings, ShieldAlert, Cpu } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -11,12 +10,12 @@ export function Capabilities() {
     {
       icon: Settings,
       title: 'OEM Manufacturing',
-      desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using advanced carbon fiber hot-press molding.',
+      desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–24K carbon fiber monoblock hot-press molding.',
     },
     {
       icon: Cpu,
       title: 'ODM Private Label',
-      desc: 'Leverage our proven, tournament-approved shape geometries and core configurations. Customize the graphics, colorways, surface textures, and grip accessories.',
+      desc: 'Leverage our proven teardrop, round, and diamond shape geometries and core configurations. Customize the graphics, colorways, surface textures, and grip accessories.',
     },
     {
       icon: ShieldAlert,
@@ -34,11 +33,11 @@ export function Capabilities() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-start">
           {/* Header column */}
           <div className="space-y-6">
-            <SectionLabel showSlash={true}>
-              MANUFACTURING POWER
+            <SectionLabel>
+              Manufacturing power
             </SectionLabel>
-            <h2 className="font-display text-[40px] sm:text-[56px] text-white leading-[1.05] uppercase">
-              CAPABILITIES & SERVICES
+            <h2 className="display-title text-[40px] sm:text-[56px] text-white leading-[1.05]">
+              Capabilities &amp; services.
             </h2>
             <p className="font-body text-base leading-relaxed text-[var(--white-60)]">
               We offer B2B OEM manufacturing, private label ODM solutions, and white-label supply chain fulfillment. From initial raw material selection to final US customs landing, we handle it all.
@@ -57,13 +56,8 @@ export function Capabilities() {
                   style={{ height: '100%' }}
                 >
                   <motion.div
-                    whileHover={{
-                      y: -6,
-                      scale: 1.02,
-                      boxShadow: '0 24px 60px rgba(232, 0, 28, 0.18)',
-                      borderColor: 'rgba(232, 0, 28, 0.35)',
-                    }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 22 }}
+                    whileHover={{ y: -6, borderColor: 'var(--red-border)', boxShadow: '0 24px 60px rgba(226, 27, 45, 0.14)' }}
+                    transition={{ type: 'spring', stiffness: 350, damping: 26 }}
                     style={{
                       padding: '2.5rem',
                       height: '100%',
@@ -71,10 +65,9 @@ export function Capabilities() {
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
-                      borderRadius: '16px',
+                      borderRadius: '12px',
                       background: 'var(--bg-card)',
-                      border: '1px solid var(--white-08)',
-                      cursor: 'pointer',
+                      border: '1px solid var(--line)',
                     }}
                     className="group"
                   >
@@ -84,23 +77,23 @@ export function Capabilities() {
                         style={{
                           alignSelf: 'flex-start',
                           padding: '0.75rem',
-                          background: 'linear-gradient(135deg, rgba(232, 0, 28, 0.1), transparent)',
-                          border: '1px solid rgba(232, 0, 28, 0.25)',
-                          boxShadow: '0 0 15px rgba(232, 0, 28, 0.15)',
+                          background: 'linear-gradient(135deg, rgba(226, 27, 45, 0.1), transparent)',
+                          border: '1px solid rgba(226, 27, 45, 0.25)',
+                          boxShadow: '0 0 15px rgba(226, 27, 45, 0.15)',
                           display: 'inline-flex',
                           alignItems: 'center',
                           justifyContent: 'center',
                           borderRadius: '10px',
                           transition: 'all 0.3s ease',
                         }}
-                        className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_20px_rgba(232,0,28,0.35)]"
+                        className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_20px_rgba(226,27,45,0.35)]"
                       >
                         <Icon size={24} color="var(--red)" />
                       </div>
                       
                       {/* Info */}
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <h3 className="font-display text-2xl text-white uppercase group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
+                        <h3 className="display-title text-2xl text-white group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
                           {item.title}
                         </h3>
                         <p className="font-body text-[13px] sm:text-sm leading-relaxed text-[var(--white-60)]" style={{ margin: 0 }}>

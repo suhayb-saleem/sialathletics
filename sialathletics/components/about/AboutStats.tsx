@@ -1,70 +1,40 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
-import { useInView } from 'motion/react';
+import AnimatedCounter from '@/components/ui/AnimatedCounter';
 
-function StatCounter({ target, suffix, label, duration = 2000, isMillions = false }: {
-  target: number; suffix: string; label: string; duration?: number; isMillions?: boolean;
-}) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-80px' });
-  const animated = useRef(false);
-
-  useEffect(() => {
-    if (!isInView || animated.current) return;
-    animated.current = true;
-    const start = performance.now();
-    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
-    const tick = (now: number) => {
-      const p = Math.min((now - start) / duration, 1);
-      setCount(Math.floor(ease(p) * target));
-      if (p < 1) requestAnimationFrame(tick);
-      else setCount(target);
-    };
-    requestAnimationFrame(tick);
-  }, [isInView, target, duration]);
-
-  const display = isMillions ? `${(count / 1_000_000).toFixed(1)}M` : count.toLocaleString();
-
-  return (
-    <div ref={ref} style={{ textAlign: 'center', padding: '2rem 1.5rem' }}>
-      <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', color: 'var(--red)', lineHeight: 1 }}>
-        {display}{suffix}
-      </div>
-      <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.7rem', color: 'var(--white-60)', textTransform: 'uppercase', letterSpacing: '0.15em', marginTop: '0.5rem' }}>
-        {label}
-      </div>
-    </div>
-  );
-}
+const stats = [
+  { to: 10, suffix: '+', label: 'Years manufacturing', duration: 1800 },
+  { to: 300, suffix: '+', label: 'Global clients', duration: 2000 },
+  { to: 50, suffix: '+', label: 'Countries reached', duration: 1600 },
+  { to: 1_000_000, suffix: '+', label: 'Products built', duration: 2200, isMillions: true },
+];
 
 export default function AboutStats() {
   return (
-    <section style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--white-08)', borderBottom: '1px solid var(--white-08)' }}>
-      <div className="about-stats-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid' }}>
-        {[
-          { target: 10, suffix: '+', label: 'Years Manufacturing', duration: 1800 },
-          { target: 300, suffix: '+', label: 'Global Clients', duration: 2000 },
-          { target: 50, suffix: '+', label: 'Countries Reached', duration: 1600 },
-          { target: 1_000_000, suffix: '+', label: 'Products Built', duration: 2200, isMillions: true },
-        ].map((s, i) => (
-          <div key={i} className="about-stats-item">
-            <StatCounter {...s} />
+    <section style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--line)', borderBottom: '1px solid var(--line)' }}>
+      <div className="about-stats-grid container-custom">
+        {stats.map((s) => (
+          <div key={s.label} className="about-stats-item">
+            <div className="about-stats-value display-title">
+              <AnimatedCounter to={s.to} suffix={s.suffix} duration={s.duration} isMillions={s.isMillions} />
+            </div>
+            <div className="about-stats-label">{s.label}</div>
           </div>
         ))}
       </div>
       <style>{`
-        .about-stats-grid { grid-template-columns: repeat(4, 1fr); }
-        .about-stats-item { border-right: 1px solid var(--white-08); }
+        .about-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+        .about-stats-item { padding: clamp(2.5rem, 5vw, 3.5rem) 1.5rem; text-align: center; border-right: 1px solid var(--line); }
         .about-stats-item:last-child { border-right: none; }
+        .about-stats-value { font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--white); line-height: 1; letter-spacing: -.02em; }
+        .about-stats-label { margin-top: .65rem; color: var(--red); font-size: .68rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
         @media (max-width: 768px) {
           .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
           .about-stats-item:nth-child(2) { border-right: none; }
-          .about-stats-item:nth-child(1), .about-stats-item:nth-child(2) { border-bottom: 1px solid var(--white-08); }
+          .about-stats-item:nth-child(1), .about-stats-item:nth-child(2) { border-bottom: 1px solid var(--line); }
         }
         @media (max-width: 480px) {
           .about-stats-grid { grid-template-columns: 1fr; }
-          .about-stats-item { border-right: none; border-bottom: 1px solid var(--white-08); }
+          .about-stats-item { border-right: none; border-bottom: 1px solid var(--line); }
           .about-stats-item:last-child { border-bottom: none; }
         }
       `}</style>
