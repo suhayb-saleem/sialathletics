@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -17,11 +17,12 @@ type ButtonProps = {
 
 const MotionLink = motion.create(Link);
 
-export default function Button({ href, onClick, variant = 'primary', size = 'md', type = 'button', className = '', disabled = false, children }: ButtonProps) {
-  const classes = `button button--${variant} button--${size} ${className}`;
-  const style = { borderRadius: '8px' };
-  const motionProps = disabled ? {} : { whileHover: { y: -2 }, whileTap: { scale: 0.98 }, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const } };
+const sizeClass: Record<NonNullable<ButtonProps['size']>, string> = { sm: 'hp-btn--sm', md: '', lg: 'hp-btn--lg' };
 
-  if (href) return <MotionLink href={href} className={classes} style={style} {...motionProps}>{children}</MotionLink>;
-  return <motion.button type={type} onClick={onClick} disabled={disabled} className={classes} style={style} {...motionProps}>{children}</motion.button>;
+export default function Button({ href, onClick, variant = 'primary', size = 'md', type = 'button', className = '', disabled = false, children }: ButtonProps) {
+  const classes = `hp-btn hp-btn--${variant} ${sizeClass[size]} ${className}`.trim();
+  const motionProps = disabled ? {} : { whileTap: { scale: 0.98 }, transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] as const } };
+
+  if (href) return <MotionLink href={href} className={classes} {...motionProps}>{children}</MotionLink>;
+  return <motion.button type={type} onClick={onClick} disabled={disabled} className={classes} {...motionProps}>{children}</motion.button>;
 }

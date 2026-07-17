@@ -2,10 +2,10 @@ export const metadata = { title: 'Privacy Policy — SIAL Athletics' };
 
 export default function PrivacyPage() {
   return (
-    <main style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--bg-base)' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem' }}>
-        <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '4rem', color: 'var(--white)', marginBottom: '2rem' }}>PRIVACY POLICY</h1>
-        <p style={{ fontFamily: 'var(--font-body)', color: 'var(--white-60)', lineHeight: 1.7 }}>This Privacy Policy is being updated. Please contact us at info@sialathletics.com with any questions.</p>
+    <main style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--hp-black)' }}>
+      <div className="hp-shell" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
+        <h1 className="hp-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: 'var(--hp-ivory)', marginBottom: '2rem' }}>Privacy Policy</h1>
+        <p style={{ fontFamily: 'var(--hp-body)', color: 'var(--hp-ivory-60)', lineHeight: 1.7 }}>This Privacy Policy is being updated. Please contact us at info@sialathletics.com with any questions.</p>
       </div>
     </main>
   );

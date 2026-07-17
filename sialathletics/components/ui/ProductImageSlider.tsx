@@ -22,7 +22,6 @@ export function ProductImageSlider({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
-  const containerRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const slideImages = images && images.length > 0 ? images : [defaultImage];
@@ -37,7 +36,10 @@ export function ProductImageSlider({
     goTo((currentIndex + 1) % slideImages.length, 1);
   }, [currentIndex, slideImages.length, goTo]);
 
-  // Auto-play when hovered (desktop) or in view (mobile)
+  // Auto-play on hover (desktop). Deliberately not scroll/viewport-triggered —
+  // an IntersectionObserver-driven mobile autoplay here used to fire on every
+  // card as it crossed the viewport threshold, causing scroll jank on the
+  // catalogue grid (many concurrent interval + AnimatePresence transitions).
   useEffect(() => {
     if (!hasMultiple) return;
 
@@ -58,28 +60,6 @@ export function ProductImageSlider({
     };
   }, [isHovered, hasMultiple, goNext]);
 
-  // Intersection observer for mobile auto-play
-  useEffect(() => {
-    if (!hasMultiple) return;
-    const isMobile = () => window.innerWidth < 768;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (isMobile()) {
-            if (entry.isIntersecting) {
-              setIsHovered(true);
-            } else {
-              setIsHovered(false);
-            }
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    if (containerRef.current) observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, [hasMultiple]);
-
   const slideVariants = {
     enter: (dir: number) => ({
       x: dir > 0 ? '100%' : '-100%',
@@ -97,7 +77,6 @@ export function ProductImageSlider({
 
   return (
     <div
-      ref={containerRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`relative ${aspectRatioClass} overflow-hidden ${className}`}

@@ -1,17 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
-import Button from '@/components/ui/Button';
-import SectionLabel from '@/components/ui/SectionLabel';
-import { AnimatedSection } from '@/components/ui/AnimatedSection';
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    interest: 'pickleball',
+    interest: 'padel',
     moq: '50-100',
     message: '',
     website: '', // honeypot
@@ -24,29 +24,24 @@ export function Contact() {
     e.preventDefault();
     setError(null);
 
-    // Client-side validation: Required fields
     if (!formData.name.trim() || !formData.email.trim() || !formData.company.trim() || !formData.message.trim()) {
       setError('Please fill in all required fields.');
       return;
     }
 
-    // Client-side validation: Email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
       setError('Please enter a valid email address.');
       return;
     }
 
-    // Honeypot spam protection check
     if (formData.website) {
-      // Quietly mock success for bots
       setSubmitted(true);
       return;
     }
 
     setSubmitting(true);
 
-    // Map fields to match API expectations
     const productLineMap: Record<string, string> = {
       pickleball: 'Pickleball Paddles',
       padel: 'Padel Rackets',
@@ -65,7 +60,7 @@ export function Contact() {
       name: formData.name.trim(),
       email: formData.email.trim(),
       company: formData.company.trim(),
-      country: 'N/A', // Not collected on landing page form
+      country: 'N/A',
       productLine: productLineMap[formData.interest] || formData.interest,
       orderVolume: orderVolumeMap[formData.moq] || formData.moq,
       message: formData.message.trim(),
@@ -74,9 +69,7 @@ export function Contact() {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
@@ -84,260 +77,147 @@ export function Contact() {
 
       if (response.ok && result.success) {
         setSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          company: '',
-          interest: 'pickleball',
-          moq: '50-100',
-          message: '',
-          website: '',
-        });
+        setFormData({ name: '', email: '', company: '', interest: 'padel', moq: '50-100', message: '', website: '' });
       } else {
         setError(result.error || 'Failed to submit inquiry. Please check the fields and try again.');
       }
-    } catch (err) {
+    } catch {
       setError('A network error occurred. Please try again.');
     } finally {
       setSubmitting(false);
     }
   };
 
+  const contactRows = [
+    { Icon: MapPin, k: 'Factory HQ', v: 'Sialkot, Pakistan', href: undefined as string | undefined },
+    { Icon: Mail, k: 'Email inquiry', v: 'info@sialathletics.com', href: 'mailto:info@sialathletics.com' },
+    { Icon: Phone, k: 'Phone', v: '+92 335 5933174', href: 'tel:+923355933174' },
+  ];
+
   return (
-    <section id="contact" className="py-24 relative border-t border-[var(--white-08)]" style={{ background: 'var(--bg-base)' }}>
-      <div className="absolute inset-0 texture-steel pointer-events-none opacity-30" />
-      <div className="absolute inset-0 texture-noise pointer-events-none opacity-30" />
-
-      <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-[4fr_6fr] gap-16 items-start">
-          {/* Left Panel: Contact info */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <SectionLabel>
-                Start the program
-              </SectionLabel>
-              <h2 className="display-title text-[40px] sm:text-[56px] text-white leading-[1.05]" style={{ marginTop: '1rem' }}>
-                Get a factory<br />quote direct.
-              </h2>
-              <p className="font-body text-[var(--white-60)] text-base leading-relaxed max-w-sm" style={{ marginTop: '1.25rem' }}>
-                Connect with our product development team in Sialkot and US sales representatives to arrange sample delivery, pricing sheets, and custom mold quotes.
-              </p>
-            </div>
-
-            <div className="space-y-6 pt-4 font-body" style={{ marginTop: '2rem' }}>
-              <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <MapPin size={20} color="var(--red)" />
-                </div>
-                <div>
-                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Factory HQ</div>
-                  <div className="font-bold text-sm text-white">Sialkot, Pakistan</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Mail size={20} color="var(--red)" />
-                </div>
-                <div>
-                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Email Inquiry</div>
-                  <a href="mailto:info@sialathletics.com" className="font-bold text-sm text-white hover:text-[var(--red)] transition-colors duration-200">
-                    info@sialathletics.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                <div style={{ padding: '0.75rem', background: 'var(--bg-card)', border: '1px solid var(--white-08)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Phone size={20} color="var(--red)" />
-                </div>
-                <div>
-                  <div style={{ color: 'var(--white-60)' }} className="text-[10px] font-bold uppercase tracking-wider">Phone</div>
-                  <a href="tel:+923355933174" className="font-bold text-sm text-white hover:text-[var(--red)] transition-colors duration-200">
-                    +923355933174
-                  </a>
-                </div>
-              </div>
-            </div>
+    <section className="hp-contact" id="contact">
+      <div className="hp-weave" aria-hidden="true" />
+      <div className="hp-shell hp-contact__inner">
+        {/* Left: intro + details */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-90px' }}
+          transition={{ duration: 0.75, ease: EASE }}
+        >
+          <span className="hp-eyebrow">Start the program</span>
+          <h2 className="hp-display hp-contact__title">Get a factory<br />quote direct.</h2>
+          <p className="hp-contact__copy">
+            Connect with our product development team in Sialkot to arrange sample delivery,
+            pricing sheets, and custom mold quotes.
+          </p>
+          <div className="hp-contact__rows">
+            {contactRows.map(({ Icon, k, v, href }) => {
+              const inner = (
+                <>
+                  <Icon size={18} strokeWidth={1.6} />
+                  <div>
+                    <div className="hp-contact__row-k">{k}</div>
+                    <div className="hp-contact__row-v">{v}</div>
+                  </div>
+                </>
+              );
+              return href ? (
+                <a key={k} href={href} className="hp-contact__row">{inner}</a>
+              ) : (
+                <div key={k} className="hp-contact__row">{inner}</div>
+              );
+            })}
           </div>
+        </motion.div>
 
-          {/* Right Panel: Form Container with explicit padding & gaps */}
-          <AnimatedSection
-            direction="up"
-            className="bg-[var(--bg-card)] border border-[var(--line)] rounded-xl shadow-[0_24px_50px_rgba(0,0,0,0.55)]"
-            style={{
-              padding: '2.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-            }}
-          >
-            {submitted ? (
-              <div className="text-center" style={{ padding: '4rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                <div className="inline-flex items-center justify-center w-16 h-16 mb-4" style={{ background: 'var(--red-glow)', border: '1px solid var(--red)', color: 'var(--red)', display: 'flex' }}>
-                  <Check size={32} />
-                </div>
-                <h3 className="display-title text-3xl text-white" style={{ margin: 0 }}>Inquiry received.</h3>
-                <p className="font-body text-[var(--white-60)] text-sm max-w-sm mx-auto" style={{ margin: 0, lineHeight: 1.6 }}>
-                  Thank you. A product specialist will contact you within 24 hours with details, custom options, and digital PDF catalogs.
-                </p>
-                <Button variant="outline" size="sm" onClick={() => setSubmitted(false)} className="mt-6">
-                  Send Another Message
-                </Button>
+        {/* Right: form */}
+        <motion.div
+          className="hp-form"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-90px' }}
+          transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
+        >
+          {submitted ? (
+            <div className="hp-form__success">
+              <div className="hp-form__success-icon"><Check size={30} /></div>
+              <h3>Inquiry received.</h3>
+              <p>
+                Thank you. A product specialist will contact you within 24 hours with details,
+                custom options, and digital PDF catalogs.
+              </p>
+              <button type="button" className="hp-btn hp-btn--ghost" onClick={() => setSubmitted(false)} style={{ marginTop: '0.6rem' }}>
+                Send another message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="hp-form__grid" noValidate>
+              {error && <div className="hp-form__error">{error}</div>}
+
+              <div style={{ display: 'none' }}>
+                <label htmlFor="landing-website">Website</label>
+                <input id="landing-website" type="text" name="website" value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })} tabIndex={-1} autoComplete="off" />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', width: '100%' }} className="font-body text-white">
-                 {error && (
-                  <div style={{ background: 'rgba(226, 27, 45, 0.1)', border: '1px solid var(--red)', padding: '0.8rem 1rem', color: 'var(--red)', fontSize: '0.85rem' }}>
-                    {error}
-                  </div>
-                )}
 
-                {/* Honeypot field (hidden from users, targeted by bots) */}
-                <div style={{ display: 'none' }}>
-                  <label htmlFor="landing-website">Website</label>
-                  <input 
-                    id="landing-website"
-                    type="text" 
-                    name="website"
-                    value={formData.website}
-                    onChange={e => setFormData({ ...formData, website: e.target.value })}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-                
-                {/* Name & Email Group */}
-                <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
-                  {/* Name */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label htmlFor="name" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      required
-                      placeholder="e.g. John Doe"
-                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    />
-                  </div>
+              <div className="hp-field">
+                <label htmlFor="name">Your name</label>
+                <input id="name" type="text" required placeholder="e.g. John Doe"
+                  value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+              </div>
 
-                  {/* Email */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label htmlFor="email" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                      Work Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      required
-                      placeholder="john@company.com"
-                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                  </div>
-                </div>
+              <div className="hp-field">
+                <label htmlFor="email">Work email</label>
+                <input id="email" type="email" required placeholder="john@company.com"
+                  value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+              </div>
 
-                {/* Company & Interest Group */}
-                <div className="contact-fields-grid" style={{ display: 'grid', gap: '1.25rem' }}>
-                  {/* Company */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label htmlFor="company" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      required
-                      placeholder="e.g. Pro Pickleball Inc"
-                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    />
-                  </div>
+              <div className="hp-field">
+                <label htmlFor="company">Company name</label>
+                <input id="company" type="text" required placeholder="e.g. Pro Padel Inc"
+                  value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
+              </div>
 
-                  {/* Product Interest */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    <label htmlFor="interest" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                      Product Line
-                    </label>
-                    <select
-                      id="interest"
-                      className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
-                      style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
-                      value={formData.interest}
-                      onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                    >
-                      <option value="pickleball">Pickleball Paddles</option>
-                      <option value="padel">Padel Rackets</option>
-                      <option value="both">Both Lines</option>
-                      <option value="accessories">Other Accessories</option>
-                    </select>
-                  </div>
-                </div>
+              <div className="hp-field">
+                <label htmlFor="interest">Product line</label>
+                <select id="interest" value={formData.interest} onChange={(e) => setFormData({ ...formData, interest: e.target.value })}>
+                  <option value="padel">Padel Rackets</option>
+                  <option value="pickleball">Pickleball Paddles</option>
+                  <option value="both">Both Lines</option>
+                  <option value="accessories">Other Accessories</option>
+                </select>
+              </div>
 
-                {/* MOQ Selection */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label htmlFor="moq" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                    Target Order Volume (MOQ)
-                  </label>
-                  <select
-                    id="moq"
-                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 h-[46px]"
-                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
-                    value={formData.moq}
-                    onChange={(e) => setFormData({ ...formData, moq: e.target.value })}
-                  >
-                    <option value="50-100">50 - 100 Units (Starter)</option>
-                    <option value="100-500">100 - 500 Units (Growth)</option>
-                    <option value="500+">500+ Units (Enterprise)</option>
-                    <option value="samples">Sample order only</option>
-                  </select>
-                </div>
+              <div className="hp-field hp-field--full">
+                <label htmlFor="moq">Target order volume (MOQ)</label>
+                <select id="moq" value={formData.moq} onChange={(e) => setFormData({ ...formData, moq: e.target.value })}>
+                  <option value="50-100">50 – 100 Units (Starter)</option>
+                  <option value="100-500">100 – 500 Units (Growth)</option>
+                  <option value="500+">500+ Units (Enterprise)</option>
+                  <option value="samples">Sample order only</option>
+                </select>
+              </div>
 
-                {/* Message Textarea */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                  <label htmlFor="message" className="text-xs uppercase tracking-wider font-semibold" style={{ color: 'var(--white-60)' }}>
-                    Tell us about your project
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    required
-                    placeholder="Specify target specifications, material preferences, logo engraving, or custom request details here..."
-                    className="w-full p-3 text-white text-sm focus:outline-none focus:border-brand-red transition-colors duration-200 resize-none"
-                    style={{ background: 'var(--bg-base)', border: '1px solid var(--white-08)', outline: 'none' }}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  />
-                </div>
+              <div className="hp-field hp-field--full">
+                <label htmlFor="message">Tell us about your project</label>
+                <textarea id="message" rows={4} required
+                  placeholder="Target specifications, material preferences, logo engraving, or custom request details…"
+                  value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
+              </div>
 
-                {/* Submit button with top margin */}
-                <div style={{ marginTop: '0.75rem' }}>
-                  <Button type="submit" variant="primary" size="md" disabled={submitting} className="w-full flex items-center justify-center gap-2">
-                    <Send size={16} />
-                    <span>{submitting ? 'Submitting...' : 'Submit B2B Inquiry'}</span>
-                  </Button>
-                </div>
-              </form>
-            )}
-          </AnimatedSection>
-        </div>
+              <div className="hp-form__submit">
+                <button type="submit" className="hp-btn hp-btn--primary" disabled={submitting}>
+                  <Send size={15} />
+                  <span>{submitting ? 'Submitting…' : 'Submit B2B inquiry'}</span>
+                </button>
+              </div>
+            </form>
+          )}
+        </motion.div>
       </div>
-      
-      <style>{`
-        .contact-fields-grid { grid-template-columns: 1fr 1fr; }
-        @media (max-width: 640px) {
-          .contact-fields-grid { grid-template-columns: 1fr; }
-        }
-      `}</style>
     </section>
   );
 }
+
+export default Contact;

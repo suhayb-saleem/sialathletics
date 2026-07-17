@@ -1,8 +1,8 @@
 'use client';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
-import ImagePlaceholder from '@/components/ui/ImagePlaceholder';
 
 export default function AboutStory() {
   return (
@@ -14,11 +14,14 @@ export default function AboutStory() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          style={{ position: 'relative', overflow: 'hidden', borderRadius: '12px' }}
+          style={{ position: 'relative', overflow: 'hidden', aspectRatio: '4/3' }}
         >
-          <ImagePlaceholder
-            label="Real photo needed — SIAL Athletics facility in Sialkot (exterior or factory floor)."
-            aspect="4/3"
+          <Image
+            src="/images/warehouse.png"
+            alt="SIAL Athletics facility exterior in Sialkot, Pakistan"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            style={{ objectFit: 'cover' }}
           />
         </motion.div>
 
@@ -42,7 +45,7 @@ export default function AboutStory() {
           <p className="body-copy" style={{ color: 'var(--white-90)', marginBottom: '2rem' }}>
             We work with brands, retailers, and distributors who want factory-direct quality without compromise — OEM to your exact spec, or ODM private label built on our proven designs.
           </p>
-          <Button href="/catalogue" variant="primary">Explore our products →</Button>
+          <Button href="/catalogue" variant="primary">Explore our products <span className="hp-btn__arrow" aria-hidden="true">→</span></Button>
         </motion.div>
       </div>
 

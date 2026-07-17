@@ -1,11 +1,22 @@
-﻿import Hero from '@/components/landing/Hero';
-import TrustStrip from '@/components/landing/TrustStrip';
-import AboutSection from '@/components/landing/AboutSection';
+import './home.css';
+import Hero from '@/components/landing/Hero';
+import CredentialMarquee from '@/components/landing/TrustStrip';
+import { Range } from '@/components/landing/ProductTeaser';
 import { Capabilities } from '@/components/landing/Capabilities';
-import ProductTeaser from '@/components/landing/ProductTeaser';
-import CTABanner from '@/components/landing/CTABanner';
+import AboutSection from '@/components/landing/AboutSection';
+import HomeCTA from '@/components/landing/HomeCTA';
 import { Contact } from '@/components/landing/Contact';
 
 export default function Home() {
-  return <><Hero /><TrustStrip /><AboutSection /><Capabilities /><ProductTeaser /><CTABanner /><Contact /></>;
+  return (
+    <div className="hp">
+      <Hero />
+      <CredentialMarquee />
+      <Range />
+      <Capabilities />
+      <AboutSection />
+      <HomeCTA />
+      <Contact />
+    </div>
+  );
 }

@@ -29,6 +29,7 @@ export default function AboutPage() {
         primaryHref="/contact"
         secondaryLabel="View products"
         secondaryHref="/catalogue"
+        index="SIAL / 03"
       />
     </main>
   );

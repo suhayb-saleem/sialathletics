@@ -17,32 +17,31 @@ export function ProductCard({ product, onViewDetails, onInquire }: ProductCardPr
     if (badge === 'NEW') {
       return 'bg-black border border-black text-white';
     }
-    return 'bg-[var(--red)] text-white';
+    return 'bg-[var(--hp-red)] text-white';
   };
 
   return (
     <motion.div
       onClick={() => onViewDetails(product)}
-      whileHover={{ y: -6, borderColor: 'var(--red-border)', boxShadow: '0 24px 60px rgba(226, 27, 45, 0.14)' }}
+      whileHover={{ y: -6, borderColor: 'rgba(226,27,45,0.5)', boxShadow: '0 24px 60px rgba(226, 27, 45, 0.14)' }}
       transition={{ type: 'spring', stiffness: 350, damping: 26 }}
       style={{
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        borderRadius: '12px',
-        background: 'var(--bg-card)',
-        border: '1px solid var(--line)',
+        background: 'linear-gradient(180deg, var(--hp-card-2), var(--hp-card))',
+        border: '1px solid var(--hp-hair)',
         overflow: 'hidden',
-        fontFamily: 'var(--font-body)',
+        fontFamily: 'var(--hp-body)',
         cursor: 'pointer',
       }}
       className="group product-card"
     >
       {/* Image Area */}
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--white-08)]" style={{ padding: '0.75rem', background: 'var(--bg-raised)' }}>
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-[var(--hp-hair)]" style={{ padding: '0.75rem', background: 'radial-gradient(circle at 50% 42%, rgba(226,27,45,0.12), transparent 58%)' }}>
         {/* Badge */}
         {product.badge && (
-          <div className={`absolute top-3.5 right-3.5 z-10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-[4px] ${getBadgeStyle(product.badge)}`}>
+          <div className={`absolute top-3.5 right-3.5 z-10 px-3 py-1 text-[9px] font-bold uppercase tracking-widest ${getBadgeStyle(product.badge)}`}>
             {product.badge}
           </div>
         )}

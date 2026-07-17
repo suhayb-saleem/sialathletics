@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import { useId, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plus, Minus } from 'lucide-react';
@@ -14,5 +14,49 @@ const faqs = [
 export default function ContactFAQ() {
   const [open, setOpen] = useState<number | null>(null);
   const id = useId();
-  return <section style={{ background: 'var(--bg-raised)', padding: 'var(--section-space) var(--container-pad)', borderTop: '1px solid var(--line)' }}><div style={{ maxWidth: '800px', margin: '0 auto' }}><div style={{ marginBottom: '3rem', textAlign: 'center' }}><SectionLabel>Common questions</SectionLabel><h2 className="display-title" style={{ fontSize: 'clamp(2.35rem, 4vw, 3.2rem)', marginTop: '.9rem' }}>Quick answers.</h2></div><div>{faqs.map(({ q, a }, index) => { const isOpen = open === index; const panelId = `${id}-${index}`; return <div key={q} style={{ borderBottom: '1px solid var(--line)' }}><button type="button" onClick={() => setOpen(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={panelId} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--white)' }}><span className="display-title" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>{q}</span>{isOpen ? <Minus size={18} color="var(--red)" /> : <Plus size={18} color="var(--red)" />}</button><AnimatePresence>{isOpen && <motion.div id={panelId} initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: .25 }} style={{ overflow: 'hidden' }}><p className="body-copy" style={{ margin: '0', paddingBottom: '1.5rem', fontSize: '.94rem' }}>{a}</p></motion.div>}</AnimatePresence></div>; })}</div></div></section>;
+
+  return (
+    <section style={{ background: 'var(--hp-panel)', padding: 'var(--hp-gap) var(--hp-pad)', borderTop: '1px solid var(--hp-hair)' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
+          <SectionLabel>Common questions</SectionLabel>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2.35rem, 4vw, 3.2rem)', marginTop: '.9rem' }}>Quick answers.</h2>
+        </div>
+        <div>
+          {faqs.map(({ q, a }, index) => {
+            const isOpen = open === index;
+            const panelId = `${id}-${index}`;
+            return (
+              <div key={q} style={{ borderBottom: '1px solid var(--hp-hair)' }}>
+                <button
+                  type="button"
+                  onClick={() => setOpen(isOpen ? null : index)}
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                  style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--hp-ivory)' }}
+                >
+                  <span className="display-title" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}>{q}</span>
+                  {isOpen ? <Minus size={18} color="var(--hp-red)" /> : <Plus size={18} color="var(--hp-red)" />}
+                </button>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      id={panelId}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <p className="body-copy" style={{ margin: '0', paddingBottom: '1.5rem', fontSize: '.94rem' }}>{a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 }

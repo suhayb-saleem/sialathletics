@@ -12,17 +12,16 @@ const steps = [
 
 export default function ProcessTimeline() {
   return (
-    <section className="site-section" style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--line)' }}>
+    <section className="site-section" style={{ background: 'var(--hp-black)', borderTop: '1px solid var(--hp-hair)' }}>
       <div className="container-custom">
         <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', textAlign: 'center' }}>
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--white)', marginTop: '0.9rem' }}>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', color: 'var(--hp-ivory)', marginTop: '0.9rem' }}>
             From concept to champion.
           </h2>
         </div>
         <div className="process-grid" style={{ display: 'grid', position: 'relative' }}>
-          {/* Connecting line — desktop only */}
-          <div className="process-line" style={{ position: 'absolute', top: '24px', left: '10%', right: '10%', height: '1px', background: 'var(--red-border)', zIndex: 0 }} />
+          <div className="process-line" style={{ position: 'absolute', top: '14px', left: '10%', right: '10%', height: '1px', background: 'rgba(226,27,45,.3)', zIndex: 0 }} />
           {steps.map(({ num, title, desc }, i) => (
             <motion.div
               key={num}
@@ -32,11 +31,11 @@ export default function ProcessTimeline() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               style={{ textAlign: 'center', padding: '0 1rem', position: 'relative', zIndex: 1 }}
             >
-              <div style={{ width: '48px', height: '48px', background: 'var(--red)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--white)', borderRadius: '10px' }}>
+              <div style={{ fontFamily: 'var(--hp-display)', fontWeight: 800, fontSize: '1.6rem', letterSpacing: '-0.02em', color: 'var(--hp-red)', marginBottom: '1.4rem', background: 'var(--hp-black)' }}>
                 {num}
               </div>
-              <h3 className="display-title" style={{ fontSize: '1.2rem', color: 'var(--white)', marginBottom: '0.5rem' }}>{title}</h3>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8rem', color: 'var(--white-60)', lineHeight: 1.6 }}>{desc}</p>
+              <h3 className="display-title" style={{ fontSize: '1.2rem', color: 'var(--hp-ivory)', marginBottom: '0.5rem' }}>{title}</h3>
+              <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.8rem', color: 'var(--hp-ivory-60)', lineHeight: 1.6 }}>{desc}</p>
             </motion.div>
           ))}
         </div>

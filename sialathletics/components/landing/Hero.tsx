@@ -1,39 +1,92 @@
-﻿'use client';
+'use client';
 
 import { motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
 
-const proof = ['OEM & private label', '24-unit padel MOQ', 'Built in Sialkot'];
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const proof = [
+  { value: 'OEM+ODM', label: 'Private label' },
+  { value: '24', label: 'Unit MOQ' },
+  { value: '3K–24K', label: 'Carbon layup' },
+];
 
 export default function Hero() {
-  const reduceMotion = useReducedMotion();
+  const reduce = useReducedMotion();
+
+  const rise = (delay: number) =>
+    reduce
+      ? { initial: false as const }
+      : { initial: { opacity: 0, y: 26 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.85, delay, ease: EASE } };
 
   return (
-    <section className="home-hero">
-      <div className="home-hero__grain texture-noise" aria-hidden="true" />
-      <div className="home-hero__line" aria-hidden="true" />
-      <div className="container-custom home-hero__grid">
-        <motion.div className="home-hero__content" initial={reduceMotion ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8, ease: [0.16, 1, .3, 1] }}>
-          <p className="eyebrow">Padel racket manufacturing</p>
-          <h1 className="display-title home-hero__title">The edge<br /><span>behind your</span><br />brand.</h1>
-          <p className="home-hero__copy">Performance padel rackets engineered for serious brands, clubs, and distributors. From carbon layup to retail-ready delivery, we build your next line at the source.</p>
-          <div className="home-hero__actions">
-            <Button href="/catalogue?filter=padel" size="lg">Explore padel rackets</Button>
-            <Button href="/capabilities" variant="outline" size="lg">How we manufacture</Button>
-          </div>
-          <ul className="home-hero__proof" aria-label="SIAL Athletics highlights">
-            {proof.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </motion.div>
+    <section className="hp-hero">
+      <span className="hp-hero__ghost" aria-hidden="true">SIAL</span>
+      <div className="hp-grain" aria-hidden="true" />
 
-        <motion.div className="home-hero__visual" initial={reduceMotion ? false : { opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: .1, ease: [0.16, 1, .3, 1] }}>
-          <div className="home-hero__visual-label"><span>01</span><span>Forge series / padel</span></div>
-          <div className="home-hero__image-wrap" style={{ position: 'relative' }}>
-            <Image src="/images/products/sa-forge-padel-teardrop.jpg" alt="SIAL Athletics Forge teardrop padel racket" fill priority sizes="(max-width: 820px) 88vw, 50vw" style={{ objectFit: 'contain' }} />
+      <div className="hp-shell hp-hero__grid">
+        <div className="hp-hero__content">
+          <motion.p className="hp-eyebrow" {...rise(0)}>Padel racket manufacturing</motion.p>
+
+          <motion.h1 className="hp-display hp-hero__title" {...rise(0.08)}>
+            <span className="is-solid">The edge</span>
+            <span className="is-outline">behind your</span>
+            <span className="is-solid">brand<em>.</em></span>
+          </motion.h1>
+
+          <motion.p className="hp-hero__copy" {...rise(0.18)}>
+            Performance padel rackets engineered for serious brands, clubs, and distributors.
+            From carbon layup to retail-ready delivery, we build your next line at the source.
+          </motion.p>
+
+          <motion.div className="hp-hero__actions" {...rise(0.26)}>
+            <Link href="/catalogue?filter=padel" className="hp-btn hp-btn--primary">
+              Explore padel rackets <span className="hp-btn__arrow" aria-hidden="true">→</span>
+            </Link>
+            <Link href="/capabilities" className="hp-link">
+              How we manufacture <b aria-hidden="true">↗</b>
+            </Link>
+          </motion.div>
+
+          <motion.dl className="hp-hero__proof" aria-label="SIAL Athletics highlights" {...rise(0.34)}>
+            {proof.map((item) => (
+              <li key={item.label}>
+                <dt>{item.value}</dt>
+                <dd>{item.label}</dd>
+              </li>
+            ))}
+          </motion.dl>
+        </div>
+
+        <motion.div
+          className="hp-hero__visual"
+          initial={reduce ? false : { opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, delay: 0.15, ease: EASE }}
+        >
+          <span className="hp-hero__tag hp-hero__tag--tl"><b>01</b> Forge Series</span>
+          <span className="hp-hero__tag hp-hero__tag--vert" aria-hidden="true">Teardrop · EVA</span>
+          <div className="hp-hero__halo" aria-hidden="true" />
+          <div className="hp-hero__img">
+            <Image
+              src="/images/products/sa-forge-padel-teardrop.jpg"
+              alt="SIAL Athletics Forge teardrop padel racket"
+              fill
+              priority
+              sizes="(max-width: 940px) 88vw, 48vw"
+              style={{ objectFit: 'contain' }}
+            />
           </div>
-          <Link href="/catalogue?filter=padel" className="home-hero__spec-link">View the range <span aria-hidden="true">↗</span></Link>
+          <Link href="/catalogue?filter=padel" className="hp-hero__tag hp-hero__tag--br hp-link">
+            View the range <b aria-hidden="true">↗</b>
+          </Link>
+        </motion.div>
+      </div>
+
+      <div className="hp-shell">
+        <motion.div className="hp-hero__scroll" {...rise(0.5)} aria-hidden="true">
+          <span /> Scroll to explore
         </motion.div>
       </div>
     </section>

@@ -1,10 +1,38 @@
-﻿'use client';
+'use client';
 import { motion, useReducedMotion } from 'motion/react';
-import Button from '@/components/ui/Button';
+import Link from 'next/link';
 
-interface CTABannerProps { headline?: string; subtext?: string; primaryLabel?: string; primaryHref?: string; secondaryLabel?: string; secondaryHref?: string; }
+interface CTABannerProps { headline?: string; subtext?: string; primaryLabel?: string; primaryHref?: string; secondaryLabel?: string; secondaryHref?: string; index?: string; }
 
-export default function CTABanner({ headline = 'Ready to build a better padel line?', subtext = 'Bring us your target player, price point, and design direction. We will shape the manufacturing program around it.', primaryLabel = 'Start an inquiry', primaryHref = '/contact', secondaryLabel = 'Explore capabilities', secondaryHref = '/capabilities' }: CTABannerProps) {
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+export default function CTABanner({ headline = 'Ready to build a better padel line?', subtext = 'Bring us your target player, price point, and design direction. We will shape the manufacturing program around it.', primaryLabel = 'Start an inquiry', primaryHref = '/contact', secondaryLabel = 'Explore capabilities', secondaryHref = '/capabilities', index = 'SIAL / 02' }: CTABannerProps) {
   const reduceMotion = useReducedMotion();
-  return <section className="cta-band"><div className="container-custom cta-band__inner"><motion.div initial={reduceMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .65 }}><p className="eyebrow">Start at the source</p><h2 className="display-title">{headline}</h2><p>{subtext}</p><div><Button href={primaryHref} size="lg">{primaryLabel}</Button><Button href={secondaryHref} variant="outline" size="lg">{secondaryLabel}</Button></div></motion.div><p className="cta-band__index" aria-hidden="true">SIAL / 02</p></div></section>;
+  return (
+    <section className="hp-cta">
+      <span className="hp-cta__mark" aria-hidden="true">SA</span>
+      <div className="hp-shell">
+        <motion.div
+          className="hp-cta__inner"
+          initial={reduceMotion ? false : { opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-90px' }}
+          transition={{ duration: 0.75, ease: EASE }}
+        >
+          <span className="hp-eyebrow hp-eyebrow--ink">Start at the source</span>
+          <h2 className="hp-display hp-cta__title">{headline}</h2>
+          <p className="hp-cta__copy">{subtext}</p>
+          <div className="hp-cta__actions">
+            <Link href={primaryHref} className="hp-btn hp-btn--ink hp-btn--lg">
+              {primaryLabel} <span className="hp-btn__arrow" aria-hidden="true">→</span>
+            </Link>
+            <Link href={secondaryHref} className="hp-btn hp-btn--outline-ink hp-btn--lg">
+              {secondaryLabel} <span className="hp-btn__arrow" aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </motion.div>
+        <p className="hp-cta__index" aria-hidden="true">{index}</p>
+      </div>
+    </section>
+  );
 }

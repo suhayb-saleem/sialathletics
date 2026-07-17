@@ -17,12 +17,12 @@ export default function PageHero({ eyebrow, title, subtitle, crumb }: PageHeroPr
   const words = title.split(' ');
 
   return (
-    <section className="page-hero">
-      <div className="container-custom">
-        <nav aria-label="Breadcrumb" className="page-hero__crumb">
+    <section className="hp-pagehero">
+      <div className="hp-shell">
+        <nav aria-label="Breadcrumb" className="hp-pagehero__crumb">
           <Link href="/">Home</Link>
           <span aria-hidden="true">/</span>
-          <span className="page-hero__crumb-current">{crumb}</span>
+          <span className="hp-pagehero__crumb-current">{crumb}</span>
         </nav>
 
         <motion.div
@@ -33,9 +33,9 @@ export default function PageHero({ eyebrow, title, subtitle, crumb }: PageHeroPr
           <SectionLabel>{eyebrow}</SectionLabel>
         </motion.div>
 
-        <h1 className="display-title page-hero__title">
+        <h1 className="hp-display hp-pagehero__title">
           {words.map((word, i) => (
-            <span key={i} className="page-hero__word">
+            <span key={i} className="hp-pagehero__word">
               <motion.span
                 initial={reduceMotion ? false : { y: '110%' }}
                 animate={{ y: 0 }}
@@ -50,7 +50,7 @@ export default function PageHero({ eyebrow, title, subtitle, crumb }: PageHeroPr
 
         {subtitle && (
           <motion.p
-            className="page-hero__subtitle"
+            className="hp-pagehero__subtitle"
             initial={reduceMotion ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}

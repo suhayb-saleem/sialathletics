@@ -27,6 +27,7 @@ export default function QualityPage() {
         primaryHref="/contact"
         secondaryLabel="View products"
         secondaryHref="/catalogue"
+        index="SIAL / 05"
       />
     </main>
   );

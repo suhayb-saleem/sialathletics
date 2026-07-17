@@ -1,113 +1,96 @@
 'use client';
 
 import { motion } from 'motion/react';
-import { Settings, ShieldAlert, Cpu } from 'lucide-react';
-import SectionLabel from '@/components/ui/SectionLabel';
-import { AnimatedSection } from '@/components/ui/AnimatedSection';
+import Image from 'next/image';
+import Link from 'next/link';
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const capabilities = [
+  {
+    title: 'OEM Manufacturing',
+    desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–24K carbon fiber monoblock hot-press molding.',
+    tags: ['CAD to mold', 'Hot-press', 'Custom stiffness'],
+  },
+  {
+    title: 'ODM Private Label',
+    desc: 'Leverage our proven teardrop, round, and diamond geometries and core configurations. Customize graphics, colorways, surface textures, and grip accessories to own the shelf.',
+    tags: ['Proven geometries', 'Colorways', 'Grip options'],
+  },
+  {
+    title: 'Quality & US Compliance',
+    desc: 'Every batch undergoes rigorous quality assurance at our Sialkot facility. All paddles meet USAPA guidelines for surface roughness, deflection, and dimensional limits.',
+    tags: ['Batch QA', 'USAPA', 'Dimensional checks'],
+  },
+];
 
 export function Capabilities() {
-  const capabilities = [
-    {
-      icon: Settings,
-      title: 'OEM Manufacturing',
-      desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–24K carbon fiber monoblock hot-press molding.',
-    },
-    {
-      icon: Cpu,
-      title: 'ODM Private Label',
-      desc: 'Leverage our proven teardrop, round, and diamond shape geometries and core configurations. Customize the graphics, colorways, surface textures, and grip accessories.',
-    },
-    {
-      icon: ShieldAlert,
-      title: 'Quality & US Compliance',
-      desc: 'Every batch undergoes rigorous quality assurance at our Sialkot facility. All paddles meet USAPA guidelines for surface roughness, deflection, and dimensional limit requirements.',
-    },
-  ];
-
   return (
-    <section id="capabilities" className="relative" style={{ background: 'var(--bg-raised)', borderTop: '1px solid var(--white-08)', padding: '8rem 0' }}>
-      <div className="absolute inset-0 texture-steel pointer-events-none opacity-40" />
-      <div className="absolute inset-0 texture-noise pointer-events-none opacity-40" />
+    <section className="hp-craft" id="capabilities">
+      <div className="hp-shell hp-craft__inner">
+        <motion.div
+          className="hp-craft__media"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, ease: EASE }}
+        >
+          <div className="hp-craft__media-frame">
+            <Image
+              src="/images/materials/carbon-fiber-weave.jpg"
+              alt="Macro detail of woven carbon fiber sheet"
+              fill
+              sizes="(max-width: 900px) 100vw, 42vw"
+              style={{ objectFit: 'cover' }}
+            />
+            <span className="hp-craft__media-cap"><b>Raw material</b> — 3K–24K carbon weave</span>
+          </div>
+        </motion.div>
 
-      <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-16 items-start">
-          {/* Header column */}
-          <div className="space-y-6">
-            <SectionLabel>
-              Manufacturing power
-            </SectionLabel>
-            <h2 className="display-title text-[40px] sm:text-[56px] text-white leading-[1.05]">
-              Capabilities &amp; services.
-            </h2>
-            <p className="font-body text-base leading-relaxed text-[var(--white-60)]">
-              We offer B2B OEM manufacturing, private label ODM solutions, and white-label supply chain fulfillment. From initial raw material selection to final US customs landing, we handle it all.
-            </p>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+        >
+          <span className="hp-eyebrow hp-eyebrow--ink">Manufacturing power</span>
+          <h2 className="hp-display hp-craft__title">Engineered<br />at the source.</h2>
+          <p className="hp-craft__intro">
+            B2B OEM manufacturing, private-label ODM, and white-label fulfillment — from raw
+            material selection to final landed delivery, handled under one roof.
+          </p>
+
+          <div className="hp-craft__list">
+            {capabilities.map((cap, i) => (
+              <motion.article
+                className="hp-cap"
+                key={cap.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: EASE }}
+              >
+                <span className="hp-cap__num">0{i + 1}</span>
+                <div>
+                  <h3 className="hp-cap__title">{cap.title}</h3>
+                  <p className="hp-cap__desc">{cap.desc}</p>
+                  <div className="hp-cap__tags">
+                    {cap.tags.map((t) => <span className="hp-cap__tag" key={t}>{t}</span>)}
+                  </div>
+                </div>
+              </motion.article>
+            ))}
           </div>
 
-          {/* Cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {capabilities.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <AnimatedSection
-                  key={idx}
-                  direction="up"
-                  delay={idx * 0.1}
-                  style={{ height: '100%' }}
-                >
-                  <motion.div
-                    whileHover={{ y: -6, borderColor: 'var(--red-border)', boxShadow: '0 24px 60px rgba(226, 27, 45, 0.14)' }}
-                    transition={{ type: 'spring', stiffness: 350, damping: 26 }}
-                    style={{
-                      padding: '2.5rem',
-                      height: '100%',
-                      minHeight: '280px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      borderRadius: '12px',
-                      background: 'var(--bg-card)',
-                      border: '1px solid var(--line)',
-                    }}
-                    className="group"
-                  >
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', height: '100%' }}>
-                      {/* Icon container with gradient, border glow and transitions */}
-                      <div
-                        style={{
-                          alignSelf: 'flex-start',
-                          padding: '0.75rem',
-                          background: 'linear-gradient(135deg, rgba(226, 27, 45, 0.1), transparent)',
-                          border: '1px solid rgba(226, 27, 45, 0.25)',
-                          boxShadow: '0 0 15px rgba(226, 27, 45, 0.15)',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          borderRadius: '10px',
-                          transition: 'all 0.3s ease',
-                        }}
-                        className="group-hover:border-[var(--red)] group-hover:shadow-[0_0_20px_rgba(226,27,45,0.35)]"
-                      >
-                        <Icon size={24} color="var(--red)" />
-                      </div>
-                      
-                      {/* Info */}
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                        <h3 className="display-title text-2xl text-white group-hover:text-[var(--red)] transition-colors duration-200" style={{ margin: 0 }}>
-                          {item.title}
-                        </h3>
-                        <p className="font-body text-[13px] sm:text-sm leading-relaxed text-[var(--white-60)]" style={{ margin: 0 }}>
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatedSection>
-              );
-            })}
+          <div className="hp-craft__foot">
+            <Link href="/capabilities" className="hp-btn hp-btn--ink">
+              Explore capabilities <span className="hp-btn__arrow" aria-hidden="true">→</span>
+            </Link>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+
+export default Capabilities;

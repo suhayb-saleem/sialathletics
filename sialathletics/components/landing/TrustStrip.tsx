@@ -1,14 +1,29 @@
-﻿'use client';
-import { Factory, Layers3, ShieldCheck, Truck } from 'lucide-react';
-import { motion } from 'motion/react';
+'use client';
 
-const items = [
-  { Icon: Factory, label: 'Sialkot-built', detail: 'Factory direct' },
-  { Icon: Layers3, label: 'Carbon platforms', detail: 'Round / teardrop / diamond' },
-  { Icon: ShieldCheck, label: 'Batch control', detail: 'Quality-led production' },
-  { Icon: Truck, label: 'Export ready', detail: 'Brands to distributors' },
+// Kinetic credential ribbon — replaces the old 4-icon trust strip with an
+// infinite marquee of manufacturing credentials (premium racket-brand idiom).
+const CREDENTIALS = [
+  'OEM & Private Label',
+  'Carbon Monoblock Hot-Press',
+  '24-Unit MOQ',
+  'USAPA-Compliant Batches',
+  '3K–24K Carbon Layup',
+  'Teardrop · Round · Diamond',
+  'Built in Sialkot',
+  'Export-Ready Programs',
 ];
 
-export default function TrustStrip() {
-  return <section className="trust-strip" aria-label="SIAL Athletics manufacturing highlights"><div className="container-custom trust-strip__grid">{items.map(({ Icon, label, detail }, index) => <motion.div key={label} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .06 }}><Icon size={18} strokeWidth={1.5} /><div><strong>{label}</strong><span>{detail}</span></div></motion.div>)}</div></section>;
+export default function CredentialMarquee() {
+  const loop = [...CREDENTIALS, ...CREDENTIALS];
+  return (
+    <section className="hp-marquee" aria-label="SIAL Athletics manufacturing credentials">
+      <div className="hp-marquee__track">
+        {loop.map((item, i) => (
+          <span className="hp-marquee__item" key={`${item}-${i}`} aria-hidden={i >= CREDENTIALS.length}>
+            {item}
+          </span>
+        ))}
+      </div>
+    </section>
+  );
 }

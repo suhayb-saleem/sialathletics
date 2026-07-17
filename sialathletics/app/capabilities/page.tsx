@@ -29,6 +29,7 @@ export default function CapabilitiesPage() {
         primaryHref="/contact"
         secondaryLabel="View products"
         secondaryHref="/catalogue"
+        index="SIAL / 04"
       />
     </main>
   );

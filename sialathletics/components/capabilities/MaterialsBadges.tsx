@@ -60,7 +60,7 @@ export default function MaterialsBadges() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6 }}
-          style={{ position: 'relative', aspectRatio: '21/6', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--line)', marginBottom: '3rem' }}
+          style={{ position: 'relative', aspectRatio: '21/6', overflow: 'hidden', border: '1px solid var(--line)', marginBottom: '3rem' }}
         >
           <Image
             src="/images/materials/carbon-fiber-weave.jpg"
@@ -86,7 +86,7 @@ export default function MaterialsBadges() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: gi * 0.08 }}
-              style={{ background: 'var(--bg-card)', border: '1px solid var(--line)', borderTop: '3px solid var(--red)', borderRadius: '12px', padding: '2rem' }}
+              style={{ background: 'var(--bg-card)', border: '1px solid var(--line)', borderTop: '3px solid var(--red)', padding: '2rem' }}
             >
               <h3 style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--white)', marginBottom: '1.5rem' }}>
                 {group.title}
@@ -113,7 +113,7 @@ export default function MaterialsBadges() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.5, delay: 0.24 }}
-          style={{ background: 'var(--bg-card)', border: '1px solid var(--line)', borderTop: '3px solid var(--red)', borderRadius: '12px', padding: '2rem' }}
+          style={{ background: 'var(--bg-card)', border: '1px solid var(--line)', borderTop: '3px solid var(--red)', padding: '2rem' }}
         >
           <h3 style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--white)', marginBottom: '1.5rem' }}>
             FRAME & SPEC
