@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Mail, Phone, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import SectionLabel from '@/components/ui/SectionLabel';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -11,6 +11,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
     country: '',
     productLine: 'Padel Rackets',
@@ -77,6 +78,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           name: formData.name.trim(),
           email: formData.email.trim(),
+          phone: formData.phone.trim(),
           company: formData.company.trim(),
           country: formData.country.trim(),
           productLine: formData.productLine,
@@ -92,6 +94,7 @@ export default function ContactForm() {
         setFormData({
           name: '',
           email: '',
+          phone: '',
           company: '',
           country: '',
           productLine: 'Padel Rackets',
@@ -109,61 +112,64 @@ export default function ContactForm() {
     }
   };
 
-  const contactRows = [
-    { Icon: MapPin, k: 'Factory HQ', v: 'Sialkot, Punjab, Pakistan', href: undefined as string | undefined },
-    { Icon: Mail, k: 'Email', v: 'info@sialathletics.com', href: 'mailto:info@sialathletics.com' },
-    { Icon: Phone, k: 'Phone', v: '+92 335 5933174', href: 'tel:+923355933174' },
-  ];
-
   return (
-    <section className="site-section" style={{ background: 'var(--hp-black)', scrollMarginTop: '90px' }} ref={formSectionRef}>
-      <div className="contact-form-grid container-custom" style={{ display: 'grid', gap: '4rem', alignItems: 'start' }}>
+    <section className="site-section" style={{ position: 'relative', isolation: 'isolate', background: 'var(--hp-paper)', borderTop: '1px solid var(--hp-ink-line)', overflow: 'hidden', scrollMarginTop: '90px' }} ref={formSectionRef}>
+      <div className="hp-weave--paper" aria-hidden="true" />
+      <div className="hp-grain--paper" aria-hidden="true" />
+      
+      {/* Futuristic glow elements - adjusted for light mode */}
+      <div style={{ position: 'absolute', top: '-10%', left: '-10%', width: '40%', aspectRatio: '1', background: 'radial-gradient(circle, rgba(226,27,45,0.08) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '50%', aspectRatio: '1', background: 'radial-gradient(circle, rgba(226,27,45,0.05) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
 
-        {/* Left — Contact Info */}
-        <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: EASE }}>
-          <SectionLabel>Reach us directly</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', color: 'var(--hp-ivory)', margin: '0.9rem 0 2.5rem' }}>
+      <div className="container-custom" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto' }}>
+
+        {/* Intro */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: EASE }}
+          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
+        >
+          <SectionLabel light>Reach us directly</SectionLabel>
+          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--hp-ink)', margin: '1.2rem 0 0', textShadow: '0 0 30px rgba(226,27,45,0.1)' }}>
             We respond<br />within 24 hours.
           </h2>
-          <div className="hp-contact__rows">
-            {contactRows.map(({ Icon, k, v, href }) => {
-              const inner = (
-                <>
-                  <Icon size={18} strokeWidth={1.6} />
-                  <div>
-                    <div className="hp-contact__row-k">{k}</div>
-                    <div className="hp-contact__row-v">{v}</div>
-                  </div>
-                </>
-              );
-              return href ? (
-                <a key={k} href={href} className="hp-contact__row">{inner}</a>
-              ) : (
-                <div key={k} className="hp-contact__row">{inner}</div>
-              );
-            })}
-          </div>
         </motion.div>
 
-        {/* Right — Form / Success panel */}
-        <motion.div className="hp-form" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1, ease: EASE }}>
+        {/* Form / Success panel */}
+        <motion.div 
+          className="hp-form" 
+          initial={{ opacity: 0, y: 30 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+          style={{
+            background: 'rgba(255, 255, 255, 0.65)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(0, 0, 0, 0.05)',
+            boxShadow: '0 0 50px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(255,255,255,0.8)',
+            borderRadius: '16px',
+            padding: 'clamp(2rem, 4vw, 3.5rem)'
+          }}
+        >
           {submitted ? (
             <div className="hp-form__success">
-              <div className="hp-form__success-icon"><Check size={30} /></div>
-              <h3>Inquiry received.</h3>
-              <p>
+              <div className="hp-form__success-icon" style={{ boxShadow: '0 0 30px rgba(226,27,45,0.1)' }}><Check size={30} /></div>
+              <h3 style={{ color: 'var(--hp-ink)' }}>Inquiry received.</h3>
+              <p style={{ color: 'var(--hp-ink-70)' }}>
                 Thank you. Your inquiry report has been compiled and emailed to you as a PDF. Our factory team
                 will reach out with pricing and sample options within 24 hours.
               </p>
-              <button type="button" className="hp-btn hp-btn--ghost" onClick={() => setSubmitted(false)} style={{ marginTop: '0.6rem' }}>
-                Send another inquiry
+              <button type="button" className="hp-btn hp-btn--primary" onClick={() => setSubmitted(false)} style={{ marginTop: '1rem' }}>
+                <span>Send another inquiry</span>
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="hp-form__grid" noValidate>
-              {error && <div className="hp-form__error">{error}</div>}
+            <form onSubmit={handleSubmit} className="hp-form__grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem 2rem' }} noValidate>
+              {error && <div className="hp-form__error" style={{ gridColumn: '1 / -1' }}>{error}</div>}
 
-              {/* Honeypot field (hidden from users, targeted by bots) */}
+              {/* Honeypot field */}
               <div style={{ display: 'none' }}>
                 <label htmlFor="form-website">Website</label>
                 <input
@@ -178,32 +184,44 @@ export default function ContactForm() {
               </div>
 
               <div className="hp-field">
-                <label htmlFor="form-name">Your name</label>
+                <label htmlFor="form-name" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Your name</label>
                 <input id="form-name" type="text" required placeholder="e.g. John Doe"
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)' }}
                   value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
               </div>
 
               <div className="hp-field">
-                <label htmlFor="form-email">Work email</label>
+                <label htmlFor="form-email" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Work email</label>
                 <input id="form-email" type="email" required placeholder="john@company.com"
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)' }}
                   value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
               </div>
 
               <div className="hp-field">
-                <label htmlFor="form-company">Company name</label>
+                <label htmlFor="form-phone" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Contact number</label>
+                <input id="form-phone" type="tel" placeholder="+1 (555) 000-0000"
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)' }}
+                  value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
+              </div>
+
+              <div className="hp-field">
+                <label htmlFor="form-company" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Company name</label>
                 <input id="form-company" type="text" required placeholder="e.g. Pro Padel Inc"
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)' }}
                   value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
               </div>
 
               <div className="hp-field">
-                <label htmlFor="form-country">Country / region</label>
+                <label htmlFor="form-country" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Country / region</label>
                 <input id="form-country" type="text" placeholder="e.g. United States"
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)' }}
                   value={formData.country} onChange={(e) => setFormData({ ...formData, country: e.target.value })} />
               </div>
 
               <div className="hp-field">
-                <label htmlFor="form-interest">Product line</label>
-                <select id="form-interest" value={formData.productLine} onChange={(e) => setFormData({ ...formData, productLine: e.target.value })}>
+                <label htmlFor="form-interest" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Product line</label>
+                <select id="form-interest" value={formData.productLine} onChange={(e) => setFormData({ ...formData, productLine: e.target.value })}
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)' }}>
                   <option value="Padel Rackets">Padel Rackets</option>
                   <option value="Pickleball Paddles">Pickleball Paddles</option>
                   <option value="Both Lines">Both Lines</option>
@@ -212,8 +230,9 @@ export default function ContactForm() {
               </div>
 
               <div className="hp-field">
-                <label htmlFor="form-volume">Order volume</label>
-                <select id="form-volume" value={formData.orderVolume} onChange={(e) => setFormData({ ...formData, orderVolume: e.target.value })}>
+                <label htmlFor="form-volume" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Order volume</label>
+                <select id="form-volume" value={formData.orderVolume} onChange={(e) => setFormData({ ...formData, orderVolume: e.target.value })}
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)' }}>
                   <option value="Sample Only (1-5 units)">Sample Only (1-5 units)</option>
                   <option value="50-100 Units (Starter)">50-100 Units (Starter)</option>
                   <option value="100-500 Units (Growth)">100-500 Units (Growth)</option>
@@ -221,18 +240,19 @@ export default function ContactForm() {
                 </select>
               </div>
 
-              <div className="hp-field hp-field--full">
-                <label htmlFor="form-message">Message</label>
-                <textarea id="form-message" required rows={formData.message.length > 160 ? 10 : 4}
+              <div className="hp-field" style={{ gridColumn: '1 / -1' }}>
+                <label htmlFor="form-message" style={{ color: 'var(--hp-ink-70)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>Message</label>
+                <textarea id="form-message" required rows={formData.message.length > 160 ? 10 : 5}
                   placeholder="Specify target specifications, material preferences, logo engraving, or custom request details…"
+                  style={{ background: 'rgba(255,255,255,0.8)', border: '1px solid rgba(0,0,0,0.1)', color: 'var(--hp-ink)', resize: 'vertical' }}
                   value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
               </div>
 
-              <div className="hp-form__submit">
-                <button type="submit" className="hp-btn hp-btn--primary" disabled={submitting}>
+              <div className="hp-form__submit" style={{ gridColumn: '1 / -1', marginTop: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <button type="submit" className="hp-btn hp-btn--primary" disabled={submitting} style={{ width: '100%', maxWidth: '300px' }}>
                   <span>{submitting ? 'Submitting inquiry…' : 'Submit inquiry'}</span>
                 </button>
-                <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.75rem', color: 'var(--hp-ivory-60)', textAlign: 'center', marginTop: '1rem' }}>
+                <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.75rem', color: 'var(--hp-ink-45)', textAlign: 'center', marginTop: '1.5rem', letterSpacing: '0.1em' }}>
                   We typically respond within 1 business day.
                 </p>
               </div>
@@ -240,13 +260,6 @@ export default function ContactForm() {
           )}
         </motion.div>
       </div>
-
-      <style>{`
-        .contact-form-grid { grid-template-columns: 1fr 1.5fr; }
-        @media (max-width: 768px) {
-          .contact-form-grid { grid-template-columns: 1fr; }
-        }
-      `}</style>
     </section>
   );
 }

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -62,7 +62,6 @@ export default function Footer() {
                 { name: 'Home', href: '/' },
                 { name: 'About', href: '/about' },
                 { name: 'Products', href: '/catalogue' },
-                { name: 'Quality', href: '/quality' },
                 { name: 'FAQ', href: '/faq' },
                 { name: 'Contact', href: '/contact' },
               ].map((link) => (
@@ -86,7 +85,7 @@ export default function Footer() {
               {[
                 { name: 'Pickleball Paddles', href: '/catalogue#pickleball' },
                 { name: 'Padel Rackets', href: '/catalogue#padel' },
-                { name: 'OEM & ODM Programs', href: '/capabilities' },
+                { name: 'OEM & ODM Programs', href: '/manufacturing' },
               ].map((link) => (
                 <li key={link.name}>
                   <Link href={link.href} style={{ color: 'var(--white-60)', fontSize: '0.875rem', textDecoration: 'none', transition: 'color 0.2s ease' }}
@@ -115,14 +114,6 @@ export default function Footer() {
                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
                   onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}>
                   info@sialathletics.com
-                </a>
-              </li>
-              <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--white-60)', fontSize: '0.875rem' }}>
-                <Phone size={16} color="var(--red)" style={{ flexShrink: 0 }} />
-                <a href="tel:+923355933174" style={{ color: 'var(--white-60)', textDecoration: 'none', transition: 'color 0.2s ease' }}
-                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}>
-                  +923355933174
                 </a>
               </li>
             </ul>

@@ -1,36 +1,38 @@
 'use client';
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import SectionLabel from '@/components/ui/SectionLabel';
 
-const groups = [
+const materialFamilies = [
   {
-    title: 'CARBON FIBER GRADES',
-    items: [
-      { name: '3K Carbon Fiber', desc: 'Our standard weave — the most widely used grade across the range, balancing stiffness and cost for everyday builds.' },
-      { name: '12K Carbon Fiber', desc: 'Heavier tow count than 3K, adding stiffness for a firmer, more powerful ball response.' },
-      { name: '24K Carbon Fiber', desc: 'Our premium grade — higher fiber density for advanced, performance-tier builds that need more rigidity without added bulk.' },
-      { name: 'Fiberglass/Carbon Hybrid', desc: 'Blends fiberglass flex with carbon rigidity for a softer feel, favored in control-oriented builds.' },
-      { name: 'Kevlar-Carbon Blend', desc: "Silver/red premium line — Kevlar's impact resistance layered with carbon stiffness for our professional-tier rackets." },
-    ],
+    key: 'carbon',
+    tab: 'Carbon Fiber',
+    title: 'Carbon Fiber Grades',
+    tag: 'The face',
+    desc: 'The face material sets stiffness, response, and price point. Every grade below is available across the range, plus fiberglass/carbon hybrid and Kevlar-carbon blend layups.',
+    image: '/images/manufacturing/carbon-types.png',
+    alt: 'Comparison of 3K, 12K, 18K, and 24K carbon fiber weave grades',
   },
   {
-    title: 'CORE (EVA FOAM)',
-    items: [
-      { name: 'Black EVA', desc: 'High-density foam, preferred for power and durability in harder-hitting builds.' },
-      { name: 'Soft EVA (13–15° hardness)', desc: 'A softer compound tuned for comfort and shock absorption in control-oriented rackets.' },
-      { name: 'Memory / High-Rebound EVA', desc: 'Engineered to return to shape rapidly after impact, holding consistent response across a long session.' },
-    ],
+    key: 'eva',
+    tab: 'EVA Core',
+    title: 'Core (EVA Foam)',
+    tag: 'The feel',
+    desc: 'The core defines how the racket feels at contact — from plush control to explosive power.',
+    image: '/images/manufacturing/eva-core.png',
+    alt: 'Comparison of black EVA, soft EVA, and memory/high-rebound EVA core foams',
   },
   {
-    title: 'SURFACE TEXTURE',
-    items: [
-      { name: '3D Grain / Hexagon Mold', desc: 'Texture molded directly into the frame — permanent, won\'t wear off like a sprayed-on coating.' },
-      { name: 'Sand Grit Finish', desc: 'A rough, gritty surface finish built for maximum spin generation.' },
-      { name: '3D Decals', desc: 'Raised graphical elements that double as extra points of ball friction.' },
-    ],
+    key: 'texture',
+    tab: 'Surface Texture',
+    title: 'Surface Texture',
+    tag: 'The spin',
+    desc: 'Texture is molded directly into the frame — permanent, not a sprayed-on coating that wears off.',
+    image: '/images/manufacturing/textures.png',
+    alt: 'Comparison of 3D, matte, glossy, and sand-paint surface finish options',
   },
-];
+] as const;
 
 const shapes: { key: 'teardrop' | 'round' | 'diamond'; name: string; desc: string }[] = [
   { key: 'teardrop', name: 'Teardrop', desc: 'All-rounder — balanced sweet spot and power.' },
@@ -95,35 +97,9 @@ export default function MaterialsBadges() {
           </p>
         </motion.div>
 
-        {/* Material group cards */}
-        <div className="mat-groups" style={{ marginBottom: '1.5rem' }}>
-          {groups.map((group, gi) => (
-            <motion.div
-              key={group.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: gi * 0.08 }}
-              style={{ background: 'var(--hp-card)', border: '1px solid var(--hp-hair)', borderTop: '3px solid var(--hp-red)', padding: '2rem' }}
-            >
-              <h3 style={{ fontFamily: 'var(--hp-body)', fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--hp-ivory)', marginBottom: '1.5rem', marginTop: 0 }}>
-                {group.title}
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                {group.items.map((item) => (
-                  <div key={item.name}>
-                    <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.9rem', fontWeight: 700, color: 'var(--hp-ivory)', margin: 0, marginBottom: '0.3rem' }}>
-                      {item.name}
-                    </p>
-                    <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.82rem', color: 'var(--hp-ivory-60)', lineHeight: 1.6, margin: 0 }}>
-                      {item.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Material families — tabbed reference panel (distinct from the
+            alternating image/text rows used elsewhere on the site) */}
+        <MaterialTabs />
 
         {/* Frame & Spec + Shapes */}
         <motion.div
@@ -174,27 +150,16 @@ export default function MaterialsBadges() {
           grid-template-columns: 1fr 1fr;
           gap: 0.75rem 1.5rem;
         }
-        .mat-groups {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
-        }
         .materials-spec-grid {
           grid-template-columns: repeat(4, 1fr);
         }
         @media (max-width: 1024px) {
-          .mat-groups {
-            grid-template-columns: repeat(2, 1fr);
-          }
           .materials-spec-grid {
             grid-template-columns: repeat(2, 1fr);
           }
         }
         @media (max-width: 640px) {
           .mat-points {
-            grid-template-columns: 1fr;
-          }
-          .mat-groups {
             grid-template-columns: 1fr;
           }
         }
@@ -205,5 +170,77 @@ export default function MaterialsBadges() {
         }
       `}</style>
     </section>
+  );
+}
+
+function MaterialTabs() {
+  const [active, setActive] = useState<typeof materialFamilies[number]['key']>('carbon');
+  const current = materialFamilies.find((m) => m.key === active)!;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.5 }}
+      style={{ marginBottom: '3rem' }}
+    >
+      <div className="mat-tabs" role="tablist" aria-label="Material families">
+        {materialFamilies.map((m) => (
+          <button
+            key={m.key}
+            role="tab"
+            type="button"
+            aria-selected={active === m.key}
+            className={`mat-tabs__btn${active === m.key ? ' is-active' : ''}`}
+            onClick={() => setActive(m.key)}
+          >
+            {m.tab}
+          </button>
+        ))}
+      </div>
+
+      <div className="mat-panel">
+        <motion.div
+          key={current.key}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="mat-panel__media">
+            <Image src={current.image} alt={current.alt} fill sizes="(max-width: 900px) 100vw, 1100px" style={{ objectFit: 'contain' }} priority={current.key === 'carbon'} />
+          </div>
+          <div className="mat-panel__body">
+            <span className="mat-panel__tag">{current.tag}</span>
+            <h3 className="mat-panel__title">{current.title}</h3>
+            <p className="mat-panel__desc">{current.desc}</p>
+          </div>
+        </motion.div>
+      </div>
+
+      <style>{`
+        .mat-tabs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
+        .mat-tabs__btn {
+          font-family: var(--hp-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+          text-transform: uppercase; color: var(--hp-ivory-60); background: transparent;
+          border: 1px solid var(--hp-hair); padding: 0.7rem 1.3rem; cursor: pointer;
+          transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .mat-tabs__btn:hover { color: var(--hp-ivory); border-color: var(--hp-ivory-60); }
+        .mat-tabs__btn.is-active { color: var(--hp-ivory); background: var(--hp-red); border-color: var(--hp-red); }
+        .mat-panel { background: #0c0c0c; border: 1px solid var(--hp-hair); }
+        .mat-panel__media { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #0c0c0c; }
+        .mat-panel__body { padding: 1.5rem 1.75rem 1.85rem; border-top: 1px solid var(--hp-hair); }
+        .mat-panel__tag {
+          display: block; font-family: var(--hp-body); font-size: 0.66rem; font-weight: 800;
+          letter-spacing: 0.14em; text-transform: uppercase; color: var(--hp-red); margin-bottom: 0.5rem;
+        }
+        .mat-panel__title { font-family: var(--hp-display); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(1.3rem, 2.4vw, 1.7rem); color: var(--hp-ivory); margin: 0 0 0.6rem; }
+        .mat-panel__desc { font-family: var(--hp-body); font-size: 0.88rem; line-height: 1.65; color: var(--hp-ivory-60); margin: 0; max-width: 46rem; }
+        @media (max-width: 640px) {
+          .mat-panel__media { aspect-ratio: 4 / 3; }
+        }
+      `}</style>
+    </motion.div>
   );
 }

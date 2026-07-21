@@ -7,7 +7,6 @@ import { Capabilities } from '@/components/landing/Capabilities';
 import WhoWeWorkWith from '@/components/landing/WhoWeWorkWith';
 import GlobalReach from '@/components/landing/GlobalReach';
 import HomeCTA from '@/components/landing/HomeCTA';
-import { Contact } from '@/components/landing/Contact';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
@@ -32,7 +31,6 @@ const organizationJsonLd = {
     '@type': 'ContactPoint',
     contactType: 'sales',
     email: 'info@sialathletics.com',
-    telephone: '+92-335-5933174',
     availableLanguage: ['English'],
   },
   foundingDate: '2026',
@@ -49,7 +47,6 @@ export default function Home() {
       <WhoWeWorkWith />
       <GlobalReach />
       <HomeCTA />
-      <Contact />
     </div>
   );
 }

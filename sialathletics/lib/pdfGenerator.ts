@@ -4,6 +4,7 @@ import path from 'path';
 export interface InquiryData {
   name: string;
   email: string;
+  phone?: string;
   company: string;
   country?: string;
   productLine: string;
@@ -74,6 +75,7 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
     const specs = [
       { label: 'Client Name', value: data.name },
       { label: 'Work Email', value: data.email },
+      { label: 'Contact Number', value: data.phone || 'N/A' },
       { label: 'Company Name', value: data.company },
       { label: 'Country / Region', value: data.country || 'N/A' },
       { label: 'Product Line Interest', value: data.productLine },

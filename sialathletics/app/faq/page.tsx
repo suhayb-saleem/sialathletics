@@ -38,8 +38,8 @@ export default function FaqPage() {
         subtext="Send it to us directly — we respond within 24 hours."
         primaryLabel="Contact us"
         primaryHref="/contact"
-        secondaryLabel="See our QC process"
-        secondaryHref="/quality"
+        secondaryLabel="Explore capabilities"
+        secondaryHref="/manufacturing"
         index="SIAL / 06"
       />
     </main>

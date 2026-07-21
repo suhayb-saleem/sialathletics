@@ -16,8 +16,7 @@ const links = [
 const aboutGroup = {
   label: 'About Us',
   items: [
-    { label: 'Manufacturing', href: '/capabilities' },
-    { label: 'Quality', href: '/quality' },
+    { label: 'Manufacturing', href: '/manufacturing' },
     { label: 'About SIAL Athletics', href: '/about' },
     { label: 'FAQ', href: '/faq' },
   ],

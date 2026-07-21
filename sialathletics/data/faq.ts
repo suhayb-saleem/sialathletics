@@ -60,7 +60,7 @@ export const faqCategories: FaqCategory[] = [
         a: 'Yes. You can combine padel rackets and pickleball paddles, and multiple models within each, in one program. Per-model minimums are confirmed at quotation.',
       },
     ],
-    related: { label: 'See manufacturing capabilities', href: '/capabilities' },
+    related: { label: 'See manufacturing capabilities', href: '/manufacturing' },
   },
   {
     id: 'branding-design',
@@ -135,6 +135,6 @@ export const faqCategories: FaqCategory[] = [
         a: 'Each unit is individually protected in its retail packaging, then packed into export-grade cartons prepared for palletized freight, so product arrives shelf-ready.',
       },
     ],
-    related: { label: 'See our full QC process', href: '/quality' },
+    related: { label: 'See our manufacturing capabilities', href: '/manufacturing' },
   },
 ];

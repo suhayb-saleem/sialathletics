@@ -1,57 +1,45 @@
 'use client';
 
 import { motion } from 'motion/react';
-import Image from 'next/image';
 import Link from 'next/link';
+import ScrollShowcase, { type ShowcaseItem } from '@/components/ui/ScrollShowcase';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const capabilities = [
+const capabilities: ShowcaseItem[] = [
   {
     title: 'OEM Manufacturing',
-    desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–24K carbon fiber precision molding.',
-    tags: ['CAD to mold', 'Hot-press', 'Custom stiffness'],
+    tag: 'Build to your spec',
+    desc: 'Send us your CAD designs and specifications. We build to your exact measurements, tolerances, and stiffness profiles using 3K–18K carbon fiber precision molding.',
+    image: '/images/materials/carbon-fiber-weave.jpg',
+    alt: 'Macro detail of woven carbon fiber sheet — the raw material behind every build',
   },
   {
     title: 'ODM Private Label',
+    tag: 'Your brand, our platform',
     desc: 'Leverage our proven padel geometries — teardrop, round, diamond — and pickleball profiles with carbon fiber faces. Customize graphics, colorways, surface textures, and grip accessories to own the shelf.',
-    tags: ['Proven geometries', 'Colorways', 'Grip options'],
+    image: '/images/stock/padel-court.jpg',
+    alt: 'Indoor padel court with blue playing surface — where your private-label line competes',
   },
   {
     title: 'Quality & Compliance',
+    tag: 'Verified batch by batch',
     desc: 'Every batch undergoes rigorous quality assurance at our Sialkot facility. All paddles meet global guidelines for surface roughness, deflection, and dimensional limits.',
-    tags: ['Batch QA', 'Compliance', 'Dimensional checks'],
+    image: '/images/stock/qc-inspection.jpg',
+    alt: 'Vernier caliper measuring a component during quality inspection',
   },
 ];
 
 export function Capabilities() {
   return (
-    <section className="hp-craft" id="capabilities">
-      <div className="hp-shell hp-craft__inner">
+    <section className="hp-craft" id="capabilities" style={{ paddingBottom: 'var(--hp-gap)' }}>
+      <div className="hp-shell">
         <motion.div
-          className="hp-craft__media"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: EASE }}
-        >
-          <div className="hp-craft__media-frame">
-            <Image
-              src="/images/materials/carbon-fiber-weave.jpg"
-              alt="Macro detail of woven carbon fiber sheet"
-              fill
-              sizes="(max-width: 900px) 100vw, 42vw"
-              style={{ objectFit: 'cover' }}
-            />
-            <span className="hp-craft__media-cap"><b>Raw material</b> — 3K–24K carbon weave</span>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, delay: 0.1, ease: EASE }}
+          style={{ marginBottom: '3rem', maxWidth: '640px' }}
         >
           <span className="hp-eyebrow hp-eyebrow--ink">Manufacturing power</span>
           <h2 className="hp-display hp-craft__title">Engineered<br />at the source.</h2>
@@ -60,35 +48,15 @@ export function Capabilities() {
             and pickleball paddles — from raw material selection to final landed delivery, handled
             under one roof.
           </p>
-
-          <div className="hp-craft__list">
-            {capabilities.map((cap, i) => (
-              <motion.article
-                className="hp-cap"
-                key={cap.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.55, delay: i * 0.08, ease: EASE }}
-              >
-                <span className="hp-cap__num">0{i + 1}</span>
-                <div>
-                  <h3 className="hp-cap__title">{cap.title}</h3>
-                  <p className="hp-cap__desc">{cap.desc}</p>
-                  <div className="hp-cap__tags">
-                    {cap.tags.map((t) => <span className="hp-cap__tag" key={t}>{t}</span>)}
-                  </div>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-
-          <div className="hp-craft__foot">
-            <Link href="/capabilities" className="hp-btn hp-btn--ink">
-              Explore capabilities <span className="hp-btn__arrow" aria-hidden="true">→</span>
-            </Link>
-          </div>
         </motion.div>
+
+        <ScrollShowcase items={capabilities} tone="light" />
+
+        <div className="hp-craft__foot" style={{ marginTop: '2.5rem' }}>
+          <Link href="/manufacturing" className="hp-btn hp-btn--ink">
+            Explore capabilities <span className="hp-btn__arrow" aria-hidden="true">→</span>
+          </Link>
+        </div>
       </div>
     </section>
   );

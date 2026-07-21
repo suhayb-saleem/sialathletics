@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, Check } from 'lucide-react';
+import { Send, Check } from 'lucide-react';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -88,50 +88,28 @@ export function Contact() {
     }
   };
 
-  const contactRows = [
-    { Icon: MapPin, k: 'Factory HQ', v: 'Sialkot, Pakistan', href: undefined as string | undefined },
-    { Icon: Mail, k: 'Email inquiry', v: 'info@sialathletics.com', href: 'mailto:info@sialathletics.com' },
-    { Icon: Phone, k: 'Phone', v: '+92 335 5933174', href: 'tel:+923355933174' },
-  ];
-
   return (
-    <section className="hp-contact" id="contact">
-      <div className="hp-weave" aria-hidden="true" />
-      <div className="hp-shell hp-contact__inner">
-        {/* Left: intro + details */}
+    <section className="hp-contact hp-contact--paper" id="contact">
+      <div className="hp-weave--paper" aria-hidden="true" />
+      <div className="hp-grain--paper" aria-hidden="true" />
+      <div className="hp-shell hp-contact__inner hp-contact__inner--centered">
+        {/* Intro */}
         <motion.div
+          className="hp-contact__intro"
           initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-90px' }}
           transition={{ duration: 0.75, ease: EASE }}
         >
-          <span className="hp-eyebrow">Start the program</span>
+          <span className="hp-eyebrow hp-eyebrow--ink">Start the program</span>
           <h2 className="hp-display hp-contact__title">Get a factory<br />quote direct.</h2>
           <p className="hp-contact__copy">
             Connect with our product development team in Sialkot to arrange sample delivery,
             pricing sheets, and custom mold quotes.
           </p>
-          <div className="hp-contact__rows">
-            {contactRows.map(({ Icon, k, v, href }) => {
-              const inner = (
-                <>
-                  <Icon size={18} strokeWidth={1.6} />
-                  <div>
-                    <div className="hp-contact__row-k">{k}</div>
-                    <div className="hp-contact__row-v">{v}</div>
-                  </div>
-                </>
-              );
-              return href ? (
-                <a key={k} href={href} className="hp-contact__row">{inner}</a>
-              ) : (
-                <div key={k} className="hp-contact__row">{inner}</div>
-              );
-            })}
-          </div>
         </motion.div>
 
-        {/* Right: form */}
+        {/* Form */}
         <motion.div
           className="hp-form"
           initial={{ opacity: 0, y: 30 }}

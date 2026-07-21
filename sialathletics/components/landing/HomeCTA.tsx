@@ -6,7 +6,7 @@ import Link from 'next/link';
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 // Homepage-only light CTA band. The shared <CTABanner> is intentionally left
-// untouched so /about, /capabilities and /quality keep their existing design.
+// untouched so /about and /manufacturing keep their existing design.
 export default function HomeCTA() {
   const reduce = useReducedMotion();
   return (
@@ -29,7 +29,7 @@ export default function HomeCTA() {
             <Link href="/contact" className="hp-btn hp-btn--ink">
               Start an inquiry <span className="hp-btn__arrow" aria-hidden="true">→</span>
             </Link>
-            <Link href="/capabilities" className="hp-btn hp-btn--outline-ink">
+            <Link href="/manufacturing" className="hp-btn hp-btn--outline-ink">
               Explore capabilities <span className="hp-btn__arrow" aria-hidden="true">→</span>
             </Link>
           </div>

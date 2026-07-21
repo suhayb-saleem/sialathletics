@@ -308,7 +308,7 @@ export default function CataloguePage() {
             <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ivory-60)', lineHeight: 1.7 }}>
               Platform, spec, branding, sampling, and production quantities are all structured
               around your brand — see{' '}
-              <Link href="/capabilities" className="hp-link">how we manufacture</Link> or check{' '}
+              <Link href="/manufacturing" className="hp-link">how we manufacture</Link> or check{' '}
               <Link href="/faq" className="hp-link">common buyer questions</Link>.
             </p>
           </div>
@@ -323,8 +323,8 @@ export default function CataloguePage() {
         subtext="Tell us your platform, target price point, and volume — we'll respond within 24 hours."
         primaryLabel="Start an inquiry"
         primaryHref="/contact"
-        secondaryLabel="See our QC process"
-        secondaryHref="/quality"
+        secondaryLabel="Explore capabilities"
+        secondaryHref="/manufacturing"
         index="SIAL / 02"
       />
 

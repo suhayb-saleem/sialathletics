@@ -6,7 +6,7 @@ interface CTABannerProps { headline?: string; subtext?: string; primaryLabel?: s
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export default function CTABanner({ headline = 'Ready to build a better padel line?', subtext = 'Bring us your target player, price point, and design direction. We will shape the manufacturing program around it.', primaryLabel = 'Start an inquiry', primaryHref = '/contact', secondaryLabel = 'Explore capabilities', secondaryHref = '/capabilities', index = 'SIAL / 02' }: CTABannerProps) {
+export default function CTABanner({ headline = 'Ready to build a better padel line?', subtext = 'Bring us your target player, price point, and design direction. We will shape the manufacturing program around it.', primaryLabel = 'Start an inquiry', primaryHref = '/contact', secondaryLabel = 'Explore capabilities', secondaryHref = '/manufacturing', index = 'SIAL / 02' }: CTABannerProps) {
   const reduceMotion = useReducedMotion();
   return (
     <section className="hp-cta">

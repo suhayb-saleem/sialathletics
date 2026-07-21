@@ -5,7 +5,7 @@ import { generateInquiryPDF, InquiryData } from '@/lib/pdfGenerator';
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, company, country, productLine, orderVolume, message } = body;
+    const { name, email, phone, company, country, productLine, orderVolume, message } = body;
 
     // Validate required fields
     if (!name || !email || !company || !productLine || !orderVolume || !message) {
@@ -35,6 +35,7 @@ export async function POST(req: NextRequest) {
     const inquiryData: InquiryData = {
       name,
       email,
+      phone,
       company,
       country: country || 'N/A',
       productLine,
@@ -70,18 +71,22 @@ export async function POST(req: NextRequest) {
             <td style="padding: 10px;"><a href="mailto:${email}">${email}</a></td>
           </tr>
           <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
+            <td style="padding: 10px; font-weight: bold;">Contact Number:</td>
+            <td style="padding: 10px;">${phone || 'N/A'}</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eeeeee;">
             <td style="padding: 10px; font-weight: bold;">Company Name:</td>
             <td style="padding: 10px;">${company}</td>
           </tr>
-          <tr style="border-bottom: 1px solid #eeeeee;">
+          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
             <td style="padding: 10px; font-weight: bold;">Country / Region:</td>
             <td style="padding: 10px;">${country || 'N/A'}</td>
           </tr>
-          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
+          <tr style="border-bottom: 1px solid #eeeeee;">
             <td style="padding: 10px; font-weight: bold;">Product Line:</td>
             <td style="padding: 10px; text-transform: capitalize;">${productLine}</td>
           </tr>
-          <tr style="border-bottom: 1px solid #eeeeee;">
+          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
             <td style="padding: 10px; font-weight: bold;">Order Volume (MOQ):</td>
             <td style="padding: 10px;">${orderVolume}</td>
           </tr>

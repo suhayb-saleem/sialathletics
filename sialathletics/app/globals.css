@@ -209,6 +209,16 @@ a { color: inherit; }
   position: absolute; inset: 0; pointer-events: none;
   background-image: repeating-linear-gradient(115deg, transparent 0 6px, rgba(246,245,241,0.014) 6px 7px);
 }
+/* Paper/light-section variants — same grain, tuned to read on white instead of washing out */
+.hp-grain--paper {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.hp-weave--paper {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: repeating-linear-gradient(115deg, transparent 0 6px, rgba(20,17,15,0.022) 6px 7px);
+}
 
 /* ---- Contact info rows (icon + key/value) ---- */
 .hp-contact__rows { display: grid; gap: 0; border-top: 1px solid var(--hp-hair); }
