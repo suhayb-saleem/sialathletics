@@ -389,12 +389,18 @@ a { color: inherit; }
     radial-gradient(120% 90% at 92% 10%, rgba(226,27,45,0.07), transparent 48%);
 }
 @media (max-width: 940px) {
-  /* Full-bleed single-column image on mobile — the wash needs to sit solidly
-     over the whole text block, not just fade in from an edge. */
+  /* Full-bleed single-column image on mobile — the section-wide wash stays
+     faint everywhere; a halo hugging the actual text block (below) carries
+     the real contrast, so opacity tracks the text itself, not a guessed edge. */
   .hp-pagehero__scrim {
     background:
-      linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 44%, rgba(255,255,255,0.55) 68%, rgba(255,255,255,0.2) 100%),
+      linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.10) 100%),
       radial-gradient(120% 90% at 92% 10%, rgba(226,27,45,0.05), transparent 48%);
+  }
+  .hp-pagehero--media .hp-shell::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -1.25rem -1rem;
+    background: radial-gradient(120% 100% at 28% 35%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.6) 55%, rgba(255,255,255,0) 100%);
   }
 }
 .hp-pagehero__crumb { display: inline-flex; align-items: center; gap: .7rem; margin-bottom: 1.75rem; color: var(--hp-ink-45); font-family: var(--hp-body); font-size: .68rem; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }

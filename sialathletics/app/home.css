@@ -57,12 +57,23 @@
 @media (max-width: 940px) {
   .hp-hero { min-height: 92svh; padding-top: 7.5rem; }
   .hp-hero__title { font-size: clamp(3rem, 13vw, 5.5rem); }
-  /* Full-bleed single-column image on mobile — the wash needs to sit solidly
-     over the whole text block, not just fade in from an edge. */
+  /* Full-bleed single-column image on mobile — the section-wide wash stays
+     faint everywhere; a halo hugging the actual text block (below) carries
+     the real contrast, so opacity tracks the text itself, not a guessed edge. */
   .hp-hero__scrim {
     background:
-      linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.9) 44%, rgba(255,255,255,0.55) 68%, rgba(255,255,255,0.2) 100%),
+      linear-gradient(180deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.10) 100%),
       radial-gradient(120% 90% at 92% 16%, rgba(226,27,45,0.05), transparent 46%);
+  }
+  .hp-hero__inner::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -1.5rem -1.25rem;
+    background: radial-gradient(120% 100% at 28% 38%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.62) 55%, rgba(255,255,255,0) 100%);
+  }
+  .hp-hero__scroll::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -0.6rem -1rem;
+    background: radial-gradient(closest-side, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0) 100%);
   }
 }
 @media (max-width: 520px) {
