@@ -81,10 +81,10 @@ export default function ContactModal() {
         <div className="contact-modal" data-lenis-prevent>
           <motion.div
             className="contact-modal__scrim"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, ease: EASE }}
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(6px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            transition={{ duration: 0.4, ease: EASE }}
             onClick={close}
             aria-hidden="true"
           />
@@ -95,10 +95,10 @@ export default function ContactModal() {
             aria-modal="true"
             aria-labelledby="contact-modal-title"
             data-lenis-prevent
-            initial={{ opacity: 0, y: 24, scale: 0.98 }}
+            initial={{ opacity: 0, y: 20, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.98 }}
-            transition={{ duration: 0.32, ease: EASE }}
+            exit={{ opacity: 0, y: 14, scale: 0.97 }}
+            transition={{ duration: 0.45, delay: 0.06, ease: EASE }}
           >
             <button type="button" className="contact-modal__close" onClick={close} aria-label="Close contact form">
               <X size={18} />

@@ -425,7 +425,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 
 /* ---- Contact modal ---- */
 .contact-modal { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 1.5rem; overscroll-behavior: contain; }
-.contact-modal__scrim { position: absolute; inset: 0; background: rgba(8,9,10,0.72); backdrop-filter: blur(6px); }
+.contact-modal__scrim { position: absolute; inset: 0; background: rgba(8,9,10,0.72); }
 .contact-modal__panel {
   position: relative; z-index: 1; width: 100%; max-width: 560px; max-height: min(88vh, 780px);
   overflow-y: auto; overscroll-behavior: contain; background: var(--hp-paper); border: 1px solid var(--hp-ink-line);
