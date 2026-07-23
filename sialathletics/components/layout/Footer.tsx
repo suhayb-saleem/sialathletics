@@ -41,7 +41,7 @@ export default function Footer() {
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--white-60)', transition: 'color 0.2s ease' }}
+              <a href="https://www.linkedin.com/company/sial-athletics/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--white-60)', transition: 'color 0.2s ease' }}
                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}
                 aria-label="LinkedIn">
