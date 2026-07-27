@@ -4,13 +4,13 @@
 
 ## 1. Introduction
 
-Sia Athletics ("we," "us," or "our") operates the website sialathletics.com (the "Site"). This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our Site or interact with us, including visitors from the European Union, United States, and other regions.
+Sial Athletics ("we," "us," or "our") operates the website sialathletics.com (the "Site"). This Privacy Policy explains how we collect, use, disclose, and protect information when you visit our Site or interact with us, including visitors from the European Union, United States, and other regions.
 
 By using our Site, you agree to the collection and use of information in accordance with this policy.
 
 ## 2. Who We Are
 
-Sia Athletics is a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan.
+Sial Athletics is a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan.
 
 **Contact for privacy matters:** info@sialathletics.com
 
@@ -104,6 +104,6 @@ We may update this Privacy Policy from time to time. The "Last Updated" date at 
 
 If you have questions about this Privacy Policy or how your data is handled, contact us at:
 
-**Sia Athletics**
+**Sial Athletics**
 Email: info@sialathletics.com
 Sialkot, Pakistan

@@ -138,7 +138,7 @@ export async function POST(req: NextRequest) {
     // 2. Send notification email to company inbox
     console.log('[Inquiry API] Dispatching notification to company...');
     const { error: salesError } = await resend.emails.send({
-      from: 'Sia Athletics <sales@sialathletics.com>',
+      from: 'Sial Athletics <sales@sialathletics.com>',
       to: salesNotificationEmail,
       replyTo: email,
       subject: `New B2B Lead: ${company} — ${productLine}`,
@@ -157,7 +157,7 @@ export async function POST(req: NextRequest) {
     // 3. Send confirmation email to the client
     console.log('[Inquiry API] Dispatching confirmation to client...');
     const { error: clientError } = await resend.emails.send({
-      from: 'Sia Athletics <sales@sialathletics.com>',
+      from: 'Sial Athletics <sales@sialathletics.com>',
       to: email,
       replyTo: companyEmail,
       subject: `Your Inquiry Report & OEM Specifications — SIAL Athletics`,

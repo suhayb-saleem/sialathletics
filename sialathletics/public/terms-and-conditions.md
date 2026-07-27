@@ -4,7 +4,7 @@
 
 ## 1. Introduction
 
-Welcome to sialathletics.com (the "Site"), operated by Sia Athletics ("we," "us," or "our"), a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan. By accessing or using this Site, you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree, please do not use the Site.
+Welcome to sialathletics.com (the "Site"), operated by Sial Athletics ("we," "us," or "our"), a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan. By accessing or using this Site, you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree, please do not use the Site.
 
 ## 2. Purpose of This Site
 
@@ -12,11 +12,11 @@ This Site is provided for informational and business-to-business (B2B) purposes,
 
 ## 3. No Binding Offer
 
-Information presented on this Site — including product specifications, catalog content, pricing indications (if any), and capabilities — is for general informational purposes only and does not constitute a legally binding offer to sell. Any quote, proposal, or order is subject to a separate written agreement between Sia Athletics and the requesting party, including agreed specifications, pricing, minimum order quantities, payment terms, and delivery terms.
+Information presented on this Site — including product specifications, catalog content, pricing indications (if any), and capabilities — is for general informational purposes only and does not constitute a legally binding offer to sell. Any quote, proposal, or order is subject to a separate written agreement between Sial Athletics and the requesting party, including agreed specifications, pricing, minimum order quantities, payment terms, and delivery terms.
 
 ## 4. Intellectual Property
 
-All content on this Site — including but not limited to text, images, graphics, logos, product designs, animations, and layout — is the property of Sia Athletics or its licensors and is protected by applicable copyright, trademark, and intellectual property laws.
+All content on this Site — including but not limited to text, images, graphics, logos, product designs, animations, and layout — is the property of Sial Athletics or its licensors and is protected by applicable copyright, trademark, and intellectual property laws.
 
 You may not reproduce, distribute, modify, publicly display, or create derivative works from any content on this Site without our prior written consent, except for the purpose of reasonable business evaluation (e.g., saving a page to review internally before contacting us).
 
@@ -26,7 +26,7 @@ We manufacture padel rackets and pickleball paddles, including custom molds, spe
 
 ## 6. Limitation of Liability
 
-To the fullest extent permitted by applicable law, Sia Athletics shall not be liable for any indirect, incidental, special, or consequential damages arising from:
+To the fullest extent permitted by applicable law, Sial Athletics shall not be liable for any indirect, incidental, special, or consequential damages arising from:
 - Your use of, or inability to use, this Site
 - Any reliance placed on information presented on this Site prior to a formal agreement being executed
 - Errors, inaccuracies, or omissions in Site content
@@ -60,5 +60,5 @@ We reserve the right to update or modify these Terms at any time without prior n
 
 If you have any questions about these Terms, please contact us at:
 
-**Sia Athletics**
+**Sial Athletics**
 Email: info@sialathletics.com
