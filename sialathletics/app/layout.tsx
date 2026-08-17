@@ -4,6 +4,7 @@ import { SmoothScrollProvider } from '@/lib/lenis';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import CookieConsent from '@/components/layout/CookieConsent';
+import WhatsAppButton from '@/components/layout/WhatsAppButton';
 import { ContactModalProvider } from '@/lib/contactModal';
 import ContactModal from '@/components/contact/ContactModal';
 import ContactModalTimer from '@/components/contact/ContactModalTimer';
@@ -53,5 +54,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${spaceGrotesk.variable} ${archivo.variable} antialiased`}><body className="min-h-screen flex flex-col"><ContactModalProvider><SmoothScrollProvider><Navbar /><div className="flex-1">{children}</div><Footer /><CookieConsent /></SmoothScrollProvider><ContactModal /><ContactModalTimer /></ContactModalProvider></body></html>;
+  return <html lang="en" className={`${spaceGrotesk.variable} ${archivo.variable} antialiased`}><body className="min-h-screen flex flex-col"><ContactModalProvider><SmoothScrollProvider><Navbar /><div className="flex-1">{children}</div><Footer /><CookieConsent /></SmoothScrollProvider><ContactModal /><ContactModalTimer /><WhatsAppButton /></ContactModalProvider></body></html>;
 }
