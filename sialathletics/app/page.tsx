@@ -36,7 +36,10 @@ const organizationJsonLd = {
     telephone: '+92-300-5933179',
     availableLanguage: ['English'],
   },
-  sameAs: ['https://www.linkedin.com/company/sial-athletics/'],
+  sameAs: [
+    'https://www.linkedin.com/company/sial-athletics/',
+    'https://www.instagram.com/sial_athletics/',
+  ],
   foundingDate: '2026',
 };
 
