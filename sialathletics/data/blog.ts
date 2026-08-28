@@ -3,7 +3,14 @@ import type { ContentBlock } from '@/components/content/ContentBlocks';
 // Blog posts. Every specification quoted here (MOQs, lead times, carbon
 // grades, EVA hardness, core thickness, QC sequence, shipping terms) comes
 // from data/faq.ts or the catalogue platform data — nothing is invented.
-// Images are our own factory and product photography from /public/images.
+//
+// Imagery is mostly licensed stock under /images/blog (Unsplash licence:
+// free for commercial use, no attribution required), kept separate from the
+// photography used elsewhere on the site. Five slots deliberately still use
+// our own images because no stock equivalent carries the same information:
+// the labelled carbon-grade, EVA-density and texture comparisons, the real
+// deflection test rig, and the padel shape render. Alt text must describe
+// what a photo actually shows — do not imply stock photos are our facility.
 //
 // All posts share one publication date because the library was published in
 // one go. Do not back-date new posts; set the date they actually go live.
@@ -36,8 +43,8 @@ export const posts: BlogPost[] = [
     summary:
       'A city of roughly a million people supplies sports equipment to brands worldwide. The reason is accumulated skill, not cheap labour.',
     hero: {
-      src: '/images/warehouse.png',
-      alt: 'SIAL Athletics factory exterior in Sialkot, Pakistan at sunset with a branded delivery truck',
+      src: '/images/blog/factory-floor.jpg',
+      alt: 'Worker operating press machinery on an industrial factory production floor',
     },
     blocks: [
       {
@@ -54,10 +61,10 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/warehouse_interior.png',
-        alt: 'Hydraulic presses and work tables inside the SIAL Athletics factory, with finished padel rackets stacked for the next production stage',
+        src: '/images/blog/container-port.jpg',
+        alt: 'Container terminal at dusk with stacked shipping containers and gantry cranes',
         caption:
-          'Our production floor. The presses on the left do the molding; the tables to the right are where frames are staged between stages.',
+          'Export volume is part of why the supporting trades cluster in one city — freight forwarding included.',
       },
       {
         type: 'p',
@@ -90,8 +97,8 @@ export const posts: BlogPost[] = [
     summary:
       'The K number counts filaments per tow, not quality. Higher is not automatically better — it changes stiffness, feel and price.',
     hero: {
-      src: '/images/manufacturing/carbon-types.png',
-      alt: 'Side-by-side comparison of 3K, 12K, 18K and 24K carbon fiber weave patterns',
+      src: '/images/blog/carbon-weave.jpg',
+      alt: 'Close-up of a woven carbon fiber composite panel showing the weave pattern',
     },
     blocks: [
       {
@@ -178,9 +185,9 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/manufacturing/product-prototyping.png',
-        alt: 'Finished padel racket prototypes and a precision mold on the SIAL Athletics factory floor',
-        caption: 'Prototypes and the mold they came from. A new shape reaches physical prototype in 3-4 weeks.',
+        src: '/images/blog/molding-workshop.jpg',
+        alt: 'Molding machinery and material hoppers inside a composites workshop',
+        caption: 'Molding equipment of the kind a new shape runs on. A new mold reaches physical prototype in 3-4 weeks.',
       },
       {
         type: 'p',
@@ -223,9 +230,9 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/manufacturing/eva-core.png',
-        alt: 'Cross-section detail of three EVA foam core densities showing the difference in cell structure',
-        caption: 'The three core options, showing the difference in cell structure between densities.',
+        src: '/images/blog/molding-workshop.jpg',
+        alt: 'Material hoppers and processing machinery in a composites workshop',
+        caption: 'Core stock is cut and bonded in house, so density is specified per production run.',
       },
       {
         type: 'list',
@@ -262,8 +269,8 @@ export const posts: BlogPost[] = [
     summary:
       'Core thickness is the biggest single influence on how a paddle feels. Thinner is faster, thicker is more controlled.',
     hero: {
-      src: '/images/products/pickleball_backgroundless.png',
-      alt: 'Carbon fiber pickleball paddle manufactured by SIAL Athletics',
+      src: '/images/blog/pickleball-paddles.jpg',
+      alt: 'Two pickleball paddles leaning against a court net with three yellow balls',
     },
     blocks: [
       {
@@ -288,9 +295,9 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/manufacturing/packaging.png',
-        alt: 'Finished paddle being bubble-wrapped and boxed for shipment at the SIAL Athletics facility',
-        caption: 'Finished paddles are individually protected before being packed into export cartons.',
+        src: '/images/blog/container-port.jpg',
+        alt: 'Stacked shipping containers and cranes at a container port',
+        caption: 'Finished paddles are individually protected, then packed into export-grade cartons for freight.',
       },
       {
         type: 'p',
@@ -319,8 +326,8 @@ export const posts: BlogPost[] = [
     summary:
       'Texture generates spin by gripping the ball. How it is applied determines whether it still works after a season of play.',
     hero: {
-      src: '/images/manufacturing/textures.png',
-      alt: 'Comparison of 3D, matte, glossy and sand-paint surface finish options on padel rackets',
+      src: '/images/blog/carbon-weave.jpg',
+      alt: 'Macro detail of a woven carbon composite surface showing its raised texture',
     },
     blocks: [
       {
@@ -377,8 +384,8 @@ export const posts: BlogPost[] = [
     summary:
       'Every batch goes through the same fixed sequence, and every order ships with a QC report. Here is what is measured and why.',
     hero: {
-      src: '/images/manufacturing/quality-control.png',
-      alt: 'Padel racket clamped in a deflection testing rig during quality control at SIAL Athletics',
+      src: '/images/blog/qc-caliper.jpg',
+      alt: 'Technician measuring a machined part with a digital caliper beside an inspection sheet',
     },
     blocks: [
       {
@@ -409,9 +416,9 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/holemachine.png',
-        alt: 'Precision drilling machine boring the hole pattern into the face of a padel racket',
-        caption: 'Hole drilling. Position and finish here affect both weight distribution and structural integrity.',
+        src: '/images/blog/factory-floor.jpg',
+        alt: 'Worker operating production machinery on a factory floor',
+        caption: 'Inspection sits inside the production line rather than only at the end of it.',
       },
       {
         type: 'p',
@@ -440,8 +447,8 @@ export const posts: BlogPost[] = [
     summary:
       'Most sourcing problems are visible before you pay a deposit. These are the questions that surface them.',
     hero: {
-      src: '/images/rack.png',
-      alt: 'Rows of finished padel rackets staged on a factory rack at SIAL Athletics',
+      src: '/images/blog/factory-floor.jpg',
+      alt: 'Industrial factory floor with a worker operating press machinery',
     },
     blocks: [
       {
@@ -466,9 +473,9 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/forklift.png',
-        alt: 'Forklift loading export cartons at the SIAL Athletics facility in Sialkot',
-        caption: 'Export cartons being loaded. Ask any supplier who handles documentation and at which point risk transfers.',
+        src: '/images/blog/container-port.jpg',
+        alt: 'Shipping containers stacked at an export terminal with gantry cranes',
+        caption: 'Ask any supplier who handles export documentation, and at which point risk transfers to you.',
       },
       {
         type: 'p',
