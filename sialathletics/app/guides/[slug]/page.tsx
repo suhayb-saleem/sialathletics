@@ -5,6 +5,7 @@ import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
 import { nestedBreadcrumbJsonLd } from '@/lib/seo';
 import { Block, ContentBlockStyles } from '@/components/content/ContentBlocks';
+import PreferredSource from '@/components/seo/PreferredSource';
 import { guides, getGuide } from '@/data/guides';
 
 // Prerender every guide at build time so they are static HTML for crawlers.
@@ -112,6 +113,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               </Link>
             ))}
           </div>
+
+          <PreferredSource />
         </div>
       </article>
 
