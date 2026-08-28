@@ -12,3 +12,20 @@ export function breadcrumbJsonLd(crumb: string, path: string) {
     ],
   };
 }
+
+/** Breadcrumb for a page nested one level deeper: Home / Guides / <title>. */
+export function nestedBreadcrumbJsonLd(
+
+  parent: { name: string; path: string },
+  child: { name: string; path: string },
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE },
+      { '@type': 'ListItem', position: 2, name: parent.name, item: `${BASE}${parent.path}` },
+      { '@type': 'ListItem', position: 3, name: child.name, item: `${BASE}${child.path}` },
+    ],
+  };
+}

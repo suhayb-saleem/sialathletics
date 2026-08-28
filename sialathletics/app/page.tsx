@@ -6,11 +6,12 @@ import { Range } from '@/components/landing/ProductTeaser';
 import { Capabilities } from '@/components/landing/Capabilities';
 import WhoWeWorkWith from '@/components/landing/WhoWeWorkWith';
 import GlobalReach from '@/components/landing/GlobalReach';
+import FactoryIntro from '@/components/landing/FactoryIntro';
 import HomeCTA from '@/components/landing/HomeCTA';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: { absolute: 'SIAL Athletics — Padel & Pickleball Paddle OEM Manufacturer' },
+  title: { absolute: 'Padel Racket & Pickleball Paddle Manufacturer — SIAL Athletics' },
   description: 'Factory-direct padel racket and pickleball paddle manufacturing from Sialkot, Pakistan. OEM/ODM private-label programs, low MOQs for brands and distributors.',
   alternates: { canonical: '/' },
 };
@@ -32,8 +33,10 @@ const organizationJsonLd = {
     '@type': 'ContactPoint',
     contactType: 'sales',
     email: 'info@sialathletics.com',
+    telephone: '+92-300-5933179',
     availableLanguage: ['English'],
   },
+  sameAs: ['https://www.linkedin.com/company/sial-athletics/'],
   foundingDate: '2026',
 };
 
@@ -47,6 +50,7 @@ export default function Home() {
       <Capabilities />
       <WhoWeWorkWith />
       <GlobalReach />
+      <FactoryIntro />
       <HomeCTA />
     </div>
   );
