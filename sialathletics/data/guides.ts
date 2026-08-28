@@ -1,15 +1,12 @@
+import type { ContentBlock } from '@/components/content/ContentBlocks';
+
 // Buyer-education guides. Every figure here comes from the specs already
 // published elsewhere on this site (data/faq.ts and the catalogue platform
 // data) — nothing is invented. If a spec changes, update it in both places.
 
-export type GuideBlock =
-  | { type: 'p'; text: string }
-  | { type: 'list'; items: string[] }
-  | { type: 'table'; head: [string, string]; rows: [string, string][] };
-
 export type GuideSection = {
   h: string;
-  blocks: GuideBlock[];
+  blocks: ContentBlock[];
 };
 
 export type Guide = {
@@ -68,7 +65,6 @@ export const guides: Guide[] = [
         blocks: [
           {
             type: 'table',
-            head: ['', 'OEM / ODM at a glance'],
             rows: [
               ['Who designs it', 'OEM: you. ODM: you pick an existing shape and specify the build.'],
               ['Tooling cost', 'OEM: new mold may be required. ODM: none — the mold exists.'],
@@ -201,7 +197,6 @@ export const guides: Guide[] = [
         blocks: [
           {
             type: 'table',
-            head: ['Specification', 'Available range'],
             rows: [
               ['Weight', '350-380g'],
               ['Balance', '260-275mm (low, mid, or high)'],

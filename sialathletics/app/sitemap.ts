@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { guides } from '@/data/guides';
+import { posts } from '@/data/blog';
 
 const BASE = 'https://www.sialathletics.com';
 
@@ -14,6 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...guides.map((g) => ({
       url: `${BASE}/guides/${g.slug}`,
       lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    { url: `${BASE}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
+    ...posts.map((p) => ({
+      url: `${BASE}/blog/${p.slug}`,
+      lastModified: new Date(p.date),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),

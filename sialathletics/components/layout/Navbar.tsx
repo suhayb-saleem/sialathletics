@@ -19,6 +19,7 @@ const aboutGroup = {
     { label: 'Manufacturing', href: '/manufacturing' },
     { label: 'About SIAL Athletics', href: '/about' },
     { label: 'Guides', href: '/guides' },
+    { label: 'Blog', href: '/blog' },
     { label: 'FAQ', href: '/faq' },
   ],
 };

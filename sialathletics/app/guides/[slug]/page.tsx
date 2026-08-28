@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
 import { nestedBreadcrumbJsonLd } from '@/lib/seo';
-import { guides, getGuide, type GuideBlock } from '@/data/guides';
+import { Block, ContentBlockStyles } from '@/components/content/ContentBlocks';
+import { guides, getGuide } from '@/data/guides';
 
 // Prerender every guide at build time so they are static HTML for crawlers.
 export function generateStaticParams() {
@@ -20,38 +21,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: guide.metaDescription,
     alternates: { canonical: `/guides/${guide.slug}` },
   };
-}
-
-function Block({ block }: { block: GuideBlock }) {
-  if (block.type === 'p') {
-    return <p className="guide-body__p">{block.text}</p>;
-  }
-  if (block.type === 'list') {
-    return (
-      <ul className="guide-body__list">
-        {block.items.map((item) => (
-          <li key={item}>
-            <span aria-hidden="true">—</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-  return (
-    <div className="guide-body__table-wrap">
-      <table className="guide-body__table">
-        <tbody>
-          {block.rows.map(([k, v]) => (
-            <tr key={k}>
-              <th scope="row">{k}</th>
-              <td>{v}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
 }
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -156,62 +125,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
         index="SIAL / 07"
       />
 
-      <style>{`
-        .guide-body__p {
-          font-family: var(--hp-body);
-          font-size: 0.95rem;
-          line-height: 1.75;
-          color: var(--hp-ink-70);
-          margin: 0 0 1rem;
-        }
-        .guide-body__list {
-          list-style: none;
-          margin: 0 0 1.2rem;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 0.65rem;
-        }
-        .guide-body__list li {
-          display: flex;
-          gap: 0.7rem;
-          align-items: flex-start;
-          font-family: var(--hp-body);
-          font-size: 0.92rem;
-          line-height: 1.65;
-          color: var(--hp-ink-70);
-        }
-        .guide-body__list li > span:first-child {
-          color: var(--hp-red);
-          font-weight: 800;
-          flex-shrink: 0;
-        }
-        .guide-body__table-wrap { overflow-x: auto; margin: 0 0 1.2rem; }
-        .guide-body__table {
-          width: 100%;
-          border-collapse: collapse;
-          font-family: var(--hp-body);
-          font-size: 0.9rem;
-        }
-        .guide-body__table th,
-        .guide-body__table td {
-          text-align: left;
-          vertical-align: top;
-          padding: 0.85rem 1rem 0.85rem 0;
-          border-bottom: 1px solid var(--hp-ink-line);
-          line-height: 1.6;
-        }
-        .guide-body__table th {
-          width: 34%;
-          color: var(--hp-ink);
-          font-weight: 700;
-          padding-right: 1.5rem;
-        }
-        .guide-body__table td { color: var(--hp-ink-70); }
-        @media (max-width: 560px) {
-          .guide-body__table th { width: 40%; }
-        }
-      `}</style>
+      <ContentBlockStyles />
     </main>
   );
 }
