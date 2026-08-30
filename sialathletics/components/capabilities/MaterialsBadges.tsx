@@ -28,7 +28,7 @@ const materialFamilies = [
     tab: 'Surface Texture',
     title: 'Surface Texture',
     tag: 'The spin',
-    desc: 'Texture is molded into the frame, so it never wears off.',
+    desc: '3D texture is molded into the frame and does not wear off. Sand finishes grip harder when new but soften with play.',
     image: '/images/manufacturing/textures.png',
     alt: 'Comparison of 3D, matte, glossy, and sand-paint surface finish options',
   },

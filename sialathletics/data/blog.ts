@@ -4,13 +4,12 @@ import type { ContentBlock } from '@/components/content/ContentBlocks';
 // grades, EVA hardness, core thickness, QC sequence, shipping terms) comes
 // from data/faq.ts or the catalogue platform data — nothing is invented.
 //
-// Imagery is mostly licensed stock under /images/blog (Unsplash licence:
-// free for commercial use, no attribution required), kept separate from the
-// photography used elsewhere on the site. Five slots deliberately still use
-// our own images because no stock equivalent carries the same information:
-// the labelled carbon-grade, EVA-density and texture comparisons, the real
-// deflection test rig, and the padel shape render. Alt text must describe
-// what a photo actually shows — do not imply stock photos are our facility.
+// Imagery comes only from /images/blog — supplied factory and diagram
+// photography plus Unsplash-licensed stock (free for commercial use, no
+// attribution required). Nothing here may reuse an image that appears on
+// another page of the site, and no post may use the same image twice.
+// Alt text must describe what a photo actually shows: several of these are
+// stock, so never imply they are our facility.
 //
 // All posts share one publication date because the library was published in
 // one go. Do not back-date new posts; set the date they actually go live.
@@ -43,14 +42,16 @@ export const posts: BlogPost[] = [
     summary:
       'A city of roughly a million people supplies sports equipment to brands worldwide. The reason is accumulated skill, not cheap labour.',
     hero: {
-      src: '/images/blog/factory-floor.jpg',
-      alt: 'Worker operating press machinery on an industrial factory production floor',
+      src: '/images/blog/sialkot-factory-floor.png',
+      alt: 'Workers finishing sports goods across a large Sialkot factory floor',
     },
     blocks: [
       {
         type: 'p',
         text: 'If you have sourced sports equipment before, you have probably been quoted by a company in Sialkot without necessarily knowing where it was. The city sits in the north-east of Punjab, Pakistan, and it has been making sporting goods for well over a century — long enough that the skill base, not the labour cost, is the reason it is still the default answer for a lot of equipment categories.',
       },
+
+      { type: 'h2', text: 'Why the supporting trades matter' },
       {
         type: 'p',
         text: 'That history matters to a buyer for one practical reason: the supporting trades already exist. Mold makers, composite specialists, grip and packaging suppliers, and freight forwarders who understand sports exports are all within driving distance of each other. A factory here is not assembling parts shipped in from three countries.',
@@ -61,19 +62,25 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/blog/container-port.jpg',
-        alt: 'Container terminal at dusk with stacked shipping containers and gantry cranes',
+        src: '/images/blog/racket-assembly.png',
+        alt: 'Workers hand-finishing padel rackets at benches in a Sialkot workshop',
         caption:
-          'Export volume is part of why the supporting trades cluster in one city — freight forwarding included.',
+          'Hand skill on the finishing steps, with tooling and presses doing the structural work.',
       },
+
+      { type: 'h2', text: 'What it means for your order' },
       {
         type: 'p',
         text: 'What this means when you place an order is mostly about flexibility. Because the tooling and the skilled steps are in one building, changing a spec between samples is a conversation rather than a re-quote from a different supplier. It is also why minimums here can be low — ours are 24 units for padel rackets and 50 for pickleball paddles — where a factory built purely around high-volume automation would need far more to justify a run.',
       },
+
+      { type: 'h2', text: 'The catch: not every supplier manufactures' },
       {
         type: 'p',
         text: 'The honest counterpoint: Sialkot has a very wide range of suppliers, and not all of them manufacture. A significant number of companies quoting from the city are trading houses that subcontract production elsewhere. That is not automatically a problem, but it does change who is accountable when a batch is wrong. It is worth asking directly whether the company you are speaking to owns the factory floor.',
       },
+
+      { type: 'h2', text: 'Export logistics' },
       {
         type: 'p',
         text: 'The other thing worth knowing is that export logistics from here are routine. We ship FOB Karachi by default, with EXW Sialkot available if you would rather arrange your own pickup, and we handle the export documentation either way.',
@@ -237,9 +244,9 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/manufacturing/eva-core.png',
-        alt: 'Comparison of black high-density EVA, soft EVA and memory high-rebound EVA core foams',
-        caption: 'The three core options, showing the difference in cell structure between densities.',
+        src: '/images/blog/racket-assembly.png',
+        alt: 'Workers hand-finishing padel rackets at benches in a Sialkot workshop',
+        caption: 'Cores are cut and bonded in house, so density is set per production run.',
       },
 
       { type: 'h2', text: 'Surface texture sets spin' },
@@ -249,9 +256,9 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/manufacturing/textures.png',
-        alt: 'Comparison of 3D, matte, glossy and sand-paint surface finish options on padel rackets',
-        caption: 'Texture options side by side. All are molded into the frame rather than sprayed on.',
+        src: '/images/blog/padel-rackets-court.png',
+        alt: 'Two unbranded carbon padel rackets and balls resting against the net on a blue court',
+        caption: 'Shape, face, core and texture together decide who the finished racket is for.',
       },
 
       { type: 'h2', text: 'Weight, balance and finishing' },
@@ -400,16 +407,20 @@ export const posts: BlogPost[] = [
         type: 'p',
         text: 'The K in 3K carbon stands for thousand. It is the number of individual filaments bundled into each tow — the strand that gets woven into the fabric. 3K means roughly 3,000 filaments per tow, 24K means roughly 24,000. That is the whole definition. It is a measure of construction, not a grade of quality, which is the single most common misunderstanding when brands are specifying a first racket.',
       },
+
+      { type: 'h2', text: 'Why the weave looks different' },
       {
         type: 'p',
         text: 'Because a 24K tow is much thicker than a 3K tow, the weave it produces is visually larger — the big chequerboard pattern you see on premium rackets. A 3K weave is tight and fine. That difference in appearance is why the number ended up being used as a marketing signal, and why buyers often assume 24K is simply the better option.',
       },
       {
         type: 'image',
-        src: '/images/manufacturing/carbon-types.png',
-        alt: 'Macro detail of 3K, 12K, 18K and 24K carbon fiber weaves shown next to each other for comparison',
-        caption: 'The same four grades side by side. The visual difference is tow thickness, not material quality.',
+        src: '/images/blog/carbon-grades-comparison.png',
+        alt: 'Labelled comparison of 3K, 12K, 18K and 24K carbon fibre weaves showing how tow thickness changes the pattern',
+        caption: 'The four grades side by side. The visual difference is tow thickness, not material quality.',
       },
+
+      { type: 'h2', text: 'What changes between grades' },
       {
         type: 'p',
         text: 'What actually changes between grades, in practice:',
@@ -422,14 +433,20 @@ export const posts: BlogPost[] = [
           '24K — the stiffest and most responsive, with the large weave pattern buyers associate with premium product. Best suited to competition-tier rackets aimed at advanced players.',
         ],
       },
+
+      { type: 'h2', text: 'Why stiffer is not always better' },
       {
         type: 'p',
         text: 'A stiffer face transfers more energy back into the ball, which reads as power. It also transmits more vibration to the arm. This is why a 24K face is not the right answer for every product: on a racket aimed at club players, that stiffness can make the racket feel harsh and unforgiving, and the larger sweet spot they actually need gets harder to deliver.',
       },
+
+      { type: 'h2', text: 'Layup matters as much as grade' },
       {
         type: 'p',
         text: 'Grade is also not the only lever. Fiberglass-carbon hybrid and Kevlar-carbon blend layups are both available, and they change the feel in ways a straight carbon grade cannot — fiberglass adds flex and returns more power off the face, Kevlar adds damping. If you have a specific feel or a specific price target in mind, the layup is often a better place to solve it than the K number.',
       },
+
+      { type: 'h2', text: 'Specify the face and core together' },
       {
         type: 'p',
         text: 'One practical note on specifying: the face grade interacts with the core. A stiff 24K face over a soft 13-15° EVA core plays very differently from the same face over black high-density EVA. Decide the two together rather than in sequence.',
@@ -453,14 +470,16 @@ export const posts: BlogPost[] = [
     summary:
       'Shape decides where the sweet spot sits and how the weight swings. Pick it based on who the racket is for, not on what looks premium.',
     hero: {
-      src: '/images/products/teardrop_padel.png',
-      alt: 'Teardrop-shaped carbon fiber padel racket manufactured by SIAL Athletics',
+      src: '/images/blog/padel-shapes-balance.png',
+      alt: 'Diamond, hybrid, teardrop and round padel rackets compared with their balance points marked',
     },
     blocks: [
       {
         type: 'p',
         text: 'Shape is the first decision in a padel racket spec because it defines who the racket is for. Everything after it — carbon grade, core, texture — adjusts the character. Shape sets it.',
       },
+
+      { type: 'h2', text: 'How shape changes the swing' },
       {
         type: 'p',
         text: 'The mechanism is simple. Moving material toward the head raises the balance point and the sweet spot, which increases power and reduces forgiveness. Moving it toward the handle does the opposite. The three standard shapes are three positions along that trade-off.',
@@ -474,6 +493,8 @@ export const posts: BlogPost[] = [
           ['Hybrid', 'A blended geometry developed around a specific play profile, anywhere between round and diamond.'],
         ],
       },
+
+      { type: 'h2', text: 'Which shape to launch with' },
       {
         type: 'p',
         text: 'For a first product line, teardrop is usually the right starting point. It is the shape most players can use, which makes it the safest single SKU if you are only launching one. Round is the natural second addition if you sell into clubs and academies, where beginners and improvers dominate. Diamond is the one to add last — it sells to a narrower, more advanced audience, and it is the shape most likely to sit on a shelf if your customer base is not there yet.',
@@ -482,12 +503,16 @@ export const posts: BlogPost[] = [
         type: 'image',
         src: '/images/blog/molding-workshop.jpg',
         alt: 'Molding machinery and material hoppers inside a composites workshop',
-        caption: 'Molding equipment of the kind a new shape runs on. A new mold reaches physical prototype in 3-4 weeks.',
+        caption: 'A new shape needs its own mold. Prototype in 3-4 weeks.',
       },
+
+      { type: 'h2', text: 'Weight and balance' },
       {
         type: 'p',
         text: 'Weight and balance are specified separately from shape, and they can shift the character within a shape. Our range is 350-380g with a balance point from 260-275mm. A teardrop specified at 350g with a low balance will play more like a control racket than a heavy round one will. If you are trying to hit a particular feel, these two numbers are the fine adjustment.',
       },
+
+      { type: 'h2', text: 'When you need a custom mold' },
       {
         type: 'p',
         text: 'If none of the three standard shapes fits what you are trying to build, a custom mold can be developed. That is the point at which you move from an ODM programme to a genuine OEM one — you own the geometry, and no one else can order it.',
@@ -511,23 +536,25 @@ export const posts: BlogPost[] = [
     summary:
       'The core is what the player actually feels at contact. Three EVA options cover most requirements, and the choice is about comfort as much as power.',
     hero: {
-      src: '/images/manufacturing/eva-core.png',
-      alt: 'Comparison of black high-density EVA, soft EVA and memory high-rebound EVA core foams',
+      src: '/images/blog/available-materials.jpg',
+      alt: 'Chart of available racket materials including EVA soft core foam, fiberglass, carbon and Kevlar',
     },
     blocks: [
       {
         type: 'p',
         text: 'The face gets the attention, but the core is what the player feels. It sits between the two carbon faces and determines how long the ball stays on the racket, how much energy comes back, and how much shock reaches the arm over a two-hour match.',
       },
+
+      { type: 'h2', text: 'How EVA density works' },
       {
         type: 'p',
         text: 'EVA — ethylene-vinyl acetate — is a closed-cell foam. Denser foam compresses less, returns energy faster, and feels firmer. Softer foam compresses more, holds the ball fractionally longer, and feels more controlled. That is the entire trade-off, and every core option is a point on it.',
       },
       {
         type: 'image',
-        src: '/images/blog/molding-workshop.jpg',
-        alt: 'Material hoppers and processing machinery in a composites workshop',
-        caption: 'Core stock is cut and bonded in house, so density is specified per production run.',
+        src: '/images/blog/carbon-fabric-types.jpg',
+        alt: 'Chart of carbon and composite fabric types including 3K, 12K, 18K, Kevlar and titanium carbon weaves',
+        caption: 'Core and face are specified together — the same core feels different under each of these faces.',
       },
       {
         type: 'list',
@@ -537,10 +564,14 @@ export const posts: BlogPost[] = [
           'Memory / high-rebound EVA — recovers its shape quickly for a livelier response, and stays consistent across a long session.',
         ],
       },
+
+      { type: 'h2', text: 'Comfort is a commercial decision' },
       {
         type: 'p',
         text: 'Comfort is the factor most often underweighted when brands spec a first line. Padel has a large recreational player base, many of whom play several times a week and are prone to elbow problems. A softer core is frequently the better commercial decision even when a firmer one would test better with advanced players, simply because it suits more of the people actually buying.',
       },
+
+      { type: 'h2', text: 'Specify core and face together' },
       {
         type: 'p',
         text: 'Core and face should be chosen together. A soft core under a stiff 24K face produces a very different racket from the same core under 3K, and specifying them separately is how brands end up with a sample that technically matches the brief but does not feel like what they imagined.',
@@ -572,6 +603,8 @@ export const posts: BlogPost[] = [
         type: 'p',
         text: 'A pickleball paddle is a face material bonded to a polypropylene honeycomb core. The face sets spin and surface behaviour; the core thickness sets feel. Of the two, core thickness is the specification players notice most immediately.',
       },
+
+      { type: 'h2', text: 'How core thickness changes feel' },
       {
         type: 'p',
         text: 'The honeycomb structure absorbs energy on impact and returns it. A thicker core has more material to compress, so it absorbs more and returns less — which produces a softer, more controlled response and a slightly larger effective sweet spot. A thinner core compresses less and returns more, which reads as pop.',
@@ -584,6 +617,8 @@ export const posts: BlogPost[] = [
           ['16mm', 'The thickest. More dwell time and control, best for the soft game and placement.'],
         ],
       },
+
+      { type: 'h2', text: 'Which thicknesses to carry' },
       {
         type: 'p',
         text: 'The market has moved toward thicker cores over the last few years as the soft game has become more central to how pickleball is played at club level. If you are building a range and can only carry two, 16mm and 14mm cover more of the market than 13mm and 16mm would.',
@@ -592,12 +627,16 @@ export const posts: BlogPost[] = [
         type: 'image',
         src: '/images/blog/container-port.jpg',
         alt: 'Stacked shipping containers and cranes at a container port',
-        caption: 'Finished paddles are individually protected, then packed into export-grade cartons for freight.',
+        caption: 'Paddles are individually protected, then packed into export-grade cartons for freight.',
       },
+
+      { type: 'h2', text: 'Face, shape and finishing' },
       {
         type: 'p',
         text: 'Face material is specified separately, so a single range can carry both. Carbon fiber gives a firmer, more controlled response with more bite for spin; fiberglass flexes more and returns more power off the face. Shape — including elongated profiles that extend reach at the cost of a narrower face — is chosen alongside the core.',
       },
+
+      { type: 'h2', text: 'Minimums' },
       {
         type: 'p',
         text: 'Minimum order for pickleball paddles is 50 units, and you can combine paddles and padel rackets, and multiple models within each, into one production programme.',
@@ -612,58 +651,101 @@ export const posts: BlogPost[] = [
 
   {
     slug: 'padel-racket-surface-texture-and-spin',
-    title: 'How surface texture affects spin — and why sprayed grit wears off',
-    metaTitle: 'Padel Racket Surface Texture & Spin Explained',
+    title: 'Padel racket surfaces: sand roughness, 3D roughness and hybrid',
+    metaTitle: 'Padel Racket Surfaces — Sand vs 3D vs Hybrid Roughness',
     metaDescription:
-      'Molded 3D grain, hexagon, sand grit and 3D decal finishes compared, and why texture molded into the frame outlasts a sprayed-on coating.',
+      'Sand roughness, 3D roughness and hybrid padel surfaces compared: how each generates spin, how quickly it fades, and which suits which player.',
     category: 'Product design',
     date: PUBLISHED,
     summary:
-      'Texture generates spin by gripping the ball. How it is applied determines whether it still works after a season of play.',
+      'Sand grips the ball chemically and fades; 3D texture grips it mechanically and lasts. Hybrid surfaces use both so performance drops off gradually instead of falling away.',
     hero: {
-      src: '/images/blog/carbon-weave.jpg',
-      alt: 'Macro detail of a woven carbon composite surface showing its raised texture',
+      src: '/images/blog/surface-textures-comparison.png',
+      alt: 'Comparison of sand roughness, 3D roughness, hybrid and smooth padel racket surfaces with macro detail of each',
     },
     blocks: [
       {
         type: 'p',
-        text: 'Surface texture works by increasing friction between the face and the ball at the moment of contact, letting the racket grip and rotate it rather than simply pushing it. More grip means more spin available to the player.',
+        text: 'Surface is the specification buyers argue about most and understand least. Two rackets with identical carbon, identical core and identical shape can feel completely different on a cut simply because of how the face is finished — and, more importantly, they can age completely differently.',
       },
+
+      { type: 'h2', text: 'How spin is actually generated' },
       {
         type: 'p',
-        text: 'The important distinction is not which texture pattern you choose but how it is applied. Texture that is sprayed onto a finished frame as a grit coating works well when the racket is new and then progressively wears smooth in exactly the area the player uses most. Texture that is molded into the frame is part of the structure, so it does not wear off.',
-      },
-      {
-        type: 'p',
-        text: 'We mold texture directly into the frame. The available options are:',
+        text: 'Spin comes from the ball gripping the face for a fraction longer than it otherwise would, so the racket can rotate it rather than just push it. There are two separate ways to achieve that grip, and they behave differently over the life of the racket.',
       },
       {
         type: 'list',
         items: [
-          '3D grain — a directional surface pattern molded across the face.',
-          '3D hexagon — a geometric molded pattern, visually distinctive as well as functional.',
-          'Sand grit — a finer, more uniformly abrasive surface.',
-          '3D decals — raised applied elements, usually combined with graphics.',
+          'Frictional grip — an abrasive surface catches the ball\'s felt. Strong immediately, strongest on slow, soft shots, and it wears down with use.',
+          'Mechanical grip — a raised, molded relief physically deforms against the ball. It needs racket-head speed to engage, and because it is part of the frame it cannot wear away.',
         ],
       },
       {
-        type: 'image',
-        src: '/images/manufacturing/textures.png',
-        alt: 'Macro comparison of molded 3D, matte, glossy and sand-paint padel racket surface finishes',
-        caption: 'Texture options shown side by side. All four are molded into the frame rather than sprayed on.',
+        type: 'p',
+        text: 'Most marketing collapses these into one number — "more spin" — which is why two rackets advertised the same way can behave nothing alike after three months.',
+      },
+
+      { type: 'h2', text: 'Sand roughness' },
+      {
+        type: 'p',
+        text: 'Sand roughness applies fine particles — typically silica or quartz — to the face on top of the carbon. It produces the highest initial friction of any finish, and it is noticeably effective on the soft game, where the ball is moving slowly and there is little head speed to work with.',
       },
       {
         type: 'p',
-        text: 'There is a durability consideration worth raising with any manufacturer: aggressive texture is harder on balls. A very abrasive surface will generate more spin and wear balls faster, which matters to clubs buying in volume even though it rarely comes up in a product brief.',
+        text: 'The trade-off is wear. Ball felt is mildly abrasive, so every shot works on the particle layer like very fine sandpaper. The surface smooths first in exactly the spot the player uses most — the middle of the sweet spot — so the spin loss is gradual, uneven, and most obvious to the player who liked the racket best.',
+      },
+
+      { type: 'h2', text: '3D roughness' },
+      {
+        type: 'p',
+        text: 'A 3D surface is a geometric relief molded into the frame itself — a grain, a hexagon pattern, or a similar repeating structure. It is not a coating, so there is nothing to wear off. The pattern is as present in year two as it was on day one.',
       },
       {
         type: 'p',
-        text: 'Texture also interacts with your graphics. Heavily molded patterns constrain where artwork sits cleanly, so it is worth deciding the texture before finalising the design rather than after.',
+        text: 'The catch is that it needs speed. Mechanical grip engages when the ball is driven into the relief hard enough to deform against it, which means a 3D face can feel comparatively plain on soft, slow shots and come alive on fast ones. Players who win with touch sometimes find pure 3D underwhelming; players who swing hard usually prefer it.',
+      },
+
+      { type: 'h2', text: 'Hybrid surfaces' },
+      {
+        type: 'p',
+        text: 'A hybrid combines both: a molded relief with a particle finish over it. New, it behaves like a sand racket, because the particles dominate. As those particles wear, the underlying 3D structure is progressively exposed and takes over the work.',
+      },
+      {
+        type: 'p',
+        text: 'That is the real argument for hybrid, and it is about ageing rather than peak performance. A sand racket falls off a cliff; a hybrid slides down a ramp. For a brand selling to clubs and regular players, that difference shows up in returns and repeat orders more than in any first impression.',
+      },
+
+      { type: 'h2', text: 'The comparison' },
+      {
+        type: 'table',
+        rows: [
+          ['Initial spin', 'Sand: very high. Hybrid: high. 3D: medium, rising with head speed.'],
+          ['How the grip works', 'Sand: friction. 3D: mechanical deformation. Hybrid: both.'],
+          ['Over a season', 'Sand: drops noticeably. Hybrid: gradual. 3D: essentially unchanged.'],
+          ['Feel', 'Sand: soft and grippy. 3D: firm and clean. Hybrid: in between.'],
+          ['Suits', 'Sand: touch players, soft game. 3D: fast, aggressive swings. Hybrid: mixed ranges and club use.'],
+          ['Ball wear', 'Sand: highest. Hybrid: moderate. 3D: lowest.'],
+        ],
+      },
+
+      { type: 'h2', text: 'Choosing a surface for your line' },
+      {
+        type: 'p',
+        text: 'There is no best surface, only a best fit for who buys the racket. If your customer is a club or an academy where rackets get used daily and replaced slowly, favour 3D or hybrid — the racket still performs at the end of the season, and it is easier on balls, which clubs buy in volume. If you sell to competitive players who replace equipment often and want maximum bite out of the box, sand is defensible.',
+      },
+      {
+        type: 'p',
+        text: 'One practical note that rarely makes it into a brief: heavily molded patterns constrain where artwork sits cleanly. Decide the surface before you finalise graphics, not after.',
+      },
+      {
+        type: 'p',
+        text: 'All three approaches are available across our range, specified per model, so a single line can carry a sand-finished control racket and a 3D competition model without a second tooling programme.',
       },
     ],
     related: [
-      { label: 'How we manufacture', href: '/manufacturing' },
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
+      { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
       { label: 'Configure a spec', href: '/catalogue' },
     ],
   },
@@ -679,14 +761,16 @@ export const posts: BlogPost[] = [
     summary:
       'Every batch goes through the same fixed sequence, and every order ships with a QC report. Here is what is measured and why.',
     hero: {
-      src: '/images/blog/qc-caliper.jpg',
-      alt: 'Technician measuring a machined part with a digital caliper beside an inspection sheet',
+      src: '/images/blog/production-planning.png',
+      alt: 'Staff checking finished rackets against a production plan board on the factory floor',
     },
     blocks: [
       {
         type: 'p',
         text: 'Quality control is the part of manufacturing buyers ask about least and get burned by most. A factory that inspects by eye at the end of a run will catch obvious cosmetic faults and miss everything structural. The distinction worth asking about is whether inspection is a fixed sequence applied to every batch or a spot check applied when there is time.',
       },
+
+      { type: 'h2', text: 'The six checks' },
       { type: 'p', text: 'Ours is a fixed sequence. Every batch passes the same six checks:' },
       {
         type: 'list',
@@ -701,10 +785,12 @@ export const posts: BlogPost[] = [
       },
       {
         type: 'image',
-        src: '/images/manufacturing/quality-control.png',
-        alt: 'Automated deflection and compression test rig with a padel racket clamped in position',
-        caption: 'The deflection rig. Load is applied to the face and the response measured against the spec.',
+        src: '/images/blog/qc-caliper.jpg',
+        alt: 'Technician measuring a machined part with a digital caliper beside an inspection sheet',
+        caption: 'Dimensional checks are recorded per batch against the spec, not signed off from memory.',
       },
+
+      { type: 'h2', text: 'Why the weight tolerance matters' },
       {
         type: 'p',
         text: 'The weight tolerance is the one worth dwelling on. A ±0.1oz band is tight enough that two rackets from the same batch feel the same in the hand. Brands that skip this end up with returns from customers who bought a second racket and found it played differently — a problem that is invisible at the factory and expensive at retail.',
@@ -712,13 +798,17 @@ export const posts: BlogPost[] = [
       {
         type: 'image',
         src: '/images/blog/factory-floor.jpg',
-        alt: 'Worker operating production machinery on a factory floor',
+        alt: 'Worker operating press machinery on a factory production floor',
         caption: 'Inspection sits inside the production line rather than only at the end of it.',
       },
+
+      { type: 'h2', text: 'Documentation you receive' },
       {
         type: 'p',
         text: 'Every production order ships with a batch-level QC report documenting the samples tested, pass rates, and any corrective action taken during the run. If a manufacturing defect does appear after delivery, it can be reported within 30 days with photos and batch records, and we review each claim individually.',
       },
+
+      { type: 'h2', text: 'What to ask a supplier' },
       {
         type: 'p',
         text: 'When you are comparing manufacturers, ask for a sample QC report before you place an order. A factory that produces one immediately has the process. A factory that has to build one for you does not.',
@@ -742,14 +832,16 @@ export const posts: BlogPost[] = [
     summary:
       'Most sourcing problems are visible before you pay a deposit. These are the questions that surface them.',
     hero: {
-      src: '/images/blog/factory-floor.jpg',
-      alt: 'Industrial factory floor with a worker operating press machinery',
+      src: '/images/blog/qc-caliper.jpg',
+      alt: 'Technician measuring a machined part with a digital caliper beside an inspection sheet',
     },
     blocks: [
       {
         type: 'p',
         text: 'The failure mode in sourcing is rarely dramatic. It is a supplier who quotes fast, samples well, and then delivers a bulk run that does not match the sample — at which point your deposit is already spent and your launch date is fixed. Almost all of that risk is diagnosable in the first two conversations.',
       },
+
+      { type: 'h2', text: 'The seven questions' },
       {
         type: 'p',
         text: 'Ask these seven questions. The answers below are ours, included so you have something concrete to compare against — the point is not that every factory should answer identically, but that a real manufacturer answers specifically and quickly.',
@@ -770,12 +862,16 @@ export const posts: BlogPost[] = [
         type: 'image',
         src: '/images/blog/container-port.jpg',
         alt: 'Shipping containers stacked at an export terminal with gantry cranes',
-        caption: 'Ask any supplier who handles export documentation, and at which point risk transfers to you.',
+        caption: 'Ask who handles export documentation, and at which point risk transfers to you.',
       },
+
+      { type: 'h2', text: 'Two further checks' },
       {
         type: 'p',
         text: 'Two further checks are worth the effort. First, ask for photographs or a video call from the production floor rather than a brochure — a factory that cannot show you the floor on short notice may not have one. Second, ask what happens if a batch is wrong. A supplier with a defined defect window and claims process has thought about failure; one that says it never happens has not.',
       },
+
+      { type: 'h2', text: 'Be specific in your brief' },
       {
         type: 'p',
         text: 'Finally, be specific in your own brief. The most common cause of a sample that disappoints is a brief that specified a shape and a colour but left weight, balance, core and face grade to the factory. Those four decide how the product plays. If you do not specify them, someone else will.',
@@ -785,6 +881,248 @@ export const posts: BlogPost[] = [
       { label: 'What happens in quality control', href: '/blog/what-happens-in-quality-control' },
       { label: 'OEM and ODM programmes', href: '/manufacturing' },
       { label: 'Start an inquiry', href: '/contact' },
+    ],
+  },
+
+  {
+    slug: 'padel-vs-pickleball-differences',
+    title: 'Padel vs pickleball: what actually makes them different',
+    metaTitle: 'Padel vs Pickleball — Court, Rules and Equipment Compared',
+    metaDescription:
+      'Padel and pickleball compared: court size, walls, scoring, serve rules, and how the rackets and paddles are built differently.',
+    category: 'The sports',
+    date: PUBLISHED,
+    summary:
+      'They look similar — solid stringless bats, small courts, doubles — but they are different sports. Padel is played off enclosed glass walls with a pressurised ball; pickleball is played on an open badminton-sized court with a perforated plastic ball.',
+    hero: {
+      src: '/images/blog/padel-rackets-court.png',
+      alt: 'Two unbranded carbon padel rackets and balls resting against the net on a blue court',
+    },
+    blocks: [
+      {
+        type: 'p',
+        text: 'People coming from tennis tend to lump padel and pickleball together, and from a distance the confusion is fair: both are played with a solid bat that has no strings, both are dominated by doubles, and both use a court much smaller than a tennis court. Underneath that, almost everything is different — including how the equipment has to be built.',
+      },
+
+      { type: 'h2', text: 'The court is the biggest difference' },
+      {
+        type: 'p',
+        text: 'A padel court is enclosed. It is 20m by 10m, surrounded by glass and mesh, and the walls are in play — the ball can be taken off the back glass, which is why rallies last far longer than the court size suggests. Learning to use the wall is most of the learning curve.',
+      },
+      {
+        type: 'p',
+        text: 'A pickleball court is open, and much smaller: 20ft by 44ft, the same footprint as a doubles badminton court. There are no walls, so a ball that passes you is gone. The defining feature instead is the non-volley zone — the "kitchen" — a seven-foot strip either side of the net where you cannot hit the ball out of the air.',
+      },
+
+      { type: 'h2', text: 'The ball changes everything' },
+      {
+        type: 'p',
+        text: 'Padel uses a ball that looks like a tennis ball and is slightly less pressurised. It bounces high and fast, and it holds pace off the glass. Pickleball uses a rigid perforated plastic ball that is far lighter, slows quickly through the air, and barely bounces by comparison.',
+      },
+      {
+        type: 'p',
+        text: 'That single difference explains most of the equipment divergence. A padel racket has to absorb and redirect a heavy, fast ball. A pickleball paddle has to generate pace against a light one that does very little on its own.',
+      },
+
+      { type: 'h2', text: 'How the equipment differs' },
+      {
+        type: 'table',
+        rows: [
+          ['Padel racket', 'Carbon or fibreglass face over an EVA foam core, around 38mm thick, 350-380g, perforated, with a wrist strap.'],
+          ['Pickleball paddle', 'Carbon or fibreglass face over a polypropylene honeycomb core, 13-16mm thick, considerably lighter, solid face, no holes.'],
+          ['Why the core differs', 'EVA foam handles the repeated impact of a pressurised ball; honeycomb returns energy to a ball that carries little of its own.'],
+          ['Why the holes', 'Padel rackets are perforated to cut air resistance on a heavier, faster swing. Pickleball paddles are not.'],
+        ],
+      },
+      {
+        type: 'image',
+        src: '/images/blog/pickleball-paddles.jpg',
+        alt: 'Two pickleball paddles leaning against a court net with three yellow balls',
+        caption: 'A pickleball paddle: thinner, lighter, solid-faced, and built around a honeycomb core rather than foam.',
+      },
+
+      { type: 'h2', text: 'Serving and scoring' },
+      {
+        type: 'p',
+        text: 'Both sports serve underarm, which is part of why both are easy to pick up. Padel serves must bounce before being struck and are played into the diagonal box, with tennis scoring — 15, 30, 40, game. Pickleball serves are hit on the full without bouncing, and in most formats only the serving side can score, so games swing on holding serve.',
+      },
+
+      { type: 'h2', text: 'Which is growing faster?' },
+      {
+        type: 'p',
+        text: 'Both are growing quickly, in different places. Pickleball has expanded fastest in North America, helped by how cheap it is to convert existing tennis and badminton courts. Padel is strongest in Spain and Latin America and has spread rapidly through Europe and the Middle East, though it needs purpose-built courts, which slows expansion and raises the cost of entry.',
+      },
+      {
+        type: 'p',
+        text: 'For a brand deciding which to stock, that geography usually matters more than the sports themselves. Both use the same manufacturing base, so carrying the two is not the jump it appears to be — the face materials and finishing processes overlap almost entirely, and only the core and mould differ.',
+      },
+    ],
+    related: [
+      { label: 'Pickleball paddle core thickness', href: '/blog/pickleball-paddle-core-thickness-13mm-14mm-16mm' },
+      { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
+      { label: 'Browse platforms', href: '/catalogue' },
+    ],
+  },
+
+  {
+    slug: 'carbon-fibre-vs-fibreglass-padel-rackets',
+    title: 'Carbon fibre vs fibreglass: which face material is better?',
+    metaTitle: 'Carbon Fibre vs Fibreglass Padel Rackets — Which Is Better',
+    metaDescription:
+      'Carbon fibre and fibreglass padel racket faces compared on power, control, comfort, durability and cost — and when a hybrid layup beats both.',
+    category: 'Materials',
+    date: PUBLISHED,
+    summary:
+      'Neither is better outright. Carbon is stiffer, so it returns more of what you put in and grips the ball harder; fibreglass flexes, so it gives more free power and is kinder on the arm. The right answer depends on who is holding the racket.',
+    hero: {
+      src: '/images/blog/carbon-fabric-types.jpg',
+      alt: 'Chart of composite fabric types including glass fibre, 3K, 12K, 18K, Kevlar and titanium carbon weaves',
+    },
+    blocks: [
+      {
+        type: 'p',
+        text: 'This is the first question most brands ask when specifying a face, and it is usually framed as a quality question — carbon good, fibreglass cheap. That framing is wrong, and it leads brands to over-specify rackets for players who would enjoy a softer one more.',
+      },
+
+      { type: 'h2', text: 'What each material actually does' },
+      {
+        type: 'p',
+        text: 'Carbon fibre is stiff. It deforms very little on impact, so it returns energy quickly and predictably, and the surface holds the ball firmly enough to bite for spin. You feel exactly what you did — including your mistakes.',
+      },
+      {
+        type: 'p',
+        text: 'Fibreglass flexes. The face deforms slightly and springs back, adding pace the player did not have to generate. That trampoline effect is why a fibreglass racket can feel more powerful than a carbon one in the hands of someone with a slower swing, even though carbon is the "higher performance" material.',
+      },
+
+      { type: 'h2', text: 'Side by side' },
+      {
+        type: 'table',
+        rows: [
+          ['Stiffness', 'Carbon: high. Fibreglass: low to moderate.'],
+          ['Power source', 'Carbon: comes from the player. Fibreglass: partly from the face.'],
+          ['Control and spin', 'Carbon: more precise, grips harder. Fibreglass: less bite.'],
+          ['Comfort', 'Fibreglass: absorbs more shock. Carbon: transmits more to the arm.'],
+          ['Durability', 'Carbon: holds its properties longer. Fibreglass: softens with heavy use.'],
+          ['Cost', 'Fibreglass is the more accessible option at every volume.'],
+        ],
+      },
+      {
+        type: 'image',
+        src: '/images/blog/carbon-weave.jpg',
+        alt: 'Close-up of a woven carbon fibre composite panel showing the weave pattern',
+        caption: 'Carbon returns energy quickly and predictably — including the energy behind a mistimed shot.',
+      },
+
+      { type: 'h2', text: 'The comfort argument nobody makes' },
+      {
+        type: 'p',
+        text: 'Padel has a large recreational base playing several times a week, and elbow and shoulder complaints are common. A stiff carbon face transmits more vibration into the arm than fibreglass does. For a range aimed at club players rather than competitors, that is a genuine commercial consideration, not a compromise — softer rackets get played more and returned less.',
+      },
+
+      { type: 'h2', text: 'Hybrids and blends' },
+      {
+        type: 'p',
+        text: 'The choice is not binary. Fibreglass-carbon hybrid layups place each material where it helps, and Kevlar-carbon blends add damping while keeping stiffness. If you have a specific feel or a specific price point to hit, the layup is usually a better lever than switching material outright.',
+      },
+
+      { type: 'h2', text: 'How to decide for your line' },
+      {
+        type: 'list',
+        items: [
+          'Beginner and club ranges — fibreglass or a hybrid. More forgiving, more comfortable, and cheaper to reach a price point.',
+          'All-round flagship models — 12K or 18K carbon, which balances stiffness against cost.',
+          'Competition tier — 24K carbon, for players with the swing speed to use the stiffness.',
+          'Mixed range — specify per model rather than committing the whole line to one material.',
+        ],
+      },
+    ],
+    related: [
+      { label: 'Carbon fibre grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
+      { label: 'EVA core hardness explained', href: '/blog/eva-core-hardness-explained' },
+      { label: 'Configure a spec', href: '/catalogue' },
+    ],
+  },
+
+  {
+    slug: 'how-to-choose-your-first-padel-racket',
+    title: 'How to choose your first padel racket',
+    metaTitle: 'How to Choose Your First Padel Racket — Beginner Guide',
+    metaDescription:
+      'A beginner guide to buying a padel racket: which shape, weight, balance and core to look for, and the mistakes that cost new players most.',
+    category: 'Buying guide',
+    date: PUBLISHED,
+    summary:
+      'Buy round, light and soft. Almost every beginner mistake comes from buying the racket a professional uses instead of the one that suits a developing swing.',
+    hero: {
+      src: '/images/blog/padel-shapes-balance.png',
+      alt: 'Diamond, hybrid, teardrop and round padel rackets compared with their balance points marked',
+    },
+    blocks: [
+      {
+        type: 'p',
+        text: 'Padel is unusually easy to start and unusually easy to buy badly for. The rackets that get marketed hardest are the ones professionals use, and those are close to the worst possible choice for someone who has played five times.',
+      },
+
+      { type: 'h2', text: 'Start with shape' },
+      {
+        type: 'p',
+        text: 'Round is the beginner shape, and this is not a compromise. A round racket puts the sweet spot low and central, closest to your hand, which means off-centre hits — most of your hits, early on — still go where you intended. It is also the most forgiving on the wrist.',
+      },
+      {
+        type: 'p',
+        text: 'Diamond rackets concentrate weight high in the head. They hit harder if you catch the ball perfectly and punish you severely if you do not. Teardrop sits between the two and is a reasonable second racket once your contact is consistent.',
+      },
+
+      { type: 'h2', text: 'Then weight and balance' },
+      {
+        type: 'p',
+        text: 'Padel rackets typically run 350-380g, with the balance point somewhere between 260 and 275mm. Lighter and lower-balanced is easier: the racket moves faster, reacts better at the net, and is far less tiring across two hours.',
+      },
+      {
+        type: 'p',
+        text: 'Heavier rackets do generate more power, but only if you can still swing them properly at the end of a match. Most players overestimate the weight they want.',
+      },
+
+      { type: 'h2', text: 'The core matters more than you think' },
+      {
+        type: 'p',
+        text: 'A soft EVA core — around 13-15° hardness — holds the ball fractionally longer, which improves control and, more importantly, absorbs shock. Padel elbow is common among people who play several times a week on stiff equipment. A softer core is the single easiest thing to get right for comfort.',
+      },
+
+      { type: 'h2', text: 'Face material' },
+      {
+        type: 'p',
+        text: 'Fibreglass or a low-grade carbon such as 3K suits a first racket. Both flex more than high-grade carbon, which adds forgiveness and free power at slower swing speeds. Save 18K and 24K carbon for when your technique can use the stiffness.',
+      },
+      {
+        type: 'image',
+        src: '/images/blog/surface-textures-comparison.png',
+        alt: 'Comparison of sand roughness, 3D roughness, hybrid and smooth padel racket surfaces with macro detail',
+        caption: 'Surface finish matters less than shape and core at the start, but it does affect how quickly a racket ages.',
+      },
+
+      { type: 'h2', text: 'Mistakes worth avoiding' },
+      {
+        type: 'list',
+        items: [
+          'Buying the racket your favourite professional uses. It is almost certainly a heavy diamond.',
+          'Choosing on looks. Graphics tell you nothing about shape, weight or core.',
+          'Assuming a higher carbon number is better. It means a bigger weave, not a better racket.',
+          'Skipping the wrist strap. It is mandatory on most courts, and it protects other players.',
+          'Ignoring grip size. Too thin makes you squeeze harder, which is how elbows get injured.',
+        ],
+      },
+
+      { type: 'h2', text: 'A sensible first spec' },
+      {
+        type: 'p',
+        text: 'If you want one answer: a round racket, around 355-365g, low balance, soft EVA core, fibreglass or 3K carbon face. That covers most new players comfortably for a year or two, and by the time it wears out you will know from experience what you want to change.',
+      },
+    ],
+    related: [
+      { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
+      { label: 'Carbon fibre vs fibreglass', href: '/blog/carbon-fibre-vs-fibreglass-padel-rackets' },
+      { label: 'Padel vs pickleball', href: '/blog/padel-vs-pickleball-differences' },
     ],
   },
 ];
