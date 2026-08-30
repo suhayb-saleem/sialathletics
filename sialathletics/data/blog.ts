@@ -60,13 +60,6 @@ export const posts: BlogPost[] = [
         type: 'p',
         text: 'The industry grew up around hand-stitched footballs, which is still what Sialkot is best known for internationally. Composite products — rackets, paddles, protective equipment — came later, but they inherited the same production culture: hand skill on the finishing steps, with tooling and presses doing the structural work.',
       },
-      {
-        type: 'image',
-        src: '/images/blog/racket-assembly.png',
-        alt: 'Workers hand-finishing padel rackets at benches in a Sialkot workshop',
-        caption:
-          'Hand skill on the finishing steps, with tooling and presses doing the structural work.',
-      },
 
       { type: 'h2', text: 'What it means for your order' },
       {
@@ -156,12 +149,6 @@ export const posts: BlogPost[] = [
           'Which shipping terms? We default to FOB Karachi, with EXW Sialkot available on request.',
         ],
       },
-      {
-        type: 'image',
-        src: '/images/blog/factory-floor.jpg',
-        alt: 'Worker operating press machinery on an industrial factory production floor',
-        caption: 'Ask to see the production floor. A company that cannot show you one on short notice may not have one.',
-      },
 
       { type: 'h2', text: 'Which one should you pick?' },
       {
@@ -191,8 +178,8 @@ export const posts: BlogPost[] = [
     summary:
       'A custom padel racket is defined by four decisions: shape, face material, core, and surface texture. Together they set how the racket plays and what it costs. Everything below is selectable on a production order, with a minimum of 24 units.',
     hero: {
-      src: '/images/blog/carbon-weave.jpg',
-      alt: 'Close-up of a woven carbon fiber composite panel showing the weave pattern',
+      src: '/images/blog/racket-assembly.png',
+      alt: 'Workers hand-finishing padel rackets at benches in a Sialkot workshop',
     },
     blocks: [
       { type: 'h2', text: 'Shape sets the playing character' },
@@ -242,23 +229,11 @@ export const posts: BlogPost[] = [
           'Memory / high-rebound EVA — recovers shape quickly for a livelier response.',
         ],
       },
-      {
-        type: 'image',
-        src: '/images/blog/racket-assembly.png',
-        alt: 'Workers hand-finishing padel rackets at benches in a Sialkot workshop',
-        caption: 'Cores are cut and bonded in house, so density is set per production run.',
-      },
 
       { type: 'h2', text: 'Surface texture sets spin' },
       {
         type: 'p',
         text: 'Texture is molded directly into the frame rather than sprayed on as a coating, so it does not wear off with use. Options include 3D grain, 3D hexagon mold, sand grit, and 3D decals.',
-      },
-      {
-        type: 'image',
-        src: '/images/blog/padel-rackets-court.png',
-        alt: 'Two unbranded carbon padel rackets and balls resting against the net on a blue court',
-        caption: 'Shape, face, core and texture together decide who the finished racket is for.',
       },
 
       { type: 'h2', text: 'Weight, balance and finishing' },
@@ -306,8 +281,8 @@ export const posts: BlogPost[] = [
     summary:
       'A pickleball paddle is a face material bonded to a honeycomb core, finished with an edge guard and grip. The face sets power and spin, the core thickness sets feel, and the bond between them determines how long the paddle lasts. Minimum order is 50 units.',
     hero: {
-      src: '/images/blog/pickleball-paddles.jpg',
-      alt: 'Two pickleball paddles leaning against a court net with three yellow balls',
+      src: '/images/blog/factory-floor.jpg',
+      alt: 'Worker operating press machinery on a factory production floor',
     },
     blocks: [
       { type: 'h2', text: 'The face: carbon or fiberglass' },
@@ -361,14 +336,15 @@ export const posts: BlogPost[] = [
         ],
       },
       {
-        type: 'image',
-        src: '/images/blog/qc-caliper.jpg',
-        alt: 'Technician measuring a machined part with a digital caliper beside an inspection sheet',
-        caption: 'Dimensional checks are recorded per batch, not spot-checked at the end of a run.',
-      },
-      {
         type: 'p',
         text: 'Every production order ships with a batch-level QC report documenting tested samples, pass rates, and any corrective actions taken during the run. If a manufacturing defect appears after delivery, it can be reported within 30 days with photos and batch records.',
+      },
+
+      {
+        type: 'image',
+        src: '/images/blog/container-port.jpg',
+        alt: 'Stacked shipping containers and gantry cranes at an export terminal',
+        caption: 'Cartons are prepared for palletized freight so stock arrives shelf-ready.',
       },
 
       { type: 'h2', text: 'Packing and delivery' },
@@ -399,8 +375,8 @@ export const posts: BlogPost[] = [
     summary:
       'The K number counts filaments per tow, not quality. Higher is not automatically better — it changes stiffness, feel and price.',
     hero: {
-      src: '/images/blog/carbon-weave.jpg',
-      alt: 'Close-up of a woven carbon fiber composite panel showing the weave pattern',
+      src: '/images/blog/carbon-grades-comparison.png',
+      alt: 'Labelled comparison of 3K, 12K, 18K and 24K carbon fibre weaves showing how tow thickness changes the pattern',
     },
     blocks: [
       {
@@ -412,12 +388,6 @@ export const posts: BlogPost[] = [
       {
         type: 'p',
         text: 'Because a 24K tow is much thicker than a 3K tow, the weave it produces is visually larger — the big chequerboard pattern you see on premium rackets. A 3K weave is tight and fine. That difference in appearance is why the number ended up being used as a marketing signal, and why buyers often assume 24K is simply the better option.',
-      },
-      {
-        type: 'image',
-        src: '/images/blog/carbon-grades-comparison.png',
-        alt: 'Labelled comparison of 3K, 12K, 18K and 24K carbon fibre weaves showing how tow thickness changes the pattern',
-        caption: 'The four grades side by side. The visual difference is tow thickness, not material quality.',
       },
 
       { type: 'h2', text: 'What changes between grades' },
@@ -499,12 +469,6 @@ export const posts: BlogPost[] = [
         type: 'p',
         text: 'For a first product line, teardrop is usually the right starting point. It is the shape most players can use, which makes it the safest single SKU if you are only launching one. Round is the natural second addition if you sell into clubs and academies, where beginners and improvers dominate. Diamond is the one to add last — it sells to a narrower, more advanced audience, and it is the shape most likely to sit on a shelf if your customer base is not there yet.',
       },
-      {
-        type: 'image',
-        src: '/images/blog/molding-workshop.jpg',
-        alt: 'Molding machinery and material hoppers inside a composites workshop',
-        caption: 'A new shape needs its own mold. Prototype in 3-4 weeks.',
-      },
 
       { type: 'h2', text: 'Weight and balance' },
       {
@@ -537,7 +501,7 @@ export const posts: BlogPost[] = [
       'The core is what the player actually feels at contact. Three EVA options cover most requirements, and the choice is about comfort as much as power.',
     hero: {
       src: '/images/blog/available-materials.jpg',
-      alt: 'Chart of available racket materials including EVA soft core foam, fiberglass, carbon and Kevlar',
+      alt: 'Chart of available racket materials including EVA soft core foam, fibreglass, carbon and Kevlar',
     },
     blocks: [
       {
@@ -549,12 +513,6 @@ export const posts: BlogPost[] = [
       {
         type: 'p',
         text: 'EVA — ethylene-vinyl acetate — is a closed-cell foam. Denser foam compresses less, returns energy faster, and feels firmer. Softer foam compresses more, holds the ball fractionally longer, and feels more controlled. That is the entire trade-off, and every core option is a point on it.',
-      },
-      {
-        type: 'image',
-        src: '/images/blog/carbon-fabric-types.jpg',
-        alt: 'Chart of carbon and composite fabric types including 3K, 12K, 18K, Kevlar and titanium carbon weaves',
-        caption: 'Core and face are specified together — the same core feels different under each of these faces.',
       },
       {
         type: 'list',
@@ -595,8 +553,8 @@ export const posts: BlogPost[] = [
     summary:
       'Core thickness is the biggest single influence on how a paddle feels. Thinner is faster, thicker is more controlled.',
     hero: {
-      src: '/images/blog/pickleball-paddles.jpg',
-      alt: 'Two pickleball paddles leaning against a court net with three yellow balls',
+      src: '/images/blog/carbon-weave.jpg',
+      alt: 'Close-up of a woven carbon fibre composite panel showing the weave pattern',
     },
     blocks: [
       {
@@ -622,12 +580,6 @@ export const posts: BlogPost[] = [
       {
         type: 'p',
         text: 'The market has moved toward thicker cores over the last few years as the soft game has become more central to how pickleball is played at club level. If you are building a range and can only carry two, 16mm and 14mm cover more of the market than 13mm and 16mm would.',
-      },
-      {
-        type: 'image',
-        src: '/images/blog/container-port.jpg',
-        alt: 'Stacked shipping containers and cranes at a container port',
-        caption: 'Paddles are individually protected, then packed into export-grade cartons for freight.',
       },
 
       { type: 'h2', text: 'Face, shape and finishing' },
@@ -783,23 +735,11 @@ export const posts: BlogPost[] = [
           'Visual inspection with zero defect tolerance — the cosmetic pass, applied last.',
         ],
       },
-      {
-        type: 'image',
-        src: '/images/blog/qc-caliper.jpg',
-        alt: 'Technician measuring a machined part with a digital caliper beside an inspection sheet',
-        caption: 'Dimensional checks are recorded per batch against the spec, not signed off from memory.',
-      },
 
       { type: 'h2', text: 'Why the weight tolerance matters' },
       {
         type: 'p',
         text: 'The weight tolerance is the one worth dwelling on. A ±0.1oz band is tight enough that two rackets from the same batch feel the same in the hand. Brands that skip this end up with returns from customers who bought a second racket and found it played differently — a problem that is invisible at the factory and expensive at retail.',
-      },
-      {
-        type: 'image',
-        src: '/images/blog/factory-floor.jpg',
-        alt: 'Worker operating press machinery on a factory production floor',
-        caption: 'Inspection sits inside the production line rather than only at the end of it.',
       },
 
       { type: 'h2', text: 'Documentation you receive' },
@@ -858,12 +798,6 @@ export const posts: BlogPost[] = [
           'Which shipping terms, and who handles export paperwork? We default to FOB Karachi, with EXW Sialkot on request, and handle the documentation.',
         ],
       },
-      {
-        type: 'image',
-        src: '/images/blog/container-port.jpg',
-        alt: 'Shipping containers stacked at an export terminal with gantry cranes',
-        caption: 'Ask who handles export documentation, and at which point risk transfers to you.',
-      },
 
       { type: 'h2', text: 'Two further checks' },
       {
@@ -895,8 +829,8 @@ export const posts: BlogPost[] = [
     summary:
       'They look similar — solid stringless bats, small courts, doubles — but they are different sports. Padel is played off enclosed glass walls with a pressurised ball; pickleball is played on an open badminton-sized court with a perforated plastic ball.',
     hero: {
-      src: '/images/blog/padel-rackets-court.png',
-      alt: 'Two unbranded carbon padel rackets and balls resting against the net on a blue court',
+      src: '/images/blog/pickleball-paddles.jpg',
+      alt: 'Two pickleball paddles leaning against a court net with three yellow balls',
     },
     blocks: [
       {
@@ -933,12 +867,6 @@ export const posts: BlogPost[] = [
           ['Why the core differs', 'EVA foam handles the repeated impact of a pressurised ball; honeycomb returns energy to a ball that carries little of its own.'],
           ['Why the holes', 'Padel rackets are perforated to cut air resistance on a heavier, faster swing. Pickleball paddles are not.'],
         ],
-      },
-      {
-        type: 'image',
-        src: '/images/blog/pickleball-paddles.jpg',
-        alt: 'Two pickleball paddles leaning against a court net with three yellow balls',
-        caption: 'A pickleball paddle: thinner, lighter, solid-faced, and built around a honeycomb core rather than foam.',
       },
 
       { type: 'h2', text: 'Serving and scoring' },
@@ -1006,12 +934,6 @@ export const posts: BlogPost[] = [
           ['Cost', 'Fibreglass is the more accessible option at every volume.'],
         ],
       },
-      {
-        type: 'image',
-        src: '/images/blog/carbon-weave.jpg',
-        alt: 'Close-up of a woven carbon fibre composite panel showing the weave pattern',
-        caption: 'Carbon returns energy quickly and predictably — including the energy behind a mistimed shot.',
-      },
 
       { type: 'h2', text: 'The comfort argument nobody makes' },
       {
@@ -1054,8 +976,8 @@ export const posts: BlogPost[] = [
     summary:
       'Buy round, light and soft. Almost every beginner mistake comes from buying the racket a professional uses instead of the one that suits a developing swing.',
     hero: {
-      src: '/images/blog/padel-shapes-balance.png',
-      alt: 'Diamond, hybrid, teardrop and round padel rackets compared with their balance points marked',
+      src: '/images/blog/padel-rackets-court.png',
+      alt: 'Two unbranded carbon padel rackets and balls resting against the net on a blue court',
     },
     blocks: [
       {
@@ -1093,12 +1015,6 @@ export const posts: BlogPost[] = [
       {
         type: 'p',
         text: 'Fibreglass or a low-grade carbon such as 3K suits a first racket. Both flex more than high-grade carbon, which adds forgiveness and free power at slower swing speeds. Save 18K and 24K carbon for when your technique can use the stiffness.',
-      },
-      {
-        type: 'image',
-        src: '/images/blog/surface-textures-comparison.png',
-        alt: 'Comparison of sand roughness, 3D roughness, hybrid and smooth padel racket surfaces with macro detail',
-        caption: 'Surface finish matters less than shape and core at the start, but it does affect how quickly a racket ages.',
       },
 
       { type: 'h2', text: 'Mistakes worth avoiding' },

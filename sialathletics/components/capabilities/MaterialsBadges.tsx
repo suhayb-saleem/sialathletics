@@ -176,7 +176,6 @@ export default function MaterialsBadges() {
 
 function MaterialTabs() {
   const [active, setActive] = useState<typeof materialFamilies[number]['key']>('carbon');
-  const current = materialFamilies.find((m) => m.key === active)!;
 
   return (
     <motion.div
@@ -201,22 +200,29 @@ function MaterialTabs() {
         ))}
       </div>
 
+      {/* Every panel is rendered and the inactive ones are hidden with CSS,
+          rather than only mounting the active tab. Mounting one at a time
+          kept two thirds of this section out of the server HTML, so crawlers
+          never saw the core and texture copy. */}
       <div className="mat-panel">
-        <motion.div
-          key={current.key}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="mat-panel__media">
-            <Image src={current.image} alt={current.alt} fill sizes="(max-width: 900px) 100vw, 1100px" style={{ objectFit: 'contain' }} priority={current.key === 'carbon'} />
-          </div>
-          <div className="mat-panel__body">
-            <span className="mat-panel__tag">{current.tag}</span>
-            <h3 className="mat-panel__title">{current.title}</h3>
-            <p className="mat-panel__desc">{current.desc}</p>
-          </div>
-        </motion.div>
+        {materialFamilies.map((m) => (
+          <motion.div
+            key={m.key}
+            role="tabpanel"
+            hidden={m.key !== active}
+            animate={{ opacity: m.key === active ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="mat-panel__media">
+              <Image src={m.image} alt={m.alt} fill sizes="(max-width: 900px) 100vw, 1100px" style={{ objectFit: 'contain' }} priority={m.key === 'carbon'} />
+            </div>
+            <div className="mat-panel__body">
+              <span className="mat-panel__tag">{m.tag}</span>
+              <h3 className="mat-panel__title">{m.title}</h3>
+              <p className="mat-panel__desc">{m.desc}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
 
       <style>{`
