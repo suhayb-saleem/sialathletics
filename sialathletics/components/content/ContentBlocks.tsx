@@ -4,12 +4,17 @@ import Image from 'next/image';
 // the page components so there is one renderer to fix and any future
 // long-form section can reuse it.
 export type ContentBlock =
+  | { type: 'h2'; text: string }
   | { type: 'p'; text: string }
   | { type: 'list'; items: string[] }
   | { type: 'table'; rows: [string, string][] }
   | { type: 'image'; src: string; alt: string; caption?: string };
 
 export function Block({ block }: { block: ContentBlock }) {
+  if (block.type === 'h2') {
+    return <h2 className="hp-display rt__h2">{block.text}</h2>;
+  }
+
   if (block.type === 'p') {
     return <p className="rt__p">{block.text}</p>;
   }
@@ -58,6 +63,17 @@ export function Block({ block }: { block: ContentBlock }) {
 export function ContentBlockStyles() {
   return (
     <style>{`
+      .rt__h2 {
+        font-size: 1.15rem;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+        color: var(--hp-ink);
+        margin: 2.4rem 0 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid var(--hp-ink-line);
+      }
+      /* No top gap when a section opens the article. */
+      .rt__h2:first-child { margin-top: 0; }
       .rt__p {
         font-family: var(--hp-body);
         font-size: 0.95rem;
