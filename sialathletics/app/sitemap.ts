@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next';
-import { guides } from '@/data/guides';
 import { posts } from '@/data/blog';
 
 const BASE = 'https://www.sialathletics.com';
@@ -11,13 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/manufacturing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/faq`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/guides`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    ...guides.map((g) => ({
-      url: `${BASE}/guides/${g.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
     { url: `${BASE}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     ...posts.map((p) => ({
       url: `${BASE}/blog/${p.slug}`,

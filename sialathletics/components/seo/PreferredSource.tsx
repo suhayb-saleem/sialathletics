@@ -10,8 +10,8 @@
  * hydration, which risks Google's script running its DOM scan too late for
  * the button to ever render.
  *
- * Only rendered on long-form content routes (blog posts and guides), so the
- * rest of the site does not pay for a script it never uses.
+ * Only rendered on blog post pages, so the rest of the site does not pay for
+ * a script it never uses.
  */
 export default function PreferredSource() {
   return (

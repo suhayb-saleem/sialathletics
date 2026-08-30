@@ -142,7 +142,7 @@ export const posts: BlogPost[] = [
     ],
     related: [
       { label: 'EVA core hardness explained', href: '/blog/eva-core-hardness-explained' },
-      { label: 'Custom padel racket manufacturing guide', href: '/guides/custom-padel-racket-manufacturing' },
+      { label: 'How we manufacture', href: '/manufacturing' },
       { label: 'Configure a spec', href: '/catalogue' },
     ],
   },
@@ -199,7 +199,7 @@ export const posts: BlogPost[] = [
       },
     ],
     related: [
-      { label: 'OEM vs ODM explained', href: '/guides/oem-vs-odm-padel-manufacturing' },
+      { label: 'OEM and ODM programmes', href: '/manufacturing' },
       { label: 'Browse padel platforms', href: '/catalogue#padel' },
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
     ],
@@ -253,7 +253,7 @@ export const posts: BlogPost[] = [
     ],
     related: [
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
-      { label: 'Custom padel racket manufacturing guide', href: '/guides/custom-padel-racket-manufacturing' },
+      { label: 'How we manufacture', href: '/manufacturing' },
       { label: 'Get a quote', href: '/contact' },
     ],
   },
@@ -309,7 +309,7 @@ export const posts: BlogPost[] = [
       },
     ],
     related: [
-      { label: 'How pickleball paddles are manufactured', href: '/guides/how-pickleball-paddles-are-manufactured' },
+      { label: 'How we manufacture', href: '/manufacturing' },
       { label: 'Browse pickleball platforms', href: '/catalogue#pickleball' },
       { label: 'Get a quote', href: '/contact' },
     ],
@@ -367,7 +367,7 @@ export const posts: BlogPost[] = [
       },
     ],
     related: [
-      { label: 'Custom padel racket manufacturing guide', href: '/guides/custom-padel-racket-manufacturing' },
+      { label: 'How we manufacture', href: '/manufacturing' },
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
       { label: 'Configure a spec', href: '/catalogue' },
     ],
@@ -488,7 +488,7 @@ export const posts: BlogPost[] = [
     ],
     related: [
       { label: 'What happens in quality control', href: '/blog/what-happens-in-quality-control' },
-      { label: 'OEM vs ODM explained', href: '/guides/oem-vs-odm-padel-manufacturing' },
+      { label: 'OEM and ODM programmes', href: '/manufacturing' },
       { label: 'Start an inquiry', href: '/contact' },
     ],
   },

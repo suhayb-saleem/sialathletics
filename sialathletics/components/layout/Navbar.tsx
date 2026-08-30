@@ -11,6 +11,7 @@ import Button from '@/components/ui/Button';
 const links = [
   { label: 'Home', href: '/' },
   { label: 'Products', href: '/catalogue' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 const aboutGroup = {
@@ -18,8 +19,6 @@ const aboutGroup = {
   items: [
     { label: 'Manufacturing', href: '/manufacturing' },
     { label: 'About SIAL Athletics', href: '/about' },
-    { label: 'Guides', href: '/guides' },
-    { label: 'Blog', href: '/blog' },
     { label: 'FAQ', href: '/faq' },
   ],
 };
@@ -98,7 +97,10 @@ export default function Navbar() {
 
           <nav className="site-nav__links hide-mobile" aria-label="Primary navigation">
             {links.map(({ label, href }) => {
-              const active = href === '/' ? pathname === '/' : pathname === href.split('?')[0];
+              // Section links stay highlighted on their child pages too, so
+              // Blog reads as active while you're reading a post.
+              const base = href.split('?')[0];
+              const active = href === '/' ? pathname === '/' : pathname === base || pathname.startsWith(`${base}/`);
               return (
                 <Link key={href} href={href} className={active ? 'is-active' : ''}>
                   {label}

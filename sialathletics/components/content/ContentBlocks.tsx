@@ -1,7 +1,8 @@
 import Image from 'next/image';
 
-// Shared long-form content primitives, used by both the buyer guides and the
-// blog so the two stay visually identical and there is one renderer to fix.
+// Shared long-form content primitives used by the blog, kept separate from
+// the page components so there is one renderer to fix and any future
+// long-form section can reuse it.
 export type ContentBlock =
   | { type: 'p'; text: string }
   | { type: 'list'; items: string[] }

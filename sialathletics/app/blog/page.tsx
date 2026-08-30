@@ -71,8 +71,8 @@ export default function BlogIndexPage() {
         subtext="Send us your specs and we'll respond within 24 hours."
         primaryLabel="Get a quote"
         primaryHref="/contact"
-        secondaryLabel="Read the buyer guides"
-        secondaryHref="/guides"
+        secondaryLabel="How we manufacture"
+        secondaryHref="/manufacturing"
         index="SIAL / 08"
       />
 
