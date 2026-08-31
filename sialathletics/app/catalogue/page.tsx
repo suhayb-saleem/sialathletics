@@ -93,11 +93,11 @@ const padelOptions: { title: string; items: string[] }[] = [
   },
   {
     title: 'Carbon Options',
-    items: ['3K Carbon Fiber', '12K Carbon Fiber', '18K Carbon Fiber', '24K Carbon Fiber', 'Silver Carbon Fiber', 'Kevlar Carbon Hybrid', '100% Full Carbon'],
+    items: ['3K Carbon Fiber', '12K Carbon Fiber', '18K Carbon Fiber', '24K Carbon Fiber', 'Silver Carbon Fiber', 'Kevlar Carbon Hybrid'],
   },
   {
     title: 'Core Options',
-    items: ['Black EVA', 'EVA Soft', 'White EVA', 'Memory EVA', 'Super Soft EVA', 'High-Rebound EVA', 'EVA 15 (Soft)', 'EVA 20 (Hard)', 'High-Density EVA'],
+    items: ['Black EVA (High-Density)', 'Soft EVA (13–15°)', 'Memory / High-Rebound EVA'],
   },
   {
     title: 'Frame Construction',
@@ -105,7 +105,7 @@ const padelOptions: { title: string; items: string[] }[] = [
   },
   {
     title: 'Surface Textures',
-    items: ['Smooth Finish', 'Sand Grit / Sandy Finish', 'Sandpaper / Rough Finish', '3D Grain', '3D Hexagon', 'Molded 3D Texture'],
+    items: ['Smooth Finish', 'Sand Grit', '3D Grain', '3D Hexagon', 'Hybrid (Sand + 3D)'],
   },
   {
     title: 'Paint & Coating',
@@ -116,19 +116,15 @@ const padelOptions: { title: string; items: string[] }[] = [
 const pickleballOptions: { title: string; items: string[] }[] = [
   {
     title: 'Face Materials',
-    items: ['Carbon Fiber (T300 / T700)', 'Raw T700 Carbon Fiber', '3K Carbon Fiber', 'Graphite', 'Fiberglass', 'Kevlar', 'Composite Materials'],
+    items: ['Carbon Fiber (T300 / T700)', 'Raw T700 Carbon Fiber', '3K Carbon Fiber', 'Fiberglass', 'Kevlar'],
   },
   {
     title: 'Core Options',
-    items: ['Polypropylene (PP) Honeycomb', 'Polymer Honeycomb', 'Nomex Honeycomb', 'Aluminum Honeycomb'],
+    items: ['Polypropylene (PP) Honeycomb'],
   },
   {
     title: 'Thickness Options',
-    items: ['10 mm', '13 mm', '14 mm', '16 mm'],
-  },
-  {
-    title: 'Weight Options',
-    items: ['Lightweight', 'Middleweight', 'Standard', 'Custom Weight'],
+    items: ['13 mm', '14 mm', '16 mm'],
   },
   {
     title: 'Edge Construction',
@@ -136,7 +132,7 @@ const pickleballOptions: { title: string; items: string[] }[] = [
   },
   {
     title: 'Grip Options',
-    items: ['Perforated Cushion Grip', 'Sweat-Absorbent Grip', 'PU Leather Grip', 'Synthetic Rubber Grip', 'Ergonomic Ribbed Grip', 'Moisture-Wicking Grip', 'Anti-Slip Grip'],
+    items: ['Perforated Cushion Grip', 'Moisture-Wicking Grip', 'PU Leather Grip', 'Synthetic Rubber Grip', 'Ergonomic Ribbed Grip'],
   },
   {
     title: 'Surface Finishes',
