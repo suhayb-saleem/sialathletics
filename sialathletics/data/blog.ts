@@ -231,19 +231,18 @@ export const posts: BlogPost[] = [
       { type: 'h2', text: 'Surface texture sets spin' },
       {
         type: 'p',
-        text: 'Texture is molded directly into the frame rather than sprayed on as a coating, so it does not wear off with use. Options include 3D grain, 3D hexagon mold, sand grit, and 3D decals.',
+        text: 'There are two ways to get grip: 3D relief molded into the frame, which cannot wear away, and a sand particle finish, which bites harder when new but smooths with play. Options are smooth, sand grit, 3D grain, 3D hexagon, or a hybrid that combines sand over a molded relief so performance fades gradually instead of falling away.',
       },
 
-      { type: 'h2', text: 'Weight, balance and finishing' },
+      { type: 'h2', text: 'The full spec sheet' },
       {
         type: 'table',
         rows: [
-          ['Weight', '350-380g'],
-          ['Balance', '260-275mm (low, mid, or high)'],
           ['Frame shape', 'Round, teardrop, diamond, hybrid, or a custom mold'],
-          ['Face material', '3K / 12K / 18K / 24K carbon, fiberglass-carbon hybrid, Kevlar-carbon blend'],
+          ['Face material', '3K / 12K / 18K / 24K carbon, silver carbon, fiberglass-carbon hybrid, Kevlar-carbon blend'],
           ['Core', 'Black high-density EVA, soft EVA 13-15°, memory high-rebound EVA'],
-          ['Texture', '3D grain, 3D hexagon, sand grit, 3D decals'],
+          ['Texture', 'Smooth, sand grit, 3D grain, 3D hexagon, or hybrid sand and 3D'],
+          ['Weight and balance', 'Not selected separately — they result from the shape and core, typically 350-380g and 260-275mm'],
         ],
       },
       {
@@ -468,10 +467,14 @@ export const posts: BlogPost[] = [
         text: 'For a first product line, teardrop is usually the right starting point. It is the shape most players can use, which makes it the safest single SKU if you are only launching one. Round is the natural second addition if you sell into clubs and academies, where beginners and improvers dominate. Diamond is the one to add last — it sells to a narrower, more advanced audience, and it is the shape most likely to sit on a shelf if your customer base is not there yet.',
       },
 
-      { type: 'h2', text: 'Weight and balance' },
+      { type: 'h2', text: 'Weight and balance follow from the build' },
       {
         type: 'p',
-        text: 'Weight and balance are specified separately from shape, and they can shift the character within a shape. Our range is 350-380g with a balance point from 260-275mm. A teardrop specified at 350g with a low balance will play more like a control racket than a heavy round one will. If you are trying to hit a particular feel, these two numbers are the fine adjustment.',
+        text: 'Weight and balance are not specified off a list. They are the result of the shape, the carbon grade and the core you choose, and they land in the usual 350-380g range with a balance point around 260-275mm. A round racket in a soft core naturally sits lower and lighter than a diamond in high-density EVA — the shape does that, not a number you tick.',
+      },
+      {
+        type: 'p',
+        text: 'If you have a target feel rather than a target figure, describe the player and we will tell you which combination gets closest. Chasing an exact gram count usually means compromising something that matters more.',
       },
 
       { type: 'h2', text: 'When you need a custom mold' },
@@ -559,7 +562,7 @@ export const posts: BlogPost[] = [
       'Core thickness is the biggest single influence on how a paddle feels. Thinner is faster, thicker is more controlled.',
     hero: {
       src: '/images/blog/pickleball-paddle-thickness.png',
-      alt: 'Three SIAL Athletics pickleball paddles shown side by side labelled 11mm, 13mm and 16mm thickness',
+      alt: 'Three SIAL Athletics pickleball paddles shown side by side labelled 13mm, 14mm and 16mm thickness',
     },
     blocks: [
       {

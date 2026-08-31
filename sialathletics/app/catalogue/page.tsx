@@ -118,10 +118,9 @@ const pickleballOptions: { title: string; items: string[] }[] = [
     title: 'Face Materials',
     items: ['Carbon Fiber (T300 / T700)', 'Raw T700 Carbon Fiber', '3K Carbon Fiber', 'Fiberglass', 'Kevlar'],
   },
-  {
-    title: 'Core Options',
-    items: ['Polypropylene (PP) Honeycomb'],
-  },
+  // Core is not a chip group: every paddle uses a polypropylene honeycomb
+  // core, so it is stated in the section intro rather than offered as a
+  // one-option choice.
   {
     title: 'Thickness Options',
     items: ['13 mm', '14 mm', '16 mm'],
@@ -301,8 +300,9 @@ export default function CataloguePage() {
               Pickleball paddles.
             </h2>
             <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-              Three builds — control, balanced, and power. Every paddle is fully customizable:
-              face, core, weight, grip, and branding.
+              Three builds — control, balanced, and power. Every paddle is built on a
+              polypropylene honeycomb core, with the face, thickness, edge, grip, finish and
+              branding specified to your requirements.
             </p>
           </div>
 

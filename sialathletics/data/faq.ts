@@ -41,7 +41,7 @@ export const faqCategories: FaqCategory[] = [
     items: [
       {
         q: 'What can be customized on a padel racket?',
-        a: 'Frame shape (teardrop, round, or diamond), carbon fiber grade (3K, 12K, 18K, or 24K, plus fiberglass-carbon hybrid and Kevlar-carbon blends), EVA core (black high-density, soft 13–15° hardness, or memory high-rebound), surface texture (3D grain or hexagon mold, sand grit, 3D decals), weight within the 350–380g range, and balance from 260–275mm — alongside full graphics, colorways, and grip options.',
+        a: 'Frame shape (teardrop, round, or diamond), carbon fiber grade (3K, 12K, 18K, or 24K, plus fiberglass-carbon hybrid and Kevlar-carbon blends), EVA core (black high-density, soft 13–15° hardness, or memory high-rebound), and surface texture (smooth, sand grit, 3D grain or hexagon, or a hybrid of sand and 3D) — alongside full graphics, colorways, and grip options. Weight and balance are not picked from a list: they follow from the shape and core you choose, and land in the usual 350–380g range.',
       },
       {
         q: 'What can be customized on a pickleball paddle?',
