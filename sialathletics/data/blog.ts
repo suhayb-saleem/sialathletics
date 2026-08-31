@@ -82,7 +82,6 @@ export const posts: BlogPost[] = [
     related: [
       { label: 'About SIAL Athletics', href: '/about' },
       { label: 'How we manufacture', href: '/manufacturing' },
-      { label: 'How to vet a factory before you order', href: '/blog/how-to-vet-a-sports-equipment-factory' },
     ],
   },
 
@@ -162,7 +161,6 @@ export const posts: BlogPost[] = [
     ],
     related: [
       { label: 'Custom padel racket manufacturing', href: '/blog/custom-padel-racket-manufacturing' },
-      { label: 'How to vet a factory before you order', href: '/blog/how-to-vet-a-sports-equipment-factory' },
       { label: 'Get a factory quote', href: '/contact' },
     ],
   },
@@ -500,8 +498,8 @@ export const posts: BlogPost[] = [
     summary:
       'The core is what the player actually feels at contact. Three EVA options cover most requirements, and the choice is about comfort as much as power.',
     hero: {
-      src: '/images/blog/available-materials.jpg',
-      alt: 'Chart of available racket materials including EVA soft core foam, fibreglass, carbon and Kevlar',
+      src: '/images/blog/eva-core-vs-foam.png',
+      alt: 'Labelled comparison of EVA closed-cell foam and open-cell polyurethane foam with their properties listed',
     },
     blocks: [
       {
@@ -521,6 +519,13 @@ export const posts: BlogPost[] = [
           'Soft EVA at 13-15° hardness — more dwell time and more control, and noticeably easier on the elbow and shoulder.',
           'Memory / high-rebound EVA — recovers its shape quickly for a livelier response, and stays consistent across a long session.',
         ],
+      },
+
+      {
+        type: 'image',
+        src: '/images/blog/available-materials.jpg',
+        alt: 'Chart of available racket materials including EVA soft core foam, fibreglass, carbon and Kevlar',
+        caption: 'Core stock sits alongside the face materials it gets paired with.',
       },
 
       { type: 'h2', text: 'Comfort is a commercial decision' },
@@ -553,8 +558,8 @@ export const posts: BlogPost[] = [
     summary:
       'Core thickness is the biggest single influence on how a paddle feels. Thinner is faster, thicker is more controlled.',
     hero: {
-      src: '/images/blog/carbon-weave.jpg',
-      alt: 'Close-up of a woven carbon fibre composite panel showing the weave pattern',
+      src: '/images/blog/pickleball-paddle-thickness.png',
+      alt: 'Three SIAL Athletics pickleball paddles shown side by side labelled 11mm, 13mm and 16mm thickness',
     },
     blocks: [
       {
@@ -755,68 +760,11 @@ export const posts: BlogPost[] = [
       },
     ],
     related: [
-      { label: 'How to vet a factory before you order', href: '/blog/how-to-vet-a-sports-equipment-factory' },
       { label: 'How we manufacture', href: '/manufacturing' },
       { label: 'Full buyer FAQ', href: '/faq' },
     ],
   },
 
-  {
-    slug: 'how-to-vet-a-sports-equipment-factory',
-    title: 'How to vet a sports equipment factory before you order',
-    metaTitle: 'How to Vet a Sports Equipment Factory Before Ordering',
-    metaDescription:
-      'Seven questions that separate a real manufacturer from a trading company, and what good answers look like on MOQ, samples, QC and shipping terms.',
-    category: 'Sourcing',
-    date: PUBLISHED,
-    summary:
-      'Most sourcing problems are visible before you pay a deposit. These are the questions that surface them.',
-    hero: {
-      src: '/images/blog/qc-caliper.jpg',
-      alt: 'Technician measuring a machined part with a digital caliper beside an inspection sheet',
-    },
-    blocks: [
-      {
-        type: 'p',
-        text: 'The failure mode in sourcing is rarely dramatic. It is a supplier who quotes fast, samples well, and then delivers a bulk run that does not match the sample — at which point your deposit is already spent and your launch date is fixed. Almost all of that risk is diagnosable in the first two conversations.',
-      },
-
-      { type: 'h2', text: 'The seven questions' },
-      {
-        type: 'p',
-        text: 'Ask these seven questions. The answers below are ours, included so you have something concrete to compare against — the point is not that every factory should answer identically, but that a real manufacturer answers specifically and quickly.',
-      },
-      {
-        type: 'list',
-        items: [
-          'Do you own the factory, or do you subcontract? Trading companies are common and not inherently bad, but you need to know who is accountable for a bad batch.',
-          'What is your real minimum order quantity? Ours is 24 units for padel rackets and 50 for pickleball paddles. A vague answer usually means it depends on a subcontractor.',
-          'Can I order a sample first, and is the cost credited? Ours is 1-5 units at a higher per-unit cost, creditable toward a confirmed bulk order.',
-          'How long from approved spec to delivered bulk? Ours: samples in 3-4 weeks, then 30-45 days for production after sample approval and deposit.',
-          'What are the payment terms? Ours are 30% upfront by bank transfer and 70% before shipment. Be cautious of anyone asking for full payment upfront.',
-          'What QC documentation comes with the order? Ask to see a sample report. Every order of ours ships with a batch-level QC report.',
-          'Which shipping terms, and who handles export paperwork? We default to FOB Karachi, with EXW Sialkot on request, and handle the documentation.',
-        ],
-      },
-
-      { type: 'h2', text: 'Two further checks' },
-      {
-        type: 'p',
-        text: 'Two further checks are worth the effort. First, ask for photographs or a video call from the production floor rather than a brochure — a factory that cannot show you the floor on short notice may not have one. Second, ask what happens if a batch is wrong. A supplier with a defined defect window and claims process has thought about failure; one that says it never happens has not.',
-      },
-
-      { type: 'h2', text: 'Be specific in your brief' },
-      {
-        type: 'p',
-        text: 'Finally, be specific in your own brief. The most common cause of a sample that disappoints is a brief that specified a shape and a colour but left weight, balance, core and face grade to the factory. Those four decide how the product plays. If you do not specify them, someone else will.',
-      },
-    ],
-    related: [
-      { label: 'What happens in quality control', href: '/blog/what-happens-in-quality-control' },
-      { label: 'OEM and ODM programmes', href: '/manufacturing' },
-      { label: 'Start an inquiry', href: '/contact' },
-    ],
-  },
 
   {
     slug: 'padel-vs-pickleball-differences',
@@ -903,8 +851,8 @@ export const posts: BlogPost[] = [
     summary:
       'Neither is better outright. Carbon is stiffer, so it returns more of what you put in and grips the ball harder; fibreglass flexes, so it gives more free power and is kinder on the arm. The right answer depends on who is holding the racket.',
     hero: {
-      src: '/images/blog/carbon-fabric-types.jpg',
-      alt: 'Chart of composite fabric types including glass fibre, 3K, 12K, 18K, Kevlar and titanium carbon weaves',
+      src: '/images/blog/fibreglass-vs-carbon.png',
+      alt: 'Side-by-side comparison of woven fibreglass and woven carbon fibre cloth with magnified detail of each weave',
     },
     blocks: [
       {
@@ -933,6 +881,13 @@ export const posts: BlogPost[] = [
           ['Durability', 'Carbon: holds its properties longer. Fibreglass: softens with heavy use.'],
           ['Cost', 'Fibreglass is the more accessible option at every volume.'],
         ],
+      },
+
+      {
+        type: 'image',
+        src: '/images/blog/carbon-fabric-types.jpg',
+        alt: 'Chart of composite fabric types including glass fibre, 3K, 12K, 18K, Kevlar and titanium carbon weaves',
+        caption: 'The full range of face fabrics, from glass fibre through to Kevlar and titanium carbon blends.',
       },
 
       { type: 'h2', text: 'The comfort argument nobody makes' },

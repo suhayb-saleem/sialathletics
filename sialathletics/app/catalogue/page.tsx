@@ -111,14 +111,6 @@ const padelOptions: { title: string; items: string[] }[] = [
     title: 'Paint & Coating',
     items: ['Matte Finish', 'Glossy Finish', 'UV-Resistant Paint', 'Chameleon Paint', 'Metallic Decals', 'Water-Transfer Decals', 'High-Contrast Neon Colors', 'Sublimation'],
   },
-  {
-    title: 'Weight',
-    items: ['350 g', '355 ±10 g', '360 g', '370 g', '375 g', '380 g'],
-  },
-  {
-    title: 'Balance',
-    items: ['Low', 'Medium', 'High', 'Custom (260–275 mm)'],
-  },
 ];
 
 const pickleballOptions: { title: string; items: string[] }[] = [

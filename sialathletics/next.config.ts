@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
       { source: '/guides/custom-padel-racket-manufacturing', destination: '/blog/custom-padel-racket-manufacturing', permanent: true },
       { source: '/guides/how-pickleball-paddles-are-manufactured', destination: '/blog/how-pickleball-paddles-are-manufactured', permanent: true },
       { source: '/guides', destination: '/blog', permanent: true },
+      // Retired post — it was live and submitted to IndexNow, so send it to
+      // the index rather than letting it 404.
+      { source: '/blog/how-to-vet-a-sports-equipment-factory', destination: '/blog', permanent: true },
       // Anything else that was under /guides falls back to the index.
       { source: '/guides/:slug', destination: '/blog', permanent: true },
     ];
