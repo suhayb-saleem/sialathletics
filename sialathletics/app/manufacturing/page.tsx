@@ -34,7 +34,7 @@ export default function ManufacturingPage() {
         primaryLabel="Get a quote"
         primaryHref="/contact"
         secondaryLabel="View products"
-        secondaryHref="/catalogue"
+        secondaryHref="/products"
         index="SIAL / 04"
       />
     </main>

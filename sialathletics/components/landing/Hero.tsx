@@ -44,7 +44,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div className="hp-hero__actions" {...rise(0.26)}>
-          <Link href="/catalogue" className="hp-btn hp-btn--primary">
+          <Link href="/products" className="hp-btn hp-btn--primary">
             Explore the range <span className="hp-btn__arrow" aria-hidden="true">→</span>
           </Link>
           <Link href="/manufacturing" className="hp-link">

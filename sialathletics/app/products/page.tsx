@@ -12,7 +12,7 @@ import { breadcrumbJsonLd } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Padel & Pickleball Manufacturing Platforms',
   description: 'Configure your padel racket or pickleball paddle line on our manufacturing platforms: round, teardrop, diamond, and hybrid molds, fully customizable.',
-  alternates: { canonical: '/catalogue' },
+  alternates: { canonical: '/products' },
 };
 
 /**
@@ -237,7 +237,7 @@ function platformJsonLd(platform: Platform, category: 'Padel Racket' | 'Pickleba
 export default function CataloguePage() {
   return (
     <main style={{ background: 'var(--hp-paper)' }}>
-      <JsonLd data={breadcrumbJsonLd('Products', '/catalogue')} />
+      <JsonLd data={breadcrumbJsonLd('Products', '/products')} />
       {[...padelPlatforms.map((p) => platformJsonLd(p, 'Padel Racket')), ...pickleballPlatforms.map((p) => platformJsonLd(p, 'Pickleball Paddle'))].map((p, i) => (
         <JsonLd key={i} data={p} />
       ))}

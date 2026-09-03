@@ -27,7 +27,7 @@ export default function FactoryIntro() {
             <Link href="/manufacturing" className="hp-link">
               How we manufacture <b aria-hidden="true">↗</b>
             </Link>
-            <Link href="/catalogue" className="hp-link">
+            <Link href="/products" className="hp-link">
               Wholesale padel rackets &amp; paddles <b aria-hidden="true">↗</b>
             </Link>
             <Link href="/faq" className="hp-link">

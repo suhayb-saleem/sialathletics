@@ -3,6 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // The products page was served from /catalogue while every label for it
+      // said "Products". Renamed to match. The browser carries the #padel and
+      // #pickleball fragments across the redirect on its own.
+      { source: '/catalogue', destination: '/products', permanent: true },
+      { source: '/catalogue/:path*', destination: '/products', permanent: true },
       // The /guides section was published and submitted to IndexNow before
       // being folded into /blog. All three guides now exist as blog posts
       // under the same slugs, so each old URL redirects to its own post

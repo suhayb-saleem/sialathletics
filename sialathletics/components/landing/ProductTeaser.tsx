@@ -10,14 +10,14 @@ const categories = [
   {
     title: 'Padel Rackets',
     desc: 'Round, teardrop, diamond, hybrid — or a custom shape we build for you.',
-    href: '/catalogue#padel',
+    href: '/products#padel',
     image: '/images/products/padel_backgroundless.png',
     alt: 'Carbon padel racket',
   },
   {
     title: 'Pickleball Paddles',
     desc: 'Control, balanced, and power builds in carbon and composite.',
-    href: '/catalogue#pickleball',
+    href: '/products#pickleball',
     image: '/images/products/pickleball_backgroundless.png',
     alt: 'Carbon pickleball paddle',
   },

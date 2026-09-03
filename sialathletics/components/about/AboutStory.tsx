@@ -50,7 +50,7 @@ export default function AboutStory() {
             <Link href="/manufacturing" style={{ color: 'var(--hp-ink)', textDecorationColor: 'var(--hp-red)' }}>custom builds to their own spec</Link>{' '}
             or one of our own designs with their branding.
           </p>
-          <Button href="/catalogue" variant="primary">Explore our products <span className="hp-btn__arrow" aria-hidden="true">→</span></Button>
+          <Button href="/products" variant="primary">Explore our products <span className="hp-btn__arrow" aria-hidden="true">→</span></Button>
         </motion.div>
       </div>
 

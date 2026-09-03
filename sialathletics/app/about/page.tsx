@@ -33,7 +33,7 @@ export default function AboutPage() {
         primaryLabel="Get a quote"
         primaryHref="/contact"
         secondaryLabel="View products"
-        secondaryHref="/catalogue"
+        secondaryHref="/products"
         index="SIAL / 03"
       />
     </main>

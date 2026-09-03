@@ -263,7 +263,7 @@ export const posts: BlogPost[] = [
     related: [
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
       { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
-      { label: 'Configure a spec and request a quote', href: '/catalogue' },
+      { label: 'Configure a spec and request a quote', href: '/products' },
     ],
   },
 
@@ -357,7 +357,7 @@ export const posts: BlogPost[] = [
     related: [
       { label: 'Core thickness: 13mm, 14mm or 16mm', href: '/blog/pickleball-paddle-core-thickness-13mm-14mm-16mm' },
       { label: 'What happens in quality control', href: '/blog/what-happens-in-quality-control' },
-      { label: 'See pickleball platforms', href: '/catalogue#pickleball' },
+      { label: 'See pickleball platforms', href: '/products#pickleball' },
     ],
   },
 
@@ -422,7 +422,7 @@ export const posts: BlogPost[] = [
     related: [
       { label: 'EVA core hardness explained', href: '/blog/eva-core-hardness-explained' },
       { label: 'How we manufacture', href: '/manufacturing' },
-      { label: 'Configure a spec', href: '/catalogue' },
+      { label: 'Configure a spec', href: '/products' },
     ],
   },
 
@@ -485,7 +485,7 @@ export const posts: BlogPost[] = [
     ],
     related: [
       { label: 'OEM and ODM programmes', href: '/manufacturing' },
-      { label: 'Browse padel platforms', href: '/catalogue#padel' },
+      { label: 'Browse padel platforms', href: '/products#padel' },
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
     ],
   },
@@ -604,7 +604,7 @@ export const posts: BlogPost[] = [
     ],
     related: [
       { label: 'How we manufacture', href: '/manufacturing' },
-      { label: 'Browse pickleball platforms', href: '/catalogue#pickleball' },
+      { label: 'Browse pickleball platforms', href: '/products#pickleball' },
       { label: 'Get a quote', href: '/contact' },
     ],
   },
@@ -706,7 +706,7 @@ export const posts: BlogPost[] = [
     related: [
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
       { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
-      { label: 'Configure a spec', href: '/catalogue' },
+      { label: 'Configure a spec', href: '/products' },
     ],
   },
 
@@ -839,7 +839,7 @@ export const posts: BlogPost[] = [
     related: [
       { label: 'Pickleball paddle core thickness', href: '/blog/pickleball-paddle-core-thickness-13mm-14mm-16mm' },
       { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
-      { label: 'Browse platforms', href: '/catalogue' },
+      { label: 'Browse platforms', href: '/products' },
     ],
   },
 
@@ -919,7 +919,7 @@ export const posts: BlogPost[] = [
     related: [
       { label: 'Carbon fibre grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
       { label: 'EVA core hardness explained', href: '/blog/eva-core-hardness-explained' },
-      { label: 'Configure a spec', href: '/catalogue' },
+      { label: 'Configure a spec', href: '/products' },
     ],
   },
 

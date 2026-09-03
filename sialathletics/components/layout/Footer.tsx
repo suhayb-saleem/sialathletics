@@ -53,7 +53,7 @@ export default function Footer() {
               {[
                 { name: 'Home', href: '/' },
                 { name: 'About', href: '/about' },
-                { name: 'Products', href: '/catalogue' },
+                { name: 'Products', href: '/products' },
                 { name: 'Blog', href: '/blog' },
                 { name: 'FAQ', href: '/faq' },
                 { name: 'Contact', href: '/contact' },
@@ -76,8 +76,8 @@ export default function Footer() {
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
-                { name: 'Pickleball Paddles', href: '/catalogue#pickleball' },
-                { name: 'Padel Rackets', href: '/catalogue#padel' },
+                { name: 'Pickleball Paddles', href: '/products#pickleball' },
+                { name: 'Padel Rackets', href: '/products#padel' },
                 { name: 'OEM & ODM Programs', href: '/manufacturing' },
               ].map((link) => (
                 <li key={link.name}>
