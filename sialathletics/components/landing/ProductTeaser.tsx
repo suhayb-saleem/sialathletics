@@ -44,7 +44,7 @@ export function Range() {
             Padel &amp; pickleball,<br /><span>made to order.</span>
           </h2>
           <p className="hp-range__intro">
-            Pick your shape, materials, weight, and finish. We build it for you.
+            Pick your shape, materials, texture, and finish. We build it for you.
           </p>
         </motion.div>
 

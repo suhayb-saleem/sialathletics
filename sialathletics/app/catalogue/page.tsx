@@ -15,6 +15,14 @@ export const metadata: Metadata = {
   alternates: { canonical: '/catalogue' },
 };
 
+/**
+ * The only downloadable asset on the site: a padel-only PDF listing every
+ * mould (SA-xxxx) by shape family with its thickness, weight, dimensions and
+ * balance, plus the build-specification options. It replaced an 86 MB image
+ * archive, so the file is safe to link straight from the hero.
+ */
+const CATALOGUE_PDF = '/downloads/sial-athletics-oem-padel-catalogue.pdf';
+
 /* ------------------------------------------------------------------ */
 /* Platform data                                                       */
 /* ------------------------------------------------------------------ */
@@ -240,6 +248,15 @@ export default function CataloguePage() {
         subtitle="Pick a shape, then customize the materials, branding, and packaging."
         image="/images/products/productpage_section.png"
         imageAlt="Carbon padel racket manufactured by SIAL Athletics"
+        actions={
+          <>
+            <a href={CATALOGUE_PDF} download className="hp-btn hp-btn--ink">
+              <Download size={16} style={{ marginRight: '0.5rem' }} />
+              <span>DOWNLOAD PADEL CATALOGUE</span>
+            </a>
+            <span className="hp-pagehero__actions-note">PDF · 2.1 MB · mould specs by shape</span>
+          </>
+        }
       />
 
       {/* How the platform model works */}
@@ -248,7 +265,9 @@ export default function CataloguePage() {
           <div className="plat-steps">
             {[
               { num: '01', title: 'Choose your shape', desc: 'Start from one of our existing racket or paddle shapes.' },
-              { num: '02', title: 'Spec the build', desc: 'Pick the materials, weight, and balance you want.' },
+              // Weight and balance follow from the mould and core, they are not
+              // picked from a list — see the FAQ and the catalogue PDF.
+              { num: '02', title: 'Spec the build', desc: 'Pick the lay-up, core, texture, and finish.' },
               { num: '03', title: 'Make it yours', desc: 'Add your logo and colors. We sample it, you approve it, we produce it.' },
             ].map((step) => (
               <div key={step.num} className="plat-step">
@@ -273,7 +292,9 @@ export default function CataloguePage() {
             </h2>
             <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
               Four shapes, from control to power. Every one is fully customizable, and we can
-              build a custom mold if you need something different.
+              build a custom mold if you need something different. Per-mould dimensions, weight,
+              and balance are in the{' '}
+              <a href={CATALOGUE_PDF} download className="hp-link">padel catalogue PDF</a>.
             </p>
           </div>
 
@@ -333,15 +354,6 @@ export default function CataloguePage() {
               <Link href="/manufacturing" className="hp-link">how we manufacture</Link> or check{' '}
               <Link href="/faq" className="hp-link">common buyer questions</Link>.
             </p>
-            <div style={{ marginTop: '2.5rem' }}>
-              <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.9rem', color: 'var(--hp-ink-70)', marginBottom: '1rem', maxWidth: '400px', lineHeight: 1.6 }}>
-                Download our full catalogue for an offline reference of every shape, material, and option.
-              </p>
-              <a href="/images/catalogue.zip" download className="hp-btn hp-btn--outline-ink" style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <Download size={16} style={{ marginRight: '0.5rem' }} />
-                <span>DOWNLOAD CATALOGUE (.ZIP)</span>
-              </a>
-            </div>
           </div>
           <div className="opt-grid opt-grid--services">
             {services.map((group) => <OptionGroup key={group.title} {...group} />)}

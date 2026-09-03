@@ -113,7 +113,7 @@ export const posts: BlogPost[] = [
       { type: 'h2', text: 'What ODM actually means' },
       {
         type: 'p',
-        text: 'In an ODM (original design manufacturer) program, you select an existing, proven shape and customize everything visible: carbon grade, core, surface texture, weight, balance, graphics, colorways, grip, edge guard branding, and retail packaging. The mold already exists, so there is no tooling cost and no tooling delay.',
+        text: 'In an ODM (original design manufacturer) program, you select an existing, proven shape and customize everything around it: carbon grade, core, surface texture, graphics, colorways, grip, edge guard branding, and retail packaging. Weight and balance come with the mould you pick. The mold already exists, so there is no tooling cost and no tooling delay.',
       },
       {
         type: 'p',
@@ -170,7 +170,7 @@ export const posts: BlogPost[] = [
     title: 'Custom padel racket manufacturing: shapes, carbon grades and MOQs',
     metaTitle: 'Custom Padel Racket Manufacturing — Shapes, Carbon & MOQ',
     metaDescription:
-      'What is actually customizable on a padel racket: round, teardrop and diamond shapes, 3K-24K carbon, EVA cores, weight and balance ranges, and real MOQs.',
+      'What is actually customizable on a padel racket: round, teardrop and diamond shapes, 3K-24K carbon, EVA cores, surface textures, and real MOQs.',
     category: 'Product design',
     date: PUBLISHED,
     summary:

@@ -419,6 +419,9 @@ a { color: inherit; }
 .hp-pagehero__title { margin: 1.1rem 0 0; font-size: clamp(3rem, 7vw, 5.6rem); letter-spacing: -0.035em; color: var(--hp-ink); }
 .hp-pagehero__word { display: inline-block; overflow: hidden; margin-right: .28em; vertical-align: bottom; }
 .hp-pagehero__subtitle { max-width: 40rem; margin: 1.5rem 0 0; color: var(--hp-ink-70); font-family: var(--hp-body); font-size: clamp(1rem, 1.2vw, 1.12rem); line-height: 1.7; }
+.hp-pagehero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; margin-top: 2rem; }
+.hp-pagehero__actions .hp-btn { display: inline-flex; align-items: center; }
+.hp-pagehero__actions .hp-pagehero__actions-note { color: var(--hp-ink-45); font-family: var(--hp-body); font-size: 0.78rem; letter-spacing: 0.02em; }
 
 input:not([type="checkbox"]):not([type="radio"]), select, textarea { border-radius: 8px; }
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--red) !important; outline-offset: 2px; border-color: var(--red) !important; }

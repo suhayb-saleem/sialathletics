@@ -37,7 +37,7 @@ export const faqCategories: FaqCategory[] = [
     id: 'customization-technical',
     title: 'Customization & Technical Standards',
     framing:
-      'You choose the face material, core, texture, weight, and balance on every racket and paddle.',
+      'You choose the shape, face material, core, texture, and finish on every racket and paddle.',
     items: [
       {
         q: 'What can be customized on a padel racket?',

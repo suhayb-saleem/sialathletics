@@ -1,4 +1,5 @@
 'use client';
+import type { ReactNode } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,11 +13,13 @@ type PageHeroProps = {
   /** Full-bleed backdrop photo; a white wash keeps the ink type legible over it. */
   image?: string;
   imageAlt?: string;
+  /** Buttons or links shown under the subtitle, above the fold. */
+  actions?: ReactNode;
 };
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export default function PageHero({ eyebrow, title, subtitle, crumb, image, imageAlt }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, subtitle, crumb, image, imageAlt, actions }: PageHeroProps) {
   const reduceMotion = useReducedMotion();
   const words = title.split(' ');
 
@@ -69,6 +72,17 @@ export default function PageHero({ eyebrow, title, subtitle, crumb, image, image
           >
             {subtitle}
           </motion.p>
+        )}
+
+        {actions && (
+          <motion.div
+            className="hp-pagehero__actions"
+            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.45 }}
+          >
+            {actions}
+          </motion.div>
         )}
       </div>
     </section>
