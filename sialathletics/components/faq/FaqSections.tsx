@@ -12,9 +12,9 @@ export default function FaqSections() {
   const id = useId();
 
   return (
-    <section style={{ background: 'var(--hp-paper)', padding: 'var(--hp-gap) var(--hp-pad)' }}>
+    <section style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)', padding: 'var(--hp-gap) var(--hp-pad)' }}>
       <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '4.5rem' }}>
-        {faqCategories.map((cat, ci) => (
+        {faqCategories.map((cat) => (
           <motion.div
             key={cat.id}
             id={cat.id}
@@ -23,14 +23,9 @@ export default function FaqSections() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.55, ease: EASE }}
           >
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem', marginBottom: '1rem' }}>
-              <span style={{ fontFamily: 'var(--hp-display)', fontWeight: 800, fontSize: '1.1rem', color: 'var(--hp-red)' }}>
-                0{ci + 1}
-              </span>
-              <h2 className="display-title" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: 'var(--hp-ink)', margin: 0 }}>
-                {cat.title}
-              </h2>
-            </div>
+            <h2 className="hp-display" style={{ fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: 'var(--hp-ink)', margin: '0 0 0.75rem' }}>
+              {cat.title}
+            </h2>
             <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7, marginBottom: '1.5rem', maxWidth: '720px' }}>
               {cat.framing}
             </p>
@@ -49,8 +44,8 @@ export default function FaqSections() {
                       aria-controls={panelId}
                       style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.25rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--hp-ink)' }}
                     >
-                      <h3 className="display-title" style={{ fontSize: 'clamp(1.02rem, 1.8vw, 1.25rem)', margin: 0, fontWeight: 600 }}>{item.q}</h3>
-                      {isOpen ? <Minus size={18} color="var(--hp-red)" style={{ flexShrink: 0 }} /> : <Plus size={18} color="var(--hp-red)" style={{ flexShrink: 0 }} />}
+                      <h3 style={{ fontFamily: 'var(--hp-body)', fontSize: 'clamp(1rem, 1.6vw, 1.12rem)', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>{item.q}</h3>
+                      {isOpen ? <Minus size={18} style={{ flexShrink: 0, color: 'var(--hp-ink-45)' }} /> : <Plus size={18} style={{ flexShrink: 0, color: 'var(--hp-ink-45)' }} />}
                     </button>
                     {/* CSS-based collapse (not conditional mounting) so the answer
                         stays in the server-rendered HTML for crawlers, even though
@@ -76,7 +71,7 @@ export default function FaqSections() {
             {cat.related && (
               <div style={{ marginTop: '1.25rem' }}>
                 <Link href={cat.related.href} className="hp-link">
-                  {cat.related.label} <b aria-hidden="true">↗</b>
+                  {cat.related.label} <b aria-hidden="true">→</b>
                 </Link>
               </div>
             )}

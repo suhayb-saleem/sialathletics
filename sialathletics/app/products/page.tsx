@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Download } from 'lucide-react';
 import PageHero from '@/components/ui/PageHero';
 import CTABanner from '@/components/landing/CTABanner';
-import SectionLabel from '@/components/ui/SectionLabel';
 import SpecConfigurator from '@/components/catalogue/SpecConfigurator';
 import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd } from '@/lib/seo';
@@ -14,14 +12,6 @@ export const metadata: Metadata = {
   description: 'Configure your padel racket or pickleball paddle line on our manufacturing platforms: round, teardrop, diamond, and hybrid molds, fully customizable.',
   alternates: { canonical: '/products' },
 };
-
-/**
- * The only downloadable asset on the site: a padel-only PDF listing every
- * mould (SA-xxxx) by shape family with its thickness, weight, dimensions and
- * balance, plus the build-specification options. It replaced an 86 MB image
- * archive, so the file is safe to link straight from the hero.
- */
-const CATALOGUE_PDF = '/downloads/sial-athletics-oem-padel-catalogue.pdf';
 
 /* ------------------------------------------------------------------ */
 /* Platform data                                                       */
@@ -170,7 +160,7 @@ const services: { title: string; items: string[] }[] = [
 /* Static building blocks (server-rendered, CSS-only effects)          */
 /* ------------------------------------------------------------------ */
 
-function PlatformCard({ platform, category, index }: { platform: Platform; category: string; index: number }) {
+function PlatformCard({ platform, category }: { platform: Platform; category: string }) {
   return (
     <article className="plat-card">
       <div className={`plat-card__media${platform.image ? '' : ' plat-card__media--empty'}`} aria-hidden="true" style={{ position: 'relative' }}>
@@ -181,8 +171,7 @@ function PlatformCard({ platform, category, index }: { platform: Platform; categ
         )}
       </div>
       <div className="plat-card__body">
-        <span className="plat-card__num">0{index + 1}</span>
-        <h3 className="display-title plat-card__name">{platform.name}</h3>
+        <h3 className="hp-display plat-card__name">{platform.name}</h3>
         <p className="plat-card__tag">{platform.tag}</p>
         <p className="plat-card__desc">{platform.desc}</p>
         <div className="plat-card__meter">
@@ -236,46 +225,33 @@ function platformJsonLd(platform: Platform, category: 'Padel Racket' | 'Pickleba
 
 export default function CataloguePage() {
   return (
-    <main style={{ background: 'var(--hp-paper)' }}>
+    <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={breadcrumbJsonLd('Products', '/products')} />
       {[...padelPlatforms.map((p) => platformJsonLd(p, 'Padel Racket')), ...pickleballPlatforms.map((p) => platformJsonLd(p, 'Pickleball Paddle'))].map((p, i) => (
         <JsonLd key={i} data={p} />
       ))}
       <PageHero
         crumb="Products"
-        eyebrow="Manufacturing platforms"
-        title="Your product. Our platform."
-        subtitle="Pick a shape, then customize the materials, branding, and packaging."
+        title="Padel rackets and pickleball paddles, built to spec."
+        subtitle="Pick a shape, then customise the materials, branding and packaging. Every model here is a starting point, not a fixed SKU."
         image="/images/products/productpage_section.png"
         imageAlt="Carbon padel racket manufactured by SIAL Athletics"
-        actions={
-          <>
-            <a href={CATALOGUE_PDF} download className="hp-btn hp-btn--ink">
-              <Download size={16} style={{ marginRight: '0.5rem' }} />
-              <span>DOWNLOAD PADEL CATALOGUE</span>
-            </a>
-            <span className="hp-pagehero__actions-note">PDF · 2.1 MB · mould specs by shape</span>
-          </>
-        }
       />
 
       {/* How the platform model works */}
-      <section className="site-section" style={{ background: 'var(--surface-2)', borderTop: '1px solid var(--hp-ink-line)' }}>
+      <section className="site-section" style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div className="plat-steps">
             {[
-              { num: '01', title: 'Choose your shape', desc: 'Start from one of our existing racket or paddle shapes.' },
+              { title: 'Choose a shape', desc: 'Start from one of our existing racket or paddle shapes, or brief a custom mould.' },
               // Weight and balance follow from the mould and core, they are not
-              // picked from a list — see the FAQ and the catalogue PDF.
-              { num: '02', title: 'Spec the build', desc: 'Pick the lay-up, core, texture, and finish.' },
-              { num: '03', title: 'Make it yours', desc: 'Add your logo and colors. We sample it, you approve it, we produce it.' },
+              // picked from a list — see data/faq.ts.
+              { title: 'Spec the build', desc: 'Pick the lay-up, core, texture and finish.' },
+              { title: 'Make it yours', desc: 'Add your logo and colours. We sample it, you approve it, we produce it.' },
             ].map((step) => (
-              <div key={step.num} className="plat-step">
-                <span className="plat-step__num">{step.num}</span>
-                <div>
-                  <h3 className="display-title plat-step__title">{step.title}</h3>
-                  <p className="plat-step__desc">{step.desc}</p>
-                </div>
+              <div key={step.title} className="plat-step">
+                <h3 className="hp-display plat-step__title">{step.title}</h3>
+                <p className="plat-step__desc">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -283,29 +259,25 @@ export default function CataloguePage() {
       </section>
 
       {/* ------------------------- PADEL ------------------------- */}
-      <section id="padel" className="site-section plat-anchor" style={{ background: 'var(--hp-paper)', borderTop: '1px solid var(--hp-ink-line)' }}>
+      <section id="padel" className="site-section plat-anchor" style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
-            <SectionLabel>Category 01</SectionLabel>
-            <h2 className="display-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ink)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
-              Padel rackets.
-            </h2>
-            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-              Four shapes, from control to power. Every one is fully customizable, and we can
-              build a custom mold if you need something different. Per-mould dimensions, weight,
-              and balance are in the{' '}
-              <a href={CATALOGUE_PDF} download className="hp-link">padel catalogue PDF</a>.
+            <h2 className="hp-display hp-h2">Padel rackets</h2>
+            <p className="hp-lede">
+              Four shapes, from control to power. Every one is fully customisable, and we can
+              cut a custom mould if you need something different. Weight and balance follow from
+              the mould and core you pick, and land in the usual 350–380g range.
             </p>
           </div>
 
           <div className="plat-grid plat-grid--4">
-            {padelPlatforms.map((p, i) => <PlatformCard key={p.name} platform={p} category="Padel Racket" index={i} />)}
+            {padelPlatforms.map((p) => <PlatformCard key={p.name} platform={p} category="Padel Racket" />)}
           </div>
 
           <div className="opt-section">
-            <h3 className="display-title opt-section__title">Padel manufacturing options</h3>
+            <h3 className="hp-display opt-section__title">Padel build options</h3>
             <p className="opt-section__intro">
-              Tap the specs you want, then send them straight to our team for a quote.
+              Pick the options you want, then send them to us as a quote request.
             </p>
             <SpecConfigurator category="Padel racket" productLine="Padel Rackets" groups={padelOptions} />
           </div>
@@ -313,28 +285,25 @@ export default function CataloguePage() {
       </section>
 
       {/* ----------------------- PICKLEBALL ----------------------- */}
-      <section id="pickleball" className="site-section plat-anchor" style={{ background: 'var(--surface-2)', borderTop: '1px solid var(--hp-ink-line)' }}>
+      <section id="pickleball" className="site-section plat-anchor" style={{ background: 'var(--surface-2)', backgroundImage: 'var(--hp-tex)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
-            <SectionLabel>Category 02</SectionLabel>
-            <h2 className="display-title" style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.2rem)', color: 'var(--hp-ink)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
-              Pickleball paddles.
-            </h2>
-            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
-              Three builds — control, balanced, and power. Every paddle is built on a
+            <h2 className="hp-display hp-h2">Pickleball paddles</h2>
+            <p className="hp-lede">
+              Three builds: control, balanced and power. Every paddle is built on a
               polypropylene honeycomb core, with the face, thickness, edge, grip, finish and
               branding specified to your requirements.
             </p>
           </div>
 
           <div className="plat-grid plat-grid--3">
-            {pickleballPlatforms.map((p, i) => <PlatformCard key={p.name} platform={p} category="Pickleball Paddle" index={i} />)}
+            {pickleballPlatforms.map((p) => <PlatformCard key={p.name} platform={p} category="Pickleball Paddle" />)}
           </div>
 
           <div className="opt-section">
-            <h3 className="display-title opt-section__title">Pickleball manufacturing options</h3>
+            <h3 className="hp-display opt-section__title">Pickleball build options</h3>
             <p className="opt-section__intro">
-              Tap to configure your paddle, then send it to us as a quote request.
+              Pick the options you want, then send them to us as a quote request.
             </p>
             <SpecConfigurator category="Pickleball paddle" productLine="Pickleball Paddles" groups={pickleballOptions} />
           </div>
@@ -342,17 +311,14 @@ export default function CataloguePage() {
       </section>
 
       {/* ----------------------- SERVICES ----------------------- */}
-      <section className="site-section" style={{ background: 'var(--hp-paper)', borderTop: '1px solid var(--hp-ink-line)' }}>
+      <section className="site-section" style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)', borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="container-custom">
           <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
-            <SectionLabel>Beyond the build</SectionLabel>
-            <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', color: 'var(--hp-ink)', marginTop: '0.9rem', marginBottom: '1.25rem' }}>
-              More than a product list.
-            </h2>
-            <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.95rem', color: 'var(--hp-ink-70)', lineHeight: 1.7 }}>
+            <h2 className="hp-display hp-h2">Services around the build</h2>
+            <p className="hp-lede">
               See{' '}
-              <Link href="/manufacturing" className="hp-link">how we manufacture</Link> or check{' '}
-              <Link href="/faq" className="hp-link">common buyer questions</Link>.
+              <Link href="/manufacturing" className="hp-link">how we manufacture</Link> or read the{' '}
+              <Link href="/faq" className="hp-link">buyer FAQ</Link>.
             </p>
           </div>
           <div className="opt-grid opt-grid--services">
@@ -363,12 +329,8 @@ export default function CataloguePage() {
 
       <CTABanner
         headline="Ready to configure your line?"
-        subtext="Tell us your platform, target price point, and volume — we'll respond within 24 hours."
+        subtext="Tell us the shape, target price point and volume. We reply within 24 hours."
         primaryLabel="Start an inquiry"
-        primaryHref="/contact"
-        secondaryLabel="Explore capabilities"
-        secondaryHref="/manufacturing"
-        index="SIAL / 02"
       />
 
       <style>{`
@@ -379,15 +341,9 @@ export default function CataloguePage() {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 2rem;
+          border-top: 1px solid var(--hp-ink-line);
         }
-        .plat-step { display: flex; gap: 1rem; align-items: flex-start; }
-        .plat-step__num {
-          font-family: var(--hp-display);
-          font-weight: 800;
-          font-size: 1.05rem;
-          color: var(--hp-red);
-          flex-shrink: 0;
-        }
+        .plat-step { padding-top: 1.4rem; }
         .plat-step__title { font-size: 1.1rem; color: var(--hp-ink); margin: 0 0 0.45rem; }
         .plat-step__desc {
           font-family: var(--hp-body);
@@ -404,13 +360,11 @@ export default function CataloguePage() {
         .plat-card {
           background: var(--surface);
           border: 1px solid var(--hp-ink-line);
-          box-shadow: var(--shadow-sm);
-          border-top: 3px solid var(--hp-red);
           display: flex;
           flex-direction: column;
-          transition: transform 0.3s ease, border-color 0.3s ease;
+          transition: border-color 0.3s ease;
         }
-        .plat-card:hover { transform: translateY(-4px); }
+        .plat-card:hover { border-color: var(--hp-ink-45); }
         .plat-card__media {
           aspect-ratio: 1 / 1;
           border-bottom: 1px solid var(--hp-ink-line);
@@ -437,26 +391,16 @@ export default function CataloguePage() {
           padding: 0.5rem 0.9rem;
         }
         .plat-card__body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
-        .plat-card__num {
-          font-family: var(--hp-display);
-          font-weight: 800;
-          font-size: 0.85rem;
-          color: var(--hp-red);
-          margin-bottom: 0.7rem;
-        }
         .plat-card__name { font-size: 1.35rem; color: var(--hp-ink); margin: 0 0 0.25rem; }
         .plat-card__tag {
           font-family: var(--hp-body);
-          font-size: 0.68rem;
-          font-weight: 800;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--hp-red);
+          font-size: 0.82rem;
+          color: var(--hp-ink-45);
           margin: 0 0 0.8rem;
         }
         .plat-card__desc {
           font-family: var(--hp-body);
-          font-size: 0.83rem;
+          font-size: 0.9rem;
           color: var(--hp-ink-70);
           line-height: 1.65;
           margin: 0 0 1.4rem;
@@ -466,11 +410,8 @@ export default function CataloguePage() {
           display: flex;
           justify-content: space-between;
           font-family: var(--hp-body);
-          font-size: 0.6rem;
-          font-weight: 700;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--hp-ink-70);
+          font-size: 0.72rem;
+          color: var(--hp-ink-45);
           margin-bottom: 0.45rem;
         }
         .plat-card__meter-track {
@@ -485,13 +426,12 @@ export default function CataloguePage() {
           width: 9px;
           height: 9px;
           border-radius: 50%;
-          background: var(--hp-red);
-          box-shadow: 0 0 8px rgba(226, 27, 45, 0.7);
+          background: var(--hp-ink);
         }
         .plat-card__meter-fill {
           position: absolute;
           inset: 0;
-          background: linear-gradient(90deg, transparent, var(--hp-red), transparent);
+          background: linear-gradient(90deg, transparent, var(--hp-ink-45), transparent);
         }
         .plat-card__meter-note {
           font-family: var(--hp-body);
@@ -521,24 +461,20 @@ export default function CataloguePage() {
         .opt-group {
           background: var(--surface);
           border: 1px solid var(--hp-ink-line);
-          box-shadow: var(--shadow-sm);
           padding: 1.5rem;
         }
         .opt-group__title {
           font-family: var(--hp-body);
-          font-size: 0.72rem;
-          font-weight: 800;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
+          font-size: 0.92rem;
+          font-weight: 600;
           color: var(--hp-ink);
           margin: 0 0 1rem;
         }
         .opt-group__chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
         .opt-group__chip {
           font-family: var(--hp-body);
-          font-size: 0.72rem;
-          font-weight: 600;
-          letter-spacing: 0.03em;
+          font-size: 0.8rem;
+          font-weight: 500;
           color: var(--hp-ink-70);
           border: 1px solid var(--hp-ink-line);
           padding: 0.32rem 0.6rem;
@@ -548,11 +484,11 @@ export default function CataloguePage() {
           cursor: pointer;
           transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
         }
-        button.opt-group__chip:hover { border-color: rgba(226, 27, 45, 0.55); color: var(--hp-ink); }
+        button.opt-group__chip:hover { border-color: var(--hp-ink-45); color: var(--hp-ink); }
         .opt-group__chip.is-selected {
-          border-color: var(--hp-red);
-          color: var(--hp-ink);
-          background: rgba(226, 27, 45, 0.14);
+          border-color: var(--hp-ink);
+          color: var(--hp-paper);
+          background: var(--hp-ink);
         }
         .spec-bar {
           display: flex;
@@ -568,11 +504,11 @@ export default function CataloguePage() {
           border: none;
           cursor: pointer;
           font-family: var(--hp-body);
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--hp-red);
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--hp-ink-70);
+          text-decoration: underline;
+          text-underline-offset: 0.25em;
           padding: 0;
         }
 

@@ -105,7 +105,6 @@ export default function ContactModal() {
             </button>
 
             <div className="contact-modal__head">
-              <span className="hp-eyebrow hp-eyebrow--ink">Let&apos;s talk</span>
               <h2 id="contact-modal-title" className="hp-display contact-modal__title">Get a factory quote.</h2>
               <p className="contact-modal__copy">
                 Send us your specs — we&apos;ll respond within 24 hours with pricing and sample options.

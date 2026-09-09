@@ -2,7 +2,6 @@
 import { useId, useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import Link from 'next/link';
-import SectionLabel from '@/components/ui/SectionLabel';
 import { contactFaqs as faqs } from '@/data/contactFaq';
 
 export default function ContactFAQ() {
@@ -10,11 +9,10 @@ export default function ContactFAQ() {
   const id = useId();
 
   return (
-    <section style={{ background: 'var(--hp-paper)', padding: 'var(--hp-gap) var(--hp-pad)', borderTop: '1px solid var(--hp-ink-line)' }}>
+    <section style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)', padding: 'var(--hp-gap) var(--hp-pad)', borderTop: '1px solid var(--hp-ink-line)' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
-          <SectionLabel>Common questions</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2.35rem, 4vw, 3.2rem)', marginTop: '.9rem' }}>Quick answers.</h2>
+        <div style={{ marginBottom: '2rem' }}>
+          <h2 className="hp-display hp-h2">Before you write</h2>
         </div>
         <div>
           {faqs.map(({ q, a }, index) => {
@@ -29,8 +27,8 @@ export default function ContactFAQ() {
                   aria-controls={panelId}
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 0', background: 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '1rem', color: 'var(--hp-ink)' }}
                 >
-                  <h3 className="display-title" style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', margin: 0 }}>{q}</h3>
-                  {isOpen ? <Minus size={18} color="var(--hp-red)" /> : <Plus size={18} color="var(--hp-red)" />}
+                  <h3 style={{ fontFamily: 'var(--hp-body)', fontSize: 'clamp(1rem, 1.6vw, 1.12rem)', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>{q}</h3>
+                  {isOpen ? <Minus size={18} style={{ flexShrink: 0, color: 'var(--hp-ink-45)' }} /> : <Plus size={18} style={{ flexShrink: 0, color: 'var(--hp-ink-45)' }} />}
                 </button>
                 {/* CSS-based collapse (not conditional mounting) so the answer
                     stays in the server-rendered HTML for crawlers, even though
@@ -52,9 +50,9 @@ export default function ContactFAQ() {
             );
           })}
         </div>
-        <div style={{ marginTop: '2rem', textAlign: 'center' }}>
+        <div style={{ marginTop: '2rem' }}>
           <Link href="/faq" className="hp-link">
-            See the full FAQ <b aria-hidden="true">↗</b>
+            See the full FAQ <b aria-hidden="true">→</b>
           </Link>
         </div>
       </div>

@@ -29,7 +29,6 @@ export default function ContactPage() {
       <JsonLd data={contactFaqJsonLd} />
       <PageHero
         crumb="Contact"
-        eyebrow="Let's talk"
         title="Get in touch."
         image="/images/contactpage_section.png"
         imageAlt="A SIAL Athletics padel racket leaning against the net on an outdoor court at sunset"

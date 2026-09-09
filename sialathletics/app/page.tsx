@@ -1,13 +1,12 @@
 import './home.css';
 import type { Metadata } from 'next';
 import Hero from '@/components/landing/Hero';
-import CredentialMarquee from '@/components/landing/TrustStrip';
+import FactoryIntro from '@/components/landing/FactoryIntro';
 import { Range } from '@/components/landing/ProductTeaser';
 import { Capabilities } from '@/components/landing/Capabilities';
 import WhoWeWorkWith from '@/components/landing/WhoWeWorkWith';
 import GlobalReach from '@/components/landing/GlobalReach';
-import FactoryIntro from '@/components/landing/FactoryIntro';
-import HomeCTA from '@/components/landing/HomeCTA';
+import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
@@ -48,13 +47,15 @@ export default function Home() {
     <div className="hp">
       <JsonLd data={organizationJsonLd} />
       <Hero />
-      <CredentialMarquee />
+      <FactoryIntro />
       <Range />
       <Capabilities />
       <WhoWeWorkWith />
       <GlobalReach />
-      <FactoryIntro />
-      <HomeCTA />
+      <CTABanner
+        headline="Build a better racket line."
+        subtext="Tell us what you want to build and your budget. We'll send samples, specs and a quote."
+      />
     </div>
   );
 }

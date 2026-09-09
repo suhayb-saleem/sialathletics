@@ -1,151 +1,78 @@
-'use client';
-
-import { motion } from 'motion/react';
 import Image from 'next/image';
-import SectionLabel from '@/components/ui/SectionLabel';
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-
-type Capability = { title: string; tag: string; desc: string; image: string; alt: string; span?: 'wide' };
+type Capability = { title: string; desc: string; image: string; alt: string };
 
 const capabilities: Capability[] = [
   {
     title: 'OEM manufacturing',
-    tag: 'Build to your spec',
-    desc: 'Send us your design, and we build it exactly to your requirements.',
+    desc: 'Send us your design and we build it to your drawings, materials and tolerances.',
     image: '/images/manufacturing/oem-manufacturing.png',
     alt: 'OEM prototype padel racket freshly printed with its graphic design',
-    span: 'wide',
   },
   {
     title: 'ODM private label',
-    tag: 'Your brand, our platform',
-    desc: 'Choose one of our racket or paddle designs, then customize it with your own branding.',
+    desc: 'Choose one of our racket or paddle shapes, then customise the build and the branding.',
     image: '/images/manufacturing/odm-manufacturing.png',
-    alt: 'Three padel racket private-label design variations laid out with material and color swatches',
+    alt: 'Three padel racket private-label design variations laid out with material and colour swatches',
   },
   {
-    title: 'Product Development & Prototyping',
-    tag: 'From concept to prototype',
-    desc: 'We help you build and test a prototype before we go into full production.',
+    title: 'Product development and prototyping',
+    desc: 'We build and test a physical prototype with you before anything goes into production. A new mould reaches prototype in 3–4 weeks.',
     image: '/images/manufacturing/product-prototyping.png',
-    alt: 'Finished padel racket prototypes and a precision mold on the factory floor',
+    alt: 'Finished padel racket prototypes and a precision mould on the factory floor',
   },
   {
     title: 'Quality control',
-    tag: 'Consistent at every stage',
-    desc: 'We check materials, weight, and finish on every batch before it ships.',
+    desc: 'Materials, weight and finish are checked on every batch before it ships, and a batch QC report ships with the order.',
     image: '/images/manufacturing/quality-control.png',
     alt: 'Padel racket undergoing precision testing on a quality control rig',
   },
   {
-    title: 'Packaging & fulfillment',
-    tag: 'Reliable & protected',
-    desc: 'Packaging that keeps your products safe in storage and shipping.',
+    title: 'Packaging and fulfilment',
+    desc: 'Retail packaging designed and produced with the order: gift boxes, hang tags, QR labels, poly bags.',
     image: '/images/manufacturing/packaging.png',
     alt: 'Padel racket carefully bubble-wrapped and boxed for shipment',
   },
   {
     title: 'Global logistics',
-    tag: 'Door to warehouse',
-    desc: 'We handle export paperwork and shipping to your warehouse, anywhere in the world.',
+    desc: 'Export paperwork and freight to your warehouse, anywhere. FOB Karachi by default, EXW Sialkot on request.',
     image: '/images/manufacturing/cargo-ship.jpg',
     alt: 'Container ship loaded with export cargo at port',
-    span: 'wide',
   },
 ];
 
-// Image-overlay bento grid — a deliberately different pattern from the
-// alternating text/image rows used elsewhere on the site: tiles of varying
-// width, full-bleed photo with a scrim and the copy sitting on top.
+// Six services as a plain photo grid: image, title, one or two sentences.
 export default function CapabilityCards() {
   return (
-    <section className="site-section" style={{ background: 'var(--hp-paper)' }}>
+    <section className="site-section" style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <div className="container-custom">
-        <div style={{ marginBottom: 'clamp(2rem, 4vw, 3rem)', maxWidth: '640px' }}>
-          <SectionLabel>Our capabilities</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--hp-ink)', marginTop: '0.9rem' }}>
-            What we offer.
-          </h2>
+        <div style={{ maxWidth: '46rem', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
+          <h2 className="hp-display hp-h2">What we offer</h2>
         </div>
 
-        <div className="cap-bento">
-          {capabilities.map((cap, i) => (
-            <motion.article
-              key={cap.title}
-              className={`cap-bento__tile${cap.span === 'wide' ? ' cap-bento__tile--wide' : ''}`}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.55, delay: (i % 3) * 0.08, ease: EASE }}
-            >
-              <Image src={cap.image} alt={cap.alt} fill sizes="(max-width: 860px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
-              <div className="cap-bento__scrim" aria-hidden="true" />
-              <div className="cap-bento__body">
-                <span className="cap-bento__tag">{cap.tag}</span>
-                <h3 className="cap-bento__title">{cap.title}</h3>
-                <p className="cap-bento__desc">{cap.desc}</p>
+        <div className="cap-grid">
+          {capabilities.map((cap) => (
+            <article key={cap.title} className="cap-item">
+              <div className="cap-item__frame">
+                <Image src={cap.image} alt={cap.alt} fill sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
               </div>
-            </motion.article>
+              <h3 className="hp-display cap-item__title">{cap.title}</h3>
+              <p className="cap-item__desc">{cap.desc}</p>
+            </article>
           ))}
         </div>
       </div>
 
       <style>{`
-        .cap-bento {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-auto-rows: 300px;
-          gap: 1.25rem;
-        }
-        .cap-bento__tile--wide { grid-column: span 2; }
-        .cap-bento__tile {
-          position: relative;
-          overflow: hidden;
-          border: 1px solid var(--hp-ink-line);
-          box-shadow: var(--shadow-sm);
-          display: flex;
-          align-items: flex-end;
-        }
-        .cap-bento__tile img { transition: transform 0.7s ease; }
-        .cap-bento__tile:hover img { transform: scale(1.06); }
-        .cap-bento__scrim {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(180deg, rgba(8,8,10,0) 35%, rgba(8,8,10,0.55) 70%, rgba(8,8,10,0.9) 100%);
-        }
-        .cap-bento__body { position: relative; z-index: 1; padding: 1.35rem 1.5rem; }
-        .cap-bento__tag {
-          display: block;
-          font-family: var(--hp-body);
-          font-size: 0.64rem;
-          font-weight: 800;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--hp-red);
-          margin-bottom: 0.4rem;
-        }
-        .cap-bento__title {
-          font-family: var(--hp-display);
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: -0.01em;
-          font-size: 1.2rem;
-          color: var(--hp-ivory);
-          margin: 0 0 0.4rem;
-        }
-        .cap-bento__desc {
-          font-family: var(--hp-body);
-          font-size: 0.8rem;
-          line-height: 1.55;
-          color: var(--hp-ivory-60);
-          margin: 0;
-          max-width: 28rem;
-        }
-        @media (max-width: 860px) {
-          .cap-bento { grid-template-columns: 1fr; grid-auto-rows: 280px; }
-          .cap-bento__tile--wide { grid-column: span 1; }
-        }
+        .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1.25rem, 2.5vw, 2rem); }
+        .cap-item { display: flex; flex-direction: column; gap: 0.6rem; }
+        .cap-item__frame { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--hp-paper-2); border: 1px solid var(--hp-ink-line); }
+        .cap-item__frame img { transition: transform 0.7s var(--hp-ease); }
+        .cap-item:hover .cap-item__frame img { transform: scale(1.045); }
+        .cap-item__title { margin: 0.5rem 0 0; font-size: 1.15rem; color: var(--hp-ink); }
+        .cap-item__desc { margin: 0; font-family: var(--hp-body); font-size: 0.93rem; line-height: 1.62; color: var(--hp-ink-70); }
+        @media (max-width: 1100px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 700px) { .cap-grid { grid-template-columns: 1fr; } }
       `}</style>
     </section>
   );

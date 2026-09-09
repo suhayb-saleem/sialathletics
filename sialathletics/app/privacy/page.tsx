@@ -92,10 +92,9 @@ const sections = [
 
 export default function PrivacyPage() {
   return (
-    <main style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--hp-paper)' }}>
+    <main style={{ paddingTop: '120px', minHeight: '80vh', background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <div className="hp-shell" style={{ maxWidth: '760px', padding: '4rem 1.5rem 6rem' }}>
-        <span className="hp-eyebrow hp-eyebrow--ink">Legal</span>
-        <h1 className="hp-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: 'var(--hp-ink)', margin: '1rem 0 0.5rem' }}>
+        <h1 className="hp-display" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', color: 'var(--hp-ink)', margin: '0 0 0.5rem' }}>
           Privacy Policy
         </h1>
         <p style={{ fontFamily: 'var(--hp-body)', color: 'var(--hp-ink-45)', fontSize: '0.85rem', marginBottom: '3rem' }}>

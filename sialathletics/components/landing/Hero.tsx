@@ -12,7 +12,7 @@ export default function Hero() {
   const rise = (delay: number) =>
     reduce
       ? { initial: false as const }
-      : { initial: { opacity: 0, y: 26 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.85, delay, ease: EASE } };
+      : { initial: { opacity: 0, y: 22 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay, ease: EASE } };
 
   return (
     <section className="hp-hero">
@@ -29,35 +29,27 @@ export default function Hero() {
       <div className="hp-hero__scrim" aria-hidden="true" />
 
       <div className="hp-shell">
-       <div className="hp-hero__inner">
-        <motion.p className="hp-eyebrow" {...rise(0)}>Padel &amp; pickleball manufacturing</motion.p>
+        <div className="hp-hero__inner">
+          {/* The h1 carries the primary search phrase; the brand line moves to the
+              paragraph. A tagline-only h1 gave crawlers nothing to rank. */}
+          <motion.h1 className="hp-display hp-hero__title" {...rise(0)}>
+            Padel rackets and pickleball paddles, built for your brand.
+          </motion.h1>
 
-        <motion.h1 className="hp-display hp-hero__title" {...rise(0.08)}>
-          <span className="is-solid">The edge</span>
-          <span className="is-outline">behind your</span>
-          <span className="is-solid">brand<em>.</em></span>
-        </motion.h1>
+          <motion.p className="hp-hero__copy" {...rise(0.1)}>
+            SIAL Athletics is an OEM and ODM manufacturer in Sialkot, Pakistan. We make rackets
+            and paddles for brands, clubs and distributors in our own factory, start to finish.
+          </motion.p>
 
-        <motion.p className="hp-hero__copy" {...rise(0.18)}>
-          We make padel rackets and pickleball paddles for brands, clubs, and distributors —
-          built in our own factory, start to finish.
-        </motion.p>
-
-        <motion.div className="hp-hero__actions" {...rise(0.26)}>
-          <Link href="/products" className="hp-btn hp-btn--primary">
-            Explore the range <span className="hp-btn__arrow" aria-hidden="true">→</span>
-          </Link>
-          <Link href="/manufacturing" className="hp-link">
-            How we manufacture <b aria-hidden="true">↗</b>
-          </Link>
-        </motion.div>
-       </div>
-      </div>
-
-      <div className="hp-shell">
-        <motion.div className="hp-hero__scroll" {...rise(0.5)} aria-hidden="true">
-          <span /> Scroll to explore
-        </motion.div>
+          <motion.div className="hp-hero__actions" {...rise(0.18)}>
+            <Link href="/products" className="hp-btn hp-btn--primary">
+              See the range <span className="hp-btn__arrow" aria-hidden="true">→</span>
+            </Link>
+            <Link href="/manufacturing" className="hp-link">
+              How we manufacture <b aria-hidden="true">→</b>
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

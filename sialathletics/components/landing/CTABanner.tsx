@@ -1,38 +1,45 @@
-'use client';
-import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
 
-interface CTABannerProps { headline?: string; subtext?: string; primaryLabel?: string; primaryHref?: string; secondaryLabel?: string; secondaryHref?: string; index?: string; }
+interface CTABannerProps {
+  headline?: string;
+  subtext?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-
-export default function CTABanner({ headline = 'Ready to build a better padel line?', subtext = 'Bring us your target player, price point, and design direction. We will shape the manufacturing program around it.', primaryLabel = 'Start an inquiry', primaryHref = '/contact', secondaryLabel = 'Explore capabilities', secondaryHref = '/manufacturing', index = 'SIAL / 02' }: CTABannerProps) {
-  const reduceMotion = useReducedMotion();
-
+// The closing band on every page: the outlined SA monogram behind a heading,
+// one paragraph, two actions and the email address. Server-rendered.
+export default function CTABanner({
+  headline = 'Have a product in mind?',
+  subtext = 'Tell us the player, the price point and the volume. We reply within 24 hours with samples, specs and a quote.',
+  primaryLabel = 'Start an inquiry',
+  primaryHref = '/contact',
+  secondaryLabel = 'Explore capabilities',
+  secondaryHref = '/manufacturing',
+}: CTABannerProps) {
   return (
     <section className="hp-cta">
       <span className="hp-cta__mark" aria-hidden="true">SA</span>
-      <div className="hp-shell">
-        <motion.div
-          className="hp-cta__inner"
-          initial={reduceMotion ? false : { opacity: 0, y: 26 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-90px' }}
-          transition={{ duration: 0.75, ease: EASE }}
-        >
-          <span className="hp-eyebrow hp-eyebrow--ink">Start at the source</span>
-          <h2 className="hp-display hp-cta__title">{headline}</h2>
+      <div className="hp-shell hp-cta__inner">
+        <h2 className="hp-display hp-cta__title">{headline}</h2>
+        <div>
           <p className="hp-cta__copy">{subtext}</p>
           <div className="hp-cta__actions">
-            <Link href={primaryHref} className="hp-btn hp-btn--ink hp-btn--lg">
+            <Link href={primaryHref} className="hp-btn hp-btn--ink">
               {primaryLabel} <span className="hp-btn__arrow" aria-hidden="true">→</span>
             </Link>
-            <Link href={secondaryHref} className="hp-btn hp-btn--outline-ink hp-btn--lg">
-              {secondaryLabel} <span className="hp-btn__arrow" aria-hidden="true">→</span>
-            </Link>
+            {secondaryLabel && secondaryHref && (
+              <Link href={secondaryHref} className="hp-btn hp-btn--outline-ink">
+                {secondaryLabel} <span className="hp-btn__arrow" aria-hidden="true">→</span>
+              </Link>
+            )}
           </div>
-        </motion.div>
-        <p className="hp-cta__index" aria-hidden="true">{index}</p>
+          <span className="hp-cta__email">
+            Or write to <a href="mailto:info@sialathletics.com">info@sialathletics.com</a>
+          </span>
+        </div>
       </div>
     </section>
   );

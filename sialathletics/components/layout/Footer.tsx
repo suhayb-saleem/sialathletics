@@ -20,7 +20,7 @@ export default function Footer() {
               />
             </Link>
             <p style={{ color: 'var(--white-60)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
-              padel rackets and pickleball paddles, manufactured in Sialkot, Pakistan for sports brands, distributors, and importers worldwide.
+              Padel rackets and pickleball paddles, manufactured in Sialkot, Pakistan, for sports brands, distributors and importers worldwide.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <a href="https://www.instagram.com/sial_athletics/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--white-60)', transition: 'color 0.2s ease' }}
@@ -46,8 +46,8 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <h3 style={{ color: 'var(--white)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', margin: 0 }}>
-              Quick Links
+            <h3 style={{ color: 'var(--white)', fontSize: '0.9rem', fontWeight: 600, margin: 0 }}>
+              Pages
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Column 3: Products */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <h3 style={{ color: 'var(--white)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', margin: 0 }}>
+            <h3 style={{ color: 'var(--white)', fontSize: '0.9rem', fontWeight: 600, margin: 0 }}>
               Products
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -93,16 +93,16 @@ export default function Footer() {
 
           {/* Column 4: Contact */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            <h3 style={{ color: 'var(--white)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', margin: 0 }}>
+            <h3 style={{ color: 'var(--white)', fontSize: '0.9rem', fontWeight: 600, margin: 0 }}>
               Contact
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--white-60)', fontSize: '0.875rem' }}>
-                <MapPin size={16} color="var(--red)" style={{ flexShrink: 0 }} />
+                <MapPin size={16} style={{ flexShrink: 0, color: "var(--white-60)" }} />
                 <span>Sialkot, Pakistan</span>
               </li>
               <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--white-60)', fontSize: '0.875rem' }}>
-                <Mail size={16} color="var(--red)" style={{ flexShrink: 0 }} />
+                <Mail size={16} style={{ flexShrink: 0, color: "var(--white-60)" }} />
                 <a href="mailto:info@sialathletics.com" style={{ color: 'var(--white-60)', textDecoration: 'none', transition: 'color 0.2s ease' }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--white)')}
                   onMouseLeave={e => (e.currentTarget.style.color = 'var(--white-60)')}>

@@ -18,16 +18,11 @@ export default function BlogIndexPage() {
   const [lead, ...rest] = posts;
 
   return (
-    <main style={{ background: 'var(--hp-paper)' }}>
+    <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={breadcrumbJsonLd('Blog', '/blog')} />
-      <PageHero
-        crumb="Blog"
-        eyebrow="From the factory"
-        title="Blog."
-        subtitle="How rackets and paddles are actually built, and what to ask before you order."
-      />
+      <PageHero crumb="Blog" title="Blog." compact />
 
-      <section className="site-section" style={{ borderTop: '1px solid var(--hp-ink-line)' }}>
+      <section className="blog-list" style={{ borderTop: '1px solid var(--hp-ink-line)' }}>
         <div className="hp-shell">
           {/* Lead post */}
           <article className="post-lead">
@@ -42,7 +37,7 @@ export default function BlogIndexPage() {
                 <Link href={`/blog/${lead.slug}`}>{lead.title}</Link>
               </h2>
               <p className="post-lead__desc">{lead.summary}</p>
-              <span className="post-lead__cta" aria-hidden="true">Read article <b>→</b></span>
+              <span className="hp-link post-lead__cta" aria-hidden="true">Read the article <b>→</b></span>
             </div>
           </article>
 
@@ -68,22 +63,19 @@ export default function BlogIndexPage() {
 
       <CTABanner
         headline="Have a product in mind?"
-        subtext="Send us your specs and we'll respond within 24 hours."
+        subtext="Send us your specs and we reply within 24 hours."
         primaryLabel="Get a quote"
-        primaryHref="/contact"
-        secondaryLabel="How we manufacture"
-        secondaryHref="/manufacturing"
-        index="SIAL / 08"
       />
 
       <style>{`
+        /* Tight top padding so the lead post is on screen without scrolling;
+           normal section rhythm underneath. */
+        .blog-list { padding-block: clamp(1.25rem, 2.2vw, 1.75rem) var(--hp-gap); }
+
         .post-meta {
           font-family: var(--hp-body);
-          font-size: 0.64rem;
-          font-weight: 800;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--hp-red);
+          font-size: 0.8rem;
+          color: var(--hp-ink-45);
         }
 
         /* --- lead post --- */
@@ -92,7 +84,6 @@ export default function BlogIndexPage() {
           grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
           gap: 0;
           border: 1px solid var(--hp-ink-line);
-          box-shadow: var(--shadow-sm);
           background: var(--surface);
           margin-bottom: 1.25rem;
           overflow: hidden;
@@ -115,31 +106,21 @@ export default function BlogIndexPage() {
         .post-lead__title {
           margin: 0;
           font-family: var(--hp-display);
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: -0.015em;
-          font-size: clamp(1.35rem, 2.4vw, 1.95rem);
-          line-height: 1.08;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          font-size: clamp(1.4rem, 2.4vw, 2rem);
+          line-height: 1.12;
           color: var(--hp-ink);
         }
         .post-lead__title a { color: inherit; text-decoration: none; }
         .post-lead__desc {
           margin: 0;
           font-family: var(--hp-body);
-          font-size: 0.92rem;
+          font-size: 0.95rem;
           line-height: 1.65;
           color: var(--hp-ink-70);
         }
-        .post-lead__cta {
-          margin-top: 0.4rem;
-          font-family: var(--hp-body);
-          font-size: 0.66rem;
-          font-weight: 800;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: var(--hp-ink);
-        }
-        .post-lead__cta b { color: var(--hp-red); }
+        .post-lead__cta { margin-top: 0.5rem; align-self: flex-start; }
 
         /* --- grid --- */
         .post-grid {
@@ -153,11 +134,10 @@ export default function BlogIndexPage() {
           flex-direction: column;
           background: var(--surface);
           border: 1px solid var(--hp-ink-line);
-          box-shadow: var(--shadow-sm);
           overflow: hidden;
-          transition: transform 0.4s var(--hp-ease), box-shadow 0.4s var(--hp-ease);
+          transition: border-color 0.3s var(--hp-ease);
         }
-        .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .post-card:hover { border-color: var(--hp-ink-45); }
         .post-card__media {
           position: relative;
           display: block;
@@ -177,11 +157,10 @@ export default function BlogIndexPage() {
         .post-card__title {
           margin: 0;
           font-family: var(--hp-display);
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: -0.01em;
-          font-size: 1.05rem;
-          line-height: 1.15;
+          font-weight: 700;
+          letter-spacing: -0.015em;
+          font-size: 1.15rem;
+          line-height: 1.22;
           color: var(--hp-ink);
         }
         .post-card__title a { color: inherit; text-decoration: none; }

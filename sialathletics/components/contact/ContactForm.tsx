@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import SectionLabel from '@/components/ui/SectionLabel';
 import ContactFormFields from '@/components/contact/ContactFormFields';
 import type { ContactPrefill } from '@/lib/contactModal';
 
@@ -23,22 +22,15 @@ export default function ContactForm() {
   }, []);
 
   return (
-    <section className="site-section" style={{ position: 'relative', isolation: 'isolate', background: '#fff', borderTop: '1px solid var(--hp-ink-line)', overflow: 'hidden', scrollMarginTop: '90px' }} ref={formSectionRef}>
-      <div className="hp-weave--paper" aria-hidden="true" />
-
-      <div className="container-custom" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: EASE }}
-          style={{ textAlign: 'center', marginBottom: '3.5rem' }}
-        >
-          <SectionLabel light>Reach us directly</SectionLabel>
-          <h2 className="display-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--hp-ink)', margin: '1.2rem 0 0' }}>
-            We respond<br />within 24 hours.
-          </h2>
-        </motion.div>
+    <section className="site-section" style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)', borderTop: '1px solid var(--hp-ink-line)', scrollMarginTop: '90px' }} ref={formSectionRef}>
+      <div className="container-custom" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '46rem', marginBottom: '2.5rem' }}>
+          <h2 className="hp-display hp-h2">Send us your brief</h2>
+          <p className="hp-lede">
+            Target player, price point, order volume and any design direction. We reply within 24 hours.
+            Or write to <a href="mailto:info@sialathletics.com" className="hp-link">info@sialathletics.com</a>.
+          </p>
+        </div>
 
         <motion.div
           className="hp-form"

@@ -19,9 +19,8 @@ export default function ManufacturingPage() {
       <JsonLd data={breadcrumbJsonLd('Manufacturing', '/manufacturing')} />
       <PageHero
         crumb="Manufacturing"
-        eyebrow="What we do"
-        title="End-to-end manufacturing."
-        subtitle="Padel rackets and pickleball paddles, made start to finish in our factory."
+        title="Padel and pickleball manufacturing, end to end."
+        subtitle="Rackets and paddles made start to finish in our own factory in Sialkot: moulding, lay-up, finishing, inspection and export."
         image="/images/manufacturing/manufacturing_section.png"
         imageAlt="Studio product photo of a SIAL Athletics carbon fiber padel racket"
       />
@@ -30,12 +29,8 @@ export default function ManufacturingPage() {
       <MaterialsBadges />
       <CTABanner
         headline="Ready to spec your first order?"
-        subtext="Send us your requirements and we'll respond within 24 hours."
+        subtext="Send us your requirements and we reply within 24 hours."
         primaryLabel="Get a quote"
-        primaryHref="/contact"
-        secondaryLabel="View products"
-        secondaryHref="/products"
-        index="SIAL / 04"
       />
     </main>
   );

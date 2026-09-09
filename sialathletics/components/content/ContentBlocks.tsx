@@ -64,19 +64,16 @@ export function ContentBlockStyles() {
   return (
     <style>{`
       .rt__h2 {
-        font-size: 1.15rem;
-        text-transform: uppercase;
-        letter-spacing: -0.01em;
+        font-size: 1.45rem;
+        letter-spacing: -0.02em;
         color: var(--hp-ink);
-        margin: 2.4rem 0 1rem;
-        padding-bottom: 0.6rem;
-        border-bottom: 1px solid var(--hp-ink-line);
+        margin: 2.4rem 0 0.9rem;
       }
       /* No top gap when a section opens the article. */
       .rt__h2:first-child { margin-top: 0; }
       .rt__p {
         font-family: var(--hp-body);
-        font-size: 0.95rem;
+        font-size: 1rem;
         line-height: 1.75;
         color: var(--hp-ink-70);
         margin: 0 0 1rem;
@@ -98,7 +95,7 @@ export function ContentBlockStyles() {
         line-height: 1.65;
         color: var(--hp-ink-70);
       }
-      .rt__list li > span:first-child { color: var(--hp-red); font-weight: 800; flex-shrink: 0; }
+      .rt__list li > span:first-child { color: var(--hp-ink-45); flex-shrink: 0; }
 
       .rt__figure { margin: 1.6rem 0 1.8rem; }
       .rt__figure-frame {

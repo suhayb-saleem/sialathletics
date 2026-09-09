@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   };
 
   return (
-    <main style={{ background: 'var(--hp-paper)' }}>
+    <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={postJsonLd} />
       <JsonLd
         data={nestedBreadcrumbJsonLd({ name: 'Blog', path: '/blog' }, { name: post.title, path: `/blog/${post.slug}` })}
@@ -71,16 +71,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <Link href="/blog">Blog</Link>
           </nav>
 
-          <span className="hp-eyebrow hp-eyebrow--ink">{post.category}</span>
           <h1
             className="hp-display"
-            style={{ fontSize: 'clamp(1.9rem, 4.4vw, 3rem)', color: 'var(--hp-ink)', margin: '1rem 0 1rem', lineHeight: 1.06 }}
+            style={{ fontSize: 'clamp(1.9rem, 4.4vw, 3rem)', color: 'var(--hp-ink)', margin: '0 0 1rem', lineHeight: 1.08 }}
           >
             {post.title}
           </h1>
 
-          <p style={{ fontFamily: 'var(--hp-body)', fontSize: '0.76rem', letterSpacing: '0.06em', color: 'var(--hp-ink-45)', margin: '0 0 2rem' }}>
-            <time dateTime={post.date}>{formatDate(post.date)}</time> · {readMinutes(post)} min read
+          <p className="hp-kicker" style={{ margin: '0 0 2rem' }}>
+            {post.category} · <time dateTime={post.date}>{formatDate(post.date)}</time> · {readMinutes(post)} min read
           </p>
         </div>
 
@@ -101,7 +100,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               color: 'var(--hp-ink)',
               margin: '0 0 2.4rem',
               paddingLeft: '1.1rem',
-              borderLeft: '3px solid var(--hp-red)',
+              borderLeft: '2px solid var(--hp-ink)',
             }}
           >
             {post.summary}
@@ -123,7 +122,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           >
             {post.related.map((link) => (
               <Link key={link.href} href={link.href} className="hp-link">
-                {link.label} <b aria-hidden="true">↗</b>
+                {link.label} <b aria-hidden="true">→</b>
               </Link>
             ))}
           </div>
@@ -132,12 +131,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <CTABanner
         headline="Ready to spec your line?"
-        subtext="Send us your requirements and we'll respond within 24 hours."
+        subtext="Send us your requirements and we reply within 24 hours."
         primaryLabel="Get a quote"
-        primaryHref="/contact"
-        secondaryLabel="More articles"
-        secondaryHref="/blog"
-        index="SIAL / 08"
       />
 
       <ContentBlockStyles />

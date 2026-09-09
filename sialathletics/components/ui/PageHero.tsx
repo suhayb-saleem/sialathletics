@@ -1,30 +1,29 @@
 'use client';
-import type { ReactNode } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import SectionLabel from '@/components/ui/SectionLabel';
 
 type PageHeroProps = {
-  eyebrow: string;
   title: string;
   subtitle?: string;
   crumb: string;
   /** Full-bleed backdrop photo; a white wash keeps the ink type legible over it. */
   image?: string;
   imageAlt?: string;
-  /** Buttons or links shown under the subtitle, above the fold. */
-  actions?: ReactNode;
+  /** Trims the vertical padding, for index pages where the list below
+   *  should be visible without scrolling. */
+  compact?: boolean;
 };
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export default function PageHero({ eyebrow, title, subtitle, crumb, image, imageAlt, actions }: PageHeroProps) {
+// Page opener: breadcrumb, one big title, optional one-line subtitle.
+// No kicker label above the title — the title is the label.
+export default function PageHero({ title, subtitle, crumb, image, imageAlt, compact }: PageHeroProps) {
   const reduceMotion = useReducedMotion();
-  const words = title.split(' ');
 
   return (
-    <section className={`hp-pagehero${image ? ' hp-pagehero--media' : ''}`}>
+    <section className={`hp-pagehero${image ? ' hp-pagehero--media' : ''}${compact ? ' hp-pagehero--compact' : ''}`}>
       {image && (
         <>
           <div className="hp-pagehero__bg">
@@ -41,49 +40,13 @@ export default function PageHero({ eyebrow, title, subtitle, crumb, image, image
         </nav>
 
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.05 }}
+          transition={{ duration: 0.7, ease: EASE }}
         >
-          <SectionLabel>{eyebrow}</SectionLabel>
+          <h1 className="hp-display hp-pagehero__title">{title}</h1>
+          {subtitle && <p className="hp-pagehero__subtitle">{subtitle}</p>}
         </motion.div>
-
-        <h1 className="hp-display hp-pagehero__title">
-          {words.map((word, i) => (
-            <span key={i} className="hp-pagehero__word">
-              <motion.span
-                initial={reduceMotion ? false : { y: '110%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.7, delay: 0.15 + i * 0.08, ease: EASE }}
-                style={{ display: 'block' }}
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
-        {subtitle && (
-          <motion.p
-            className="hp-pagehero__subtitle"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-          >
-            {subtitle}
-          </motion.p>
-        )}
-
-        {actions && (
-          <motion.div
-            className="hp-pagehero__actions"
-            initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-          >
-            {actions}
-          </motion.div>
-        )}
       </div>
     </section>
   );

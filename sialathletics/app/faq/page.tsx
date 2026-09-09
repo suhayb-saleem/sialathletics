@@ -31,19 +31,14 @@ export default function FaqPage() {
       <JsonLd data={breadcrumbJsonLd('FAQ', '/faq')} />
       <PageHero
         crumb="FAQ"
-        eyebrow="Buyer questions"
         title="Frequently asked questions."
         subtitle="Answers to what buyers ask us most."
       />
       <FaqSections />
       <CTABanner
         headline="Question not covered here?"
-        subtext="Send it to us directly — we respond within 24 hours."
+        subtext="Send it to us directly and we reply within 24 hours."
         primaryLabel="Contact us"
-        primaryHref="/contact"
-        secondaryLabel="Explore capabilities"
-        secondaryHref="/manufacturing"
-        index="SIAL / 06"
       />
     </main>
   );
