@@ -19,8 +19,7 @@ export default function AboutPage() {
       <PageHero
         crumb="About"
         title="Who we are."
-        image="/images/about/aboutpage_section.png"
-        imageAlt="SIAL Athletics factory exterior at sunset, with a branded delivery truck and forklift loading cargo"
+        subtitle="A padel and pickleball manufacturer in Sialkot, Pakistan, building private-label product for brands, clubs and distributors."
       />
       <AboutStory />
       <AboutValues />

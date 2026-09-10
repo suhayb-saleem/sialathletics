@@ -100,9 +100,8 @@ a { color: inherit; }
    weave, which is what keeps the weave to roughly a fifth of the site. */
 .hp-surface { background-color: var(--hp-paper); background-image: var(--hp-wash); }
 .hp-surface--alt { background-color: var(--hp-paper-2); background-image: var(--hp-tex); }
-/* Headings are sentence case. Only the two hero h1s (.hp-hero__title,
-   .hp-pagehero__title) go uppercase, so the big type reads as a deliberate
-   moment rather than the default for every block. */
+/* Headings are sentence case throughout, heroes included. Size and weight
+   carry the hierarchy instead of shouting in caps. */
 .display-title { font-family: var(--hp-display); font-weight: 700; letter-spacing: -.025em; line-height: 1.02; }
 .body-copy { color: var(--hp-ink-70); font-size: clamp(.95rem, 1.1vw, 1.08rem); line-height: 1.7; }
 /* Small plain label (blog category, meta lines). No rule, no red, no tracking. */
@@ -384,10 +383,10 @@ a { color: inherit; }
   position: relative; overflow: hidden;
   background-color: var(--hp-paper); background-image: var(--hp-wash);
   border-bottom: 1px solid var(--hp-ink-line);
-  padding-top: clamp(9rem, 13vw, 12rem); padding-bottom: clamp(3.5rem, 6vw, 6rem);
+  padding-top: clamp(7.5rem, 9vw, 9rem); padding-bottom: clamp(2.5rem, 4vw, 3.5rem);
 }
 /* Index pages (blog) trim the hero so the list below starts on screen. */
-.hp-pagehero--compact { padding-top: clamp(7rem, 9.5vw, 8.5rem); padding-bottom: clamp(1rem, 1.8vw, 1.4rem); }
+.hp-pagehero--compact { padding-top: clamp(7rem, 8.5vw, 8rem); padding-bottom: clamp(1rem, 1.8vw, 1.4rem); }
 .hp-pagehero--compact .hp-pagehero__crumb { margin-bottom: 1rem; }
 /* --- photo-backed page hero (matches the bright home hero treatment) --- */
 .hp-pagehero--media { isolation: isolate; background: var(--surface); }
@@ -426,8 +425,8 @@ a { color: inherit; }
 .hp-pagehero__crumb a:hover { color: var(--hp-ink); }
 .hp-pagehero__crumb span[aria-hidden] { color: var(--hp-ink-45); }
 .hp-pagehero__crumb-current { color: var(--hp-ink); }
-.hp-pagehero__title { margin: 0; font-size: clamp(2.8rem, 6.4vw, 5.2rem); font-weight: 800; letter-spacing: -0.035em; line-height: 0.94; text-transform: uppercase; color: var(--hp-ink); }
-.hp-pagehero__subtitle { max-width: 38rem; margin: 1.4rem 0 0; color: var(--hp-ink-70); font-family: var(--hp-body); font-size: clamp(1rem, 1.2vw, 1.12rem); line-height: 1.7; }
+.hp-pagehero__title { max-width: 22ch; margin: 0; font-size: clamp(1.9rem, 3.4vw, 2.9rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; color: var(--hp-ink); }
+.hp-pagehero__subtitle { max-width: 40rem; margin: 1.1rem 0 0; color: var(--hp-ink-70); font-family: var(--hp-body); font-size: clamp(0.98rem, 1.1vw, 1.06rem); line-height: 1.65; }
 
 input:not([type="checkbox"]):not([type="radio"]), select, textarea { border-radius: 8px; }
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--red) !important; outline-offset: 2px; border-color: var(--red) !important; }

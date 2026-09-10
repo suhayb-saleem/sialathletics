@@ -45,7 +45,7 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'What can be customized on a pickleball paddle?',
-        a: 'Face material (carbon fiber or fiberglass), polypropylene honeycomb core thickness (13mm, 14mm, or 16mm), paddle shape including elongated profiles, grip size and wrap, edge guard branding, and full surface graphics.',
+        a: 'Core construction (EPP foam or polypropylene honeycomb), face material (T700 carbon fibre, woven or sandblasted T700, fiberglass, or a Kevlar hybrid), core thickness (16mm standard, 14mm on request), shape (elongated 18.5 x 41.9cm, standard 19.1 x 41.9cm, widebody 20.3 x 40.6cm, or a custom shape), grip size and wrap, edge guard colour, and full surface graphics.',
       },
       {
         q: 'Are your products built to standard dimensions and performance specs?',

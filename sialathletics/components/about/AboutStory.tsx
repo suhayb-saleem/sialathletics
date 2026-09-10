@@ -7,8 +7,8 @@ export default function AboutStory() {
       <div className="about-story container-custom">
         <div className="about-story__media">
           <Image
-            src="/images/warehouse.png"
-            alt="SIAL Athletics facility exterior in Sialkot, Pakistan"
+            src="/images/about/padel_court_SA.png"
+            alt="SIAL Athletics branded padel court at sunset, glass walls and blue playing surface"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             style={{ objectFit: 'cover' }}
@@ -38,7 +38,7 @@ export default function AboutStory() {
 
       <style>{`
         .about-story { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-        .about-story__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--hp-paper-2); }
+        .about-story__media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--hp-paper-2); border: 1px solid var(--hp-ink-line); }
         @media (max-width: 768px) {
           .about-story { grid-template-columns: 1fr; gap: 1.75rem; }
         }

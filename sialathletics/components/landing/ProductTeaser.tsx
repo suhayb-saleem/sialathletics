@@ -5,20 +5,19 @@ import Reveal from '@/components/ui/Reveal';
 const categories = [
   {
     title: 'Padel rackets',
-    desc: 'Round, teardrop, diamond and hybrid shapes, or a custom mould we cut for you.',
+    desc: 'Round, teardrop and diamond mould families, or a custom shape we cut for you.',
     href: '/products#padel',
-    image: '/images/products/padel_backgroundless.png',
-    alt: 'Carbon padel racket',
+    image: '/images/products/home_padel_teardrop.png',
+    alt: 'SIAL Athletics teardrop padel racket, black carbon face',
   },
   {
     title: 'Pickleball paddles',
-    desc: 'Control, balanced and power builds on a polypropylene honeycomb core.',
+    desc: 'EPP foam or PP honeycomb cores, in elongated, standard and widebody shapes.',
     href: '/products#pickleball',
-    // Cut out from the Perseus elongated product shot. The old
-    // "pickleball_backgroundless" render was a padel racket — perforated face,
-    // throat and wrist strap — so it was wrong for this card.
-    image: '/images/products/pickleball_elongated_cutout.png',
-    alt: 'SIAL Athletics elongated carbon pickleball paddle',
+    // Cut out from the catalogue product shot so it sits on the card as a
+    // silhouette rather than a white box.
+    image: '/images/products/home_pickleball_red-halftone.png',
+    alt: 'SIAL Athletics Red Halftone carbon pickleball paddle',
   },
 ];
 
