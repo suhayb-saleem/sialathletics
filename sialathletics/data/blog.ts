@@ -301,6 +301,10 @@ export const posts: BlogPost[] = [
           '16mm — the thickest. More dwell time, more control, best for the soft game and placement.',
         ],
       },
+      {
+        type: 'p',
+        text: 'Those are the thicknesses the market uses. Our own paddles are built at 16mm as standard, with 14mm on request, and the core can be polypropylene honeycomb or EPP foam.',
+      },
 
       { type: 'h2', text: 'Shape, edge and grip' },
       {
@@ -562,7 +566,7 @@ export const posts: BlogPost[] = [
       'Core thickness is the biggest single influence on how a paddle feels. Thinner is faster, thicker is more controlled.',
     hero: {
       src: '/images/blog/pickleball-paddle-thickness.png',
-      alt: 'Three SIAL Athletics pickleball paddles shown side by side labelled 13mm, 14mm and 16mm thickness',
+      alt: 'Two SIAL Athletics pickleball paddles side by side, labelled 14mm and 16mm core thickness',
     },
     blocks: [
       {
@@ -588,6 +592,10 @@ export const posts: BlogPost[] = [
       {
         type: 'p',
         text: 'The market has moved toward thicker cores over the last few years as the soft game has become more central to how pickleball is played at club level. If you are building a range and can only carry two, 16mm and 14mm cover more of the market than 13mm and 16mm would.',
+      },
+      {
+        type: 'p',
+        text: 'That is where our own range sits: we build 16mm as standard and 14mm on request, on either a polypropylene honeycomb or an EPP foam core. We do not tool 13mm.',
       },
 
       { type: 'h2', text: 'Face, shape and finishing' },
