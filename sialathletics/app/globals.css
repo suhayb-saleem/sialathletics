@@ -291,11 +291,44 @@ a { color: inherit; }
 /* Transparent at the top of the page; the scrolled state supplies its own dark bar. */
 .site-nav::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: transparent; opacity: 1; transition: opacity .25s var(--ease-standard); }
 .site-nav--scrolled::before { opacity: 0; }
-.site-nav__inner { width: min(100%, 1280px); min-height: 64px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .75rem 1rem 0 .2rem; border-bottom: 1px solid transparent; transition: background .25s var(--ease-standard), border-color .25s var(--ease-standard), padding .25s var(--ease-standard), box-shadow .25s var(--ease-standard); }
+.site-nav__inner { position: relative; width: min(100%, 1280px); min-height: 64px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .65rem 1rem; }
 .site-nav--scrolled { padding-top: .55rem; }
-.site-nav--scrolled .site-nav__inner { padding: .65rem 1rem; border: 1px solid rgba(246,245,241,.12); border-radius: 12px; background: rgba(8,9,10,.92); backdrop-filter: blur(14px); box-shadow: var(--shadow-md); }
-.site-nav__brand { display: inline-flex; flex: 0 0 auto; }
-.site-nav__links { display: flex; align-items: center; gap: clamp(.8rem, 1.6vw, 1.65rem); }
+/* One element for both states. At the top it is a capsule sized to the links
+   group; scrolled, it grows to the full bar. Geometry eases over .5s so the
+   expansion reads, while colour swaps in .22s — the links flip to ivory on the
+   same beat, so the text never sits mid-grey on a mid-grey surface. */
+.site-nav__surface {
+  position: absolute; z-index: 0; pointer-events: none;
+  top: 50%; left: var(--pill-x, 0px);
+  width: var(--pill-w, 0px); height: var(--pill-h, 42px);
+  transform: translateY(-50%);
+  border: 1px solid var(--hp-ink-line); border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  opacity: var(--pill-on, 0);
+  transition:
+    left .5s var(--hp-ease), width .5s var(--hp-ease), height .5s var(--hp-ease),
+    border-radius .5s var(--hp-ease),
+    background-color .22s var(--ease-standard), border-color .22s var(--ease-standard),
+    box-shadow .3s var(--ease-standard), opacity .25s var(--ease-standard);
+}
+.site-nav--scrolled .site-nav__surface {
+  left: 0; width: 100%; height: 100%;
+  border-radius: 12px;
+  background: rgba(8,9,10,.92);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-color: rgba(246,245,241,.12);
+  box-shadow: var(--shadow-md);
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) { .site-nav__surface { transition-duration: .01ms; } }
+.site-nav__brand { position: relative; z-index: 1; display: inline-flex; flex: 0 0 auto; }
+.site-nav__links {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; gap: clamp(.8rem, 1.6vw, 1.65rem);
+  padding: .5rem 1.3rem;
+}
 .site-nav__links a { position: relative; color: var(--hp-ink-70); font-size: .68rem; font-weight: 650; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; transition: color .2s var(--ease-standard); }
 .site-nav__links a:hover, .site-nav__links a.is-active { color: var(--hp-ink); }
 /* Scrolled = dark bar, so the nav inverts to ivory type. */
@@ -304,8 +337,8 @@ a { color: inherit; }
 .site-nav--scrolled .site-nav__dropdown-trigger { color: var(--hp-ivory-80); }
 .site-nav--scrolled .site-nav__dropdown-trigger:hover, .site-nav--scrolled .site-nav__dropdown-trigger.is-active { color: var(--hp-ivory); }
 .site-nav--scrolled .site-nav__toggle { color: var(--hp-ivory); border-color: rgba(246,245,241,.22); }
-.site-nav__underline { position: absolute; right: 0; bottom: -.7rem; left: 0; height: 1px; background: var(--red); }
-.site-nav__actions { display: flex; align-items: center; gap: .75rem; }
+.site-nav__underline { position: absolute; right: 0; bottom: -.42rem; left: 0; height: 2px; border-radius: 2px; background: var(--red); }
+.site-nav__actions { position: relative; z-index: 1; display: flex; align-items: center; gap: .75rem; }
 .site-nav__toggle { width: 44px; height: 44px; display: grid; place-items: center; background: transparent; color: var(--hp-ink); border: 1px solid var(--hp-ink-line); border-radius: 8px; cursor: pointer; }
 
 /* ---- Desktop "About Us" dropdown ---- */
@@ -320,7 +353,7 @@ a { color: inherit; }
 .site-nav__chevron { transition: transform .2s var(--ease-standard); }
 .site-nav__chevron.is-open { transform: rotate(180deg); }
 .site-nav__dropdown-panel {
-  position: absolute; top: calc(100% + 1.1rem); right: 0; z-index: 10;
+  position: absolute; top: calc(100% + 1.25rem); right: 0; z-index: 10;
   display: grid; gap: .15rem; min-width: 220px; padding: .6rem;
   background: rgba(255,255,255,.98); border: 1px solid var(--hp-ink-line); border-radius: 12px;
   box-shadow: var(--shadow-lg);

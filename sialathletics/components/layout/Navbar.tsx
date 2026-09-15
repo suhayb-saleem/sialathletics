@@ -1,12 +1,18 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import Button from '@/components/ui/Button';
+
+// useEffect runs after the browser paints, which would show one frame of nav
+// with no capsule before it faded in. Measuring in a layout effect puts it
+// there on the first painted frame; falls back to useEffect on the server,
+// where layout effects do not run.
+const useMeasureEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
 const links = [
   { label: 'Home', href: '/' },
@@ -30,12 +36,41 @@ export default function Navbar() {
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const pathname = usePathname();
   const aboutRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 20);
     update();
     window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
+  }, []);
+
+  // The capsule at the top of the page and the bar you get after scrolling are
+  // one element, so it grows from one shape into the other. CSS cannot know how
+  // wide the links group is, so its box is measured and handed over as custom
+  // properties. Written straight to the node rather than held in state: this
+  // runs on resize and must not re-render the header.
+  useMeasureEffect(() => {
+    const measure = () => {
+      const inner = innerRef.current;
+      const links = linksRef.current;
+      if (!inner) return;
+      const showsPill = !!links && links.offsetParent !== null && links.offsetWidth > 0;
+      if (showsPill && links) {
+        inner.style.setProperty('--pill-x', `${links.offsetLeft}px`);
+        inner.style.setProperty('--pill-w', `${links.offsetWidth}px`);
+        inner.style.setProperty('--pill-h', `${links.offsetHeight}px`);
+      }
+      // Below the desktop breakpoint the links are hidden, so there is no
+      // capsule to start from and the bar simply fades in.
+      inner.style.setProperty('--pill-on', showsPill ? '1' : '0');
+    };
+    measure();
+    // Web fonts change the width of the links, so measure again once they land.
+    document.fonts?.ready.then(measure).catch(() => {});
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
   }, []);
 
   // Lock body scroll while the mobile menu is open so the underlying page
@@ -81,7 +116,8 @@ export default function Navbar() {
   return (
     <>
       <header className={`site-nav ${scrolled ? 'site-nav--scrolled' : ''}`}>
-        <div className="site-nav__inner">
+        <div className="site-nav__inner" ref={innerRef}>
+          <span className="site-nav__surface" aria-hidden="true" />
           <Link href="/" className="site-nav__brand" aria-label="SIAL Athletics home">
             {/* Dark logo over the bright hero; white logo once the bar turns black on scroll. */}
             <Image
@@ -95,7 +131,7 @@ export default function Navbar() {
             />
           </Link>
 
-          <nav className="site-nav__links hide-mobile" aria-label="Primary navigation">
+          <nav className="site-nav__links hide-mobile" ref={linksRef} aria-label="Primary navigation">
             {links.map(({ label, href }) => {
               // Section links stay highlighted on their child pages too, so
               // Blog reads as active while you're reading a post.
