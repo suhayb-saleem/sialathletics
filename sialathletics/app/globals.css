@@ -313,14 +313,15 @@ a { color: inherit; }
     background-color .22s var(--ease-standard), border-color .22s var(--ease-standard),
     box-shadow .3s var(--ease-standard), opacity .25s var(--ease-standard);
 }
+/* Same white translucent material as the capsule — only the shape changes.
+   A light bar over light page content needs the deeper shadow to separate.
+   Opacity is left to the base rule's --pill-on, which the navbar sets to 0
+   below the desktop breakpoint: there is no capsule to grow from there, so
+   the surface stays invisible at every scroll position on mobile. */
 .site-nav--scrolled .site-nav__surface {
   left: 0; width: 100%; height: 100%;
   border-radius: 12px;
-  background: rgba(8,9,10,.92);
-  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
-  border-color: rgba(246,245,241,.12);
   box-shadow: var(--shadow-md);
-  opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) { .site-nav__surface { transition-duration: .01ms; } }
 .site-nav__brand { position: relative; z-index: 1; display: inline-flex; flex: 0 0 auto; }
@@ -331,12 +332,6 @@ a { color: inherit; }
 }
 .site-nav__links a { position: relative; color: var(--hp-ink-70); font-size: .68rem; font-weight: 650; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; transition: color .2s var(--ease-standard); }
 .site-nav__links a:hover, .site-nav__links a.is-active { color: var(--hp-ink); }
-/* Scrolled = dark bar, so the nav inverts to ivory type. */
-.site-nav--scrolled .site-nav__links a { color: var(--hp-ivory-80); }
-.site-nav--scrolled .site-nav__links a:hover, .site-nav--scrolled .site-nav__links a.is-active { color: var(--hp-ivory); }
-.site-nav--scrolled .site-nav__dropdown-trigger { color: var(--hp-ivory-80); }
-.site-nav--scrolled .site-nav__dropdown-trigger:hover, .site-nav--scrolled .site-nav__dropdown-trigger.is-active { color: var(--hp-ivory); }
-.site-nav--scrolled .site-nav__toggle { color: var(--hp-ivory); border-color: rgba(246,245,241,.22); }
 .site-nav__underline { position: absolute; right: 0; bottom: -.42rem; left: 0; height: 2px; border-radius: 2px; background: var(--red); }
 .site-nav__actions { position: relative; z-index: 1; display: flex; align-items: center; gap: .75rem; }
 .site-nav__toggle { width: 44px; height: 44px; display: grid; place-items: center; background: transparent; color: var(--hp-ink); border: 1px solid var(--hp-ink-line); border-radius: 8px; cursor: pointer; }
@@ -364,10 +359,6 @@ a { color: inherit; }
   text-transform: uppercase; text-decoration: none; transition: color .2s var(--ease-standard), background .2s var(--ease-standard);
 }
 .site-nav__dropdown-panel a:hover, .site-nav__dropdown-panel a.is-active { color: var(--hp-ink); background: rgba(20,17,15,.05); }
-/* Scrolled = dark bar, so the dropdown inverts to match. */
-.site-nav--scrolled .site-nav__dropdown-panel { background: rgba(12,13,14,.98); border-color: rgba(246,245,241,.14); }
-.site-nav--scrolled .site-nav__dropdown-panel a { color: var(--hp-ivory-80); }
-.site-nav--scrolled .site-nav__dropdown-panel a:hover, .site-nav--scrolled .site-nav__dropdown-panel a.is-active { color: var(--hp-ivory); background: rgba(246,245,241,.08); }
 
 /* ---- Mobile nav "About Us" group ---- */
 .mobile-nav__group-toggle {

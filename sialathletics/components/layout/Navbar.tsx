@@ -119,9 +119,11 @@ export default function Navbar() {
         <div className="site-nav__inner" ref={innerRef}>
           <span className="site-nav__surface" aria-hidden="true" />
           <Link href="/" className="site-nav__brand" aria-label="SIAL Athletics home">
-            {/* Dark logo over the bright hero; white logo once the bar turns black on scroll. */}
+            {/* The bar is white translucent in both states, so the dark-ink
+                logo is the readable one throughout. logo.png is the light
+                artwork and would disappear against it. */}
             <Image
-              src={scrolled ? '/images/logo.png' : '/images/logo-dark.png'}
+              src="/images/logo-dark.png"
               alt="SIAL Athletics"
               width={142}
               height={38}
