@@ -287,16 +287,16 @@ a { color: inherit; }
   .hp-facts > div:nth-last-child(-n+2) { border-bottom: none; }
 }
 .site-nav { position: fixed; inset: 0 0 auto; z-index: 100; padding: 1rem var(--container-pad); transition: padding .25s var(--ease-standard); }
-/* Legibility veil so ink nav text stays readable over the bright hero photo at the top of the page. */
-/* Transparent at the top of the page; the scrolled state supplies its own dark bar. */
+/* Held at transparent: the surface below does the legibility work in both
+   states. Kept as a hook so a veil can come back without restructuring. */
 .site-nav::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: transparent; opacity: 1; transition: opacity .25s var(--ease-standard); }
 .site-nav--scrolled::before { opacity: 0; }
 .site-nav__inner { position: relative; width: min(100%, 1280px); min-height: 64px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .65rem 1rem; }
 .site-nav--scrolled { padding-top: .55rem; }
 /* One element for both states. At the top it is a capsule sized to the links
    group; scrolled, it grows to the full bar. Geometry eases over .5s so the
-   expansion reads, while colour swaps in .22s — the links flip to ivory on the
-   same beat, so the text never sits mid-grey on a mid-grey surface. */
+   expansion reads. The material never changes, so the type under it keeps one
+   colour and nothing has to cross-fade midway. */
 .site-nav__surface {
   position: absolute; z-index: 0; pointer-events: none;
   top: 50%; left: var(--pill-x, 0px);
@@ -314,14 +314,20 @@ a { color: inherit; }
     box-shadow .3s var(--ease-standard), opacity .25s var(--ease-standard);
 }
 /* Same white translucent material as the capsule — only the shape changes.
-   A light bar over light page content needs the deeper shadow to separate.
-   Opacity is left to the base rule's --pill-on, which the navbar sets to 0
-   below the desktop breakpoint: there is no capsule to grow from there, so
-   the surface stays invisible at every scroll position on mobile. */
+   A light bar over light page content needs the deeper shadow to separate. */
 .site-nav--scrolled .site-nav__surface {
   left: 0; width: 100%; height: 100%;
   border-radius: 12px;
   box-shadow: var(--shadow-md);
+  opacity: 1;
+}
+/* No links below the nav breakpoint, so there is no capsule to grow from and
+   --pill-on stays 0. The bar carries the whole row instead, and it has to be
+   there at every scroll position: the logo is dark artwork, and at the top of
+   the home page it lands on the dark racket in the hero, then on the dark
+   closing band further down. Scrolling only deepens the shadow. */
+@media (max-width: 1024px) {
+  .site-nav__surface { left: 0; width: 100%; height: 100%; border-radius: 12px; opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .site-nav__surface { transition-duration: .01ms; } }
 .site-nav__brand { position: relative; z-index: 1; display: inline-flex; flex: 0 0 auto; }
