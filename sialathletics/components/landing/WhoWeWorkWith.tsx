@@ -5,7 +5,7 @@ import Reveal from '@/components/ui/Reveal';
 const segments = [
   {
     title: 'Brands',
-    desc: 'Your own padel and pickleball line. We handle production, materials and quality; you handle the brand.',
+    desc: 'Your own line of rackets, paddles, bags or kit. We handle production, materials and quality; you handle the brand.',
   },
   {
     title: 'Distributors and wholesalers',
@@ -13,7 +13,7 @@ const segments = [
   },
   {
     title: 'Clubs and academies',
-    desc: 'Rackets and paddles in your club colours, built to stand up to daily coaching use.',
+    desc: 'Rackets, paddles and team jerseys in your club colours, built to stand up to daily coaching use.',
   },
   {
     title: 'Retailers',

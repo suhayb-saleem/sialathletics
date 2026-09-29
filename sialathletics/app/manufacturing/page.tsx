@@ -8,8 +8,8 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'OEM/ODM Padel & Pickleball Paddle Manufacturing',
-  description: 'How SIAL Athletics builds padel rackets and pickleball paddles: carbon layups, precision molding, mold design, QC testing, and export logistics.',
+  title: 'Sports Goods Manufacturing — OEM & ODM',
+  description: 'How we build padel rackets, pickleball paddles, beach rackets, bags and jerseys: carbon lay-ups, precision moulding, QC testing and export.',
   alternates: { canonical: '/manufacturing' },
 };
 
@@ -19,8 +19,8 @@ export default function ManufacturingPage() {
       <JsonLd data={breadcrumbJsonLd('Manufacturing', '/manufacturing')} />
       <PageHero
         crumb="Manufacturing"
-        title="Padel and pickleball manufacturing, end to end."
-        subtitle="Rackets and paddles made start to finish in our own factory in Sialkot: moulding, lay-up, finishing, inspection and export."
+        title="Sports goods manufacturing, end to end."
+        subtitle="Padel rackets, pickleball paddles, beach rackets, bags and jerseys, made start to finish in our own factory in Sialkot: moulding, lay-up, finishing, inspection and export."
         image="/images/manufacturing/manufacturing_section.png"
         imageAlt="Studio product photo of a SIAL Athletics carbon fiber padel racket"
       />

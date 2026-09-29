@@ -10,9 +10,17 @@ import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Padel Racket & Pickleball Paddle Manufacturer — SIAL Athletics' },
-  description: 'Factory-direct padel racket and pickleball paddle manufacturing from Sialkot, Pakistan. OEM/ODM private-label programs, low MOQs for brands and distributors.',
+  title: { absolute: 'Sports Goods Manufacturer — Padel, Pickleball & Beach Rackets | SIAL Athletics' },
+  description: 'OEM and private-label sports goods from Sialkot, Pakistan: padel rackets, pickleball paddles and beach rackets, plus racket bags and team jerseys.',
   alternates: { canonical: '/' },
+};
+
+// Lets search engines show "SIAL Athletics" as the site name in results.
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'SIAL Athletics',
+  url: 'https://www.sialathletics.com',
 };
 
 const organizationJsonLd = {
@@ -20,8 +28,18 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: 'SIAL Athletics',
   url: 'https://www.sialathletics.com',
-  logo: 'https://www.sialathletics.com/images/logo.png',
-  description: 'OEM/ODM manufacturer of carbon fiber padel rackets and pickleball paddles, based in Sialkot, Pakistan.',
+  logo: 'https://www.sialathletics.com/images/logo-dark.png',
+  image: 'https://www.sialathletics.com/images/og-card.png',
+  description: 'OEM and private-label sports goods manufacturer in Sialkot, Pakistan, making padel rackets, pickleball paddles, beach rackets, racket bags and team jerseys.',
+  // Product lines in priority order.
+  knowsAbout: [
+    'Sports goods manufacturing',
+    'Padel rackets',
+    'Pickleball paddles',
+    'Beach tennis rackets',
+    'Racket bags',
+    'Sports jerseys',
+  ],
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Sialkot',
@@ -45,6 +63,7 @@ const organizationJsonLd = {
 export default function Home() {
   return (
     <div className="hp">
+      <JsonLd data={websiteJsonLd} />
       <JsonLd data={organizationJsonLd} />
       <Hero />
       <FactoryIntro />
@@ -53,7 +72,7 @@ export default function Home() {
       <WhoWeWorkWith />
       <GlobalReach />
       <CTABanner
-        headline="Build a better racket line."
+        headline="Build a better product line."
         subtext="Tell us what you want to build and your budget. We'll send samples, specs and a quote."
       />
     </div>

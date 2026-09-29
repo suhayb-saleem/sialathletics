@@ -7,7 +7,7 @@ import { breadcrumbJsonLd } from '@/lib/seo';
 import { faqCategories } from '@/data/faq';
 
 export const metadata: Metadata = {
-  title: 'FAQ — Padel & Pickleball OEM Manufacturing',
+  title: 'FAQ — OEM Sports Goods Manufacturing',
   description: 'Answers for B2B buyers: minimum order quantities, sampling and lead times, private-label branding, quality control, and shipping from Sialkot, Pakistan.',
   alternates: { canonical: '/faq' },
 };

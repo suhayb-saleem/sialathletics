@@ -8,9 +8,9 @@ import { breadcrumbJsonLd } from '@/lib/seo';
 import { posts, readMinutes, formatDate } from '@/data/blog';
 
 export const metadata: Metadata = {
-  title: 'Blog — Padel & Pickleball Manufacturing',
+  title: 'Blog — Padel, Pickleball & Sports Equipment Guides',
   description:
-    'Technical articles on padel racket and pickleball paddle manufacturing: carbon fiber grades, EVA cores, core thickness, surface texture, quality control and sourcing.',
+    'Guides to padel rackets, pickleball paddles, beach tennis rackets, racket bags and sports jerseys: materials, manufacturing, buying advice and care.',
   alternates: { canonical: '/blog' },
 };
 
@@ -27,7 +27,7 @@ export default function BlogIndexPage() {
           {/* Lead post */}
           <article className="post-lead">
             <Link href={`/blog/${lead.slug}`} className="post-lead__media" aria-hidden="true" tabIndex={-1}>
-              <Image src={lead.hero.src} alt="" fill sizes="(max-width: 900px) 100vw, 55vw" style={{ objectFit: 'cover' }} priority />
+              {lead.hero && <Image src={lead.hero.src} alt="" fill sizes="(max-width: 900px) 100vw, 55vw" style={{ objectFit: 'cover' }} priority />}
             </Link>
             <div className="post-lead__body">
               <span className="post-meta">
@@ -46,7 +46,7 @@ export default function BlogIndexPage() {
             {rest.map((post) => (
               <article key={post.slug} className="post-card">
                 <Link href={`/blog/${post.slug}`} className="post-card__media" aria-hidden="true" tabIndex={-1}>
-                  <Image src={post.hero.src} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                  {post.hero && <Image src={post.hero.src} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" style={{ objectFit: 'cover' }} />}
                 </Link>
                 <div className="post-card__body">
                   <span className="post-meta">{post.category} · {readMinutes(post)} min read</span>
@@ -93,6 +93,7 @@ export default function BlogIndexPage() {
           min-height: 320px;
           display: block;
           overflow: hidden;
+          background: var(--hp-paper-2);
         }
         .post-lead__media img { transition: transform 0.8s var(--hp-ease); }
         .post-lead:hover .post-lead__media img { transform: scale(1.03); }
@@ -144,6 +145,7 @@ export default function BlogIndexPage() {
           aspect-ratio: 16 / 10;
           overflow: hidden;
           border-bottom: 1px solid var(--hp-ink-line);
+          background: var(--hp-paper-2);
         }
         .post-card__media img { transition: transform 0.7s var(--hp-ease); }
         .post-card:hover .post-card__media img { transform: scale(1.05); }

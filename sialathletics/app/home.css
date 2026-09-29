@@ -63,20 +63,19 @@
 }
 
 /* =========================================================================
-   INTRO  (who we are, in plain search terms, plus the fact row)
+   INTRO  (who we are, in plain search terms)
    ========================================================================= */
 .hp-intro__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 .hp-intro__title { margin: 0; font-size: clamp(1.8rem, 3.2vw, 2.6rem); color: var(--hp-ink); }
 .hp-intro__copy p { margin: 0 0 1.1rem; font-size: 1rem; line-height: 1.72; color: var(--hp-ink-70); }
 .hp-intro__copy p:last-of-type { margin-bottom: 1.6rem; }
 .hp-intro__links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.75rem; }
-.hp-intro .hp-facts { margin-top: clamp(2.5rem, 5vw, 4rem); }
 @media (max-width: 860px) {
   .hp-intro__grid { grid-template-columns: 1fr; gap: 1.25rem; }
 }
 
 /* =========================================================================
-   WHAT WE MAKE  (dual-sport backdrop + two category entries)
+   WHAT WE MAKE  (dual-sport backdrop + five category entries)
    ========================================================================= */
 .hp-range { position: relative; isolation: isolate; padding-block: var(--hp-gap); overflow: hidden; border-top: 1px solid var(--hp-ink-line); background: var(--surface-2); }
 .hp-range__bg { position: absolute; inset: 0; z-index: 0; }
@@ -91,18 +90,21 @@
 .hp-range__title { margin: 0 0 1.1rem; font-size: clamp(2.2rem, 4.4vw, 3.6rem); letter-spacing: -0.03em; color: var(--hp-ink); }
 .hp-range__intro { margin: 0; max-width: 38rem; color: var(--hp-ink-70); font-size: clamp(1rem, 1.15vw, 1.14rem); line-height: 1.68; }
 
-.hp-range__cats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.hp-range__cats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .hp-cat {
   position: relative; display: flex; flex-direction: column; gap: 0.7rem;
-  min-height: 16rem; padding: 2rem;
+  min-height: 15rem; padding: 1.75rem;
   background: rgba(255,255,255,0.74);
   backdrop-filter: blur(10px);
   border: 1px solid var(--hp-ink-line); box-shadow: var(--shadow-sm); text-decoration: none; color: inherit;
   transition: border-color 0.5s var(--hp-ease), transform 0.5s var(--hp-ease), background 0.5s var(--hp-ease), box-shadow 0.5s var(--hp-ease);
 }
 .hp-cat:hover { border-color: rgba(216,35,47,0.45); transform: translateY(-6px); background: rgba(255,255,255,0.94); box-shadow: var(--shadow-lg); }
-.hp-cat__title { margin: 0; font-family: var(--hp-display); font-weight: 700; letter-spacing: -0.025em; font-size: clamp(1.6rem, 2.8vw, 2.2rem); line-height: 1.04; color: var(--hp-ink); }
-.hp-cat__desc { margin: 0; font-size: 0.93rem; line-height: 1.6; color: var(--hp-ink-70); max-width: 55%; }
+.hp-cat__title { margin: 0; font-family: var(--hp-display); font-weight: 700; letter-spacing: -0.02em; font-size: clamp(1.35rem, 1.9vw, 1.7rem); line-height: 1.08; color: var(--hp-ink); }
+.hp-cat__desc { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--hp-ink-70); max-width: 55%; }
+/* The newer lines have no product cut-out to leave room for, so their copy
+   can use the card's full width instead of the half reserved for a photo. */
+.hp-cat--no-media .hp-cat__desc { max-width: 100%; }
 .hp-cat__cta {
   display: inline-flex; align-items: center; gap: 0.4rem; margin-top: auto; padding-top: 1.2rem;
   font-family: var(--hp-body); font-size: 0.9rem; font-weight: 600; color: var(--hp-ink);
@@ -117,10 +119,14 @@
 }
 .hp-cat:hover .hp-cat__media { transform: translateY(-8px) scale(1.05); }
 .hp-cat__title, .hp-cat__desc, .hp-cat__cta { position: relative; z-index: 1; }
+@media (max-width: 1080px) {
+  .hp-range__cats { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 720px) {
   .hp-range__cats { grid-template-columns: 1fr; }
   .hp-cat__media { width: 38%; max-width: 8.5rem; }
   .hp-cat__desc { max-width: 62%; }
+  .hp-cat--no-media .hp-cat__desc { max-width: 100%; }
 }
 
 /* =========================================================================

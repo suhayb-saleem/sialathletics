@@ -10,7 +10,7 @@ By using our Site, you agree to the collection and use of information in accorda
 
 ## 2. Who We Are
 
-Sial Athletics is a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan.
+Sial Athletics is a sports goods manufacturer based in Sialkot, Pakistan.
 
 **Contact for privacy matters:** info@sialathletics.com
 

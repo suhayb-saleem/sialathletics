@@ -18,12 +18,12 @@ export default function AboutStory() {
         <div>
           <h2 className="hp-display hp-h2">From Sialkot to your shelves</h2>
           <p className="body-copy" style={{ margin: '1.25rem 0 1rem' }}>
-            We manufacture padel rackets and pickleball paddles in Sialkot, Pakistan, a city with
-            over a century of experience making sporting goods.
+            We manufacture padel rackets, pickleball paddles, beach rackets, bags and jerseys in
+            Sialkot, Pakistan, a city with over a century of experience making sporting goods.
           </p>
           <p className="body-copy" style={{ margin: '0 0 1rem' }}>
-            Our factory combines that experience with modern materials and equipment. Every racket
-            and paddle is checked before it leaves the building.
+            Our factory combines that experience with modern materials and equipment. Every piece is
+            checked before it leaves the building.
           </p>
           <p className="body-copy" style={{ margin: '0 0 1.75rem' }}>
             Brands, retailers and distributors come to us for{' '}

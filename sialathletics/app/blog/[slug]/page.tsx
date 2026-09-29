@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: post.metaDescription,
       url: `${BASE}/blog/${post.slug}`,
       publishedTime: post.date,
-      images: [{ url: post.hero.src, alt: post.hero.alt }],
+      images: post.hero ? [{ url: post.hero.src, alt: post.hero.alt }] : [{ url: '/images/og-card.png', width: 1200, height: 630, alt: 'SIAL Athletics' }],
     },
   };
 }
@@ -44,14 +44,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.metaDescription,
-    image: `${BASE}${encodeURI(post.hero.src)}`,
+    image: `${BASE}${encodeURI(post.hero?.src ?? '/images/og-card.png')}`,
     datePublished: post.date,
     dateModified: post.date,
     author: { '@type': 'Organization', name: 'SIAL Athletics', url: BASE },
     publisher: {
       '@type': 'Organization',
       name: 'SIAL Athletics',
-      logo: { '@type': 'ImageObject', url: `${BASE}/images/logo.png` },
+      logo: { '@type': 'ImageObject', url: `${BASE}/images/logo-dark.png` },
     },
     mainEntityOfPage: `${BASE}/blog/${post.slug}`,
   };
@@ -84,11 +84,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
         {/* Hero image, full content width */}
-        <div className="hp-shell" style={{ maxWidth: '780px', padding: '0 1.5rem' }}>
-          <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', border: '1px solid var(--hp-ink-line)', background: 'var(--surface-sunken)' }}>
-            <Image src={post.hero.src} alt={post.hero.alt} fill priority sizes="(max-width: 820px) 100vw, 780px" style={{ objectFit: 'cover' }} />
+        {post.hero && (
+          <div className="hp-shell" style={{ maxWidth: '780px', padding: '0 1.5rem' }}>
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', border: '1px solid var(--hp-ink-line)', background: 'var(--surface-sunken)' }}>
+              <Image src={post.hero.src} alt={post.hero.alt} fill priority sizes="(max-width: 820px) 100vw, 780px" style={{ objectFit: 'cover' }} />
+            </div>
           </div>
-        </div>
+        )}
 
         <div className="hp-shell" style={{ maxWidth: '780px', padding: '2.5rem 1.5rem 5rem' }}>
           {/* Answer-first summary */}

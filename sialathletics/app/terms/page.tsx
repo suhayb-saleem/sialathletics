@@ -11,7 +11,7 @@ const sections = [
   {
     h: '1. Introduction',
     body: [
-      `Welcome to sialathletics.com (the "Site"), operated by SIAL Athletics ("we," "us," or "our"), a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan. By accessing or using this Site, you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree, please do not use the Site.`,
+      `Welcome to sialathletics.com (the "Site"), operated by SIAL Athletics ("we," "us," or "our"), a sports goods manufacturer based in Sialkot, Pakistan. By accessing or using this Site, you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree, please do not use the Site.`,
     ],
   },
   {
@@ -36,7 +36,7 @@ const sections = [
   {
     h: '5. Custom Manufacturing and Product Accuracy',
     body: [
-      'We manufacture padel rackets and pickleball paddles, including custom molds, specifications, and private-label products upon request. While we strive to ensure the accuracy of technical information, material descriptions, and capabilities presented on this Site, actual production specifications, tolerances, and outcomes will be governed by the specific terms agreed upon in a formal order agreement, not by general statements made on this Site.',
+      'We manufacture sports goods, including padel rackets, pickleball paddles, beach rackets, bags and apparel, with custom molds, specifications, and private-label products upon request. While we strive to ensure the accuracy of technical information, material descriptions, and capabilities presented on this Site, actual production specifications, tolerances, and outcomes will be governed by the specific terms agreed upon in a formal order agreement, not by general statements made on this Site.',
     ],
   },
   {

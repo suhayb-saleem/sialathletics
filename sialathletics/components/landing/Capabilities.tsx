@@ -30,7 +30,7 @@ export function Capabilities() {
         <Reveal className="hp-block__head">
           <h2 className="hp-display hp-h2">What we do for you</h2>
           <p className="hp-lede">
-            Rackets and paddles for brands and resellers, made start to finish under one roof.
+            Rackets, paddles, bags and jerseys for brands and resellers, made start to finish under one roof.
           </p>
         </Reveal>
 

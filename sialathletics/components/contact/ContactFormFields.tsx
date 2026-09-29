@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
 import type { ContactPrefill } from '@/lib/contactModal';
 
-const PRODUCT_LINES = ['Padel Rackets', 'Pickleball Paddles', 'Both Lines', 'Other Accessories'];
+const PRODUCT_LINES = ['Padel Rackets', 'Pickleball Paddles', 'Beach Rackets', 'Jerseys', 'Bags', 'Multiple Lines', 'Other Accessories'];
 
 // Shared form state, validation, and /api/contact submission logic used by
 // both the standalone /contact page and the site-wide ContactModal — the

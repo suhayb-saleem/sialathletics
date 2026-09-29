@@ -7,6 +7,9 @@ type PageHeroProps = {
   title: string;
   subtitle?: string;
   crumb: string;
+  /** An intermediate crumb for a page nested one level under a section
+   *  index, e.g. { label: 'Products', href: '/products' } ahead of `crumb`. */
+  parentCrumb?: { label: string; href: string };
   /** Full-bleed backdrop photo; a white wash keeps the ink type legible over it. */
   image?: string;
   imageAlt?: string;
@@ -19,7 +22,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 // Page opener: breadcrumb, one big title, optional one-line subtitle.
 // No kicker label above the title — the title is the label.
-export default function PageHero({ title, subtitle, crumb, image, imageAlt, compact }: PageHeroProps) {
+export default function PageHero({ title, subtitle, crumb, parentCrumb, image, imageAlt, compact }: PageHeroProps) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -36,6 +39,12 @@ export default function PageHero({ title, subtitle, crumb, image, imageAlt, comp
         <nav aria-label="Breadcrumb" className="hp-pagehero__crumb">
           <Link href="/">Home</Link>
           <span aria-hidden="true">/</span>
+          {parentCrumb && (
+            <>
+              <Link href={parentCrumb.href}>{parentCrumb.label}</Link>
+              <span aria-hidden="true">/</span>
+            </>
+          )}
           <span className="hp-pagehero__crumb-current">{crumb}</span>
         </nav>
 

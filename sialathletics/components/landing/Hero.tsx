@@ -30,15 +30,17 @@ export default function Hero() {
 
       <div className="hp-shell">
         <div className="hp-hero__inner">
-          {/* The h1 carries the primary search phrase; the brand line moves to the
-              paragraph. A tagline-only h1 gave crawlers nothing to rank. */}
+          {/* The h1 carries the primary search phrase ("sports goods"); the
+              paragraph names the product lines in priority order, padel first.
+              A tagline-only h1 gave crawlers nothing to rank. */}
           <motion.h1 className="hp-display hp-hero__title" {...rise(0)}>
-            Padel rackets and pickleball paddles, built for your brand.
+            Sports goods, built for your brand.
           </motion.h1>
 
           <motion.p className="hp-hero__copy" {...rise(0.1)}>
-            SIAL Athletics is an OEM and ODM manufacturer in Sialkot, Pakistan. We make rackets
-            and paddles for brands, clubs and distributors in our own factory, start to finish.
+            SIAL Athletics is an OEM and ODM sports goods manufacturer in Sialkot, Pakistan. We make
+            padel rackets, pickleball paddles and beach rackets, plus the bags and jerseys to go with
+            them, for brands, clubs and distributors.
           </motion.p>
 
           <motion.div className="hp-hero__actions" {...rise(0.18)}>

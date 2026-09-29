@@ -20,7 +20,7 @@ export default function Footer() {
               />
             </Link>
             <p style={{ color: 'var(--white-60)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
-              Padel rackets and pickleball paddles, manufactured in Sialkot, Pakistan, for sports brands, distributors and importers worldwide.
+              Sports goods manufactured in Sialkot, Pakistan: padel rackets, pickleball paddles, beach rackets, bags and jerseys, for sports brands, distributors and importers worldwide.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
               <a href="https://www.instagram.com/sial_athletics/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--white-60)', transition: 'color 0.2s ease' }}
@@ -76,8 +76,11 @@ export default function Footer() {
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
-                { name: 'Pickleball Paddles', href: '/products#pickleball' },
-                { name: 'Padel Rackets', href: '/products#padel' },
+                { name: 'Padel Rackets', href: '/products/padel-rackets' },
+                { name: 'Pickleball Paddles', href: '/products/pickleball-paddles' },
+                { name: 'Beach Rackets', href: '/products/beach-rackets' },
+                { name: 'Jerseys', href: '/products/jerseys' },
+                { name: 'Bags', href: '/products/bags' },
                 { name: 'OEM & ODM Programs', href: '/manufacturing' },
               ].map((link) => (
                 <li key={link.name}>

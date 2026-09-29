@@ -17,7 +17,7 @@ const sections = [
   {
     h: '2. Who We Are',
     body: [
-      'SIAL Athletics is a padel racket and pickleball paddle manufacturer based in Sialkot, Pakistan.',
+      'SIAL Athletics is a sports goods manufacturer based in Sialkot, Pakistan.',
       'Contact for privacy matters: info@sialathletics.com',
     ],
   },

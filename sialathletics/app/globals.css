@@ -265,27 +265,6 @@ a { color: inherit; }
 .hp-form--light .hp-form__success p { color: var(--hp-ink-70); }
 .hp-form--light .hp-form__success-icon { box-shadow: 0 0 30px rgba(226,27,45,0.1); }
 
-/* ---- Fact row ---- */
-/* Hairline-separated facts. Each cell lifts its rule to ink on hover, so the
-   row responds to the cursor without turning into a set of buttons. */
-/* Three or four short facts in a hairline-separated row. Replaces the old
-   ticker marquee and the "stat grid" of badges. */
-.hp-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border-block: 1px solid var(--hp-ink-line); }
-.hp-facts > div { position: relative; padding: 1.4rem 1.5rem 1.4rem 0; border-right: 1px solid var(--hp-ink-line); }
-.hp-facts > div::after { content: ""; position: absolute; top: -1px; left: 0; right: 1.5rem; height: 2px; background: var(--hp-ink); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--hp-ease); }
-.hp-facts > div:hover::after { transform: scaleX(1); }
-.hp-facts > div + div { padding-left: 1.5rem; }
-.hp-facts > div:last-child { border-right: none; }
-.hp-facts dt { margin: 0 0 0.3rem; font-family: var(--hp-body); font-size: 0.8rem; color: var(--hp-ink-45); }
-.hp-facts dd { margin: 0; font-family: var(--hp-display); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.015em; color: var(--hp-ink); }
-@media (max-width: 720px) {
-  .hp-facts { grid-template-columns: 1fr 1fr; }
-  .hp-facts > div { padding: 1.1rem 1rem 1.1rem 0; border-right: none; border-bottom: 1px solid var(--hp-ink-line); }
-  .hp-facts > div + div { padding-left: 0; }
-  .hp-facts > div:nth-child(odd) { border-right: 1px solid var(--hp-ink-line); padding-right: 1rem; }
-  .hp-facts > div:nth-child(even) { padding-left: 1rem; }
-  .hp-facts > div:nth-last-child(-n+2) { border-bottom: none; }
-}
 .site-nav { position: fixed; inset: 0 0 auto; z-index: 100; padding: 1rem var(--container-pad); transition: padding .25s var(--ease-standard); }
 /* Held at transparent: the surface below does the legibility work in both
    states. Kept as a hook so a veil can come back without restructuring. */

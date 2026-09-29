@@ -56,8 +56,8 @@ export const faqCategories: FaqCategory[] = [
         a: 'We use carbon fiber in 3K, 12K, 18K, and 24K grades, selected to match your specification and product requirements.',
       },
       {
-        q: 'Can I order multiple models or both sports in a single program?',
-        a: 'Yes. You can combine padel rackets and pickleball paddles, and multiple models within each, in one program. Per-model minimums are confirmed at quotation.',
+        q: 'Can I order multiple products in a single program?',
+        a: 'Yes. You can combine padel rackets, pickleball paddles, beach rackets, bags and jerseys, and multiple models within each, in one program, all matched to one brand identity. Per-model minimums are confirmed at quotation.',
       },
     ],
     related: { label: 'See manufacturing capabilities', href: '/manufacturing' },
@@ -89,21 +89,17 @@ export const faqCategories: FaqCategory[] = [
   },
   {
     id: 'orders-moq-payment',
-    title: 'Orders, MOQ & Payment',
+    title: 'Orders & MOQ',
     framing:
       'Low minimums so you can test, launch, and grow without a big upfront commitment.',
     items: [
       {
         q: 'What is your minimum order quantity?',
-        a: 'Our standard MOQ is 24 units for padel rackets and 50 units for pickleball paddles. Sample orders of 1-5 units are available at a higher per-unit cost.',
+        a: 'Our standard MOQ is 100 units for padel rackets and beach rackets, and 300 units for pickleball paddles. Sample orders of 1-5 units are available at a higher per-unit cost.',
       },
       {
         q: 'What is the lead time for production?',
         a: 'Samples ship within 3-4 weeks of specification approval. Standard bulk production lead time is 30–45 days after sample approval and deposit received. Final timing depends on order quantity, customization requirements, and production schedule.',
-      },
-      {
-        q: 'What are your payment terms?',
-        a: 'You pay 30% upfront by bank transfer to start production, and the remaining 70% before shipment. Letter of Credit is available for larger or repeat orders.',
       },
       {
         q: 'How do I start an order?',
