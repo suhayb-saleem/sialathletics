@@ -108,12 +108,7 @@ export async function POST(req: NextRequest) {
         <p>Thank you for submitting your custom equipment inquiry to SIAL Athletics. We are excited about the prospect of partnering with your brand.</p>
         <p>We have successfully compiled your project configurations. Your <strong>B2B Inquiry Report (PDF)</strong> is attached to this email for your records.</p>
         
-        <p>Our sales and production teams at SIAL Athletics will review your requirements and follow up within <strong>24 business hours</strong> with details on:</p>
-        <ul style="line-height: 1.6; color: #333333;">
-          <li>Factory-direct custom pricing sheets</li>
-          <li>Arrangements for sample delivery</li>
-          <li>Custom mold capability options</li>
-        </ul>
+        <p>Our sales and production teams at SIAL Athletics will review your requirements and get back to you within <strong>24 business hours</strong>.</p>
         
         <p>If you have any immediate corrections or additional details, please reply directly to this email or write to us at <a href="mailto:${companyEmail}" style="color: #E31B23; text-decoration: none; font-weight: bold;">${companyEmail}</a>.</p>
         
