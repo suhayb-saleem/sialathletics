@@ -108,10 +108,10 @@ export async function POST(req: NextRequest) {
         <p>Thank you for submitting your custom equipment inquiry to SIAL Athletics. We are excited about the prospect of partnering with your brand.</p>
         <p>We have successfully compiled your project configurations. Your <strong>B2B Inquiry Report (PDF)</strong> is attached to this email for your records.</p>
         
-        <p>Our product development and engineering team in Sialkot, along with our US sales representatives, will review your requirements and follow up within <strong>24 business hours</strong> with details on:</p>
+        <p>Our sales and production teams at SIAL Athletics will review your requirements and follow up within <strong>24 business hours</strong> with details on:</p>
         <ul style="line-height: 1.6; color: #333333;">
           <li>Factory-direct custom pricing sheets</li>
-          <li>Arrangements for sample paddle/racket delivery</li>
+          <li>Arrangements for sample delivery</li>
           <li>Custom mold capability options</li>
         </ul>
         
@@ -119,7 +119,6 @@ export async function POST(req: NextRequest) {
         
         <p style="margin-top: 30px; margin-bottom: 5px;">Best Regards,</p>
         <p style="font-weight: bold; margin: 0; color: #111111;">SIAL Athletics B2B Team</p>
-        <p style="margin: 0; font-size: 13px; color: #666666;">Sialkot, Pakistan & USA</p>
         
         <div style="margin-top: 30px; font-size: 11px; color: #999999; border-top: 1px solid #eeeeee; padding-top: 15px; text-align: center;">
           © ${new Date().getFullYear()} SIAL Athletics. All rights reserved. <br/>
