@@ -41,7 +41,7 @@ export default function BeachRacketsPage() {
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
-            <SpecConfigurator category="Beach racket" productLine="Beach Rackets" groups={beachOptions} />
+            <SpecConfigurator category="Beach racket" groups={beachOptions} />
           </div>
         </div>
       </section>

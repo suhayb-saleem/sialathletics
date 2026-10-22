@@ -41,7 +41,7 @@ export default function JerseysPage() {
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
-            <SpecConfigurator category="Jersey" productLine="Jerseys" groups={jerseyOptions} />
+            <SpecConfigurator category="Jersey" groups={jerseyOptions} />
           </div>
         </div>
       </section>

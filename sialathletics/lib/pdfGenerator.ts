@@ -4,16 +4,11 @@ import path from 'path';
 export interface InquiryData {
   name: string;
   email: string;
-  phone?: string;
-  company: string;
-  country?: string;
-  productLine: string;
-  orderVolume: string;
   message: string;
 }
 
 /**
- * Generates an A4 B2B Inquiry PDF report in-memory using pdfkit.
+ * Generates an A4 inquiry PDF in-memory using pdfkit.
  */
 export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
   return new Promise((resolve, reject) => {
@@ -53,7 +48,7 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
       doc.font('Lato-Bold').fontSize(20).fillColor(primaryColor).text('SIAL ATHLETICS', 50, 45);
     }
 
-    doc.font('Lato-Bold').fontSize(13).fillColor(darkColor).text('B2B INQUIRY REPORT', 250, 45, { align: 'right' });
+    doc.font('Lato-Bold').fontSize(13).fillColor(darkColor).text('WEBSITE INQUIRY', 250, 45, { align: 'right' });
     doc.font('Lato-Regular').fontSize(9).fillColor('#777777')
        .text(`Date: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`, 250, 62, { align: 'right' });
 
@@ -62,8 +57,8 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
 
     // 2. Introduction text
     doc.moveDown(3);
-    doc.font('Lato-Bold').fontSize(15).fillColor(darkColor).text('Project Specifications Summary', 50, 110);
-    doc.font('Lato-Regular').fontSize(9.5).fillColor('#555555').text('A summary of custom equipment manufacturing specifications and volume targets submitted by the client.', 50, 128);
+    doc.font('Lato-Bold').fontSize(15).fillColor(darkColor).text('Inquiry Summary', 50, 110);
+    doc.font('Lato-Regular').fontSize(9.5).fillColor('#555555').text('Submitted through the contact form at sialathletics.com.', 50, 128);
 
     // 3. Client Specifications Table
     const tableStartY = 155;
@@ -73,21 +68,16 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
     const tableWidth = 495;
 
     const specs = [
-      { label: 'Client Name', value: data.name },
+      { label: 'Contact Name', value: data.name },
       { label: 'Work Email', value: data.email },
-      { label: 'Contact Number', value: data.phone || 'N/A' },
-      { label: 'Company Name', value: data.company },
-      { label: 'Country / Region', value: data.country || 'N/A' },
-      { label: 'Product Line Interest', value: data.productLine },
-      { label: 'Target Order Volume (MOQ)', value: data.orderVolume },
     ];
 
     let currentY = tableStartY;
 
     // Table Header
     doc.rect(col1X, currentY, tableWidth, rowHeight).fill(darkColor);
-    doc.font('Lato-Bold').fontSize(9.5).fillColor('#FFFFFF').text('Specification Field', col1X + 12, currentY + 8);
-    doc.text('Client Selection / Detail', col2X + 12, currentY + 8);
+    doc.font('Lato-Bold').fontSize(9.5).fillColor('#FFFFFF').text('Field', col1X + 12, currentY + 8);
+    doc.text('Detail', col2X + 12, currentY + 8);
     currentY += rowHeight;
 
     // Render specification table rows
@@ -111,10 +101,10 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
 
     // 4. Project Message Section
     currentY += 15;
-    doc.font('Lato-Bold').fontSize(11).fillColor(darkColor).text('Message & Project Details', col1X, currentY);
+    doc.font('Lato-Bold').fontSize(11).fillColor(darkColor).text('Message', col1X, currentY);
     currentY += 18;
 
-    const messageBoxHeight = 130;
+    const messageBoxHeight = 420;
     doc.rect(col1X, currentY, tableWidth, messageBoxHeight).fill('#FCFCFC');
     doc.rect(col1X, currentY, tableWidth, messageBoxHeight).strokeColor(borderGray).lineWidth(0.5).stroke();
 
@@ -131,7 +121,7 @@ export async function generateInquiryPDF(data: InquiryData): Promise<Buffer> {
     doc.moveTo(50, footerY - 10).lineTo(545, footerY - 10).strokeColor(borderGray).lineWidth(0.5).stroke();
 
     doc.font('Lato-Regular').fontSize(8).fillColor('#888888')
-       .text('SIAL Athletics — Premium Pickleball & Padel Manufacturing', 50, footerY);
+       .text('SIAL Athletics — Sports Goods Manufacturing', 50, footerY);
     doc.text('info@sialathletics.com  |  www.sialathletics.com', 50, footerY + 12);
     doc.text('Page 1 of 1', 50, footerY, { align: 'right', width: tableWidth });
 

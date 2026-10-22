@@ -11,13 +11,12 @@ export default function ContactForm() {
   const [prefill, setPrefill] = useState<ContactPrefill | null>(null);
   const formSectionRef = useRef<HTMLElement>(null);
 
-  // Pre-fill from the catalogue spec configurator: /contact?line=...&spec=...
+  // Pre-fill from the catalogue spec configurator: /contact?spec=...
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const spec = params.get('spec');
-    const line = params.get('line');
-    if (!spec && !line) return;
-    setPrefill({ message: spec ?? undefined, productLine: line ?? undefined });
+    if (!spec) return;
+    setPrefill({ message: spec });
     formSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 

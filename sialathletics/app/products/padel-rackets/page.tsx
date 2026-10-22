@@ -41,7 +41,7 @@ export default function PadelRacketsPage() {
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
-            <SpecConfigurator category="Padel racket" productLine="Padel Rackets" groups={padelOptions} />
+            <SpecConfigurator category="Padel racket" groups={padelOptions} />
           </div>
         </div>
       </section>

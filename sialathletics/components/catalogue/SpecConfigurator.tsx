@@ -10,11 +10,9 @@ type Group = { title: string; items: string[] };
 // query params. Styles come from the catalogue page's shared style block.
 export default function SpecConfigurator({
   category,
-  productLine,
   groups,
 }: {
   category: string;      // human label used in the generated message
-  productLine: string;   // must match a ContactForm "Product line" option value
   groups: Group[];
 }) {
   const router = useRouter();
@@ -42,7 +40,7 @@ export default function SpecConfigurator({
       if (picks.length > 0) lines.push(`${group.title}: ${picks.join(', ')}`);
     }
     const message = lines.join('\n');
-    router.push(`/contact?line=${encodeURIComponent(productLine)}&spec=${encodeURIComponent(message)}`);
+    router.push(`/contact?spec=${encodeURIComponent(message)}`);
   };
 
   return (

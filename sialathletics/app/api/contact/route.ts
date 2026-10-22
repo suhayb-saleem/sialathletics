@@ -2,13 +2,19 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { generateInquiryPDF, InquiryData } from '@/lib/pdfGenerator';
 
+// Visitor input goes into HTML emails, so escape it before interpolating.
+const escapeHtml = (v: string) =>
+  v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, phone, company, country, productLine, orderVolume, message } = body;
+    const name = typeof body.name === 'string' ? body.name.trim() : '';
+    const email = typeof body.email === 'string' ? body.email.trim() : '';
+    const message = typeof body.message === 'string' ? body.message.trim() : '';
 
-    // Validate required fields
-    if (!name || !email || !company || !productLine || !orderVolume || !message) {
+    // The form only has these three fields; all are required.
+    if (!name || !email || !message) {
       return NextResponse.json(
         { success: false, error: 'Missing required inquiry fields' },
         { status: 400 }
@@ -32,16 +38,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const inquiryData: InquiryData = {
-      name,
-      email,
-      phone,
-      company,
-      country: country || 'N/A',
-      productLine,
-      orderVolume,
-      message,
-    };
+    const inquiryData: InquiryData = { name, email, message };
 
     // 1. Generate PDF Report in-memory
     console.log('[Inquiry API] Generating PDF report...');
@@ -53,47 +50,30 @@ export async function POST(req: NextRequest) {
     const salesNotificationEmail = 'sales@sialathletics.com';
 
     // Prepare Email templates
-    const cleanCompanyFilename = company.replace(/[^a-zA-Z0-9]/g, '_');
-    const attachmentFilename = `SIAL_Athletics_Inquiry_${cleanCompanyFilename}.pdf`;
+    const cleanNameFilename = name.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 60) || 'Inquiry';
+    const attachmentFilename = `SIAL_Athletics_Inquiry_${cleanNameFilename}.pdf`;
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeMessage = escapeHtml(message);
 
     const salesEmailHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eeeeee; border-top: 4px solid #E31B23;">
-        <h2 style="color: #111111; margin-top: 0;">New B2B Lead Inquiry</h2>
-        <p>A new custom manufacturing request has been submitted. Find the PDF specification sheet attached.</p>
+        <h2 style="color: #111111; margin-top: 0;">New Website Inquiry</h2>
+        <p>A new inquiry has been submitted through the website contact form. A PDF copy is attached.</p>
         
         <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
           <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
-            <td style="padding: 10px; font-weight: bold; width: 35%;">Client Name:</td>
-            <td style="padding: 10px;">${name}</td>
+            <td style="padding: 10px; font-weight: bold; width: 35%;">Contact Name:</td>
+            <td style="padding: 10px;">${safeName}</td>
           </tr>
           <tr style="border-bottom: 1px solid #eeeeee;">
             <td style="padding: 10px; font-weight: bold;">Work Email:</td>
-            <td style="padding: 10px;"><a href="mailto:${email}">${email}</a></td>
-          </tr>
-          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
-            <td style="padding: 10px; font-weight: bold;">Contact Number:</td>
-            <td style="padding: 10px;">${phone || 'N/A'}</td>
-          </tr>
-          <tr style="border-bottom: 1px solid #eeeeee;">
-            <td style="padding: 10px; font-weight: bold;">Company Name:</td>
-            <td style="padding: 10px;">${company}</td>
-          </tr>
-          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
-            <td style="padding: 10px; font-weight: bold;">Country / Region:</td>
-            <td style="padding: 10px;">${country || 'N/A'}</td>
-          </tr>
-          <tr style="border-bottom: 1px solid #eeeeee;">
-            <td style="padding: 10px; font-weight: bold;">Product Line:</td>
-            <td style="padding: 10px; text-transform: capitalize;">${productLine}</td>
-          </tr>
-          <tr style="background-color: #f9f9f9; border-bottom: 1px solid #eeeeee;">
-            <td style="padding: 10px; font-weight: bold;">Order Volume (MOQ):</td>
-            <td style="padding: 10px;">${orderVolume}</td>
+            <td style="padding: 10px;"><a href="mailto:${safeEmail}">${safeEmail}</a></td>
           </tr>
         </table>
         
-        <h3 style="margin-top: 20px; color: #111111;">Project Details / Message:</h3>
-        <div style="background-color: #f9f9f9; padding: 15px; border: 1px solid #eeeeee; white-space: pre-wrap; font-size: 14px; line-height: 1.5; color: #333333;">${message}</div>
+        <h3 style="margin-top: 20px; color: #111111;">Message:</h3>
+        <div style="background-color: #f9f9f9; padding: 15px; border: 1px solid #eeeeee; white-space: pre-wrap; font-size: 14px; line-height: 1.5; color: #333333;">${safeMessage}</div>
         
         <div style="margin-top: 30px; font-size: 11px; color: #888888; border-top: 1px solid #eeeeee; padding-top: 10px;">
           SIAL Athletics lead capture automated email.
@@ -104,9 +84,9 @@ export async function POST(req: NextRequest) {
     const clientEmailHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eeeeee; border-top: 4px solid #E31B23;">
         <h2 style="color: #111111; margin-top: 0; font-size: 20px;">Thank You for Reaching Out to SIAL Athletics</h2>
-        <p>Dear ${name},</p>
-        <p>Thank you for submitting your custom equipment inquiry to SIAL Athletics. We are excited about the prospect of partnering with your brand.</p>
-        <p>We have successfully compiled your project configurations. Your <strong>B2B Inquiry Report (PDF)</strong> is attached to this email for your records.</p>
+        <p>Dear ${safeName},</p>
+        <p>Thank you for your inquiry to SIAL Athletics. We are excited about the prospect of partnering with your brand.</p>
+        <p>A copy of your inquiry <strong>(PDF)</strong> is attached to this email for your records.</p>
         
         <p>Our sales and production teams at SIAL Athletics will review your requirements and get back to you within <strong>24 business hours</strong>.</p>
         
@@ -135,7 +115,7 @@ export async function POST(req: NextRequest) {
       from: 'Sial Athletics <sales@sialathletics.com>',
       to: salesNotificationEmail,
       replyTo: email,
-      subject: `New B2B Lead: ${company} — ${productLine}`,
+      subject: `New Website Inquiry: ${name}`,
       html: salesEmailHtml,
       attachments,
     });
@@ -154,7 +134,7 @@ export async function POST(req: NextRequest) {
       from: 'Sial Athletics <sales@sialathletics.com>',
       to: email,
       replyTo: companyEmail,
-      subject: `Your Inquiry Report & OEM Specifications — SIAL Athletics`,
+      subject: `Your Inquiry — SIAL Athletics`,
       html: clientEmailHtml,
       attachments,
     });

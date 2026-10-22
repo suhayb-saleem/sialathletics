@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
 import type { ContactPrefill } from '@/lib/contactModal';
 
-const PRODUCT_LINES = ['Padel Rackets', 'Pickleball Paddles', 'Beach Rackets', 'Jerseys', 'Bags', 'Multiple Lines', 'Other Accessories'];
-
+// Kept to three fields (name, work email, message) on purpose: every extra
+// field costs inbound inquiries, and the details can come out in the reply.
+//
 // Shared form state, validation, and /api/contact submission logic used by
 // both the standalone /contact page and the site-wide ContactModal — the
 // submission path (honeypot, Resend notification + client PDF confirmation)
@@ -14,11 +15,6 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    company: '',
-    country: '',
-    productLine: 'Padel Rackets',
-    orderVolume: 'Sample Only (1-5 units)',
     message: '',
     website: '', // honeypot
   });
@@ -32,7 +28,6 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
     setFormData((prev) => ({
       ...prev,
       message: prefill.message ?? prev.message,
-      productLine: prefill.productLine && PRODUCT_LINES.includes(prefill.productLine) ? prefill.productLine : prev.productLine,
     }));
   }, [prefill]);
 
@@ -40,7 +35,7 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
     e.preventDefault();
     setError(null);
 
-    if (!formData.name.trim() || !formData.email.trim() || !formData.company.trim() || !formData.message.trim()) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setError('Please fill in all required fields.');
       return;
     }
@@ -65,11 +60,6 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
         body: JSON.stringify({
           name: formData.name.trim(),
           email: formData.email.trim(),
-          phone: formData.phone.trim(),
-          company: formData.company.trim(),
-          country: formData.country.trim(),
-          productLine: formData.productLine,
-          orderVolume: formData.orderVolume,
           message: formData.message.trim(),
         }),
       });
@@ -78,10 +68,7 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
 
       if (response.ok && result.success) {
         setSubmitted(true);
-        setFormData({
-          name: '', email: '', phone: '', company: '', country: '',
-          productLine: 'Padel Rackets', orderVolume: 'Sample Only (1-5 units)', message: '', website: '',
-        });
+        setFormData({ name: '', email: '', message: '', website: '' });
       } else {
         setError(result.error || 'Failed to submit inquiry. Please check the fields and try again.');
       }
@@ -101,8 +88,8 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
         <div className="hp-form__success-icon"><Check size={30} /></div>
         <h3>Inquiry received.</h3>
         <p>
-          Thank you. Your inquiry report has been compiled and emailed to you as a PDF. Our factory team
-          will reach out with pricing and sample options within 24 hours.
+          Thank you. A copy of your inquiry has been emailed to you, and our team will get back to
+          you within 24 hours.
         </p>
         <button type="button" className="hp-btn hp-btn--primary" onClick={() => setSubmitted(false)} style={{ marginTop: '1rem' }}>
           <span>Send another inquiry</span>
@@ -140,47 +127,10 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
           value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
       </div>
 
-      <div className="hp-field">
-        <label htmlFor={`${idPrefix}-phone`}>Contact number</label>
-        <input id={`${idPrefix}-phone`} type="tel" placeholder="+1 (555) 000-0000"
-          value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
-      </div>
-
-      <div className="hp-field">
-        <label htmlFor={`${idPrefix}-company`}>Company name</label>
-        <input id={`${idPrefix}-company`} type="text" required placeholder="e.g. Pro Padel Inc"
-          value={formData.company} onChange={(e) => setFormData({ ...formData, company: e.target.value })} />
-      </div>
-
-      <div className="hp-field">
-        <label htmlFor={`${idPrefix}-country`}>Country / region</label>
-        <input id={`${idPrefix}-country`} type="text" placeholder="e.g. United States"
-          value={formData.country} onChange={(e) => setFormData({ ...formData, country: e.target.value })} />
-      </div>
-
-      <div className="hp-field">
-        <label htmlFor={`${idPrefix}-interest`}>Product line</label>
-        <select id={`${idPrefix}-interest`} value={formData.productLine} onChange={(e) => setFormData({ ...formData, productLine: e.target.value })}>
-          {PRODUCT_LINES.map((line) => (
-            <option key={line} value={line}>{line}</option>
-          ))}
-        </select>
-      </div>
-
-      <div className="hp-field" style={compact ? undefined : undefined}>
-        <label htmlFor={`${idPrefix}-volume`}>Order volume</label>
-        <select id={`${idPrefix}-volume`} value={formData.orderVolume} onChange={(e) => setFormData({ ...formData, orderVolume: e.target.value })}>
-          <option value="Sample Only (1-5 units)">Sample Only (1-5 units)</option>
-          <option value="50-100 Units (Starter)">50-100 Units (Starter)</option>
-          <option value="100-500 Units (Growth)">100-500 Units (Growth)</option>
-          <option value="500+ Units (Enterprise)">500+ Units (Enterprise)</option>
-        </select>
-      </div>
-
       <div className="hp-field" style={{ gridColumn: '1 / -1' }}>
         <label htmlFor={`${idPrefix}-message`}>Message</label>
         <textarea id={`${idPrefix}-message`} required rows={compact ? 4 : (formData.message.length > 160 ? 10 : 5)}
-          placeholder="Specify target specifications, material preferences, logo engraving, or custom request details…"
+          placeholder="Tell us what you're looking for: product, quantity, branding or anything else…"
           style={{ resize: 'vertical' }}
           value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
       </div>

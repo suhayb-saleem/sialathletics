@@ -41,7 +41,7 @@ export default function BagsPage() {
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
-            <SpecConfigurator category="Bag" productLine="Bags" groups={bagOptions} />
+            <SpecConfigurator category="Bag" groups={bagOptions} />
           </div>
         </div>
       </section>

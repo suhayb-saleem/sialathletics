@@ -41,7 +41,7 @@ export default function PickleballPaddlesPage() {
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
-            <SpecConfigurator category="Pickleball paddle" productLine="Pickleball Paddles" groups={pickleballOptions} />
+            <SpecConfigurator category="Pickleball paddle" groups={pickleballOptions} />
           </div>
         </div>
       </section>

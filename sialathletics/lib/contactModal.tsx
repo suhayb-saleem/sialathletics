@@ -3,7 +3,6 @@
 import { createContext, useCallback, useContext, useMemo, useRef, useState } from 'react';
 
 export type ContactPrefill = {
-  productLine?: string;
   message?: string;
 };
 
