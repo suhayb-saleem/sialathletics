@@ -7,7 +7,7 @@ import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
 import { nestedBreadcrumbJsonLd } from '@/lib/seo';
 import { pickleballFamilies, pickleballOptions } from '@/lib/products/pickleball';
-import { pickleballJsonLd } from '@/lib/products/jsonld';
+import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
   title: 'Custom Pickleball Paddles — OEM Manufacturer',
@@ -37,13 +37,19 @@ export const metadata: Metadata = {
   },
 };
 
-const productJsonLd = pickleballFamilies.flatMap((f) => f.models.map((m) => pickleballJsonLd(m, f)));
+const pageJsonLd = categoryPageJsonLd({
+  path: '/products/pickleball-paddles',
+  topic: 'Custom pickleball paddles',
+  title: metadata.title as string,
+  description: metadata.description as string,
+  families: pickleballFamilies,
+});
 
 export default function PickleballPaddlesPage() {
   return (
     <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={nestedBreadcrumbJsonLd({ name: 'Products', path: '/products' }, { name: 'Pickleball Paddles', path: '/products/pickleball-paddles' })} />
-      {productJsonLd.map((p, i) => <JsonLd key={i} data={p} />)}
+      <JsonLd data={pageJsonLd} />
 
       <PageHero
         crumb="Pickleball Paddles"

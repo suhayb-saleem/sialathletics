@@ -1,93 +1,67 @@
-import type { Family, Model } from './types';
+import type { Family } from './types';
 
-/* Structured data for the per-category product pages. No price or
- * availability: these are build-to-order moulds, not retail SKUs.
+/* Structured data for the per-category product pages.
  *
- * Mould codes are internal, so they are not published — not as text and not
- * as a `sku`. Padel moulds are unbranded blanks that differ only in
- * dimensions, so they are described once per shape family; pickleball
- * designs carry real colourway names and keep an entry each. */
+ * These pages are deliberately NOT marked up as schema.org `Product`.
+ * Google's product snippets require an `offers` (with a real price),
+ * `review` or `aggregateRating`, and every Product without one is reported
+ * as an invalid item in Search Console. Our lines are build-to-order with
+ * no published price, so a Product entry can never be valid — and inventing
+ * a price or reviews to satisfy it would break Google's guidelines.
+ *
+ * Instead each page is a `CollectionPage` published by the factory, with
+ * every product photo as an `ImageObject`. That describes the page
+ * accurately, carries the same keywords (names, captions, description),
+ * and uses Google's image metadata, which helps the photos in Google Images.
+ * None of it is eligible for an error in the Product snippets report.
+ *
+ * Mould codes are internal, so they are not published. */
 
-// Ties every product back to the factory, so searches like "padel racket
-// manufacturer Sialkot" can connect the product pages to the company.
+const SITE = 'https://www.sialathletics.com';
+
 const SIAL_ORG = {
   '@type': 'Organization',
+  '@id': `${SITE}/#organization`,
   name: 'SIAL Athletics',
-  url: 'https://www.sialathletics.com',
+  url: SITE,
+  logo: `${SITE}/images/logo-dark.png`,
   address: { '@type': 'PostalAddress', addressLocality: 'Sialkot', addressCountry: 'PK' },
 };
 
-export function padelFamilyJsonLd(family: Family) {
-  const balance = family.models[0].specs.find(([k]) => k === 'Balance')?.[1] ?? '';
+type CategoryPage = {
+  path: string;
+  /** What the page is about, phrased the way buyers search for it. */
+  topic: string;
+  title: string;
+  description: string;
+  families: Family[];
+};
+
+export function categoryPageJsonLd({ path, topic, title, description, families }: CategoryPage) {
+  const images = families.flatMap((f) =>
+    f.models.map((m) => ({
+      '@type': 'ImageObject',
+      contentUrl: `${SITE}${encodeURI(m.image)}`,
+      name: m.name ? `${f.title} ${m.name}` : `${topic} — ${f.title}`,
+      caption: m.alt,
+      creator: { '@id': SIAL_ORG['@id'] },
+      creditText: 'SIAL Athletics',
+      copyrightNotice: '© SIAL Athletics',
+    })),
+  );
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `Custom ${family.title} Padel Racket — OEM & Private Label`,
-    description: `${family.blurb} Carbon fiber ${family.title.toLowerCase()} padel racket made to order with your logo by SIAL Athletics, a padel racket manufacturer in Sialkot, Pakistan.`,
-    category: 'Sporting Goods > Racket Sports > Padel Rackets',
-    brand: { '@type': 'Brand', name: 'SIAL Athletics' },
-    manufacturer: SIAL_ORG,
-    material: 'Carbon fiber, EVA foam',
-    image: family.models.map((m) => `https://www.sialathletics.com${encodeURI(m.image)}`),
-    additionalProperty: [
-      ['Shape', family.title],
-      ['Weight', '360 ±10 g'],
-      ['Length', '455–460 mm'],
-      ['Thickness', '36–38 mm'],
-      ['Balance', balance],
-    ].map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
+    '@type': 'CollectionPage',
+    '@id': `${SITE}${path}#page`,
+    url: `${SITE}${path}`,
+    name: title,
+    description,
+    inLanguage: 'en',
+    isPartOf: { '@type': 'WebSite', name: 'SIAL Athletics', url: SITE },
+    about: { '@type': 'Thing', name: topic },
+    publisher: SIAL_ORG,
+    primaryImageOfPage: images[0],
+    image: images,
   };
-}
-
-export function pickleballJsonLd(model: Model, family: Family) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `Custom Pickleball Paddle — ${model.name}`,
-    description: `${family.blurb} Carbon fiber pickleball paddle made to order with your logo by SIAL Athletics, a pickleball paddle manufacturer in Sialkot, Pakistan.`,
-    category: 'Sporting Goods > Racket Sports > Pickleball Paddles',
-    material: family.tagline.split(' · ').slice(0, 2).join(', '),
-    brand: { '@type': 'Brand', name: 'SIAL Athletics' },
-    manufacturer: SIAL_ORG,
-    image: `https://www.sialathletics.com${encodeURI(model.image)}`,
-    additionalProperty: model.specs.map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
-  };
-}
-
-/** Beach rackets, jerseys and bags all carry a real per-model name (unlike
- *  padel's anonymous moulds), so each gets its own Product entry the same
- *  way pickleball's does. One shared builder, parameterised by category. */
-function namedModelJsonLd(model: Model, family: Family, category: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `SIAL Athletics ${model.name} ${category}`,
-    description: family.blurb,
-    category,
-    brand: { '@type': 'Brand', name: 'SIAL Athletics' },
-    manufacturer: SIAL_ORG,
-    image: `https://www.sialathletics.com${encodeURI(model.image)}`,
-    additionalProperty: model.specs.map(([name, value]) => ({ '@type': 'PropertyValue', name, value })),
-  };
-}
-
-export function beachJsonLd(model: Model, family: Family) {
-  return namedModelJsonLd(model, family, 'Beach Racket');
-}
-
-// Jerseys are listed as padel clothing because that is how buyers search
-// for them; the same kit also suits pickleball and beach clubs.
-export function jerseyJsonLd(model: Model, family: Family) {
-  return {
-    ...namedModelJsonLd(model, family, 'Padel Jersey'),
-    name: `Custom Padel Jersey — ${model.name}`,
-    description: `${family.blurb} Custom padel clothing and teamwear made to order with your logo by SIAL Athletics in Sialkot, Pakistan.`,
-    category: 'Apparel & Accessories > Clothing > Activewear > Padel Jerseys',
-    material: model.specs.find(([k]) => k === 'Material')?.[1],
-    audience: { '@type': 'Audience', audienceType: 'Padel clubs, academies and sports brands' },
-  };
-}
-
-export function bagJsonLd(model: Model, family: Family) {
-  return namedModelJsonLd(model, family, 'Bag');
 }

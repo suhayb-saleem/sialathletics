@@ -7,7 +7,7 @@ import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
 import { nestedBreadcrumbJsonLd } from '@/lib/seo';
 import { beachFamilies, beachOptions } from '@/lib/products/beach';
-import { beachJsonLd } from '@/lib/products/jsonld';
+import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
   title: 'Custom Beach Rackets — OEM Manufacturer',
@@ -16,13 +16,19 @@ export const metadata: Metadata = {
   alternates: { canonical: '/products/beach-rackets' },
 };
 
-const productJsonLd = beachFamilies.flatMap((f) => f.models.map((m) => beachJsonLd(m, f)));
+const pageJsonLd = categoryPageJsonLd({
+  path: '/products/beach-rackets',
+  topic: 'Custom beach tennis rackets',
+  title: metadata.title as string,
+  description: metadata.description as string,
+  families: beachFamilies,
+});
 
 export default function BeachRacketsPage() {
   return (
     <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={nestedBreadcrumbJsonLd({ name: 'Products', path: '/products' }, { name: 'Beach Rackets', path: '/products/beach-rackets' })} />
-      {productJsonLd.map((p, i) => <JsonLd key={i} data={p} />)}
+      <JsonLd data={pageJsonLd} />
 
       <PageHero
         crumb="Beach Rackets"

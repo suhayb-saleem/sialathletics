@@ -7,7 +7,7 @@ import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
 import { nestedBreadcrumbJsonLd } from '@/lib/seo';
 import { jerseyFamilies, jerseyOptions } from '@/lib/products/jerseys';
-import { jerseyJsonLd } from '@/lib/products/jsonld';
+import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
   title: 'Custom Padel Jerseys & Padel Clothing',
@@ -30,13 +30,19 @@ export const metadata: Metadata = {
   },
 };
 
-const productJsonLd = jerseyFamilies.flatMap((f) => f.models.map((m) => jerseyJsonLd(m, f)));
+const pageJsonLd = categoryPageJsonLd({
+  path: '/products/jerseys',
+  topic: 'Custom padel jerseys and padel clothing',
+  title: metadata.title as string,
+  description: metadata.description as string,
+  families: jerseyFamilies,
+});
 
 export default function JerseysPage() {
   return (
     <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={nestedBreadcrumbJsonLd({ name: 'Products', path: '/products' }, { name: 'Jerseys', path: '/products/jerseys' })} />
-      {productJsonLd.map((p, i) => <JsonLd key={i} data={p} />)}
+      <JsonLd data={pageJsonLd} />
 
       <PageHero
         crumb="Jerseys"

@@ -7,7 +7,7 @@ import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
 import { nestedBreadcrumbJsonLd } from '@/lib/seo';
 import { padelFamilies, padelOptions } from '@/lib/products/padel';
-import { padelFamilyJsonLd } from '@/lib/products/jsonld';
+import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
   title: 'Custom Padel Rackets — OEM Manufacturer',
@@ -29,13 +29,19 @@ export const metadata: Metadata = {
   },
 };
 
-const productJsonLd = padelFamilies.map(padelFamilyJsonLd);
+const pageJsonLd = categoryPageJsonLd({
+  path: '/products/padel-rackets',
+  topic: 'Custom padel rackets',
+  title: metadata.title as string,
+  description: metadata.description as string,
+  families: padelFamilies,
+});
 
 export default function PadelRacketsPage() {
   return (
     <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={nestedBreadcrumbJsonLd({ name: 'Products', path: '/products' }, { name: 'Padel Rackets', path: '/products/padel-rackets' })} />
-      {productJsonLd.map((p, i) => <JsonLd key={i} data={p} />)}
+      <JsonLd data={pageJsonLd} />
 
       <PageHero
         crumb="Padel Rackets"

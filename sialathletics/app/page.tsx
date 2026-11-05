@@ -27,6 +27,7 @@ const websiteJsonLd = {
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://www.sialathletics.com/#organization',
   name: 'SIAL Athletics',
   url: 'https://www.sialathletics.com',
   logo: 'https://www.sialathletics.com/images/logo-dark.png',
