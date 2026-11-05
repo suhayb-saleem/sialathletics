@@ -15,7 +15,7 @@ export const beachFamilies: Family[] = [
   {
     id: 'beach-rackets',
     title: 'Beach Rackets',
-    tagline: 'Same carbon lay-ups as our padel range · built to spec',
+    tagline: 'Same carbon lay-ups as our padel range · your face, core and finish',
     blurb:
       'Beach tennis rackets built on the same carbon lay-ups as our padel range, with your choice of face, core, finish and artwork.',
     models: [

@@ -12,7 +12,7 @@ import { bagJsonLd } from '@/lib/products/jsonld';
 export const metadata: Metadata = {
   title: 'Custom Racket Bags — OEM Bags',
   description:
-    'Our OEM kit bags, racket covers and paddle sleeves, cut and printed to your brand. Per-style shell, protection and hardware options, built to your spec.',
+    'Custom padel bags, racket covers and paddle sleeves with your logo, from single sleeves to thermal tournament bags. Made in Sialkot, Pakistan.',
   alternates: { canonical: '/products/bags' },
 };
 
@@ -27,8 +27,8 @@ export default function BagsPage() {
       <PageHero
         crumb="Bags"
         parentCrumb={{ label: 'Products', href: '/products' }}
-        title="Racket bags, built to spec."
-        subtitle="From a single-paddle sleeve to a thermal tournament kit bag. Every style is cut, printed and trimmed to your brand."
+        title="Custom racket bags."
+        subtitle="Kit bags, racket covers and paddle sleeves, from a single-paddle sleeve to a thermal tournament bag. Every style can carry your logo, colours and trims."
         compact
       />
 
@@ -37,7 +37,7 @@ export default function BagsPage() {
           {bagFamilies.map((f) => <FamilyBlock key={f.id} family={f} />)}
 
           <div className="opt-section">
-            <h3 className="hp-display opt-section__title">Bag build options</h3>
+            <h3 className="hp-display opt-section__title">Build your bag</h3>
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
@@ -47,8 +47,8 @@ export default function BagsPage() {
       </section>
 
       <CTABanner
-        headline="Ready to configure your line?"
-        subtext="Tell us the style, target price point and volume. We reply within 24 hours."
+        headline="Found a bag you like?"
+        subtext="Send us the style, your target price and the quantity. We reply within 24 hours."
         primaryLabel="Start an inquiry"
       />
       <ProductPageStyles />

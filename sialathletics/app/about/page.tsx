@@ -7,8 +7,8 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'About Us — Sports Goods Manufacturer in Sialkot',
-  description: 'Sports goods manufacturer in Sialkot, Pakistan, making padel rackets, pickleball paddles, beach rackets, bags and jerseys for brands worldwide.',
+  title: 'About — Padel Racket Factory in Sialkot',
+  description: 'Padel racket and sports goods factory in Sialkot, Pakistan, making rackets, paddles, bags and jerseys for brands worldwide.',
   alternates: { canonical: '/about' },
 };
 
@@ -18,8 +18,8 @@ export default function AboutPage() {
       <JsonLd data={breadcrumbJsonLd('About', '/about')} />
       <PageHero
         crumb="About"
-        title="Who we are."
-        subtitle="A sports goods manufacturer in Sialkot, Pakistan, building private-label padel rackets, pickleball paddles and more for brands, clubs and distributors."
+        title="About SIAL Athletics."
+        subtitle="A padel racket and sports goods factory in Sialkot, Pakistan. We make private-label rackets, paddles, bags and jerseys for brands, clubs and distributors."
       />
       <AboutStory />
       <AboutValues />

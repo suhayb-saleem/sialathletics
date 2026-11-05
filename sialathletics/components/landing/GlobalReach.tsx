@@ -57,10 +57,9 @@ export default function GlobalReach() {
     <section className="hp-reach hp-block">
       <div className="hp-shell">
         <Reveal className="hp-reach__head">
-          <h2 className="hp-display hp-h2">Built in Sialkot, shipped worldwide</h2>
+          <h2 className="hp-display hp-h2">Where our rackets go</h2>
           <p className="hp-lede">
-            We ship FOB Karachi by default and handle the export paperwork. EXW Sialkot is
-            available if you would rather arrange your own freight.
+            FOB Karachi or EXW Sialkot. We handle the export paperwork.
           </p>
         </Reveal>
 

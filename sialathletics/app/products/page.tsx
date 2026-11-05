@@ -7,9 +7,9 @@ import JsonLd from '@/components/seo/JsonLd';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Products — Padel, Pickleball, Beach, Jerseys & Bags',
+  title: 'Products — Padel Rackets & Sports Goods',
   description:
-    'OEM padel rackets, pickleball paddles, beach rackets, jerseys and bags, built to spec from our own factory in Sialkot, Pakistan.',
+    'Custom padel rackets, pickleball paddles, beach rackets, jerseys and bags. OEM and private label, made in our own factory in Sialkot, Pakistan.',
   alternates: { canonical: '/products' },
 };
 
@@ -22,10 +22,10 @@ const categories: {
 }[] = [
   {
     title: 'Padel Rackets',
-    desc: 'Round, teardrop and diamond mould families.',
+    desc: 'Custom carbon padel rackets in round, teardrop and diamond.',
     href: '/products/padel-rackets',
-    image: '/images/products/home_padel_teardrop.png',
-    alt: 'SIAL Athletics teardrop padel racket, black carbon face',
+    image: '/images/products/custom-teardrop-padel-racket-oem.png',
+    alt: 'Custom teardrop padel racket with a black carbon face, OEM padel racket made by SIAL Athletics',
   },
   {
     title: 'Pickleball Paddles',
@@ -45,8 +45,8 @@ const categories: {
     title: 'Jerseys',
     desc: 'Full-sublimation kits, polos, tees and shorts.',
     href: '/products/jerseys',
-    image: '/images/products/jerseys/black-red-crew.png',
-    alt: 'SIAL Athletics black and red crew neck jersey',
+    image: '/images/products/custom-sublimated-padel-jersey.webp',
+    alt: 'Custom sublimated padel jersey in black and red, made by SIAL Athletics',
   },
   {
     title: 'Bags',
@@ -64,8 +64,8 @@ export default function ProductsPage() {
 
       <PageHero
         crumb="Products"
-        title="What we make."
-        subtitle="Every line is built to spec from our own factory in Sialkot, Pakistan. Pick a category to see moulds, materials and build options."
+        title="Padel rackets and more."
+        subtitle="Everything here is made in our own factory in Sialkot, Pakistan. Pick a category to see the moulds, materials and options."
         compact
       />
 
@@ -91,8 +91,8 @@ export default function ProductsPage() {
       </section>
 
       <CTABanner
-        headline="Ready to configure your line?"
-        subtext="Tell us the product, target price point and volume. We reply within 24 hours."
+        headline="Not sure where to start?"
+        subtext="Tell us what you sell and who you sell to, and we'll suggest a starting point. We reply within 24 hours."
         primaryLabel="Start an inquiry"
       />
 

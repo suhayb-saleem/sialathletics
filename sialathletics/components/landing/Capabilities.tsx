@@ -5,19 +5,19 @@ import Reveal from '@/components/ui/Reveal';
 const capabilities = [
   {
     title: 'OEM manufacturing',
-    desc: 'Send us your drawings and materials. We build to your measurements, and cut a new mould if the shape does not exist yet.',
+    desc: 'Send your drawings. We cut a new mould if the shape does not exist yet.',
     image: '/images/manufacturing/oem-manufacturing.png',
     alt: 'OEM prototype padel racket freshly printed with its graphic design',
   },
   {
     title: 'ODM private label',
-    desc: 'Start from one of our racket or paddle shapes, then choose the lay-up, core, texture, graphics and packaging.',
+    desc: 'Start from our shapes, then pick the carbon, core, finish and graphics.',
     image: '/images/manufacturing/odm-manufacturing.png',
     alt: 'Three padel racket private-label design variations laid out with material and colour swatches',
   },
   {
     title: 'Quality control',
-    desc: 'Every batch is weighed, deflection-tested and inspected in Sialkot before it ships, and the QC report ships with it.',
+    desc: 'Every batch is weighed, tested and inspected before it ships.',
     image: '/images/manufacturing/quality-control.png',
     alt: 'Padel racket undergoing precision testing on a quality control rig',
   },
@@ -28,10 +28,7 @@ export function Capabilities() {
     <section className="hp-craft hp-block hp-block--alt" id="capabilities">
       <div className="hp-shell">
         <Reveal className="hp-block__head">
-          <h2 className="hp-display hp-h2">What we do for you</h2>
-          <p className="hp-lede">
-            Rackets, paddles, bags and jerseys for brands and resellers, made start to finish under one roof.
-          </p>
+          <h2 className="hp-display hp-h2">Your design, or one of ours</h2>
         </Reveal>
 
         <div className="hp-craft__grid">

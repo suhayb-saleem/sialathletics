@@ -288,7 +288,7 @@ export const posts: BlogPost[] = [
     title: 'Sublimation, screen printing or embroidery: how sports jerseys are decorated',
     metaTitle: 'Sublimation vs Screen Printing vs Embroidery for Sports Jerseys',
     metaDescription:
-      'How sublimation, screen printing and embroidery work on sports jerseys, what each suits, how long each lasts, and how to wash printed kit.',
+      'How sublimation, screen printing and embroidery work on sports jerseys and padel clothing, what each suits, how long each lasts, and how to wash printed kit.',
     category: 'Apparel',
     date: SEPTEMBER_2026,
     summary:

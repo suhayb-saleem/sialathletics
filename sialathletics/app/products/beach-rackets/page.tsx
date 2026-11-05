@@ -10,9 +10,9 @@ import { beachFamilies, beachOptions } from '@/lib/products/beach';
 import { beachJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Beach Racket Manufacturer — OEM Beach Rackets',
+  title: 'Custom Beach Rackets — OEM Manufacturer',
   description:
-    'Our OEM beach tennis rackets, built on the same carbon lay-ups as our padel range. Per-model face, core and surface options, built to your spec.',
+    'OEM beach tennis rackets in 3K to 24K carbon, on the same lay-ups as our padel rackets. Your face, core, finish and logo, made in Sialkot.',
   alternates: { canonical: '/products/beach-rackets' },
 };
 
@@ -27,8 +27,8 @@ export default function BeachRacketsPage() {
       <PageHero
         crumb="Beach Rackets"
         parentCrumb={{ label: 'Products', href: '/products' }}
-        title="Beach rackets, built to spec."
-        subtitle="Built on the same carbon lay-ups as our padel range, with your choice of face, core, finish and artwork."
+        title="Custom beach rackets."
+        subtitle="3K to 24K carbon on the same lay-ups as our padel rackets. You choose the face, core, finish and artwork."
         compact
       />
 
@@ -37,7 +37,7 @@ export default function BeachRacketsPage() {
           {beachFamilies.map((f) => <FamilyBlock key={f.id} family={f} />)}
 
           <div className="opt-section">
-            <h3 className="hp-display opt-section__title">Beach racket build options</h3>
+            <h3 className="hp-display opt-section__title">Build your beach racket</h3>
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
@@ -47,8 +47,8 @@ export default function BeachRacketsPage() {
       </section>
 
       <CTABanner
-        headline="Ready to configure your line?"
-        subtext="Tell us the finish, target price point and volume. We reply within 24 hours."
+        headline="Found a finish you like?"
+        subtext="Send us the finish, your target price and the quantity. We reply within 24 hours."
         primaryLabel="Start an inquiry"
       />
       <ProductPageStyles />

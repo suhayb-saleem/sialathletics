@@ -16,7 +16,7 @@ export default function AboutStory() {
         </div>
 
         <div>
-          <h2 className="hp-display hp-h2">From Sialkot to your shelves</h2>
+          <h2 className="hp-display hp-h2">Our story</h2>
           <p className="body-copy" style={{ margin: '1.25rem 0 1rem' }}>
             We manufacture padel rackets, pickleball paddles, beach rackets, bags and jerseys in
             Sialkot, Pakistan, a city with over a century of experience making sporting goods.
@@ -27,7 +27,7 @@ export default function AboutStory() {
           </p>
           <p className="body-copy" style={{ margin: '0 0 1.75rem' }}>
             Brands, retailers and distributors come to us for{' '}
-            <Link href="/manufacturing" className="hp-link">custom builds to their own spec</Link>{' '}
+            <Link href="/manufacturing" className="hp-link">custom builds made to their own specification</Link>{' '}
             or one of our designs with their branding.
           </p>
           <Link href="/products" className="hp-btn hp-btn--ink">

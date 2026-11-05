@@ -6,12 +6,13 @@ import { Range } from '@/components/landing/ProductTeaser';
 import { Capabilities } from '@/components/landing/Capabilities';
 import WhoWeWorkWith from '@/components/landing/WhoWeWorkWith';
 import GlobalReach from '@/components/landing/GlobalReach';
+import LatestPosts from '@/components/landing/LatestPosts';
 import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Sports Goods Manufacturer — Padel, Pickleball & Beach Rackets | SIAL Athletics' },
-  description: 'OEM and private-label sports goods from Sialkot, Pakistan: padel rackets, pickleball paddles and beach rackets, plus racket bags and team jerseys.',
+  title: { absolute: 'Padel Racket Manufacturer in Sialkot | SIAL Athletics' },
+  description: 'Custom padel rackets made in Sialkot, Pakistan. OEM and private label, plus pickleball paddles, beach rackets, bags and jerseys from the same factory.',
   alternates: { canonical: '/' },
 };
 
@@ -30,15 +31,19 @@ const organizationJsonLd = {
   url: 'https://www.sialathletics.com',
   logo: 'https://www.sialathletics.com/images/logo-dark.png',
   image: 'https://www.sialathletics.com/images/og-card.png',
-  description: 'OEM and private-label sports goods manufacturer in Sialkot, Pakistan, making padel rackets, pickleball paddles, beach rackets, racket bags and team jerseys.',
+  description: 'OEM and private-label padel racket manufacturer in Sialkot, Pakistan, also making pickleball paddles, beach rackets, racket bags and team jerseys.',
   // Product lines in priority order.
   knowsAbout: [
+    'Padel racket manufacturing',
+    'Custom padel rackets',
+    'Carbon fiber padel rackets',
     'Sports goods manufacturing',
-    'Padel rackets',
     'Pickleball paddles',
     'Beach tennis rackets',
     'Racket bags',
-    'Sports jerseys',
+    'Padel clothing',
+    'Custom padel jerseys',
+    'Sublimated teamwear',
   ],
   address: {
     '@type': 'PostalAddress',
@@ -71,9 +76,10 @@ export default function Home() {
       <Capabilities />
       <WhoWeWorkWith />
       <GlobalReach />
+      <LatestPosts />
       <CTABanner
-        headline="Build a better product line."
-        subtext="Tell us what you want to build and your budget. We'll send samples, specs and a quote."
+        headline="Got a design in mind?"
+        subtext="A sketch or a reference photo is enough to start."
       />
     </div>
   );

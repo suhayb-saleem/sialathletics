@@ -7,7 +7,7 @@ import { breadcrumbJsonLd } from '@/lib/seo';
 import { contactFaqs } from '@/data/contactFaq';
 
 export const metadata: Metadata = {
-  title: 'Contact — Get an OEM Sports Goods Quote',
+  title: 'Contact — Get a Factory Quote',
   description: 'Request a factory-direct quote for OEM padel rackets, pickleball paddles, beach rackets, bags or jerseys. Samples available; we reply within 24 hours.',
   alternates: { canonical: '/contact' },
 };

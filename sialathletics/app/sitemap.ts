@@ -13,7 +13,7 @@ const BASE = 'https://www.sialathletics.com';
 // fresh `new Date()` on every request tells Google everything changed on
 // every crawl, so it learns to ignore the field. Bump this when a page's
 // content actually changes; blog posts carry their own dates.
-const SITE_UPDATED = '2026-09-29';
+const SITE_UPDATED = '2026-11-04';
 
 const abs = (path: string) => `${BASE}${encodeURI(path)}`;
 const modelImages = (families: Family[]) => families.flatMap((f) => f.models.map((m) => abs(m.image)));
@@ -29,11 +29,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     page('/', 1, 'weekly', [
       abs('/images/home/home_section_white_background.png'),
-      abs('/images/products/home_padel_teardrop.png'),
+      abs('/images/products/custom-teardrop-padel-racket-oem.png'),
       abs('/images/products/home_pickleball_red-halftone.png'),
       abs('/images/products/home_beach_3k-soft-eva.png'),
       abs('/images/products/home_bags_large-kit.png'),
-      abs('/images/products/home_jersey_black-red.webp'),
+      abs('/images/products/custom-sublimated-padel-jersey.webp'),
     ]),
     page('/products', 0.9, 'weekly'),
     // Product lines in priority order.

@@ -10,10 +10,24 @@ import { jerseyFamilies, jerseyOptions } from '@/lib/products/jerseys';
 import { jerseyJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Custom Jerseys — OEM Sportswear',
+  title: 'Custom Padel Jerseys & Padel Clothing',
   description:
-    'Our OEM team jerseys, full-sublimation kit for padel, pickleball and beach sports brands and clubs. Per-style material, fit and finish, built to your spec.',
+    'Custom padel jerseys and padel clothing: sublimated shirts, polos, shorts and tracksuits with your logo, for clubs and brands. Made in Sialkot.',
+  keywords: [
+    'custom padel jerseys',
+    'padel clothing manufacturer',
+    'padel shirts with logo',
+    'sublimated padel jerseys',
+    'custom padel polo shirts',
+    'padel teamwear',
+    'custom sports jerseys manufacturer Pakistan',
+  ],
   alternates: { canonical: '/products/jerseys' },
+  openGraph: {
+    title: 'Custom Padel Jerseys & Padel Clothing — SIAL Athletics',
+    description: 'Sublimated padel shirts, polos, shorts and tracksuits in your club colours, made in Sialkot.',
+    images: [{ url: '/images/products/custom-sublimated-padel-jersey.webp', alt: 'Custom sublimated padel jersey in black and red' }],
+  },
 };
 
 const productJsonLd = jerseyFamilies.flatMap((f) => f.models.map((m) => jerseyJsonLd(m, f)));
@@ -27,8 +41,8 @@ export default function JerseysPage() {
       <PageHero
         crumb="Jerseys"
         parentCrumb={{ label: 'Products', href: '/products' }}
-        title="Custom jerseys, built to spec."
-        subtitle="Full-sublimation kit built to your brand identity. Four production blocks, each available in your own colourway, artwork and numbering."
+        title="Custom jerseys."
+        subtitle="Full sublimation in four styles, printed with your club colours, artwork and numbers."
         compact
       />
 
@@ -37,7 +51,7 @@ export default function JerseysPage() {
           {jerseyFamilies.map((f) => <FamilyBlock key={f.id} family={f} />)}
 
           <div className="opt-section">
-            <h3 className="hp-display opt-section__title">Jersey build options</h3>
+            <h3 className="hp-display opt-section__title">Build your jersey</h3>
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
@@ -47,8 +61,8 @@ export default function JerseysPage() {
       </section>
 
       <CTABanner
-        headline="Ready to configure your line?"
-        subtext="Tell us the style, target price point and volume. We reply within 24 hours."
+        headline="Found a style you like?"
+        subtext="Send us the style, your target price and the quantity. We reply within 24 hours."
         primaryLabel="Start an inquiry"
       />
       <ProductPageStyles />

@@ -5,19 +5,19 @@ import Reveal from '@/components/ui/Reveal';
 const segments = [
   {
     title: 'Brands',
-    desc: 'Your own line of rackets, paddles, bags or kit. We handle production, materials and quality; you handle the brand.',
+    desc: 'Your own line of rackets, paddles or kit, sold under your label.',
   },
   {
     title: 'Distributors and wholesalers',
-    desc: 'Steady supply at consistent quality, at whatever volume your market takes.',
+    desc: 'Steady supply at consistent quality.',
   },
   {
     title: 'Clubs and academies',
-    desc: 'Rackets, paddles and team jerseys in your club colours, built to stand up to daily coaching use.',
+    desc: 'Rackets and jerseys in your club colours.',
   },
   {
     title: 'Retailers',
-    desc: 'Retail-ready product with packaging and export shipping handled for you.',
+    desc: 'Retail-ready packaging, shipped to you.',
   },
 ];
 

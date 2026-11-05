@@ -132,7 +132,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </article>
 
       <CTABanner
-        headline="Ready to spec your line?"
+        headline="Thinking of making your own?"
         subtext="Send us your requirements and we reply within 24 hours."
         primaryLabel="Get a quote"
       />

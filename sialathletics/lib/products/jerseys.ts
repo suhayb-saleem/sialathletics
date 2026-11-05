@@ -15,8 +15,8 @@ export const jerseyFamilies: Family[] = [
       {
         code: 'jersey-black-red-crew',
         name: 'Black / Red — Crew Neck',
-        image: '/images/products/jerseys/black-red-crew.webp',
-        alt: 'SIAL Athletics black and red crew neck jersey with full sublimation graphics',
+        image: '/images/products/jerseys/custom-padel-jersey-black-red-crew.webp',
+        alt: 'Custom sublimated padel jersey, black and red crew neck in moisture-wicking polyester, made by SIAL Athletics',
         specs: [
           ['Material', '100% polyester interlock, moisture wicking'],
           ['Fit', 'Athletic / slim'],
@@ -27,8 +27,8 @@ export const jerseyFamilies: Family[] = [
       {
         code: 'jersey-white-red-vneck',
         name: 'White / Red — V-Neck',
-        image: '/images/products/jerseys/white-red-vneck.webp',
-        alt: 'SIAL Athletics white and red V-neck jersey with full sublimation graphics',
+        image: '/images/products/jerseys/custom-padel-jersey-white-red-vneck.webp',
+        alt: 'White and red V-neck padel shirt with full sublimation print, custom team jersey by SIAL Athletics',
         specs: [
           ['Material', '100% polyester interlock'],
           ['Fit', 'Athletic / slim'],
@@ -39,8 +39,8 @@ export const jerseyFamilies: Family[] = [
       {
         code: 'jersey-blue-crew-mesh',
         name: 'Blue — Crew, Mesh Panels',
-        image: '/images/products/jerseys/blue-crew-mesh.webp',
-        alt: 'SIAL Athletics blue crew neck jersey with mesh side panels',
+        image: '/images/products/jerseys/custom-padel-jersey-blue-mesh.webp',
+        alt: 'Blue sublimated padel jersey with breathable mesh side panels, custom padel clothing for clubs',
         specs: [
           ['Material', 'Polyester interlock + mesh panels'],
           ['Fit', 'Athletic / slim'],
@@ -51,8 +51,8 @@ export const jerseyFamilies: Family[] = [
       {
         code: 'jersey-navy-white-polo',
         name: 'Navy / White — Polo',
-        image: '/images/products/jerseys/navy-white-polo.webp',
-        alt: 'SIAL Athletics navy and white polo shirt with a three-button placket',
+        image: '/images/products/jerseys/custom-padel-polo-navy-white.webp',
+        alt: 'Navy and white padel polo shirt in polyester pique with an embroidered logo, custom padel clothing',
         specs: [
           ['Material', 'Polyester pique, breathable'],
           ['Fit', 'Athletic / regular'],

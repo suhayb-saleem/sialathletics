@@ -10,10 +10,23 @@ import { padelFamilies, padelOptions } from '@/lib/products/padel';
 import { padelFamilyJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Padel Racket Manufacturer — OEM Moulds',
+  title: 'Custom Padel Rackets — OEM Manufacturer',
   description:
-    'Our OEM padel racket moulds in round, teardrop and diamond shapes. Per-model dimensions, weight and balance, built to your spec.',
+    'Custom carbon padel rackets with your logo. Round, teardrop and diamond moulds in 3K to 24K carbon with EVA cores, made in Sialkot, Pakistan.',
+  keywords: [
+    'custom padel rackets',
+    'OEM padel racket manufacturer',
+    'private label padel rackets',
+    'carbon fiber padel racket supplier',
+    'bulk padel rackets',
+    'padel racket manufacturer Sialkot',
+  ],
   alternates: { canonical: '/products/padel-rackets' },
+  openGraph: {
+    title: 'Custom Padel Rackets — OEM Padel Racket Manufacturer | SIAL Athletics',
+    description: 'Round, teardrop and diamond carbon padel rackets with your logo, made in Sialkot, Pakistan.',
+    images: [{ url: '/images/products/custom-teardrop-padel-racket-oem.png', alt: 'Custom teardrop carbon padel racket' }],
+  },
 };
 
 const productJsonLd = padelFamilies.map(padelFamilyJsonLd);
@@ -27,8 +40,8 @@ export default function PadelRacketsPage() {
       <PageHero
         crumb="Padel Rackets"
         parentCrumb={{ label: 'Products', href: '/products' }}
-        title="Padel rackets, built to spec."
-        subtitle="Three shape families, three moulds each. Every mould is supplied blank — pick a shape, then specify the build."
+        title="Custom padel rackets."
+        subtitle="Round, teardrop and diamond moulds in 3K to 24K carbon with EVA cores. Every mould starts as a blank, so the finish and artwork are yours to choose."
         compact
       />
 
@@ -37,7 +50,7 @@ export default function PadelRacketsPage() {
           {padelFamilies.map((f) => <FamilyBlock key={f.id} family={f} />)}
 
           <div className="opt-section">
-            <h3 className="hp-display opt-section__title">Padel build options</h3>
+            <h3 className="hp-display opt-section__title">Build your padel racket</h3>
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
@@ -47,8 +60,8 @@ export default function PadelRacketsPage() {
       </section>
 
       <CTABanner
-        headline="Ready to configure your line?"
-        subtext="Tell us the mould, target price point and volume. We reply within 24 hours."
+        headline="Found a shape you like?"
+        subtext="Send us the mould, your target price and the quantity. We reply within 24 hours."
         primaryLabel="Start an inquiry"
       />
       <ProductPageStyles />

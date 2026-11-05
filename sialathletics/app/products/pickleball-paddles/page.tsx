@@ -10,9 +10,9 @@ import { pickleballFamilies, pickleballOptions } from '@/lib/products/pickleball
 import { pickleballJsonLd } from '@/lib/products/jsonld';
 
 export const metadata: Metadata = {
-  title: 'Pickleball Paddle Manufacturer — OEM Paddles',
+  title: 'Custom Pickleball Paddles — OEM Manufacturer',
   description:
-    'Our OEM pickleball paddles in EPP foam and PP honeycomb cores, elongated, standard and open-throat shapes. Per-model dimensions and materials, built to your spec.',
+    'OEM pickleball paddles with your logo: EPP foam or PP honeycomb cores in elongated, standard and open-throat shapes. Made in Sialkot, Pakistan.',
   alternates: { canonical: '/products/pickleball-paddles' },
 };
 
@@ -27,8 +27,8 @@ export default function PickleballPaddlesPage() {
       <PageHero
         crumb="Pickleball Paddles"
         parentCrumb={{ label: 'Products', href: '/products' }}
-        title="Pickleball paddles, built to spec."
-        subtitle="Two cores across three shapes, all on a T700 carbon fibre face at 16 mm. Every design can be built on either core, in any shape."
+        title="Custom pickleball paddles."
+        subtitle="EPP foam or PP honeycomb cores on a 16 mm T700 carbon face, in elongated, standard and open-throat shapes. Every design works on either core."
         compact
       />
 
@@ -37,7 +37,7 @@ export default function PickleballPaddlesPage() {
           {pickleballFamilies.map((f) => <FamilyBlock key={f.id} family={f} />)}
 
           <div className="opt-section">
-            <h3 className="hp-display opt-section__title">Pickleball build options</h3>
+            <h3 className="hp-display opt-section__title">Build your pickleball paddle</h3>
             <p className="opt-section__intro">
               Pick the options you want, then send them to us as a quote request.
             </p>
@@ -47,8 +47,8 @@ export default function PickleballPaddlesPage() {
       </section>
 
       <CTABanner
-        headline="Ready to configure your line?"
-        subtext="Tell us the mould, target price point and volume. We reply within 24 hours."
+        headline="Found a paddle you like?"
+        subtext="Send us the design, your target price and the quantity. We reply within 24 hours."
         primaryLabel="Start an inquiry"
       />
       <ProductPageStyles />

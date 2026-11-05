@@ -13,8 +13,8 @@ const categories: {
     title: 'Padel rackets',
     desc: 'Round, teardrop and diamond mould families, or a custom shape we cut for you.',
     href: '/products/padel-rackets',
-    image: '/images/products/home_padel_teardrop.png',
-    alt: 'SIAL Athletics teardrop padel racket, black carbon face',
+    image: '/images/products/custom-teardrop-padel-racket-oem.png',
+    alt: 'Custom teardrop padel racket with a black carbon face, OEM padel racket made by SIAL Athletics',
   },
   {
     title: 'Pickleball paddles',
@@ -38,8 +38,8 @@ const categories: {
     desc: 'Full-sublimation kits, polos, tees and shorts.',
     href: '/products/jerseys',
     // Already backgroundless — supplied as a transparent render, not cut out.
-    image: '/images/products/home_jersey_black-red.webp',
-    alt: 'SIAL Athletics black and red crew neck jersey',
+    image: '/images/products/custom-sublimated-padel-jersey.webp',
+    alt: 'Custom sublimated padel jersey in black and red, made by SIAL Athletics',
   },
   {
     title: 'Bags',
@@ -65,10 +65,7 @@ export function Range() {
 
       <div className="hp-shell hp-range__inner">
         <Reveal className="hp-range__head">
-          <h2 className="hp-display hp-range__title">See everything we build.</h2>
-          <p className="hp-range__intro">
-            Padel rackets, pickleball paddles and beach rackets, plus bags and jerseys — five product lines from one factory in Sialkot.
-          </p>
+          <h2 className="hp-display hp-range__title">What we make</h2>
         </Reveal>
 
         <div className="hp-range__cats">
