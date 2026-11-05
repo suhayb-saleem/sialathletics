@@ -12,8 +12,29 @@ import { pickleballJsonLd } from '@/lib/products/jsonld';
 export const metadata: Metadata = {
   title: 'Custom Pickleball Paddles — OEM Manufacturer',
   description:
-    'OEM pickleball paddles with your logo: EPP foam or PP honeycomb cores in elongated, standard and open-throat shapes. Made in Sialkot, Pakistan.',
+    'Custom pickleball paddles with your logo: 3K to 24K carbon on EPP foam or PP honeycomb cores, 16 or 14 mm, thermoformed or cold-pressed. Made in Sialkot.',
+  keywords: [
+    'custom pickleball paddles',
+    'pickleball paddle manufacturer',
+    'pickleball paddle manufacturer Pakistan',
+    'OEM pickleball paddles',
+    'private label pickleball paddles',
+    'carbon fiber pickleball paddle supplier',
+    '3K carbon pickleball paddle',
+    '12K carbon pickleball paddle',
+    '18K carbon pickleball paddle',
+    'foam core pickleball paddle',
+    'honeycomb pickleball paddle',
+    '14mm pickleball paddles',
+    '16mm pickleball paddles',
+    'thermoformed pickleball paddle',
+  ],
   alternates: { canonical: '/products/pickleball-paddles' },
+  openGraph: {
+    title: 'Custom Pickleball Paddles — OEM Manufacturer | SIAL Athletics',
+    description: 'Carbon fiber pickleball paddles on foam or honeycomb cores, with your logo. Made in Sialkot, Pakistan.',
+    images: [{ url: '/images/products/custom-carbon-pickleball-paddle-oem.png', alt: 'Custom carbon fiber pickleball paddle' }],
+  },
 };
 
 const productJsonLd = pickleballFamilies.flatMap((f) => f.models.map((m) => pickleballJsonLd(m, f)));
@@ -28,7 +49,7 @@ export default function PickleballPaddlesPage() {
         crumb="Pickleball Paddles"
         parentCrumb={{ label: 'Products', href: '/products' }}
         title="Custom pickleball paddles."
-        subtitle="EPP foam or PP honeycomb cores on a 16 mm T700 carbon face, in elongated, standard and open-throat shapes. Every design works on either core."
+        subtitle="EPP foam or PP honeycomb cores under a 3K to 24K carbon fibre face, in elongated, standard and open-throat shapes. Every design works on either core."
         compact
       />
 

@@ -39,6 +39,8 @@ const organizationJsonLd = {
     'Carbon fiber padel rackets',
     'Sports goods manufacturing',
     'Pickleball paddles',
+    'Custom pickleball paddles',
+    'Carbon fiber pickleball paddles',
     'Beach tennis rackets',
     'Racket bags',
     'Padel clothing',

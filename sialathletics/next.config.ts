@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
       // Keep the old paths alive for anything that already indexed them.
       { source: '/images/products/home_padel_teardrop.png', destination: '/images/products/custom-teardrop-padel-racket-oem.png', permanent: true },
       { source: '/images/products/padel/:shape(round|teardrop|diamond)-:n(\\d).png', destination: '/images/products/padel/custom-:shape-padel-racket-:n.png', permanent: true },
+      // Pickleball images, renamed the same way (grouped by core).
+      { source: '/images/products/home_pickleball_red-halftone.png', destination: '/images/products/custom-carbon-pickleball-paddle-oem.png', permanent: true },
+      { source: '/images/products/pickleball/:name(volt-green|crimson-white|red-halftone).png', destination: '/images/products/pickleball/custom-foam-core-pickleball-paddle-:name.png', permanent: true },
+      { source: '/images/products/pickleball/:name(signature-red|cobalt-wave).png', destination: '/images/products/pickleball/custom-honeycomb-pickleball-paddle-:name.png', permanent: true },
+      { source: '/images/products/pickleball/:name(carbon-weave|cyan-edge|arctic-white).png', destination: '/images/products/pickleball/custom-open-throat-pickleball-paddle-:name.png', permanent: true },
       // Jersey images, renamed the same way.
       { source: '/images/products/home_jersey_black-red.webp', destination: '/images/products/custom-sublimated-padel-jersey.webp', permanent: true },
       { source: '/images/products/jerseys/black-red-crew.:ext(png|webp)', destination: '/images/products/jerseys/custom-padel-jersey-black-red-crew.webp', permanent: true },

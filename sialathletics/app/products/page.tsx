@@ -31,8 +31,8 @@ const categories: {
     title: 'Pickleball Paddles',
     desc: 'EPP foam and PP honeycomb cores, in three shapes.',
     href: '/products/pickleball-paddles',
-    image: '/images/products/home_pickleball_red-halftone.png',
-    alt: 'SIAL Athletics Red Halftone carbon pickleball paddle',
+    image: '/images/products/custom-carbon-pickleball-paddle-oem.png',
+    alt: 'Custom carbon fiber pickleball paddle with red halftone graphics, OEM paddle made by SIAL Athletics',
   },
   {
     title: 'Beach Rackets',

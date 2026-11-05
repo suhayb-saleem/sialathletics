@@ -22,8 +22,8 @@ const categories: {
     href: '/products/pickleball-paddles',
     // Cut out from the catalogue product shot so it sits on the card as a
     // silhouette rather than a white box.
-    image: '/images/products/home_pickleball_red-halftone.png',
-    alt: 'SIAL Athletics Red Halftone carbon pickleball paddle',
+    image: '/images/products/custom-carbon-pickleball-paddle-oem.png',
+    alt: 'Custom carbon fiber pickleball paddle with red halftone graphics, OEM paddle made by SIAL Athletics',
   },
   {
     title: 'Beach rackets',

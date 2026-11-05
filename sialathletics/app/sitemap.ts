@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page('/', 1, 'weekly', [
       abs('/images/home/home_section_white_background.png'),
       abs('/images/products/custom-teardrop-padel-racket-oem.png'),
-      abs('/images/products/home_pickleball_red-halftone.png'),
+      abs('/images/products/custom-carbon-pickleball-paddle-oem.png'),
       abs('/images/products/home_beach_3k-soft-eva.png'),
       abs('/images/products/home_bags_large-kit.png'),
       abs('/images/products/custom-sublimated-padel-jersey.webp'),

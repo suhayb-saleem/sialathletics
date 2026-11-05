@@ -43,9 +43,10 @@ export function pickleballJsonLd(model: Model, family: Family) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: `SIAL Athletics ${model.name} Pickleball Paddle`,
-    description: family.blurb,
-    category: 'Pickleball Paddle',
+    name: `Custom Pickleball Paddle — ${model.name}`,
+    description: `${family.blurb} Carbon fiber pickleball paddle made to order with your logo by SIAL Athletics, a pickleball paddle manufacturer in Sialkot, Pakistan.`,
+    category: 'Sporting Goods > Racket Sports > Pickleball Paddles',
+    material: family.tagline.split(' · ').slice(0, 2).join(', '),
     brand: { '@type': 'Brand', name: 'SIAL Athletics' },
     manufacturer: SIAL_ORG,
     image: `https://www.sialathletics.com${encodeURI(model.image)}`,
