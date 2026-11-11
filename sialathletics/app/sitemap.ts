@@ -13,7 +13,7 @@ const BASE = 'https://www.sialathletics.com';
 // fresh `new Date()` on every request tells Google everything changed on
 // every crawl, so it learns to ignore the field. Bump this when a page's
 // content actually changes; blog posts carry their own dates.
-const SITE_UPDATED = '2026-11-04';
+const SITE_UPDATED = '2026-11-11';
 
 const abs = (path: string) => `${BASE}${encodeURI(path)}`;
 const modelImages = (families: Family[]) => families.flatMap((f) => f.models.map((m) => abs(m.image)));

@@ -468,3 +468,6 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
   }
   .contact-modal__head { margin-bottom: 1.25rem; }
 }
+
+/* Post cards waiting for their photo: centred racket mark instead of a blank panel. */
+.post-media__icon { position: absolute; top: 50%; left: 50%; translate: -50% -50%; width: 22%; height: auto; opacity: 0.85; }

@@ -46,7 +46,9 @@ export default function BlogIndexPage() {
             {rest.map((post) => (
               <article key={post.slug} className="post-card">
                 <Link href={`/blog/${post.slug}`} className="post-card__media" aria-hidden="true" tabIndex={-1}>
-                  {post.hero && <Image src={post.hero.src} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" style={{ objectFit: 'cover' }} />}
+                  {post.hero
+                    ? <Image src={post.hero.src} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                    : <Image src="/images/teardrop_icon.png" alt="" width={96} height={96} className="post-media__icon" />}
                 </Link>
                 <div className="post-card__body">
                   <span className="post-meta">{post.category} · {readMinutes(post)} min read</span>

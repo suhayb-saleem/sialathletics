@@ -44,7 +44,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.metaDescription,
-    image: `${BASE}${encodeURI(post.hero?.src ?? '/images/og-card.png')}`,
+    // The hero as an ImageObject, so its caption (the alt text) travels with it.
+    image: post.hero
+      ? { '@type': 'ImageObject', url: `${BASE}${encodeURI(post.hero.src)}`, caption: post.hero.alt }
+      : `${BASE}/images/og-card.png`,
     datePublished: post.date,
     dateModified: post.date,
     author: { '@type': 'Organization', name: 'SIAL Athletics', url: BASE },
@@ -86,7 +89,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Hero image, full content width */}
         {post.hero && (
           <div className="hp-shell" style={{ maxWidth: '780px', padding: '0 1.5rem' }}>
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', border: '1px solid var(--hp-ink-line)', background: 'var(--surface-sunken)' }}>
+            <div style={{ position: 'relative', width: '100%', aspectRatio: post.hero.aspect ?? '16 / 9', overflow: 'hidden', border: '1px solid var(--hp-ink-line)', background: 'var(--surface-sunken)' }}>
               <Image src={post.hero.src} alt={post.hero.alt} fill priority sizes="(max-width: 820px) 100vw, 780px" style={{ objectFit: 'cover' }} />
             </div>
           </div>

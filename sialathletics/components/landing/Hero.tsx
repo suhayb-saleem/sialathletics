@@ -34,11 +34,11 @@ export default function Hero() {
               padel brings in nearly every inquiry; the paragraph names the
               other lines. A tagline-only h1 gave crawlers nothing to rank. */}
           <motion.h1 className="hp-display hp-hero__title" {...rise(0)}>
-            Custom padel rackets, made in Sialkot.
+            Custom padel rackets and pickleball paddles.
           </motion.h1>
 
           <motion.p className="hp-hero__copy" {...rise(0.1)}>
-            OEM and private label. We also make pickleball paddles, beach rackets, bags and jerseys.
+            OEM and private label, made in our own factory in Sialkot. We also make beach rackets, bags and jerseys.
           </motion.p>
 
           <motion.div className="hp-hero__actions" {...rise(0.18)}>

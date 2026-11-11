@@ -29,7 +29,13 @@ export type BlogPost = {
   /** Optional only while a new post waits for its supplied photo: the index
    *  shows a plain panel and the post page skips the figure until it lands.
    *  Every published post should have one. */
-  hero?: { src: string; alt: string };
+  hero?: {
+    src: string;
+    alt: string;
+    /** Frame shape on the post page; defaults to 16 / 9. Infographics with
+     *  labels near the edges use their own ratio so nothing is cropped. */
+    aspect?: string;
+  };
   blocks: ContentBlock[];
   related: { label: string; href: string }[];
 };
@@ -37,8 +43,240 @@ export type BlogPost = {
 const PUBLISHED = '2026-08-28';
 // Second batch: padel bags, racket care, beach tennis and jerseys.
 const SEPTEMBER_2026 = '2026-09-29';
+// Third batch: how padel rackets are made, starting a brand, and specs.
+const NOVEMBER_2026 = '2026-11-11';
 
 export const posts: BlogPost[] = [
+  {
+    slug: 'how-padel-rackets-are-made',
+    title: 'How padel rackets are made, step by step',
+    metaTitle: 'How Padel Rackets Are Made — Step by Step',
+    metaDescription:
+      'From carbon sheets to a finished racket: how a padel racket frame is moulded, how the EVA core and faces go in, and what happens in drilling, finishing and QC.',
+    category: 'Manufacturing',
+    date: NOVEMBER_2026,
+    summary:
+      'A padel racket is moulded in one piece: a carbon frame, an EVA foam core and two carbon or fiberglass faces, cured together under heat and pressure. After that, everything is finishing: drilling, texture, paint, grip and inspection.',
+    hero: {
+      src: '/images/blog/padel-racket-components-frame-core-face.webp',
+      alt: 'Exploded diagram of a padel racket showing its components: racket head, carbon frame, dampener, EVA foam core and carbon impact surface',
+      aspect: '3 / 2',
+    },
+    blocks: [
+      {
+        type: 'p',
+        text: 'Most players never think about how their racket was put together, but buyers should. Nearly every difference between a cheap padel racket and a good one comes from how a few steps are done: the lay-up, the moulding and the finishing. This is the order things happen in, and what to look for at each stage.',
+      },
+
+      { type: 'h2', text: '1. Cutting the carbon' },
+      {
+        type: 'p',
+        text: 'Carbon fiber arrives as rolls of pre-impregnated fabric (prepreg), already carrying the resin that will harden it later. The fabric is cut into the pieces needed for one racket: strips for the frame, and two face sheets in the chosen grade, whether 3K, 12K, 18K, 24K or a fiberglass blend. The number of layers and the direction of the weave are part of the specification, and they are what makes two rackets of the same shape feel different.',
+      },
+
+      { type: 'h2', text: '2. Building the frame' },
+      {
+        type: 'p',
+        text: 'The frame is a hollow carbon tube that runs from the handle, around the head and back. The carbon strips are rolled around a tube that can later be inflated, so the frame is pressed out against the mould from the inside. This is where most of the racket\'s strength comes from, and where poor factories cut corners by using fewer layers.',
+      },
+
+      { type: 'h2', text: '3. Placing the core and faces' },
+      {
+        type: 'p',
+        text: 'The EVA foam core is cut to the head shape and fitted inside the frame. Its hardness, from soft EVA to high-density black EVA, decides most of how the racket feels on contact. The two face sheets are then laid over each side of the core, so frame, core and faces are ready to become one part.',
+      },
+
+      { type: 'h2', text: '4. Moulding under heat and pressure' },
+      {
+        type: 'p',
+        text: 'The whole assembly goes into a steel mould for round, teardrop or diamond, and is cured under heat while the frame tube is pressurised. The resin flows, bonds the layers together and hardens. If the racket has a 3D texture, it comes from the mould itself, which is why a moulded texture does not wear away the way sand finishes do.',
+      },
+
+      { type: 'h2', text: '5. Drilling, sanding and finishing' },
+      {
+        type: 'list',
+        items: [
+          'Excess resin around the edges is trimmed and sanded off.',
+          'The holes are drilled through the faces and core in the hitting area.',
+          'Surfaces are prepared, painted and given your graphics, by decals, water transfer or print.',
+          'A sand texture, if specified, goes on with the top coat.',
+          'Grip, edge guard, end cap and wrist strap are fitted.',
+        ],
+      },
+
+      { type: 'h2', text: '6. Weighing and inspection' },
+      {
+        type: 'p',
+        text: 'Every racket is weighed and its balance checked, because small differences in resin or paint add up. Batches then go through a fixed inspection: surface finish, deflection and compression, weight held to ±0.1oz, edge guard adhesion, handle strength, and a final visual check. Only then does a racket go into its retail packaging.',
+      },
+
+      { type: 'h2', text: 'What this means if you are buying' },
+      {
+        type: 'p',
+        text: 'Two rackets can look the same in a photo and play very differently. Ask a factory how many carbon layers go into the frame, which EVA it uses, whether the texture is moulded or sanded on, and how it checks weight. Clear answers to those four questions tell you more than any brochure.',
+      },
+    ],
+    related: [
+      { label: 'Custom padel racket manufacturing', href: '/blog/custom-padel-racket-manufacturing' },
+      { label: 'What happens in quality control', href: '/blog/what-happens-in-quality-control' },
+      { label: 'See our padel rackets', href: '/products/padel-rackets' },
+    ],
+  },
+
+  {
+    slug: 'how-to-start-a-padel-racket-brand',
+    title: 'How to start your own padel racket brand',
+    metaTitle: 'How to Start a Padel Racket Brand — Private Label Guide',
+    metaDescription:
+      'Launching private label padel rackets: choosing models, carbon and cores, artwork, samples, MOQs, packaging and realistic timelines from brief to delivery.',
+    category: 'Sourcing',
+    date: NOVEMBER_2026,
+    summary:
+      'Start small and specific: one or two models aimed at one type of player, built on an existing mould. Expect about three months from first brief to rackets in your warehouse, most of it sampling and production.',
+    hero: {
+      src: '/images/blog/private-label-padel-racket-your-brand-logo.webp',
+      alt: 'Blue private label padel racket printed with a YOUR BRAND logo, lying on a blue padel court next to the net and two yellow padel balls',
+      aspect: '1024 / 373',
+    },
+    blocks: [
+      {
+        type: 'p',
+        text: 'Padel is still growing fast in Europe, the Middle East and the Americas, and plenty of clubs, coaches and retailers now want rackets under their own name. You do not need your own factory or a design team to do it. You need a clear idea of who the racket is for, and a manufacturer that can build to that.',
+      },
+
+      { type: 'h2', text: 'Decide who the racket is for' },
+      {
+        type: 'p',
+        text: 'This decides almost everything else. A club selling to beginners needs a forgiving round racket with a soft core at an accessible price. A brand going after strong players needs a diamond or teardrop in a stiffer carbon. Trying to cover everyone with a first order usually means covering no one well.',
+      },
+      {
+        type: 'table',
+        rows: [
+          ['Beginners and club players', 'Round shape, 3K carbon or fiberglass blend, soft EVA'],
+          ['All-round intermediate players', 'Teardrop shape, 12K or 18K carbon, medium EVA'],
+          ['Advanced and attacking players', 'Diamond shape, 18K or 24K carbon, high-density EVA'],
+        ],
+      },
+
+      { type: 'h2', text: 'Use an existing mould first' },
+      {
+        type: 'p',
+        text: 'A new mould costs time and money. Most new brands start on proven round, teardrop and diamond moulds and make the racket their own through carbon, core, texture and graphics. If you later want a shape nobody else has, a custom mould can be developed, with a physical prototype in 3–4 weeks.',
+      },
+
+      { type: 'h2', text: 'Get your artwork ready' },
+      {
+        type: 'p',
+        text: 'Send your logo and graphics as vector files (AI, EPS or PDF) if you have them. If you only have a sketch or a reference photo, that is enough to start; the design can be worked up from it. Remember the details beyond the face: grip colour, edge guard print, end cap and the wrist strap.',
+      },
+
+      { type: 'h2', text: 'Order samples before bulk' },
+      {
+        type: 'p',
+        text: 'Always sample. A sample order of 1–5 units lets you hold the racket, play with it and show it to customers before committing. Samples take 3–4 weeks from specification approval, and the sample cost can be credited against your bulk order.',
+      },
+
+      { type: 'h2', text: 'MOQ, packaging and timing' },
+      {
+        type: 'list',
+        items: [
+          'Minimum order: 100 units for padel rackets. Several models can go in one programme, with per-model minimums confirmed in the quote.',
+          'Packaging: gift boxes, hang tags, QR code labels or poly bags, all in your branding.',
+          'Production: 30–45 days after sample approval and deposit.',
+          'Shipping: FOB Karachi by default, or EXW Sialkot if you have your own forwarder.',
+        ],
+      },
+      {
+        type: 'p',
+        text: 'Put together, that is roughly three months from first brief to rackets on your shelf, depending on how quickly samples are approved and how the goods travel.',
+      },
+
+      { type: 'h2', text: 'Before you order, check your market' },
+      {
+        type: 'p',
+        text: 'If you sell into a market or federation with its own requirements for labelling or testing, tell your manufacturer at the start. It is far easier to build them into the first order than to fix them afterwards.',
+      },
+    ],
+    related: [
+      { label: 'OEM vs ODM padel manufacturing', href: '/blog/oem-vs-odm-padel-manufacturing' },
+      { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
+      { label: 'Build your padel racket', href: '/products/padel-rackets' },
+    ],
+  },
+
+  {
+    slug: 'padel-racket-weight-balance-thickness',
+    title: 'Padel racket weight, balance and thickness explained',
+    metaTitle: 'Padel Racket Weight, Balance & Thickness Explained',
+    metaDescription:
+      'What padel racket weight, balance point and thickness mean for play, the usual ranges (350–380g, 38 mm), and how shape and core decide them.',
+    category: 'Product design',
+    date: NOVEMBER_2026,
+    summary:
+      'Most padel rackets weigh 350–380g, are 38 mm thick, and balance somewhere between 260 and 275 mm from the end of the handle. A lower balance feels easier to control; a higher one adds power but tires the arm sooner.',
+    hero: {
+      src: '/images/blog/padel-racket-weight-check-digital-scale.webp',
+      alt: 'A carbon padel racket being weighed on a digital scale reading 365 g, on a workshop bench with grips and tape',
+    },
+    blocks: [
+      {
+        type: 'p',
+        text: 'Weight, balance and thickness are the three numbers on almost every padel racket listing, and the ones players compare first. They are also the three numbers most often misunderstood, because none of them is chosen on its own: they come out of the shape, the materials and the core.',
+      },
+
+      { type: 'h2', text: 'Weight' },
+      {
+        type: 'p',
+        text: 'A typical adult padel racket weighs between 350 and 380 grams. Lighter rackets are quicker at the net and easier on the arm, which suits beginners, juniors and many women\'s lines. Heavier rackets hold their line better against hard shots and add weight behind smashes, which stronger players tend to prefer.',
+      },
+      {
+        type: 'list',
+        items: [
+          'Light, about 345–360g — fast, manoeuvrable and easy to handle.',
+          'Medium, about 360–375g — the middle of the market, and the safest choice for a general model.',
+          'Heavy, 375g and up — more solid and more powerful, for attacking players.',
+        ],
+      },
+
+      { type: 'h2', text: 'Balance' },
+      {
+        type: 'p',
+        text: 'Balance is the point along the racket where it would sit level on your finger, measured from the end of the handle. Two rackets of the same weight can feel completely different if their balance differs by a centimetre.',
+      },
+      {
+        type: 'table',
+        rows: [
+          ['Low balance (about 260–265 mm)', 'Weight near the hand. Easy to control and to move quickly; typical of round rackets.'],
+          ['Medium balance (about 265–270 mm)', 'Even feel; typical of teardrop rackets.'],
+          ['High balance (about 270–275 mm)', 'Weight in the head. More power on smashes, harder on the arm; typical of diamond rackets.'],
+        ],
+      },
+
+      { type: 'h2', text: 'Thickness' },
+      {
+        type: 'p',
+        text: 'Under the international rules, a padel racket can be at most 38 mm thick, 45.5 cm long and 26 cm wide. Most rackets are built right at 38 mm, because thickness gives the core room to absorb the ball. Slimmer profiles exist, and they tend to feel firmer and more direct.',
+      },
+
+      { type: 'h2', text: 'How a manufacturer controls them' },
+      {
+        type: 'p',
+        text: 'On a custom order you do not pick weight and balance from a list. You pick a shape, a carbon grade and a core, and the weight and balance follow. A diamond mould with a dense core will come out heavier and head-heavy; a round mould with soft EVA will come out lighter and lower in balance. Paint and finishing add a few grams too, so a good factory weighs every racket and keeps each batch within a tight band, ours being ±0.1oz.',
+      },
+
+      { type: 'h2', text: 'If you are building a range' },
+      {
+        type: 'p',
+        text: 'Give each model in your range a clearly different feel. One light, low-balance control racket and one heavier, head-heavy power racket covers far more players than two rackets that land within a few grams of each other.',
+      },
+    ],
+    related: [
+      { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
+      { label: 'EVA core hardness explained', href: '/blog/eva-core-hardness-explained' },
+      { label: 'Build your padel racket', href: '/products/padel-rackets' },
+    ],
+  },
+
   {
     slug: 'how-to-choose-a-padel-bag',
     title: 'How to choose a padel bag: sizes, compartments and materials',

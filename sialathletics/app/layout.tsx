@@ -24,46 +24,46 @@ export const metadata: Metadata = {
     shortcut: '/icon.png',
     apple: '/icon.png',
   },
-  // Padel rackets bring in nearly all inquiries, so every default leads with
-  // "padel racket manufacturer"; the other lines follow in priority order.
-  // Keywords mirror the phrases buyers actually search (Search Console and
-  // Bing Webmaster queries), not internal product names.
+  // Titles name the product the way overseas buyers search for it ("padel
+  // racket manufacturer", "OEM", "private label"). Sialkot stays out of titles
+  // and headings: queries containing "Sialkot" come mostly from Pakistan, so
+  // the location sits at the end of descriptions and in body copy instead.
   title: {
-    default: 'Padel Racket Manufacturer in Sialkot | SIAL Athletics',
+    default: 'SIAL Athletics — Padel Racket & Pickleball Paddle OEM Manufacturer',
     template: '%s — SIAL Athletics',
   },
-  description: 'Custom padel rackets made in Sialkot, Pakistan. OEM and private label, plus pickleball paddles, beach rackets, bags and jerseys from the same factory.',
+  description: 'OEM and private-label padel rackets and pickleball paddles for brands and distributors, plus bags and jerseys. Factory-direct from Sialkot, Pakistan.',
   keywords: [
     'padel racket manufacturer',
-    'padel racket manufacturer Pakistan',
-    'padel racket manufacturer Sialkot',
+    'padel racket OEM manufacturer',
     'custom padel rackets',
-    'OEM padel racket manufacturer',
-    'private label padel rackets',
-    'carbon fiber padel racket supplier',
+    'custom padel racket private label',
     'wholesale padel rackets',
+    'carbon fiber padel rackets',
+    'padel racket supplier',
     'pickleball paddle manufacturer',
     'custom pickleball paddles',
-    'pickleball paddle manufacturer Pakistan',
-    'carbon fiber pickleball paddle supplier',
+    'wholesale pickleball paddles OEM',
+    'ODM pickleball paddle supplier',
+    'padel racket manufacturer Pakistan',
     'beach tennis racket manufacturer',
     'custom padel bags',
     'custom padel jerseys',
     'padel clothing manufacturer',
-    'sports goods manufacturer Sialkot',
+    'sports equipment manufacturer Sialkot',
   ],
   openGraph: {
     type: 'website',
     url: 'https://www.sialathletics.com',
     siteName: 'SIAL Athletics',
-    title: 'SIAL Athletics — Padel Racket Manufacturer in Sialkot, Pakistan',
-    description: 'Custom carbon padel rackets with your logo, plus pickleball paddles, beach rackets, bags and jerseys. Factory-direct OEM and private label from Sialkot.',
-    images: [{ url: '/images/og-card.png', width: 1200, height: 630, alt: 'SIAL Athletics — padel racket and sports goods manufacturer, Sialkot, Pakistan' }],
+    title: 'SIAL Athletics — Padel Racket & Pickleball Paddle OEM Manufacturer',
+    description: 'Carbon padel rackets and pickleball paddles with your logo, plus bags and jerseys. OEM and private label, factory-direct from Sialkot.',
+    images: [{ url: '/images/og-card.png', width: 1200, height: 630, alt: 'SIAL Athletics — padel racket and pickleball paddle manufacturer' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SIAL Athletics — Padel Racket Manufacturer in Sialkot, Pakistan',
-    description: 'Custom carbon padel rackets with your logo, plus pickleball paddles, beach rackets, bags and jerseys. Factory-direct from Sialkot.',
+    title: 'SIAL Athletics — Padel Racket & Pickleball Paddle OEM Manufacturer',
+    description: 'Carbon padel rackets and pickleball paddles with your logo, plus bags and jerseys. Factory-direct from Sialkot.',
     images: ['/images/og-card.png'],
   },
 };

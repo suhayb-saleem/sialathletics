@@ -11,8 +11,8 @@ import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Padel Racket Manufacturer in Sialkot | SIAL Athletics' },
-  description: 'Custom padel rackets made in Sialkot, Pakistan. OEM and private label, plus pickleball paddles, beach rackets, bags and jerseys from the same factory.',
+  title: { absolute: 'Padel Racket & Pickleball Paddle Manufacturer — SIAL Athletics' },
+  description: 'OEM and private-label padel rackets and pickleball paddles for brands and distributors, plus bags and jerseys. Factory-direct from Sialkot, Pakistan.',
   alternates: { canonical: '/' },
 };
 
@@ -32,7 +32,7 @@ const organizationJsonLd = {
   url: 'https://www.sialathletics.com',
   logo: 'https://www.sialathletics.com/images/logo-dark.png',
   image: 'https://www.sialathletics.com/images/og-card.png',
-  description: 'OEM and private-label padel racket manufacturer in Sialkot, Pakistan, also making pickleball paddles, beach rackets, racket bags and team jerseys.',
+  description: 'OEM and private-label manufacturer of carbon padel rackets and pickleball paddles, also making beach rackets, racket bags and team jerseys. Based in Sialkot, Pakistan.',
   // Product lines in priority order.
   knowsAbout: [
     'Padel racket manufacturing',

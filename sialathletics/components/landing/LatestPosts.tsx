@@ -19,7 +19,9 @@ export default function LatestPosts() {
           {latest.map((post) => (
             <article key={post.slug} className="hp-post">
               <div className="hp-post__media">
-                {post.hero && <Image src={post.hero.src} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" style={{ objectFit: 'cover' }} />}
+                {post.hero
+                  ? <Image src={post.hero.src} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
+                  : <Image src="/images/teardrop_icon.png" alt="" width={96} height={96} className="post-media__icon" />}
               </div>
               <div className="hp-post__body">
                 <span className="hp-post__meta">{post.category} · {readMinutes(post)} min read</span>
