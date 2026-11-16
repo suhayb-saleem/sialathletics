@@ -5,13 +5,13 @@ import CapabilityCards from '@/components/capabilities/CapabilityCards';
 import ProcessTimeline from '@/components/capabilities/ProcessTimeline';
 import MaterialsBadges from '@/components/capabilities/MaterialsBadges';
 import JsonLd from '@/components/seo/JsonLd';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, withShare } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/manufacturing', {
   title: 'How We Manufacture — OEM & ODM',
   description: 'How we make padel rackets, pickleball paddles, beach rackets, bags and jerseys: carbon lay-ups, precision moulding, QC testing and export.',
   alternates: { canonical: '/manufacturing' },
-};
+});
 
 export default function ManufacturingPage() {
   return (

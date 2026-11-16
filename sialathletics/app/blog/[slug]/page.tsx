@@ -11,6 +11,8 @@ import { posts, getPost, readMinutes, formatDate } from '@/data/blog';
 const BASE = 'https://www.sialathletics.com';
 
 // Prerender every post at build time so they are static HTML for crawlers.
+const SUFFIX = ' — SIAL Athletics';
+
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
 }
@@ -20,16 +22,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) return {};
   return {
-    title: post.metaTitle,
+    // Google shows about 60 characters of a title. Short titles get the usual
+    // brand suffix from the layout; longer ones go out as they are.
+    title: `${post.metaTitle}${SUFFIX}`.length <= 60 ? post.metaTitle : { absolute: post.metaTitle },
     description: post.metaDescription,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: 'article',
+      siteName: 'SIAL Athletics',
       title: post.metaTitle,
       description: post.metaDescription,
       url: `${BASE}/blog/${post.slug}`,
       publishedTime: post.date,
       images: post.hero ? [{ url: post.hero.src, alt: post.hero.alt }] : [{ url: '/images/og-card.png', width: 1200, height: 630, alt: 'SIAL Athletics' }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.metaTitle,
+      description: post.metaDescription,
+      images: [post.hero?.src ?? '/images/og-card.png'],
     },
   };
 }

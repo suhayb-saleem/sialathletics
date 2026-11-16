@@ -5,11 +5,11 @@ import SpecConfigurator from '@/components/catalogue/SpecConfigurator';
 import FamilyBlock from '@/components/products/FamilyBlock';
 import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
-import { nestedBreadcrumbJsonLd } from '@/lib/seo';
+import { nestedBreadcrumbJsonLd, withShare } from '@/lib/seo';
 import { padelFamilies, padelOptions } from '@/lib/products/padel';
 import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/products/padel-rackets', {
   title: 'Custom Padel Rackets — OEM Manufacturer',
   description:
     'Custom carbon padel rackets with your logo. Round, teardrop and diamond moulds in 3K to 24K carbon with EVA cores, made in Sialkot, Pakistan.',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'private label padel rackets',
     'carbon fiber padel racket supplier',
     'bulk padel rackets',
-    'padel racket manufacturer Sialkot',
+    'padel racket supplier',
   ],
   alternates: { canonical: '/products/padel-rackets' },
   openGraph: {
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     description: 'Round, teardrop and diamond carbon padel rackets with your logo, made in Sialkot, Pakistan.',
     images: [{ url: '/images/products/custom-teardrop-padel-racket-oem.png', alt: 'Custom teardrop carbon padel racket' }],
   },
-};
+});
 
 const pageJsonLd = categoryPageJsonLd({
   path: '/products/padel-rackets',

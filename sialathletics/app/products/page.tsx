@@ -4,14 +4,14 @@ import Link from 'next/link';
 import PageHero from '@/components/ui/PageHero';
 import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, itemListJsonLd, withShare } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/products', {
   title: 'Products — Padel Rackets & Sports Goods',
   description:
     'Custom padel rackets, pickleball paddles, beach rackets, jerseys and bags. OEM and private label, made in our own factory in Sialkot, Pakistan.',
   alternates: { canonical: '/products' },
-};
+});
 
 const categories: {
   title: string;
@@ -61,6 +61,7 @@ export default function ProductsPage() {
   return (
     <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={breadcrumbJsonLd('Products', '/products')} />
+      <JsonLd data={itemListJsonLd('SIAL Athletics products', categories.map((c) => ({ name: c.title, path: c.href })))} />
 
       <PageHero
         crumb="Products"

@@ -3,14 +3,14 @@ import PageHero from '@/components/ui/PageHero';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactFAQ from '@/components/contact/ContactFAQ';
 import JsonLd from '@/components/seo/JsonLd';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, withShare } from '@/lib/seo';
 import { contactFaqs } from '@/data/contactFaq';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/contact', {
   title: 'Contact — Get a Factory Quote',
   description: 'Request a factory-direct quote for OEM padel rackets, pickleball paddles, beach rackets, bags or jerseys. Samples available; we reply within 24 hours.',
   alternates: { canonical: '/contact' },
-};
+});
 
 const contactFaqJsonLd = {
   '@context': 'https://schema.org',

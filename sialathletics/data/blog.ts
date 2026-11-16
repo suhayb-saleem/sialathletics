@@ -524,7 +524,7 @@ export const posts: BlogPost[] = [
   {
     slug: 'sublimation-vs-screen-printing-sports-jerseys',
     title: 'Sublimation, screen printing or embroidery: how sports jerseys are decorated',
-    metaTitle: 'Sublimation vs Screen Printing vs Embroidery for Sports Jerseys',
+    metaTitle: 'Sublimation vs Screen Printing vs Embroidery for Jerseys',
     metaDescription:
       'How sublimation, screen printing and embroidery work on sports jerseys and padel clothing, what each suits, how long each lasts, and how to wash printed kit.',
     category: 'Apparel',
@@ -736,6 +736,7 @@ export const posts: BlogPost[] = [
       },
     ],
     related: [
+      { label: 'How to start your own padel racket brand', href: '/blog/how-to-start-a-padel-racket-brand' },
       { label: 'Custom padel racket manufacturing', href: '/blog/custom-padel-racket-manufacturing' },
       { label: 'Get a factory quote', href: '/contact' },
     ],
@@ -837,6 +838,7 @@ export const posts: BlogPost[] = [
       },
     ],
     related: [
+      { label: 'How padel rackets are made, step by step', href: '/blog/how-padel-rackets-are-made' },
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },
       { label: 'Round, teardrop or diamond', href: '/blog/padel-racket-shapes-round-teardrop-diamond' },
       { label: 'Configure a spec and request a quote', href: '/products' },
@@ -1064,6 +1066,7 @@ export const posts: BlogPost[] = [
       },
     ],
     related: [
+      { label: 'Padel racket weight, balance and thickness', href: '/blog/padel-racket-weight-balance-thickness' },
       { label: 'OEM and ODM programmes', href: '/manufacturing' },
       { label: 'Browse padel platforms', href: '/products/padel-rackets' },
       { label: 'Carbon fiber grades explained', href: '/blog/carbon-fiber-grades-3k-12k-18k-24k-explained' },

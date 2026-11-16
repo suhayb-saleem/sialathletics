@@ -20,7 +20,7 @@ export default function LatestPosts() {
             <article key={post.slug} className="hp-post">
               <div className="hp-post__media">
                 {post.hero
-                  ? <Image src={post.hero.src} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
+                  ? <Image src={post.hero.src} alt={post.hero.alt} fill sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
                   : <Image src="/images/teardrop_icon.png" alt="" width={96} height={96} className="post-media__icon" />}
               </div>
               <div className="hp-post__body">

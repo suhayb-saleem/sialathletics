@@ -3,14 +3,14 @@ import PageHero from '@/components/ui/PageHero';
 import FaqSections from '@/components/faq/FaqSections';
 import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, withShare } from '@/lib/seo';
 import { faqCategories } from '@/data/faq';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/faq', {
   title: 'FAQ — OEM Padel Racket Manufacturing',
   description: 'Answers for B2B buyers: minimum order quantities, sampling and lead times, private-label branding, quality control, and shipping from Sialkot, Pakistan.',
   alternates: { canonical: '/faq' },
-};
+});
 
 const faqJsonLd = {
   '@context': 'https://schema.org',

@@ -5,11 +5,11 @@ import SpecConfigurator from '@/components/catalogue/SpecConfigurator';
 import FamilyBlock from '@/components/products/FamilyBlock';
 import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
-import { nestedBreadcrumbJsonLd } from '@/lib/seo';
+import { nestedBreadcrumbJsonLd, withShare } from '@/lib/seo';
 import { pickleballFamilies, pickleballOptions } from '@/lib/products/pickleball';
 import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/products/pickleball-paddles', {
   title: 'Custom Pickleball Paddles — OEM Manufacturer',
   description:
     'Custom pickleball paddles with your logo: 3K to 24K carbon on EPP foam or PP honeycomb cores, 16 or 14 mm, thermoformed or cold-pressed. Made in Sialkot.',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: 'Carbon fiber pickleball paddles on foam or honeycomb cores, with your logo. Made in Sialkot, Pakistan.',
     images: [{ url: '/images/products/custom-carbon-pickleball-paddle-oem.png', alt: 'Custom carbon fiber pickleball paddle' }],
   },
-};
+});
 
 const pageJsonLd = categoryPageJsonLd({
   path: '/products/pickleball-paddles',

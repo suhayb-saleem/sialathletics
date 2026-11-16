@@ -238,6 +238,11 @@ a { color: inherit; }
 .hp-field textarea { resize: none; }
 .hp-field input::placeholder, .hp-field textarea::placeholder { color: var(--hp-ink-45); }
 .hp-field input:focus, .hp-field select:focus, .hp-field textarea:focus { outline: none; border-color: var(--hp-red); background: #fff; }
+/* "Did you mean …?" under the email field when the address looks mistyped. */
+.hp-field__hint { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; padding: 0.6rem 0.75rem; background: rgba(226,27,45,0.06); border: 1px solid var(--hp-red); font-size: 0.82rem; color: var(--hp-ink); overflow-wrap: anywhere; }
+.hp-field__hint-actions { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+.hp-field__hint button { padding: 0; background: none; border: 0; font: inherit; font-weight: 700; color: var(--hp-red-deep); text-decoration: underline; cursor: pointer; }
+.hp-field__hint button + button { font-weight: 500; color: var(--hp-ink-70); }
 .hp-form__error { grid-column: 1 / -1; padding: 0.8rem 1rem; background: rgba(226,27,45,0.08); border: 1px solid var(--hp-red); color: var(--hp-red-deep); font-size: 0.82rem; }
 .hp-form__submit { grid-column: 1 / -1; margin-top: 0.4rem; }
 .hp-form__submit .hp-btn { width: 100%; }

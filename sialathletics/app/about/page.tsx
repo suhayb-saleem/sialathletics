@@ -4,13 +4,13 @@ import PageHero from '@/components/ui/PageHero';
 import AboutStory from '@/components/about/AboutStory';
 import AboutValues from '@/components/about/AboutValues';
 import JsonLd from '@/components/seo/JsonLd';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, withShare } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/about', {
   title: 'About Us — Padel & Pickleball Manufacturer',
   description: 'SIAL Athletics makes carbon padel rackets, pickleball paddles, bags and jerseys for brands worldwide, factory-direct from Sialkot, Pakistan.',
   alternates: { canonical: '/about' },
-};
+});
 
 export default function AboutPage() {
   return (

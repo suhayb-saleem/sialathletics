@@ -5,16 +5,16 @@ import SpecConfigurator from '@/components/catalogue/SpecConfigurator';
 import FamilyBlock from '@/components/products/FamilyBlock';
 import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
-import { nestedBreadcrumbJsonLd } from '@/lib/seo';
+import { nestedBreadcrumbJsonLd, withShare } from '@/lib/seo';
 import { beachFamilies, beachOptions } from '@/lib/products/beach';
 import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/products/beach-rackets', {
   title: 'Custom Beach Rackets — OEM Manufacturer',
   description:
     'OEM beach tennis rackets in 3K to 24K carbon, on the same lay-ups as our padel rackets. Your face, core, finish and logo, made in Sialkot.',
   alternates: { canonical: '/products/beach-rackets' },
-};
+});
 
 const pageJsonLd = categoryPageJsonLd({
   path: '/products/beach-rackets',

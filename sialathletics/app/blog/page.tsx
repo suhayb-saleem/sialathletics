@@ -4,15 +4,15 @@ import Image from 'next/image';
 import PageHero from '@/components/ui/PageHero';
 import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
-import { breadcrumbJsonLd } from '@/lib/seo';
+import { breadcrumbJsonLd, itemListJsonLd, withShare } from '@/lib/seo';
 import { posts, readMinutes, formatDate } from '@/data/blog';
 
-export const metadata: Metadata = {
-  title: 'Blog — Padel, Pickleball & Sports Equipment Guides',
+export const metadata: Metadata = withShare('/blog', {
+  title: 'Blog — Padel Racket & Pickleball Guides',
   description:
     'Guides to padel rackets, pickleball paddles, beach tennis rackets, racket bags and sports jerseys: materials, manufacturing, buying advice and care.',
   alternates: { canonical: '/blog' },
-};
+});
 
 export default function BlogIndexPage() {
   const [lead, ...rest] = posts;
@@ -20,6 +20,7 @@ export default function BlogIndexPage() {
   return (
     <main style={{ background: 'var(--hp-paper)', backgroundImage: 'var(--hp-wash)' }}>
       <JsonLd data={breadcrumbJsonLd('Blog', '/blog')} />
+      <JsonLd data={itemListJsonLd('SIAL Athletics blog', posts.map((p) => ({ name: p.title, path: `/blog/${p.slug}` })))} />
       <PageHero crumb="Blog" title="Blog." compact />
 
       <section className="blog-list" style={{ borderTop: '1px solid var(--hp-ink-line)' }}>
@@ -47,7 +48,7 @@ export default function BlogIndexPage() {
               <article key={post.slug} className="post-card">
                 <Link href={`/blog/${post.slug}`} className="post-card__media" aria-hidden="true" tabIndex={-1}>
                   {post.hero
-                    ? <Image src={post.hero.src} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                    ? <Image src={post.hero.src} alt={post.hero.alt} fill sizes="(max-width: 900px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
                     : <Image src="/images/teardrop_icon.png" alt="" width={96} height={96} className="post-media__icon" />}
                 </Link>
                 <div className="post-card__body">

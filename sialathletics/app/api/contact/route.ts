@@ -1,6 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { generateInquiryPDF, InquiryData } from '@/lib/pdfGenerator';
+import { suggestEmail } from '@/lib/emailCheck';
+import { resolveMx, resolve4, resolve6 } from 'node:dns/promises';
+
+// True only when DNS says for certain that the domain cannot receive mail
+// (it does not exist, or has no mail or address records). Timeouts and any
+// other lookup trouble count as "fine": a real inquiry must never be lost
+// because a DNS server was slow.
+async function domainCannotReceiveMail(domain: string): Promise<boolean> {
+  const missing = (e: unknown) => ['ENOTFOUND', 'ENODATA'].includes((e as { code?: string })?.code ?? '');
+  const lookup = async () => {
+    try {
+      if ((await resolveMx(domain)).length > 0) return false;
+    } catch (e) {
+      if (!missing(e)) return false;
+    }
+    // No MX: mail falls back to the address record, so check that too.
+    const results = await Promise.allSettled([resolve4(domain), resolve6(domain)]);
+    return results.every((r) => r.status === 'rejected' && missing(r.reason));
+  };
+  const timeout = new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 2500));
+  return Promise.race([lookup().catch(() => false), timeout]);
+}
 
 // Visitor input goes into HTML emails, so escape it before interpolating.
 const escapeHtml = (v: string) =>
@@ -25,6 +47,15 @@ export async function POST(req: NextRequest) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { success: false, error: 'Invalid email address format' },
+        { status: 400 }
+      );
+    }
+
+    // A domain that does not exist is always a typo, and we could never reply.
+    const emailDomain = email.slice(email.lastIndexOf('@') + 1).toLowerCase();
+    if (await domainCannotReceiveMail(emailDomain)) {
+      return NextResponse.json(
+        { success: false, error: `We could not find the email domain "${emailDomain}". Please check your email address for a typo.` },
         { status: 400 }
       );
     }
@@ -55,6 +86,12 @@ export async function POST(req: NextRequest) {
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
     const safeMessage = escapeHtml(message);
+    // The visitor may have kept an address the form questioned; tell sales
+    // what it probably should be, so the reply can still reach them.
+    const likelyEmail = suggestEmail(email);
+    const typoNote = likelyEmail
+      ? `<div style="margin-top: 6px; font-size: 13px; color: #B45309;">Possible typo. Did they mean <a href="mailto:${escapeHtml(likelyEmail)}">${escapeHtml(likelyEmail)}</a>?</div>`
+      : '';
 
     const salesEmailHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eeeeee; border-top: 4px solid #E31B23;">
@@ -68,7 +105,7 @@ export async function POST(req: NextRequest) {
           </tr>
           <tr style="border-bottom: 1px solid #eeeeee;">
             <td style="padding: 10px; font-weight: bold;">Work Email:</td>
-            <td style="padding: 10px;"><a href="mailto:${safeEmail}">${safeEmail}</a></td>
+            <td style="padding: 10px;"><a href="mailto:${safeEmail}">${safeEmail}</a>${typoNote}</td>
           </tr>
         </table>
         

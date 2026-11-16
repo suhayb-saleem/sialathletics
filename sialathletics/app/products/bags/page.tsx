@@ -5,16 +5,16 @@ import SpecConfigurator from '@/components/catalogue/SpecConfigurator';
 import FamilyBlock from '@/components/products/FamilyBlock';
 import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
-import { nestedBreadcrumbJsonLd } from '@/lib/seo';
+import { nestedBreadcrumbJsonLd, withShare } from '@/lib/seo';
 import { bagFamilies, bagOptions } from '@/lib/products/bags';
 import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/products/bags', {
   title: 'Custom Racket Bags — OEM Bags',
   description:
     'Custom padel bags, racket covers and paddle sleeves with your logo, from single sleeves to thermal tournament bags. Made in Sialkot, Pakistan.',
   alternates: { canonical: '/products/bags' },
-};
+});
 
 const pageJsonLd = categoryPageJsonLd({
   path: '/products/bags',

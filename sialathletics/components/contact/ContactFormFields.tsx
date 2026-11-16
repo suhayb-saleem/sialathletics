@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
 import type { ContactPrefill } from '@/lib/contactModal';
+import { suggestEmail } from '@/lib/emailCheck';
 
 // Kept to three fields (name, work email, message) on purpose: every extra
 // field costs inbound inquiries, and the details can come out in the reply.
@@ -22,6 +23,18 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // A likely typo in the email ("jotmail.com") gets a one-click fix under the
+  // field. It never blocks: once the visitor says their address is right, that
+  // exact address is not questioned again.
+  const [emailHint, setEmailHint] = useState<string | null>(null);
+  const [confirmedEmail, setConfirmedEmail] = useState('');
+
+  const checkEmail = (value: string) => {
+    const email = value.trim();
+    const hint = email && email !== confirmedEmail ? suggestEmail(email) : null;
+    setEmailHint(hint);
+    return hint;
+  };
 
   useEffect(() => {
     if (!prefill) return;
@@ -43,6 +56,13 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
       setError('Please enter a valid email address.');
+      return;
+    }
+
+    // Stop once on a suspected typo so the visitor sees the suggestion; they
+    // either take it or confirm their own address, then submit as normal.
+    if (checkEmail(formData.email)) {
+      setError('Please check your email address below, so our reply reaches you.');
       return;
     }
 
@@ -124,7 +144,23 @@ export default function ContactFormFields({ compact = false, theme = 'dark', pre
       <div className="hp-field">
         <label htmlFor={`${idPrefix}-email`}>Work email</label>
         <input id={`${idPrefix}-email`} type="email" required placeholder="john@company.com"
-          value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+          value={formData.email}
+          onChange={(e) => { setFormData({ ...formData, email: e.target.value }); setEmailHint(null); }}
+          onBlur={(e) => checkEmail(e.target.value)}
+          aria-describedby={emailHint ? `${idPrefix}-email-hint` : undefined} />
+        {emailHint && (
+          <div id={`${idPrefix}-email-hint`} className="hp-field__hint" role="status">
+            <span>Did you mean <strong>{emailHint}</strong>?</span>
+            <span className="hp-field__hint-actions">
+              <button type="button" onClick={() => { setFormData({ ...formData, email: emailHint }); setEmailHint(null); setError(null); }}>
+                Yes, fix it
+              </button>
+              <button type="button" onClick={() => { setConfirmedEmail(formData.email.trim()); setEmailHint(null); setError(null); }}>
+                No, mine is correct
+              </button>
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="hp-field" style={{ gridColumn: '1 / -1' }}>

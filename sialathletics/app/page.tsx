@@ -1,5 +1,6 @@
 import './home.css';
 import type { Metadata } from 'next';
+import { withShare } from '@/lib/seo';
 import Hero from '@/components/landing/Hero';
 import FactoryIntro from '@/components/landing/FactoryIntro';
 import { Range } from '@/components/landing/ProductTeaser';
@@ -10,11 +11,11 @@ import LatestPosts from '@/components/landing/LatestPosts';
 import CTABanner from '@/components/landing/CTABanner';
 import JsonLd from '@/components/seo/JsonLd';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('', {
   title: { absolute: 'Padel Racket & Pickleball Paddle Manufacturer — SIAL Athletics' },
   description: 'OEM and private-label padel rackets and pickleball paddles for brands and distributors, plus bags and jerseys. Factory-direct from Sialkot, Pakistan.',
   alternates: { canonical: '/' },
-};
+});
 
 // Lets search engines show "SIAL Athletics" as the site name in results.
 const websiteJsonLd = {

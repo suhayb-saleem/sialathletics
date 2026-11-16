@@ -5,11 +5,11 @@ import SpecConfigurator from '@/components/catalogue/SpecConfigurator';
 import FamilyBlock from '@/components/products/FamilyBlock';
 import ProductPageStyles from '@/components/products/ProductPageStyles';
 import JsonLd from '@/components/seo/JsonLd';
-import { nestedBreadcrumbJsonLd } from '@/lib/seo';
+import { nestedBreadcrumbJsonLd, withShare } from '@/lib/seo';
 import { jerseyFamilies, jerseyOptions } from '@/lib/products/jerseys';
 import { categoryPageJsonLd } from '@/lib/products/jsonld';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withShare('/products/jerseys', {
   title: 'Custom Padel Jerseys & Padel Clothing',
   description:
     'Custom padel jerseys and padel clothing: sublimated shirts, polos, shorts and tracksuits with your logo, for clubs and brands. Made in Sialkot.',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: 'Sublimated padel shirts, polos, shorts and tracksuits in your club colours, made in Sialkot.',
     images: [{ url: '/images/products/custom-sublimated-padel-jersey.webp', alt: 'Custom sublimated padel jersey in black and red' }],
   },
-};
+});
 
 const pageJsonLd = categoryPageJsonLd({
   path: '/products/jerseys',
